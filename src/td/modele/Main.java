@@ -1,4 +1,4 @@
-package sample;
+package td.modele;
 
 import javafx.application.Application;
 import javafx.fxml.FXMLLoader;
