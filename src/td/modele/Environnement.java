@@ -41,5 +41,9 @@ public class Environnement {
 		for(Personnage p : this.persos)
 			p.agit();
 	}
+
+	public int[][] getMap () {
+		return this.map;
+	}
 	
 }
