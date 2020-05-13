@@ -12,6 +12,7 @@ public class VueMap {
 	public VueMap(int [][] m, TilePane t) {
 		this.map=m;
 		this.tilePaneMap=t;
+		this.affichMap();
 	}
 	
 	public void affichMap() {
