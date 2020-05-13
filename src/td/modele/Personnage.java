@@ -16,9 +16,9 @@ public class Personnage {
 	public Personnage() {
 		this.x = new SimpleIntegerProperty();
 		this.y = new SimpleIntegerProperty();
-		int random = (int)(Math.random()*20);
+		int random = (int)(Math.random()*19*16);
 		this.x.set(random);
-		random = (int)(Math.random()*20);
+		random = (int)(Math.random()*19*16);
 		this.y.set(random);
 		this.nivCont = 10;
 		this.vitesse = 1;
@@ -35,28 +35,28 @@ public class Personnage {
 			dirY=0;
 			break;
 		case 1:
-			dirX=1;
+			dirX=16;
 			dirY=0;
 			break;
 		case 2:
-			dirX=-1;
+			dirX=-16;
 			dirY=0;
 			break;
 		case 3:
 			dirX=0;
-			dirY=1;
+			dirY=16;
 			break;
 		case 4:
 			dirX=0;
-			dirY=-1;
+			dirY=-16;
 		}
 		
 		this.x.set(this.x.getValue() + this.dirX);
 		this.y.set(this.y.getValue() + this.dirY);
 		
-		if(this.x.getValue()<0 || this.x.getValue() >20)
+		if(this.x.getValue()<0 || this.x.getValue() >19*16)
 			this.x.set(this.x.getValue() - this.dirX*2);
-		if(this.y.getValue()<0 || this.y.getValue() >20)
+		if(this.y.getValue()<0 || this.y.getValue() >19*16)
 			this.y.set(this.y.getValue() - this.dirY*2);
 	}
 

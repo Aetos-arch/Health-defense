@@ -21,7 +21,6 @@ public class Environnement {
 	public void unTour() {
 		for(Personnage p : this.persos) {
 			p.agit();
-			map[p.getX().getValue()][p.getX().getValue()] = p.getId();
 		}
 	}
 
