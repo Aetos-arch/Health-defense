@@ -12,6 +12,7 @@ public class VueMap {
 	public VueMap(int [][] m, TilePane t) {
 		this.map=m;
 		this.tilePaneMap=t;
+		this.affichMap();
 	}
 	
 	public void affichMap() {
@@ -20,7 +21,7 @@ public class VueMap {
             	ImageView tile = new ImageView("tilestest.png");
                 Rectangle2D rogne = new Rectangle2D((map[i][j]-1)%6*16,(map[i][j]/6)*16,16,16);
                 tile.setViewport(rogne);
-                tilePaneMap.getChildren().add(tile);                
+                tilePaneMap.getChildren().add(tile);
             }
         }
 	}

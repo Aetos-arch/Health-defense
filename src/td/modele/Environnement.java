@@ -8,10 +8,11 @@ public class Environnement {
 	ArrayList<Tourelle> tours;
 	ArrayList<Personnage> persos;
 	
-	public Environnement(int [][] m) {
+	public Environnement() {
 		this.tours = new ArrayList<Tourelle>();
 		this.persos = new ArrayList<Personnage>();
-		this.map= m;
+		this.map= Map.map1;
+		this.ajouterPers(new Personnage());
 	}
 	
 	public void ajouterPers(Personnage p) {
@@ -21,7 +22,6 @@ public class Environnement {
 	public void unTour() {
 		for(Personnage p : this.persos) {
 			p.agit();
-			map[p.getX().getValue()][p.getX().getValue()] = p.getId();
 		}
 	}
 

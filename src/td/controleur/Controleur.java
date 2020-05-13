@@ -1,42 +1,67 @@
 package td.controleur;
 
+import javafx.animation.KeyFrame;
+import javafx.animation.Timeline;
 import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
 import javafx.fxml.Initializable;
+import javafx.scene.layout.Pane;
 import javafx.scene.layout.TilePane;
+import javafx.util.Duration;
 import td.modele.Environnement;
-import td.modele.Map;
-import td.modele.Personnage;
 import td.vue.VueMap;
 
 import java.net.URL;
 import java.util.ResourceBundle;
 
+
 public class Controleur implements Initializable {
 
     @FXML
     private TilePane tilePaneMap;
+    @FXML
+    private Pane panePers;
 
     private Environnement env;
 
     private VueMap vM;
+    private VuePers vP;
+    
+    private Timeline gameLoop;
+    private int temps;
 
     public void initialize(URL url, ResourceBundle resourceBundle) {
-        this.env = new Environnement(Map.map1);
-        this.env.ajouterPers(new Personnage());
-        int tab[][] = this.env.getMap();
-        tilePaneMap.setMaxWidth(20*16);
-        vM = new VueMap(tab, tilePaneMap);
-        vM.affichMap();
+        this.env = new Environnement();
+        vM = new VueMap(this.env.getMap(), tilePaneMap);
+        initGame();
     }
     
+    private void initGame() {
+		gameLoop = new Timeline();
+		temps = 0;
+		gameLoop.setCycleCount(Timeline.INDEFINITE);
+		
+		KeyFrame kf = new KeyFrame(Duration.seconds(0.2),(ev ->{
+			if(temps==100){
+				System.out.println("fini");
+				gameLoop.stop();
+				}
+			else {
+				this.env.unTour();
+			}
+			temps ++;
+		}));
+		gameLoop.getKeyFrames().add(kf);
+		
+	}
+	@FXML
+    void CreePers(ActionEvent event) {
+    	vP = new VuePers(panePers, env);
+    	vP.affichPers();
+    }
     @FXML
     void action(ActionEvent event) {
-    	this.env.unTour();
-    	/*while (true) {
-    		this.env.unTour();
-    	}*/
-    	vM.affichMap();
+    	gameLoop.play();
     }
 
 
