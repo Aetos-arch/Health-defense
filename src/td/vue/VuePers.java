@@ -1,4 +1,4 @@
-package td.controleur;
+package td.vue;
 
 import javafx.scene.image.ImageView;
 import javafx.scene.layout.Pane;
