@@ -10,6 +10,7 @@ import javafx.scene.layout.TilePane;
 import javafx.util.Duration;
 import td.modele.Environnement;
 import td.vue.VueMap;
+import td.vue.VuePers;
 
 import java.net.URL;
 import java.util.ResourceBundle;
