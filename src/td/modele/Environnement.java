@@ -12,7 +12,7 @@ public class Environnement {
 		this.tours = new ArrayList<Tourelle>();
 		this.persos = new ArrayList<Personnage>();
 		this.map= Map.map1;
-		this.ajouterPers(new Personnage());
+		this.ajouterPers(new InfecteSansSymp());
 	}
 	
 	public void ajouterPers(Personnage p) {
