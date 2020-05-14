@@ -56,7 +56,7 @@ public abstract class Tourelle {
         this.pointAttaque = pointAttaque;
     }
 
-    public int getCadense() {
+    public int getCadence() {
         return cadence;
     }
 
