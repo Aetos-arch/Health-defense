@@ -53,7 +53,6 @@ public class Controleur implements Initializable {
 			temps ++;
 		}));
 		gameLoop.getKeyFrames().add(kf);
-		
 	}
 	@FXML
     void CreePers(ActionEvent event) {
@@ -64,6 +63,5 @@ public class Controleur implements Initializable {
     void action(ActionEvent event) {
     	gameLoop.play();
     }
-
 
 }

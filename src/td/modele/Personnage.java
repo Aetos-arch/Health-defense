@@ -37,19 +37,19 @@ public abstract class Personnage {
 		return this.nivCont<= 0;
 	}
 
-	public IntegerProperty getX() {
+	public IntegerProperty getXProperty() {
 		return x;
 	}
 
-	public IntegerProperty getY() {
+	public IntegerProperty getYProperty() {
 		return y;
 	}
 	
-	public int getXVal() {
+	public int getX() {
 		return x.getValue();
 	}
 	
-	public int getYVal() {
+	public int getY() {
 		return y.getValue();
 	}
 	public int getId() {

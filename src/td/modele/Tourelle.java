@@ -6,14 +6,12 @@ import javafx.beans.property.SimpleIntegerProperty;
 public abstract class Tourelle {
     private IntegerProperty x;
     private IntegerProperty y;
-    private int pointAttaque;
     private int cadence;
     private int nbMunition;
 
-    public Tourelle (int pointAttaque, int c, int m) {
+    public Tourelle (int c, int m) {
         this.x = new SimpleIntegerProperty();
         this.y = new SimpleIntegerProperty();
-        this.pointAttaque = pointAttaque;
         this.cadence = c;
         this.nbMunition = m;
     }
@@ -48,13 +46,6 @@ public abstract class Tourelle {
         this.y.set(y);
     }
 
-    public int getPointAttaque() {
-        return pointAttaque;
-    }
-
-    public void setPointAttaque(int pointAttaque) {
-        this.pointAttaque = pointAttaque;
-    }
 
     public int getCadence() {
         return cadence;
