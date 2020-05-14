@@ -1,22 +1,20 @@
 package td.modele;
 
-import javafx.beans.property.DoubleProperty;
 import javafx.beans.property.IntegerProperty;
-import javafx.beans.property.SimpleDoubleProperty;
 import javafx.beans.property.SimpleIntegerProperty;
 
 public abstract class Tourelle {
     private IntegerProperty x;
     private IntegerProperty y;
     private int pointAttaque;
-    private int cadense;
+    private int cadence;
     private int nbMunition;
 
     public Tourelle (int pointAttaque, int c, int m) {
         this.x = new SimpleIntegerProperty();
         this.y = new SimpleIntegerProperty();
         this.pointAttaque = pointAttaque;
-        this.cadense = c;
+        this.cadence = c;
         this.nbMunition = m;
     }
 
@@ -27,7 +25,7 @@ public abstract class Tourelle {
     }
 
     public double getX() {
-        return x.get();
+        return x.getValue();
     }
 
     public IntegerProperty xProperty() {
@@ -39,7 +37,7 @@ public abstract class Tourelle {
     }
 
     public double getY() {
-        return y.get();
+        return y.getValue();
     }
 
     public IntegerProperty yProperty() {
@@ -59,10 +57,10 @@ public abstract class Tourelle {
     }
 
     public int getCadense() {
-        return cadense;
+        return cadence;
     }
 
     public void setCadense(int cadense) {
-        this.cadense = cadense;
+        this.cadence = cadense;
     }
 }
