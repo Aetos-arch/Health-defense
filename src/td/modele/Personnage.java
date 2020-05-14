@@ -3,7 +3,7 @@ package td.modele;
 import javafx.beans.property.IntegerProperty;
 import javafx.beans.property.SimpleIntegerProperty;
 
-public class Personnage {
+public abstract class Personnage {
 	
 	int id;
 	private IntegerProperty x;
@@ -13,51 +13,28 @@ public class Personnage {
 	private int dirX;
 	private int dirY;
 	
-	public Personnage() {
+	public Personnage(int vit, int nivContamination, int id) {
 		this.x = new SimpleIntegerProperty();
 		this.y = new SimpleIntegerProperty();
-		int random = (int)(Math.random()*19*16);
-		this.x.set(random);
-		random = (int)(Math.random()*19*16);
-		this.y.set(random);
-		this.nivCont = 10;
-		this.vitesse = 1;
+		this.x.set(0);
+		this.y.set(0);
+		this.nivCont = nivContamination;
+		this.vitesse = vit;
 		this.dirX = 0;
 		this.dirY = 0;
-		this.id = 30;
+		this.id = id;
 	}
 	
 	public void agit() {
-		int random = (int)(Math.random()*4);
-		switch (random) {
-		case 0:
-			dirX=0;
-			dirY=0;
-			break;
-		case 1:
-			dirX=16;
-			dirY=0;
-			break;
-		case 2:
-			dirX=-16;
-			dirY=0;
-			break;
-		case 3:
-			dirX=0;
-			dirY=16;
-			break;
-		case 4:
-			dirX=0;
-			dirY=-16;
-		}
-		
-		this.x.set(this.x.getValue() + this.dirX);
-		this.y.set(this.y.getValue() + this.dirY);
-		
-		if(this.x.getValue()<0 || this.x.getValue() >19*16)
-			this.x.set(this.x.getValue() - this.dirX*2);
-		if(this.y.getValue()<0 || this.y.getValue() >19*16)
-			this.y.set(this.y.getValue() - this.dirY*2);
+		//TODO
+	}
+	
+	public void seFaireSoigner(int d) {
+		this.nivCont -= d;
+	}
+	
+	public boolean estSain() {
+		return this.nivCont<= 0;
 	}
 
 	public IntegerProperty getX() {
@@ -66,6 +43,14 @@ public class Personnage {
 
 	public IntegerProperty getY() {
 		return y;
+	}
+	
+	public int getXVal() {
+		return x.getValue();
+	}
+	
+	public int getYVal() {
+		return y.getValue();
 	}
 	public int getId() {
 		return this.id;
