@@ -60,7 +60,7 @@ public abstract class Tourelle {
         return cadence;
     }
 
-    public void setCadense(int cadence) {
+    public void setCadence(int cadence) {
         this.cadence = cadence;
     }
 }
