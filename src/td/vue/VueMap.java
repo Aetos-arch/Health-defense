@@ -16,10 +16,10 @@ public class VueMap {
 	}
 	
 	public void affichMap() {
-		for (int i = 0; i < 20; i++) {
-            for (int j = 0; j < 20; j++) {
-            	ImageView tile = new ImageView("tilestest.png");
-                Rectangle2D rogne = new Rectangle2D((map[i][j]-1)%6*16,(map[i][j]/6)*16,16,16);
+		for (int i = 0; i < 30; i++) {
+            for (int j = 0; j < 50; j++) {
+            	ImageView tile = new ImageView("Sources/tilesetFinal.png");
+                Rectangle2D rogne = new Rectangle2D((map[i][j])%20*16,(map[i][j]/20)*16,16,16);
                 tile.setViewport(rogne);
                 tilePaneMap.getChildren().add(tile);
             }
