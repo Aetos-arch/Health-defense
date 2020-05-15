@@ -9,6 +9,7 @@ import javafx.scene.layout.Pane;
 import javafx.scene.layout.TilePane;
 import javafx.util.Duration;
 import td.modele.Environnement;
+import td.modele.Map;
 import td.modele.Partie;
 import td.vue.VueMap;
 import td.vue.VuePers;
@@ -35,7 +36,8 @@ public class Controleur implements Initializable {
     public void initialize(URL url, ResourceBundle resourceBundle) {
         this.env = new Environnement();
         this.partie = new Partie(env);
-        vM = new VueMap(this.env.getMap(), tilePaneMap);
+        Map m = new Map("src/Sources/map.csv");
+        vM = new VueMap(m.getMap(), tilePaneMap);
         initGame();
     }
     
