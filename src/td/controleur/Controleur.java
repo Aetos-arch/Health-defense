@@ -9,6 +9,8 @@ import javafx.scene.layout.Pane;
 import javafx.scene.layout.TilePane;
 import javafx.util.Duration;
 import td.modele.Environnement;
+import td.modele.Map;
+import td.modele.Partie;
 import td.vue.VueMap;
 import td.vue.VuePers;
 
@@ -24,36 +26,40 @@ public class Controleur implements Initializable {
     private Pane panePers;
 
     private Environnement env;
+    private Partie partie;
 
     private VueMap vM;
     private VuePers vP;
     
     private Timeline gameLoop;
-    private int temps;
 
     public void initialize(URL url, ResourceBundle resourceBundle) {
         this.env = new Environnement();
-        vM = new VueMap(this.env.getMap(), tilePaneMap);
+        this.partie = new Partie(env);
+        Map m = new Map("src/Sources/map.csv");
+        vM = new VueMap(m.getMap(), tilePaneMap);
         initGame();
     }
     
     private void initGame() {
 		gameLoop = new Timeline();
-		temps = 0;
 		gameLoop.setCycleCount(Timeline.INDEFINITE);
 		
 		KeyFrame kf = new KeyFrame(Duration.seconds(0.2),(ev ->{
-			if(temps==100){
-				System.out.println("fini");
+			if(this.partie.estPerdu()){
+				System.out.println("game over");
 				gameLoop.stop();
-				}
-			else {
-				this.env.unTour();
 			}
-			temps ++;
+			else if(this.partie.niveauFini()) {
+				gameLoop.stop();
+			}
+			else {
+				this.partie.unTour();
+			}
 		}));
-		gameLoop.getKeyFrames().add(kf);
+		gameLoop.getKeyFrames().add(kf);	
 	}
+    
 	@FXML
     void CreePers(ActionEvent event) {
     	vP = new VuePers(panePers, env);
