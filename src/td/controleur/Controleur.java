@@ -70,5 +70,4 @@ public class Controleur implements Initializable {
     	gameLoop.play();
     }
 
-
 }
