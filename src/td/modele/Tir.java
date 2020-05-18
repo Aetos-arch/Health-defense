@@ -5,23 +5,25 @@ import javafx.beans.property.IntegerProperty;
 public abstract class Tir {
     private IntegerProperty x;
     private IntegerProperty y;
-    int xC;
-    int yC;
     private int pointAttaque;
     private int v; // vitesse de deplacement
     private int dx,dy ; // direction
-    private Environnement env;
+    int xCible;
+    int yCible;
+    protected Environnement env;
 
-    public Tir(IntegerProperty x, IntegerProperty y, int pointAttaque, int xC, int yC, Environnement env) {
+    public Tir(IntegerProperty x, IntegerProperty y, int pointAttaque, int xCible, int yCible, Environnement env) {
         this.x = x;
         this.y = y;
         this.pointAttaque = pointAttaque;
+        this.xCible = xCible;
+        this.yCible = yCible;
         this.env = env;
     }
 
 
-    public boolean estDansMap (int x, int y) {
-        return (x > 0 && x < 800 && y > 0 && y < 480);
+    public boolean estDansMap (int positionX, int positionY) {
+        return (positionX > 0 && positionX < 800 && positionY > 0 && positionY < 480);
     }
 
     public abstract void agit ();
