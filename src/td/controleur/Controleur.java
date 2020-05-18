@@ -25,7 +25,6 @@ public class Controleur implements Initializable {
     @FXML
     private Pane panePers;
 
-    private Environnement env;
     private Partie partie;
 
     private VueMap vM;
@@ -34,9 +33,8 @@ public class Controleur implements Initializable {
     private Timeline gameLoop;
 
     public void initialize(URL url, ResourceBundle resourceBundle) {
-        this.env = new Environnement();
-        this.partie = new Partie(env);
-        vM = new VueMap(env.getMap(), tilePaneMap);
+        this.partie = new Partie();
+        vM = new VueMap(partie.getEnv().getMap(), tilePaneMap);
         initGame();
     }
     
@@ -56,12 +54,12 @@ public class Controleur implements Initializable {
 				this.partie.unTour();
 			}
 		}));
-		gameLoop.getKeyFrames().add(kf);	
+		gameLoop.getKeyFrames().add(kf);
 	}
     
 	@FXML
     void CreePers(ActionEvent event) {
-    	vP = new VuePers(panePers, env);
+    	vP = new VuePers(panePers, this.partie.getEnv());
     	vP.affichPers();
     }
     @FXML
