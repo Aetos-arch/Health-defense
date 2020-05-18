@@ -4,14 +4,14 @@ import java.util.ArrayList;
 
 public class Environnement {
 
-	private int [][] map;
+	private Map map;
 	ArrayList<Tourelle> tours;
 	ArrayList<Personnage> persos;
 	
 	public Environnement() {
 		this.tours = new ArrayList<Tourelle>();
 		this.persos = new ArrayList<Personnage>();
-		this.map= Map.map1;
+		this.map= new Map("src/Sources/map.csv");;
 		this.ajouterPers(new InfecteSansSymp());
 	}
 	
@@ -26,7 +26,7 @@ public class Environnement {
 	}
 
 	public int[][] getMap () {
-		return this.map;
+		return this.map.getMap();
 	}
 	public ArrayList<Personnage> getPersos(){
 		return this.persos;

@@ -14,9 +14,9 @@ public class VuePers {
 		this.env = e;
 	}
 	public void affichPers() {
-		ImageView c = new ImageView("PersSprint1.png");
+		/*ImageView c = new ImageView("PersSprint1.png");
     	c.translateXProperty().bind(this.env.getPersos().get(0).getX());
     	c.translateYProperty().bind(this.env.getPersos().get(0).getY());
-    	this.PanePers.getChildren().add(c);
+    	this.PanePers.getChildren().add(c);*/
 	}
 }
