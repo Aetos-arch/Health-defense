@@ -1,19 +1,20 @@
 package td.modele;
 
 import java.util.ArrayList;
+import java.util.HashMap;
 
 public class Environnement {
 
-	private int [][] map;
+	private Map map;
 	ArrayList<Tourelle> tours;
 	ArrayList<Personnage> persos;
-	ArrayList<Tir> tirs;
+	private BFS bfs;
 	
 	public Environnement() {
 		this.tours = new ArrayList<Tourelle>();
 		this.persos = new ArrayList<Personnage>();
-		this.map= Map.map1;
-		this.ajouterPers(new InfecteSansSymp());
+		this.map= new Map("src/Sources/map.csv");
+		this.bfs = new BFS(this.getMap());
 	}
 	
 	public void ajouterPers(Personnage p) {
@@ -27,9 +28,14 @@ public class Environnement {
 	}
 
 	public int[][] getMap () {
-		return this.map;
+		return this.map.getMap();
 	}
 	public ArrayList<Personnage> getPersos(){
 		return this.persos;
 	}
+	
+	public HashMap<Sommet, Sommet> getHashMap(){
+		return this.bfs.getHashMap();
+	}
+	
 }

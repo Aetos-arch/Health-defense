@@ -36,8 +36,7 @@ public class Controleur implements Initializable {
     public void initialize(URL url, ResourceBundle resourceBundle) {
         this.env = new Environnement();
         this.partie = new Partie(env);
-        Map m = new Map("src/Sources/map.csv");
-        vM = new VueMap(m.getMap(), tilePaneMap);
+        vM = new VueMap(env.getMap(), tilePaneMap);
         initGame();
     }
     
