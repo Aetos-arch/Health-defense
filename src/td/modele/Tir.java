@@ -6,28 +6,27 @@ public abstract class Tir {
     private IntegerProperty x;
     private IntegerProperty y;
     private int pointAttaque;
-    private int v; // vitesse de deplacement
+    protected int v; // vitesse de deplacement
     private int dx,dy ; // direction
     int xCible;
     int yCible;
     protected Environnement env;
 
-    public Tir(IntegerProperty x, IntegerProperty y, int pointAttaque, int xCible, int yCible, Environnement env) {
+    public Tir(IntegerProperty x, IntegerProperty y, int pointAttaque, int xCible, int yCible, int v, Environnement env) {
         this.x = x;
         this.y = y;
         this.pointAttaque = pointAttaque;
         this.xCible = xCible;
         this.yCible = yCible;
+        this.v = v;
         this.env = env;
     }
-
 
     public boolean estDansMap (int positionX, int positionY) {
         return (positionX > 0 && positionX < 800 && positionY > 0 && positionY < 480);
     }
 
     public abstract void agit ();
-
 
     // Getter et Setter
 

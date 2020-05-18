@@ -3,26 +3,21 @@ package td.modele;
 import javafx.beans.property.IntegerProperty;
 
 public class TirMitraillette extends Tir {
-    int vitesse;
     int dx;
     int dy;
 
     public TirMitraillette (IntegerProperty x, IntegerProperty y, int xCible, int yCible, Environnement env) {
-        super(x, y,10, xCible, yCible, env);
-        this.vitesse = 20;
+        super(x, y,10, xCible, yCible,20, env);
         calculerDirection(xCible, yCible);
     }
 
     public void agit () {
-        int nouvellePositionX=this.getX()+(this.vitesse*dx);
-        int nouvellePositionY=this.getY()+(this.vitesse*dy);
-
         // Si le sera dans la Map
-        if (estDansMap(this.getX()+(this.vitesse*dx) , this.getY()+(this.vitesse*dx))) {
+        if (estDansMap(this.getX()+(this.v*dx) , this.getY()+(this.v*dx))) {
             // Si le tir a touché ça inflige les dégats sinon met à jour la position du tir
             if (!collision()) {
-                this.xProperty().setValue(nouvellePositionX);
-                this.yProperty().setValue(nouvellePositionY);
+                this.xProperty().setValue(this.getX()+(this.v*dx));
+                this.yProperty().setValue(this.getY()+(this.v*dy));
             }
         }
     }

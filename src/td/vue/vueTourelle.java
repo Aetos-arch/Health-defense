@@ -7,7 +7,7 @@ import td.modele.Environnement;
 public class vueTourelle {
 
     private Environnement env;
-    private Pane PaneTourelle;
+    private Pane PaneTourelle; // tile avec id
 
     public vueTourelle(Pane p, Environnement e) {
         this.PaneTourelle = p;

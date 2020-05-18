@@ -9,13 +9,8 @@ public class TourelleVitamine extends Tourelle {
     }
 
     public void tir(Personnage p) {
+        // %
         Tir tir = new TirMitraillette(this.xProperty(), this.yProperty(), 10, 10, env);
     }
 
-    //public Personnage viser () {
-
-        //for (Personnage p : env.getPersos()) {
-
-     //   }
-    //}
 }

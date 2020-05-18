@@ -7,20 +7,24 @@ public abstract class Tourelle {
     private IntegerProperty x;
     private IntegerProperty y;
     private int cadence;
-    private int nbMunition;
+    private int portee; // a finir
+
 
     public Tourelle (int c, int m) {
         this.x = new SimpleIntegerProperty();
         this.y = new SimpleIntegerProperty();
         this.cadence = c;
-        this.nbMunition = m;
     }
+
+
+    //public Personnage viser () {
+
+    //for (Personnage p : env.getPersos()) {
+
+    //   }
+    //}
 
     public abstract void tir(Personnage p);
-
-    public void recharger () {
-        this.nbMunition = nbMunition;
-    }
 
     public double getX() {
         return x.getValue();
