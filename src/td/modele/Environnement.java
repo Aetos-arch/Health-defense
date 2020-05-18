@@ -7,6 +7,7 @@ public class Environnement {
 	private int [][] map;
 	ArrayList<Tourelle> tours;
 	ArrayList<Personnage> persos;
+	ArrayList<Tir> tirs;
 	
 	public Environnement() {
 		this.tours = new ArrayList<Tourelle>();
@@ -31,5 +32,4 @@ public class Environnement {
 	public ArrayList<Personnage> getPersos(){
 		return this.persos;
 	}
-	
 }

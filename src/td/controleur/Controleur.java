@@ -57,7 +57,7 @@ public class Controleur implements Initializable {
 				this.partie.unTour();
 			}
 		}));
-		gameLoop.getKeyFrames().add(kf);	
+		gameLoop.getKeyFrames().add(kf);
 	}
     
 	@FXML

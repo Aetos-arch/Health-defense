@@ -2,19 +2,30 @@ package td.modele;
 
 import javafx.beans.property.IntegerProperty;
 
-public class Tir {
+public abstract class Tir {
     private IntegerProperty x;
     private IntegerProperty y;
     private int pointAttaque;
     private int v; // vitesse de deplacement
-    private int dx,dy ;// direction
+    private int dx,dy ; // direction
     private Environnement env;
 
-    public Tir(IntegerProperty x, IntegerProperty y, int pointAttaque) {
+    public Tir(IntegerProperty x, IntegerProperty y, int pointAttaque, Environnement env) {
         this.x = x;
         this.y = y;
         this.pointAttaque = pointAttaque;
+        this.env = env;
     }
+
+
+    public boolean estDansMap (int x, int y) {
+        return (x > 0 && x < 800 && y > 0 && y < 480);
+    }
+
+    public abstract void agit (int x, int y);
+
+
+    // Getter et Setter
 
     public int getX() {
         return x.getValue();
