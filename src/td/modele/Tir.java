@@ -5,12 +5,14 @@ import javafx.beans.property.IntegerProperty;
 public abstract class Tir {
     private IntegerProperty x;
     private IntegerProperty y;
+    int xC;
+    int yC;
     private int pointAttaque;
     private int v; // vitesse de deplacement
     private int dx,dy ; // direction
     private Environnement env;
 
-    public Tir(IntegerProperty x, IntegerProperty y, int pointAttaque, Environnement env) {
+    public Tir(IntegerProperty x, IntegerProperty y, int pointAttaque, int xC, int yC, Environnement env) {
         this.x = x;
         this.y = y;
         this.pointAttaque = pointAttaque;
@@ -22,7 +24,7 @@ public abstract class Tir {
         return (x > 0 && x < 800 && y > 0 && y < 480);
     }
 
-    public abstract void agit (int x, int y);
+    public abstract void agit ();
 
 
     // Getter et Setter
