@@ -8,19 +8,12 @@ public class Tir {
     private int pointAttaque;
     private int v; // vitesse de deplacement
     private int dx,dy ;// direction
+    private Environnement env;
 
-    public Tir(IntegerProperty x, IntegerProperty y, int pointAttaque, int v) {
+    public Tir(IntegerProperty x, IntegerProperty y, int pointAttaque) {
         this.x = x;
         this.y = y;
         this.pointAttaque = pointAttaque;
-        this.v = v;
-    }
-
-
-    public void Toucher (Personnage p) {
-        while (this.getX() != p.getX() && this.getY() != p.getY()) {
-
-        }
     }
 
     public int getX() {

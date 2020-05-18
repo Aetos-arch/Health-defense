@@ -18,7 +18,7 @@ public abstract class Tourelle {
 
     public abstract void tir(Personnage p);
 
-    public void recharger (int nbMunition) {
+    public void recharger () {
         this.nbMunition = nbMunition;
     }
 
@@ -26,20 +26,22 @@ public abstract class Tourelle {
         return x.getValue();
     }
 
-    public IntegerProperty xProperty() {
-        return x;
-    }
-
-    public void setX(int x) {
-        this.x.set(x);
-    }
 
     public double getY() {
         return y.getValue();
     }
 
+
+    public IntegerProperty xProperty() {
+        return x;
+    }
+
     public IntegerProperty yProperty() {
         return y;
+    }
+
+    public void setX(int x) {
+        this.x.set(x);
     }
 
     public void setY(int y) {
