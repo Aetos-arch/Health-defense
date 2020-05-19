@@ -9,12 +9,12 @@ public class Map {
 	
 	public Map(String url) {
 		map = new int[30][50];
-		try {
+		try { // pour gérer les erreurs
 			String ligne;
 			int numLigne = 0;
-			BufferedReader csvReader = new BufferedReader(new FileReader(url));
-			while ((ligne = csvReader.readLine())!= null) {
-				String [] data = ligne.split(",");
+			BufferedReader csvReader = new BufferedReader(new FileReader(url)); // pour lire un fichier
+			while ((ligne = csvReader.readLine())!= null) { // donner ligne préparer dans tableau de String
+				String [] data = ligne.split(","); // pour lui dire le caractère de séparation
 				
 				for (int j = 0; j< 50; j++) {
 					map[numLigne][j] = Integer.parseInt(data[j]);
