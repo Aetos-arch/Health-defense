@@ -1,20 +1,21 @@
 package td.modele;
 
 import javafx.beans.property.IntegerProperty;
+import javafx.beans.property.SimpleIntegerProperty;
 
 public abstract class Tir {
-    private IntegerProperty x;
-    private IntegerProperty y;
+    protected IntegerProperty xProperty, yProperty;
     private int pointAttaque;
-    protected int v; // vitesse de deplacement
-    private int dx,dy ; // direction
-    int xCible;
-    int yCible;
+    protected int v;
+    protected int dx,dy;
+    int xCible, yCible;
     protected Environnement env;
 
-    public Tir(IntegerProperty x, IntegerProperty y, int pointAttaque, int xCible, int yCible, int v, Environnement env) {
-        this.x = x;
-        this.y = y;
+    public Tir(int x, int y, int pointAttaque, int xCible, int yCible, int v, Environnement env) {
+        this.xProperty = new SimpleIntegerProperty();
+        this.yProperty = new SimpleIntegerProperty();
+        this.xProperty.setValue(x);
+        this.yProperty.setValue(y);
         this.pointAttaque = pointAttaque;
         this.xCible = xCible;
         this.yCible = yCible;
@@ -28,30 +29,30 @@ public abstract class Tir {
 
     public abstract void agit ();
 
-    // Getter et Setter
+    // Getter et Setter à voir
 
     public int getX() {
-        return x.getValue();
+        return xProperty.getValue();
     }
 
     public IntegerProperty xProperty() {
-        return x;
+        return xProperty;
     }
 
     public void setX(int x) {
-        this.x.set(x);
+        this.xProperty.set(x);
     }
 
     public int getY() {
-        return y.getValue();
+        return yProperty.getValue();
     }
 
     public IntegerProperty yProperty() {
-        return y;
+        return yProperty;
     }
 
     public void setY(int y) {
-        this.y.set(y);
+        this.yProperty.set(y);
     }
 
     public int getPointAttaque() {
