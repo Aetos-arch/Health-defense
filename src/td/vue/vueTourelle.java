@@ -1,22 +1,19 @@
 package td.vue;
 
+import javafx.scene.image.Image;
 import javafx.scene.image.ImageView;
 import javafx.scene.layout.Pane;
-import td.modele.Environnement;
+import javafx.scene.paint.Color;
+import javafx.scene.shape.Circle;
+import td.modele.Tourelle;
 
-public class vueTourelle {
+public class vueTourelle extends ImageView {
 
-    private Environnement env;
-    private Pane PaneTourelle; // tile avec id
-
-    public vueTourelle(Pane p, Environnement e) {
-        this.PaneTourelle = p;
-        this.env = e;
-    }
-    public void afficherTourelle() {
-        ImageView c = new ImageView("PersSprint1.png");
-        //c.translateXProperty().bind(this.env.getPersos().get(0).getX());
-        //c.translateYProperty().bind(this.env.getPersos().get(0).getY());
-        this.PaneTourelle.getChildren().add(c);
+    public vueTourelle(Pane panePers, int x, int y) {
+        super();
+        this.setImage(new Image("Sources/rsz_1wh.png"));
+        this.setX(x);
+        this.setY(y);
+        panePers.getChildren().add(this);
     }
 }
