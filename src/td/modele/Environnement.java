@@ -37,7 +37,6 @@ public class Environnement {
 		for(Personnage p : this.persos) {
 			p.agit();
 		}
-
 		tirs.forEach(tir -> tir.agit());
 	}
 
