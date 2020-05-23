@@ -5,10 +5,10 @@ import javafx.beans.property.SimpleIntegerProperty;
 
 public abstract class Tir {
     protected IntegerProperty xProperty, yProperty;
-    private int pointAttaque;
+    protected int pointAttaque;
     protected int v;
     protected int dx,dy;
-    int xCible, yCible;
+    protected int xCible, yCible;
     protected Environnement env;
 
     public Tir(int x, int y, int pointAttaque, int xCible, int yCible, int v, Environnement env) {
@@ -29,7 +29,7 @@ public abstract class Tir {
 
     public abstract void agit ();
 
-    // Getter et Setter à voir
+    // Getter et Setter
 
     public int getX() {
         return xProperty.getValue();

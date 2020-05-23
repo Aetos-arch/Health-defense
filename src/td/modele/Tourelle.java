@@ -6,38 +6,28 @@ import javafx.beans.property.SimpleIntegerProperty;
 public abstract class Tourelle {
     private IntegerProperty x;
     private IntegerProperty y;
-    Environnement env;
     private int cadence;
-    private int portee; // a finir
+    private int portee; // Pour viser
+    Environnement env;
+
 
 
     public Tourelle (int c, Environnement env) {
-        this.x = new SimpleIntegerProperty();
-        this.y = new SimpleIntegerProperty();
-
-        x.setValue(30);
-        y.setValue(30);
+        this.x = new SimpleIntegerProperty(30);
+        this.y = new SimpleIntegerProperty(30);
         this.cadence = c;
+        this.env = env;
     }
 
     public String toString () {
         return "Tourelle : " + this.getX() + "   "+ this.getY();
     }
 
-
-    //public Personnage viser () {
-
-    //for (Personnage p : env.getPersos()) {
-
-    //   }
-    //}
-
     public abstract void tir(Personnage p);
 
     public int getX() {
         return x.getValue();
     }
-
 
     public int getY() {
         return y.getValue();
