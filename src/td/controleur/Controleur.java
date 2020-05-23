@@ -38,11 +38,14 @@ public class Controleur implements Initializable {
     }
     
     private void initGame() {
+		System.out.println("keyframe");
 		gameLoop = new Timeline();
 		gameLoop.setCycleCount(Timeline.INDEFINITE);
 		
-		KeyFrame kf = new KeyFrame(Duration.seconds(0.2),(ev ->{
+		KeyFrame kf = new KeyFrame(Duration.seconds(0.167),(ev ->{
+			System.out.println("dans keyframe");
 			if(this.partie.estPerdu()){
+				System.out.println("perdu");
 				System.out.println("game over");
 				gameLoop.stop();
 			}
@@ -67,9 +70,8 @@ public class Controleur implements Initializable {
     }
 
 	void creerTourelle () {
-    	Tourelle t = new TourelleVitamine(partie.getEnv());
-		new TirVitamine(t.getX() + 44, t.getY() + 55, 50,  50, partie.getEnv());
-
+    	Tourelle t = new TourelleVitamine(0, 0, partie.getEnv());
+		new TirVitamine(t.getX(), t.getY(), 0,  33, partie.getEnv());
 	}
 
 	void creerTir () {

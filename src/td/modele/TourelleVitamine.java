@@ -3,8 +3,9 @@ package td.modele;
 public class TourelleVitamine extends Tourelle {
     Environnement env;
 
-    public TourelleVitamine (Environnement env) {
-        super(10, env);
+    // x
+    public TourelleVitamine (int x, int y, Environnement env) {
+        super(x, y, 3, env);
     }
 
     @Override

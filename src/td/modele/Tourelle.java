@@ -10,9 +10,10 @@ public abstract class Tourelle {
     private int portee; // Pour viser
     Environnement env;
 
-    public Tourelle (int c, Environnement env) {
-        this.x = new SimpleIntegerProperty(30);
-        this.y = new SimpleIntegerProperty(30);
+
+    public Tourelle (int x, int y, int c, Environnement env) {
+        this.x = new SimpleIntegerProperty(x);
+        this.y = new SimpleIntegerProperty(y);
         this.cadence = c;
         this.env = env;
         env.tours.add(this);

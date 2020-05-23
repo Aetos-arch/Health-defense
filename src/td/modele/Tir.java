@@ -53,6 +53,10 @@ public abstract class Tir {
 
     public boolean collision () {
         for (Personnage p : this.env.getPersos()) {
+            if ((this.getY() - portee <= yCible && yCible <= this.getY() + portee) &&
+                    (this.getX() - portee <=  xCible && xCible <= this.getX() + portee)) {
+                return true;
+            }
             if ((this.getY() - portee <= p.getY() && p.getY() <= this.getY() + portee) &&
                     (this.getX() - portee <=  p.getX() && p.getX() <= this.getX() + portee)) {
                 p.seFaireSoigner(pointAttaque);

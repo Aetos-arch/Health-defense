@@ -60,7 +60,6 @@ public abstract class Personnage {
 			this.dirY = 0;
 		else
 			this.dirY = - this.vitesse;
-		
 	}
 
 	public void seFaireSoigner(int d) {
