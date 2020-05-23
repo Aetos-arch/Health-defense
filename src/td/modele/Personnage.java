@@ -31,6 +31,7 @@ public abstract class Personnage {
 		this.id = id;
 		this.env = e;
 		this.aretes = this.env.getHashMap();
+		this.env.persos.add(this);
 	}
 	
 	public void agit() {

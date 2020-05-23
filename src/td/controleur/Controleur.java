@@ -25,16 +25,15 @@ public class Controleur implements Initializable {
     private Pane panePers;
 
     private Partie partie;
-
     private VueMap vM;
     private VuePers vP;
     private vueTourelle vT;
-    
     private Timeline gameLoop;
 
     public void initialize(URL url, ResourceBundle resourceBundle) {
         this.partie = new Partie();
         vM = new VueMap(partie.getEnv().getMap(), tilePaneMap);
+        this.partie.getEnv().getTirs().addListener(new TirsListener(panePers));
         initGame();
     }
     
@@ -48,9 +47,11 @@ public class Controleur implements Initializable {
 				gameLoop.stop();
 			}
 			else if(this.partie.niveauFini()) {
+				System.out.println("Niveau fini");
 				gameLoop.stop();
 			}
 			else {
+				System.out.println("Un tour");
 				this.partie.unTour();
 			}
 		}));
@@ -62,16 +63,18 @@ public class Controleur implements Initializable {
 		System.out.println("creer pers 1");
     	vP = new VuePers(panePers, this.partie.getEnv());
     	vP.affichPers();
-    	creerTourelle(); // a sup
+    	creerTourelle();
     }
 
-
-    void creerTourelle () {
+	void creerTourelle () {
     	Tourelle t = new TourelleVitamine(partie.getEnv());
-		System.out.println(t);
-		vT = new vueTourelle(panePers, t.getX(), t.getY());
+		new TirVitamine(t.getX() + 44, t.getY() + 55, 50,  50, partie.getEnv());
+
 	}
 
+	void creerTir () {
+
+	}
 
     @FXML
     void action(ActionEvent event) {

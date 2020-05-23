@@ -10,13 +10,12 @@ public abstract class Tourelle {
     private int portee; // Pour viser
     Environnement env;
 
-
-
     public Tourelle (int c, Environnement env) {
         this.x = new SimpleIntegerProperty(30);
         this.y = new SimpleIntegerProperty(30);
         this.cadence = c;
         this.env = env;
+        env.tours.add(this);
     }
 
     public String toString () {
@@ -32,7 +31,6 @@ public abstract class Tourelle {
     public int getY() {
         return y.getValue();
     }
-
 
     public IntegerProperty xProperty() {
         return x;
@@ -50,7 +48,6 @@ public abstract class Tourelle {
         this.y.set(y);
     }
 
-
     public int getCadence() {
         return cadence;
     }
@@ -58,4 +55,6 @@ public abstract class Tourelle {
     public void setCadence(int cadence) {
         this.cadence = cadence;
     }
+
+
 }

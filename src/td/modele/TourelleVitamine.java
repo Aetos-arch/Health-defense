@@ -7,11 +7,12 @@ public class TourelleVitamine extends Tourelle {
         super(10, env);
     }
 
+    @Override
     public void tir(Personnage p) {
         // % idée
-        Tir tir = new TirMitraillette(this.xProperty().getValue(), this.yProperty().getValue(), 10, 10, env);
+        Tir tir = new TirVitamine(this.xProperty().getValue(), this.yProperty().getValue(), 10, 10, env);
+        env.tirs.add(tir);
     }
-
 
     //public Personnage viser () {
 
