@@ -2,6 +2,8 @@ package td.controleur;
 
 import javafx.animation.KeyFrame;
 import javafx.animation.Timeline;
+import javafx.beans.property.IntegerProperty;
+import javafx.beans.property.SimpleIntegerProperty;
 import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
 import javafx.fxml.Initializable;
@@ -9,12 +11,15 @@ import javafx.scene.layout.Pane;
 import javafx.scene.layout.TilePane;
 import javafx.util.Duration;
 import td.modele.Environnement;
+import td.modele.InfecteSansSymp;
 import td.modele.Map;
 import td.modele.Partie;
+import td.modele.Sommet;
 import td.vue.VueMap;
 import td.vue.VuePers;
 
 import java.net.URL;
+import java.util.ArrayList;
 import java.util.ResourceBundle;
 
 
@@ -31,11 +36,17 @@ public class Controleur implements Initializable {
     private VuePers vP;
     
     private Timeline gameLoop;
+    
+    IntegerProperty nbTour;
 
     public void initialize(URL url, ResourceBundle resourceBundle) {
         this.partie = new Partie();
         vM = new VueMap(partie.getEnv().getMap(), tilePaneMap);
         initGame();
+        this.partie.getEnv().creerArbre();
+        this.nbTour = new SimpleIntegerProperty();
+        this.nbTour.set(0);
+        
     }
     
     private void initGame() {
@@ -52,6 +63,7 @@ public class Controleur implements Initializable {
 			}
 			else {
 				this.partie.unTour();
+				this.nbTour.set(this.nbTour.getValue() + 1);
 			}
 		}));
 		gameLoop.getKeyFrames().add(kf);
@@ -59,8 +71,12 @@ public class Controleur implements Initializable {
     
 	@FXML
     void CreePers(ActionEvent event) {
-    	vP = new VuePers(panePers, this.partie.getEnv());
-    	vP.affichPers();
+		this.partie.getEnv().ajouterPers(new InfecteSansSymp(6, 18, this.partie.getEnv()));
+    	vP = new VuePers();
+    	vP.translateXProperty().bind(this.partie.getEnv().getPersos().get(0).getXProperty());
+    	vP.translateYProperty().bind(this.partie.getEnv().getPersos().get(0).getYProperty());
+    	this.nbTour.addListener(e -> vP.changerSprite(nbTour.getValue()));
+    	this.panePers.getChildren().add(vP);
     }
     @FXML
     void action(ActionEvent event) {
