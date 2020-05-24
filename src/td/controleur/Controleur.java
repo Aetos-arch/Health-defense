@@ -10,13 +10,10 @@ import javafx.fxml.Initializable;
 import javafx.scene.layout.Pane;
 import javafx.scene.layout.TilePane;
 import javafx.util.Duration;
-import td.modele.Environnement;
-import td.modele.InfecteSansSymp;
-import td.modele.Map;
-import td.modele.Partie;
-import td.modele.Sommet;
+import td.modele.*;
 import td.vue.VueMap;
 import td.vue.VuePers;
+import td.vue.vueTourelle;
 
 import java.net.URL;
 import java.util.ArrayList;
@@ -34,6 +31,7 @@ public class Controleur implements Initializable {
 
     private VueMap vM;
     private VuePers vP;
+    private vueTourelle vT;
     
     private Timeline gameLoop;
     
@@ -78,9 +76,17 @@ public class Controleur implements Initializable {
     	this.nbTour.addListener(e -> vP.changerSprite(nbTour.getValue()));
     	this.panePers.getChildren().add(vP);
     }
+
+
+    void creerTourelle () {
+    	Tourelle t = new TourelleVitamine(partie.getEnv());
+		System.out.println(t);
+		vT = new vueTourelle(panePers, t.getX(), t.getY());
+	}
+
+
     @FXML
     void action(ActionEvent event) {
     	gameLoop.play();
     }
-
 }

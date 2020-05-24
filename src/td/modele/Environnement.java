@@ -33,7 +33,11 @@ public class Environnement {
 	public ArrayList<Personnage> getPersos(){
 		return this.persos;
 	}
-	
+	public ArrayList<Tourelle> getTours(){
+		return this.tours;
+	}
+
+
 	public HashMap<Sommet, Sommet> getHashMap(){
 		return this.bfs.getHashMap();
 	}
