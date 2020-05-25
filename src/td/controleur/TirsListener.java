@@ -6,9 +6,7 @@ import td.modele.tir.Tir;
 import td.modele.tir.TirVitamine;
 import td.vue.VueTir;
 import td.vue.VueTirVitamine;
-
 import java.util.HashMap;
-
 import java.util.Map;
 
 

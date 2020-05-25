@@ -5,8 +5,8 @@ import javafx.beans.property.ReadOnlyDoubleWrapper;
 import javafx.beans.property.SimpleDoubleProperty;
 
 public class Position implements Coordonnee {
-    private Double x;
-    private Double y;
+    private double x;
+    private double y;
 
     public Position(Coordonnee coords) {
         this(coords.getX(), coords.getY());
@@ -33,7 +33,7 @@ public class Position implements Coordonnee {
         return x;
     }
 
-    public void setX(Double x) {
+    public void setX(double x) {
         this.x = x;
     }
 
@@ -42,7 +42,7 @@ public class Position implements Coordonnee {
         return y;
     }
 
-    public void setY(Double y) {
+    public void setY(double y) {
         this.y = y;
     }
 }

@@ -13,6 +13,7 @@ import javafx.scene.layout.TilePane;
 import javafx.util.Duration;
 import td.modele.*;
 import td.modele.personnage.InfecteSansSymp;
+import td.modele.tir.Position;
 import td.modele.tir.TirVitamine;
 import td.modele.tourelle.Tourelle;
 import td.modele.tourelle.TourelleVitamine;
@@ -64,7 +65,7 @@ public class Controleur implements Initializable {
 		gameLoop = new Timeline();
 		gameLoop.setCycleCount(Timeline.INDEFINITE);
 		
-		KeyFrame kf = new KeyFrame(Duration.seconds(0.15),(ev ->{
+		KeyFrame kf = new KeyFrame(Duration.seconds(0.02),(ev ->{
 			if(this.partie.estPerdu()){
 				System.out.println("perdu");
 				System.out.println("game over");
@@ -95,10 +96,10 @@ public class Controleur implements Initializable {
 	@FXML
     void creerTourelle(ActionEvent event) {
     	Tourelle t = new TourelleVitamine(0, 0, partie.getEnv());
-		new TirVitamine(t.getX(), t.getY(), 20,  555, partie.getEnv());
+        Position cible = new Position(1000, 229);
+		new TirVitamine(t.getX(), t.getY(), cible, partie.getEnv());
 		panePers.getChildren().add(new vueTourelle(t));
 	}
-
 
     @FXML
     void action(ActionEvent event) {

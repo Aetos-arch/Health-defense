@@ -6,11 +6,11 @@ import td.modele.Environnement;
 import td.modele.personnage.Personnage;
 
 public abstract class Tourelle {
-    private IntegerProperty x;
-    private IntegerProperty y;
+    private IntegerProperty x; // simple int
+    private IntegerProperty y; // simple int
     private int cadence;
     private int portee; // Pour viser
-    Environnement env;
+    Environnement env; //
 
 
     public Tourelle (int x, int y, int c, Environnement env) {
