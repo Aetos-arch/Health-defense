@@ -55,6 +55,7 @@ public abstract class Tir {
 
     public void agit () {
         // Si dans la Map
+        System.out.println("valeurs dx : " + this.getX()+(this.dx) + "valeurs dy :  " + this.getY()+(this.dy));
         if (estDansMap(this.getX()+(dx) , this.getY()+(dy))) {
             // Si le tir a touché ça inflige les dégats sinon met à jour la position du tir
             if (!collision()) {
