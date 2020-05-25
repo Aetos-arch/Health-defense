@@ -10,7 +10,7 @@ import java.util.HashMap;
 import java.util.Map;
 
 
-public class TirsListener implements SetChangeListener<Tir> {
+public class TirsListener implements SetChangeListener<Tir> { // pourquoi Set
     Pane map;
     Map <Tir, VueTir> modelToView;
 
@@ -19,7 +19,6 @@ public class TirsListener implements SetChangeListener<Tir> {
         this.modelToView = new HashMap<>();
     }
 
-    // Liste de changement de tir en para, ? = nmptqll
     @Override
     public void onChanged(SetChangeListener.Change<? extends Tir> change) {
         // Si ajout
@@ -28,8 +27,7 @@ public class TirsListener implements SetChangeListener<Tir> {
             VueTir vT;
             if (tir instanceof TirVitamine) {
                 vT = new VueTirVitamine(tir);
-            }
-            // else autres tir
+            } // else autres tir
             else {
                 throw new IllegalArgumentException();
             }
