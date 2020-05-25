@@ -1,4 +1,6 @@
-package td.modele;
+package td.modele.tir;
+
+import td.modele.Environnement;
 
 public abstract class TirAngle extends Tir {
 

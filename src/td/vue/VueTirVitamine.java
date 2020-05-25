@@ -1,7 +1,7 @@
 package td.vue;
 
 import javafx.scene.layout.Pane;
-import td.modele.Tir;
+import td.modele.tir.Tir;
 
 
 public class VueTirVitamine extends VueTir {

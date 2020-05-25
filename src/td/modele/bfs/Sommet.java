@@ -1,4 +1,4 @@
-package td.modele;
+package td.modele.bfs;
 
 public class Sommet {
 

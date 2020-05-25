@@ -1,4 +1,6 @@
-package td.modele;
+package td.modele.personnage;
+
+import td.modele.Environnement;
 
 public class InfecteSansSymp extends Personnage{
 

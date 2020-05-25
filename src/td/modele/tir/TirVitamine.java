@@ -1,6 +1,7 @@
-package td.modele;
+package td.modele.tir;
 
 import javafx.beans.property.IntegerProperty;
+import td.modele.Environnement;
 
 public class TirVitamine extends TirAngle {
 

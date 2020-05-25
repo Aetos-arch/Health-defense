@@ -11,12 +11,15 @@ import javafx.scene.layout.Pane;
 import javafx.scene.layout.TilePane;
 import javafx.util.Duration;
 import td.modele.*;
+import td.modele.personnage.InfecteSansSymp;
+import td.modele.tir.TirVitamine;
+import td.modele.tourelle.Tourelle;
+import td.modele.tourelle.TourelleVitamine;
 import td.vue.VueMap;
 import td.vue.VuePers;
 import td.vue.vueTourelle;
 
 import java.net.URL;
-import java.util.ArrayList;
 import java.util.ResourceBundle;
 
 
@@ -47,12 +50,10 @@ public class Controleur implements Initializable {
     }
     
     private void initGame() {
-		System.out.println("keyframe");
 		gameLoop = new Timeline();
 		gameLoop.setCycleCount(Timeline.INDEFINITE);
 		
-		KeyFrame kf = new KeyFrame(Duration.seconds(0.05),(ev ->{
-			System.out.println("dans keyframe");
+		KeyFrame kf = new KeyFrame(Duration.seconds(0.2),(ev ->{
 			if(this.partie.estPerdu()){
 				System.out.println("perdu");
 				System.out.println("game over");
@@ -63,7 +64,6 @@ public class Controleur implements Initializable {
 				gameLoop.stop();
 			}
 			else {
-				System.out.println("Un tour");
 				this.partie.unTour();
 				this.nbTour.set(this.nbTour.getValue() + 1);
 			}
@@ -73,7 +73,7 @@ public class Controleur implements Initializable {
     
 	@FXML
     void CreePers(ActionEvent event) {
-		this.partie.getEnv().ajouterPers(new InfecteSansSymp(6, 18, this.partie.getEnv()));
+		this.partie.getEnv().ajouterPers(new InfecteSansSymp(0, 18, this.partie.getEnv()));
     	vP = new VuePers();
     	vP.translateXProperty().bind(this.partie.getEnv().getPersos().get(0).getXProperty());
     	vP.translateYProperty().bind(this.partie.getEnv().getPersos().get(0).getYProperty());
