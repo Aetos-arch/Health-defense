@@ -7,6 +7,7 @@ import javafx.beans.property.SimpleIntegerProperty;
 import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
 import javafx.fxml.Initializable;
+import javafx.scene.control.Label;
 import javafx.scene.layout.Pane;
 import javafx.scene.layout.TilePane;
 import javafx.util.Duration;
@@ -28,6 +29,14 @@ public class Controleur implements Initializable {
     private TilePane tilePaneMap;
     @FXML
     private Pane panePers;
+    @FXML
+    private Label labelPV;
+    @FXML
+    private Label labelVague;
+    @FXML
+    private Label labelScore;
+    @FXML
+    private Label labelMoney;
 
     private Partie partie;
     private VueMap vM;
@@ -45,6 +54,10 @@ public class Controleur implements Initializable {
         this.partie.getEnv().creerArbre();
         this.nbTour = new SimpleIntegerProperty();
         this.nbTour.set(0);
+        this.partie.vagueProperty().addListener((obs,old,nouv) -> this.labelVague.textProperty().setValue(nouv.toString()));
+        this.partie.scoreProperty().addListener((obs,old,nouv) -> this.labelScore.textProperty().setValue(nouv.toString()));
+        this.partie.moneyProperty().addListener((obs,old,nouv) -> this.labelMoney.textProperty().setValue(nouv.toString()));
+        this.partie.pvProperty().addListener((obs,old,nouv) -> this.labelPV.textProperty().setValue(nouv.toString()));
     }
     
     private void initGame() {

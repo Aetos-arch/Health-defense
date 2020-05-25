@@ -33,4 +33,34 @@
          </children>
       </HBox>
    </left>
+   <right>
+      <VBox prefHeight="200.0" prefWidth="100.0" BorderPane.alignment="CENTER">
+         <children>
+            <VBox prefHeight="200.0" prefWidth="100.0">
+               <children>
+                  <Label text="Vague" />
+                  <Label fx:id="labelVague" text="0" />
+               </children>
+            </VBox>
+            <VBox prefHeight="200.0" prefWidth="100.0">
+               <children>
+                  <Label text="Score" />
+                  <Label fx:id="labelScore" text="0" />
+               </children>
+            </VBox>
+            <VBox prefHeight="200.0" prefWidth="100.0">
+               <children>
+                  <Label text="Money" />
+                  <Label fx:id="labelMoney" text="0" />
+               </children>
+            </VBox>
+            <VBox prefHeight="200.0" prefWidth="100.0">
+               <children>
+                  <Label text="PV" />
+                  <Label fx:id="labelPV" text="30" />
+               </children>
+            </VBox>
+         </children>
+      </VBox>
+   </right>
 </BorderPane>
