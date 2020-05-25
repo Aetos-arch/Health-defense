@@ -1,6 +1,8 @@
 package td.modele;
 
+import javafx.beans.property.DoubleProperty;
 import javafx.beans.property.IntegerProperty;
+import javafx.beans.property.SimpleDoubleProperty;
 import javafx.beans.property.SimpleIntegerProperty;
 
 import java.util.Objects;
@@ -8,17 +10,17 @@ import java.util.Objects;
 public abstract class Tir {
     private static long idMax = 0;
     private long id;
-    protected IntegerProperty xProperty, yProperty;
+    protected DoubleProperty xProperty, yProperty;
     protected int pointAttaque;
     protected int v;
-    protected int dx,dy;
-    protected int xCible, yCible;
+    protected double dx,dy;
+    protected double xCible, yCible;
     protected Environnement env;
     private double portee;
 
     public Tir(int x, int y, int pointAttaque, int xCible, int yCible, int v, Environnement env, double zone) {
-        this.xProperty = new SimpleIntegerProperty(x);
-        this.yProperty = new SimpleIntegerProperty(y);
+        this.xProperty = new SimpleDoubleProperty(x);
+        this.yProperty = new SimpleDoubleProperty(y);
         this.pointAttaque = pointAttaque;
         this.xCible = xCible;
         this.yCible = yCible;
@@ -30,25 +32,8 @@ public abstract class Tir {
     }
 
     // A mettre dans une class static : massDataBulder, static function
-    public static boolean estDansMap (int positionX, int positionY) {
+    public static boolean estDansMap (double positionX, double positionY) {
         return (positionX > 0 && positionX < 800 && positionY > 0 && positionY < 480);
-    }
-
-    public void agit () {
-        System.out.println("Methode agit");
-        // Si dans la Map
-        if (estDansMap(this.getX()+(this.v*dx) , this.getY()+(this.v*dy))) {
-            System.out.println("est dans la map");
-            // Si le tir a touché ça inflige les dégats sinon met à jour la position du tir
-            if (!collision()) {
-                System.out.println("pas de collision");
-                this.xProperty().setValue(this.getX()+(this.v*dx));
-                this.yProperty().setValue(this.getY()+(this.v*dy));
-            } else {
-                System.out.println("supprimer tir");
-                env.tirs.remove(this);
-            }
-        }
     }
 
     public boolean collision () {
@@ -66,15 +51,33 @@ public abstract class Tir {
         return false;
     }
 
+    public void agit () {
+        System.out.println("Methode agit");
+
+        // Si dans la Map
+        if (estDansMap(this.getX()+(dx) , this.getY()+(dy))) {
+            System.out.println("est dans la map");
+            // Si le tir a touché ça inflige les dégats sinon met à jour la position du tir
+            if (!collision()) {
+                System.out.println("pas de collision");
+                this.xProperty().setValue(this.getX()+dx);
+                this.yProperty().setValue(this.getY()+(dy));
+            } else {
+                System.out.println("supprimer tir");
+                env.tirs.remove(this);
+            }
+        }
+    }
+
 
     /**** Getter et Setter ****/
 
 
-    public int getX() {
+    public double getX() {
         return xProperty.getValue();
     }
 
-    public IntegerProperty xProperty() {
+    public DoubleProperty xProperty() {
         return xProperty;
     }
 
@@ -82,11 +85,11 @@ public abstract class Tir {
         this.xProperty.set(x);
     }
 
-    public int getY() {
+    public double getY() {
         return yProperty.getValue();
     }
 
-    public IntegerProperty yProperty() {
+    public DoubleProperty yProperty() {
         return yProperty;
     }
 
@@ -110,19 +113,19 @@ public abstract class Tir {
         this.v = v;
     }
 
-    public int getDx() {
+    public double getDx() {
         return dx;
     }
 
-    public void setDx(int dx) {
+    public void setDx(double dx) {
         this.dx = dx;
     }
 
-    public int getDy() {
+    public double getDy() {
         return dy;
     }
 
-    public void setDy(int dy) {
+    public void setDy(double dy) {
         this.dy = dy;
     }
 

@@ -7,22 +7,12 @@ public abstract class TirAngle extends Tir {
         calculerDirection(xCible, yCible);
     }
 
-    public void calculerDirection (int xCible, int yCible) {
-        int tempX = this.xProperty.getValue() - xCible;
-        int tempY = this.yProperty.getValue() - yCible;
-
-        if (tempX < 0)
-            this.dx = 1;
-        else if (tempX == 0)
-            this.dx = 0;
-        else
-            this.dx = -1;
-
-        if (tempY < 0)
-            this.dy = 1;
-        else if (tempX == 0)
-            this.dy = 0;
-        else
-            this.dy = -1;
+    public void calculerDirection (double xCible, double yCible) {
+        Position projectile = new Position(this.getX(), this.getY());
+        Position cible = new Position(xCible, yCible);
+        Vecteur v = new Vecteur(projectile, cible);
+        v.multiply(3 / v.normeVecteur());
+        this.dx = v.getX();
+        this.dy = v.getY();
     }
 }
