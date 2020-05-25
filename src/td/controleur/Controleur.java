@@ -22,7 +22,6 @@ import td.vue.vueTourelle;
 import java.net.URL;
 import java.util.ResourceBundle;
 
-
 public class Controleur implements Initializable {
 
     @FXML
@@ -46,14 +45,13 @@ public class Controleur implements Initializable {
         this.partie.getEnv().creerArbre();
         this.nbTour = new SimpleIntegerProperty();
         this.nbTour.set(0);
-        
     }
     
     private void initGame() {
 		gameLoop = new Timeline();
 		gameLoop.setCycleCount(Timeline.INDEFINITE);
 		
-		KeyFrame kf = new KeyFrame(Duration.seconds(0.2),(ev ->{
+		KeyFrame kf = new KeyFrame(Duration.seconds(0.05),(ev ->{
 			if(this.partie.estPerdu()){
 				System.out.println("perdu");
 				System.out.println("game over");
@@ -79,12 +77,13 @@ public class Controleur implements Initializable {
     	vP.translateYProperty().bind(this.partie.getEnv().getPersos().get(0).getYProperty());
     	this.nbTour.addListener(e -> vP.changerSprite(nbTour.getValue()));
     	this.panePers.getChildren().add(vP);
-      creerTourelle();
+      	creerTourelle();
     }
 
 	void creerTourelle () {
     	Tourelle t = new TourelleVitamine(0, 0, partie.getEnv());
 		new TirVitamine(t.getX(), t.getY(), 20,  555, partie.getEnv());
+		panePers.getChildren().add(new vueTourelle(t));
 	}
 
 	void creerTir () {
