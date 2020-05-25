@@ -54,6 +54,6 @@ public class Partie {
 	}
 
 	public boolean niveauFini() {
-		return this.env.getPersos().isEmpty();
+		return false; //this.env.getPersos().isEmpty();
 	}
 }

@@ -1,41 +1,83 @@
 package td.modele;
 
+import javafx.beans.property.DoubleProperty;
 import javafx.beans.property.IntegerProperty;
+import javafx.beans.property.SimpleDoubleProperty;
 import javafx.beans.property.SimpleIntegerProperty;
 
-public abstract class Tir {
-    protected IntegerProperty xProperty, yProperty;
-    private int pointAttaque;
-    protected int v;
-    protected int dx,dy;
-    int xCible, yCible;
-    protected Environnement env;
+import java.util.Objects;
 
-    public Tir(int x, int y, int pointAttaque, int xCible, int yCible, int v, Environnement env) {
-        this.xProperty = new SimpleIntegerProperty();
-        this.yProperty = new SimpleIntegerProperty();
-        this.xProperty.setValue(x);
-        this.yProperty.setValue(y);
+public abstract class Tir {
+    private static long idMax = 0;
+    private long id;
+    protected DoubleProperty xProperty, yProperty;
+    protected int pointAttaque;
+    protected int v;
+    protected double dx,dy;
+    protected double xCible, yCible;
+    protected Environnement env;
+    private double portee;
+
+    public Tir(int x, int y, int pointAttaque, int xCible, int yCible, int v, Environnement env, double zone) {
+        this.xProperty = new SimpleDoubleProperty(x);
+        this.yProperty = new SimpleDoubleProperty(y);
         this.pointAttaque = pointAttaque;
         this.xCible = xCible;
         this.yCible = yCible;
         this.v = v;
         this.env = env;
+        this.portee = zone;
+        this.id = idMax++;
+        env.tirs.add(this);
     }
 
-    public boolean estDansMap (int positionX, int positionY) {
+    // A mettre dans une class static : massDataBulder, static function
+    public static boolean estDansMap (double positionX, double positionY) {
         return (positionX > 0 && positionX < 800 && positionY > 0 && positionY < 480);
     }
 
-    public abstract void agit ();
+    public boolean collision () {
+        for (Personnage p : this.env.getPersos()) {
+            if ((this.getY() - portee <= yCible && yCible <= this.getY() + portee) &&
+                    (this.getX() - portee <=  xCible && xCible <= this.getX() + portee)) {
+                return true;
+            }
+            if ((this.getY() - portee <= p.getY() && p.getY() <= this.getY() + portee) &&
+                    (this.getX() - portee <=  p.getX() && p.getX() <= this.getX() + portee)) {
+                p.seFaireSoigner(pointAttaque);
+                return true;
+            }
+        }
+        return false;
+    }
 
-    // Getter et Setter à voir
+    public void agit () {
+        System.out.println("Methode agit");
 
-    public int getX() {
+        // Si dans la Map
+        if (estDansMap(this.getX()+(dx) , this.getY()+(dy))) {
+            System.out.println("est dans la map");
+            // Si le tir a touché ça inflige les dégats sinon met à jour la position du tir
+            if (!collision()) {
+                System.out.println("pas de collision");
+                this.xProperty().setValue(this.getX()+dx);
+                this.yProperty().setValue(this.getY()+(dy));
+            } else {
+                System.out.println("supprimer tir");
+                env.tirs.remove(this);
+            }
+        }
+    }
+
+
+    /**** Getter et Setter ****/
+
+
+    public double getX() {
         return xProperty.getValue();
     }
 
-    public IntegerProperty xProperty() {
+    public DoubleProperty xProperty() {
         return xProperty;
     }
 
@@ -43,11 +85,11 @@ public abstract class Tir {
         this.xProperty.set(x);
     }
 
-    public int getY() {
+    public double getY() {
         return yProperty.getValue();
     }
 
-    public IntegerProperty yProperty() {
+    public DoubleProperty yProperty() {
         return yProperty;
     }
 
@@ -71,19 +113,35 @@ public abstract class Tir {
         this.v = v;
     }
 
-    public int getDx() {
+    public double getDx() {
         return dx;
     }
 
-    public void setDx(int dx) {
+    public void setDx(double dx) {
         this.dx = dx;
     }
 
-    public int getDy() {
+    public double getDy() {
         return dy;
     }
 
-    public void setDy(int dy) {
+    public void setDy(double dy) {
         this.dy = dy;
+    }
+
+
+    // Verif l'égalité comme un ==
+    @Override
+    public boolean equals(Object o) {
+        if (this == o) return true;
+        if (o == null || getClass() != o.getClass()) return false;
+        Tir tir = (Tir) o;
+        return id == tir.id;
+    }
+
+    // fonction similaire au equals qui va verif l'égalité entre deux objects
+    @Override
+    public int hashCode() {
+        return Objects.hash(id);
     }
 }

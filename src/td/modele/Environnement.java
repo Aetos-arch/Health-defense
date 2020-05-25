@@ -1,13 +1,23 @@
 package td.modele;
 
-import java.util.ArrayList;
-import java.util.HashMap;
+import javafx.collections.FXCollections;
+import javafx.collections.ObservableSet;
+
+import java.util.*;
 
 public class Environnement {
 
 	private Map map;
-	ArrayList<Tourelle> tours;
-	ArrayList<Personnage> persos;
+	List<Tourelle> tours;
+	//HSet, quand declare variable mettre des types superieurs (ex List plutot que arraylist ici :
+	//ArrayList<String> list = new ArrayList<>()
+	//List<String> list = new ArrayList<>()
+	//Set<String> set =  new HashSet<>()
+	// Liste besoin de l'ordre avc index, peut pas si veut sup mettre ref de l'objet : remove nicolas etc, mais i, et ca va bcp plus vite le hset
+	// Hset dif tourelles par id etc
+
+	List<Personnage> persos;
+	ObservableSet<Tir> tirs; // approfondir
 	private BFS bfs;
 	
 	public Environnement() {
@@ -15,32 +25,44 @@ public class Environnement {
 		this.persos = new ArrayList<Personnage>();
 		this.map= new Map("src/Sources/map.csv");
 		this.bfs = new BFS(this.getMap());
+		this.tirs = FXCollections.observableSet();
 	}
 	
 	public void ajouterPers(Personnage p) {
 		this.persos.add(p);
 	}
-	
+
+	// Mettre dans partie
 	public void unTour() {
 		for(Personnage p : this.persos) {
 			p.agit();
 		}
+		tirs.forEach(tir -> tir.agit());
 	}
 
 	public int[][] getMap () {
 		return this.map.getMap();
 	}
-	public ArrayList<Personnage> getPersos(){
+	public List<Personnage> getPersos(){
 		return this.persos;
 	}
-	public ArrayList<Tourelle> getTours(){
+
+	public List<Tourelle> getTours(){
 		return this.tours;
 	}
-
 
 	public HashMap<Sommet, Sommet> getHashMap(){
 		return this.bfs.getHashMap();
 	}
+
+	public ObservableSet<Tir> getTirs() {
+		return tirs;
+	}
+
+	public void setTirs(ObservableSet<Tir> tirs) {
+		this.tirs = tirs;
+  }
+  
 	public Sommet trouverSommet(int x, int y){
 		return this.bfs.trouverSommet(x,y);
 	}
