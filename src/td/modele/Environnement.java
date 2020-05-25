@@ -41,5 +41,11 @@ public class Environnement {
 	public HashMap<Sommet, Sommet> getHashMap(){
 		return this.bfs.getHashMap();
 	}
+	public Sommet trouverSommet(int x, int y){
+		return this.bfs.trouverSommet(x,y);
+	}
 	
+	public void creerArbre() {
+		this.bfs.creationChemin();
+	}
 }

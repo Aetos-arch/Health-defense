@@ -1,22 +1,29 @@
 package td.vue;
 
+import javafx.geometry.Rectangle2D;
+import javafx.scene.image.Image;
 import javafx.scene.image.ImageView;
-import javafx.scene.layout.Pane;
-import td.modele.Environnement;
 
-public class VuePers {
+public class VuePers extends ImageView{
 	
-	private Environnement env;
-	private Pane PanePers;
 	
-	public VuePers(Pane t, Environnement e) {
-		this.PanePers=t;
-		this.env = e;
+	public VuePers() {
+		this.setImage(new Image("Sources/Males/M_07.png"));
+		Rectangle2D rogne = new Rectangle2D(16, 19,16,16);
+		this.setViewport(rogne);
 	}
-	public void affichPers() {
-		/*ImageView c = new ImageView("PersSprint1.png");
-    	c.translateXProperty().bind(this.env.getPersos().get(0).getX());
-    	c.translateYProperty().bind(this.env.getPersos().get(0).getY());
-    	this.PanePers.getChildren().add(c);*/
+
+	public void changerSprite(int t) {
+		if(t%2 == 1) {
+			Rectangle2D rogne = new Rectangle2D(16, 3 ,16,16);
+			this.setViewport(rogne);
+		}
+		else {
+			Rectangle2D rogne = new Rectangle2D(16, 19,16,16);
+			this.setViewport(rogne);
+		}
+			
+		
 	}
+	
 }
