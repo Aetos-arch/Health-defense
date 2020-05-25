@@ -17,8 +17,8 @@ public class TirsListener implements SetChangeListener<Tir> {
     Map <Tir, VueTir> modelToView;
 
     public TirsListener(Pane map) {
-        this.modelToView = new HashMap<>();
         this.map = map;
+        this.modelToView = new HashMap<>();
     }
 
     // Liste de changement de tir en para, ? = nmptqll
