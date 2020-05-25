@@ -1,9 +1,11 @@
-package td.modele;
+package td.modele.tir;
 
 import javafx.beans.property.DoubleProperty;
 import javafx.beans.property.IntegerProperty;
 import javafx.beans.property.SimpleDoubleProperty;
 import javafx.beans.property.SimpleIntegerProperty;
+import td.modele.Environnement;
+import td.modele.personnage.Personnage;
 
 import java.util.Objects;
 
@@ -52,6 +54,7 @@ public abstract class Tir {
     }
 
     public void agit () {
+
         // Si dans la Map
         if (estDansMap(this.getX()+(dx) , this.getY()+(dy))) {
             // Si le tir a touché ça inflige les dégats sinon met à jour la position du tir

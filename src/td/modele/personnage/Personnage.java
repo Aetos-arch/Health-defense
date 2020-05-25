@@ -1,10 +1,12 @@
-package td.modele;
+package td.modele.personnage;
 
 import java.util.ArrayList;
 import java.util.HashMap;
 
 import javafx.beans.property.IntegerProperty;
 import javafx.beans.property.SimpleIntegerProperty;
+import td.modele.Environnement;
+import td.modele.bfs.Sommet;
 
 public abstract class Personnage {
 	

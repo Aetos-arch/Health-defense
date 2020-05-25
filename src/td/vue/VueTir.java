@@ -2,7 +2,7 @@ package td.vue;
 
 import javafx.scene.image.Image;
 import javafx.scene.layout.Pane;
-import td.modele.Tir;
+import td.modele.tir.Tir;
 import javafx.scene.image.ImageView;
 
 public abstract class VueTir extends ImageView {

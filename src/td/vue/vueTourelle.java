@@ -5,7 +5,7 @@ import javafx.scene.image.ImageView;
 import javafx.scene.layout.Pane;
 import javafx.scene.paint.Color;
 import javafx.scene.shape.Circle;
-import td.modele.Tourelle;
+import td.modele.tourelle.Tourelle;
 
 public class vueTourelle extends ImageView {
 

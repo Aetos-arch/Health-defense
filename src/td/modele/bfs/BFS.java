@@ -1,4 +1,4 @@
-package td.modele;
+package td.modele.bfs;
 
 import java.util.ArrayList;
 import java.util.HashMap;
