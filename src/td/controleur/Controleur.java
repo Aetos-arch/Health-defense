@@ -79,12 +79,13 @@ public class Controleur implements Initializable {
     	vP.translateYProperty().bind(this.partie.getEnv().getPersos().get(0).getYProperty());
     	this.nbTour.addListener(e -> vP.changerSprite(nbTour.getValue()));
     	this.panePers.getChildren().add(vP);
-      creerTourelle();
+      	creerTourelle();
     }
 
 	void creerTourelle () {
     	Tourelle t = new TourelleVitamine(0, 0, partie.getEnv());
 		new TirVitamine(t.getX(), t.getY(), 20,  555, partie.getEnv());
+		panePers.getChildren().add(new vueTourelle(t));
 	}
 
 	void creerTir () {
