@@ -19,7 +19,6 @@ import java.net.URL;
 import java.util.ArrayList;
 import java.util.ResourceBundle;
 
-
 public class Controleur implements Initializable {
 
     @FXML
@@ -47,12 +46,10 @@ public class Controleur implements Initializable {
     }
     
     private void initGame() {
-		System.out.println("keyframe");
 		gameLoop = new Timeline();
 		gameLoop.setCycleCount(Timeline.INDEFINITE);
 		
 		KeyFrame kf = new KeyFrame(Duration.seconds(0.05),(ev ->{
-			System.out.println("dans keyframe");
 			if(this.partie.estPerdu()){
 				System.out.println("perdu");
 				System.out.println("game over");
@@ -63,7 +60,6 @@ public class Controleur implements Initializable {
 				gameLoop.stop();
 			}
 			else {
-				System.out.println("Un tour");
 				this.partie.unTour();
 				this.nbTour.set(this.nbTour.getValue() + 1);
 			}
