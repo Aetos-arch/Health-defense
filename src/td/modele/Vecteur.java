@@ -9,69 +9,52 @@ public class Vecteur implements Coordonnee {
         this.y = y;
     }
 
-    public Vecteur(Coordonnee start, Coordonnee end) {
-        this(end.getX() - start.getX(), end.getY() - start.getY());
+    public Vecteur(Coordonnee ici, Coordonnee cible) {
+        this(ici.getX() - ici.getX(), cible.getY() - cible.getY());
     }
 
     public Vecteur(Coordonnee coords) {
         this(coords.getX(), coords.getY());
     }
 
-    public Vecteur add(double x, double y) {
+    public Vecteur ajouter(double x, double y) {
         this.x += x;
         this.y += y;
         return this;
     }
 
-    public Vecteur add(Vecteur vect) {
-        return this.add(vect.getX(), vect.getY());
+    public Vecteur ajouter(Vecteur vect) {
+        return this.ajouter(vect.getX(), vect.getY());
     }
 
-    public Vecteur subtract(double x, double y) {
+    public Vecteur soustraire(double x, double y) {
         this.x -= x;
         this.y -= y;
         return this;
     }
 
-    public Vecteur subtract(Vecteur vect) {
-        return this.subtract(vect.getX(), vect.getY());
+    public Vecteur soustraire(Vecteur vect) {
+        return this.soustraire(vect.getX(), vect.getY());
     }
 
-    public Vecteur multiply(double factor) {
+    public Vecteur multiplier (double factor) {
         this.x *= factor;
         this.y *= factor;
         return this;
     }
 
-    public Vecteur divide(double factor) {
+    public Vecteur diviser (double factor) {
         this.x /= factor;
         this.y /= factor;
         return this;
     }
 
-    public Vecteur negate() {
-        return this.multiply(-1);
-    }
-
-    public Vecteur copy() {
-        return new Vecteur(this);
+    public Vecteur inverse () {
+        return this.multiplier(-1);
     }
 
     public double normeVecteur () {
         return Math.sqrt(Math.pow(this.getX(), 2) + Math.pow(this.getY(), 2));
-    }
-
-    public double angle(boolean degrees) {
-        double angle = Math.atan2(this.y, this.x);
-        return degrees ? Math.toDegrees(angle) : angle;
-    }
-
-    public double angle() {
-        return this.angle(false);
-    }
-
-    public Position toLocation() {
-        return new Position(this);
     }
 
     @Override
