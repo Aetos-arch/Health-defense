@@ -84,24 +84,21 @@ public class Controleur implements Initializable {
     
 	@FXML
     void CreePers(ActionEvent event) {
-		this.partie.getEnv().ajouterPers(new InfecteSansSymp(0, 18, this.partie.getEnv()));
+		this.partie.getEnv().ajouterPers(new InfecteSansSymp(3, 22, this.partie.getEnv()));
     	vP = new VuePers();
     	vP.translateXProperty().bind(this.partie.getEnv().getPersos().get(0).getXProperty());
     	vP.translateYProperty().bind(this.partie.getEnv().getPersos().get(0).getYProperty());
     	this.nbTour.addListener(e -> vP.changerSprite(nbTour.getValue()));
     	this.panePers.getChildren().add(vP);
-      	creerTourelle();
     }
 
-	void creerTourelle () {
+	@FXML
+    void creerTourelle(ActionEvent event) {
     	Tourelle t = new TourelleVitamine(0, 0, partie.getEnv());
 		new TirVitamine(t.getX(), t.getY(), 20,  555, partie.getEnv());
 		panePers.getChildren().add(new vueTourelle(t));
 	}
 
-	void creerTir () {
-
-	}
 
     @FXML
     void action(ActionEvent event) {
