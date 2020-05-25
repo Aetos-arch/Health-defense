@@ -1,4 +1,4 @@
-package td.modele;
+package td.modele.tir;
 
 public class Vecteur implements Coordonnee {
     private double x;
@@ -10,7 +10,7 @@ public class Vecteur implements Coordonnee {
     }
 
     public Vecteur(Coordonnee ici, Coordonnee cible) {
-        this(ici.getX() - ici.getX(), cible.getY() - cible.getY());
+        this(cible.getX() - ici.getX(), cible.getY() - ici.getY());
     }
 
     public Vecteur(Coordonnee coords) {

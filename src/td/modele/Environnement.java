@@ -2,13 +2,18 @@ package td.modele;
 
 import javafx.collections.FXCollections;
 import javafx.collections.ObservableSet;
+import td.modele.bfs.BFS;
+import td.modele.bfs.Sommet;
+import td.modele.personnage.Personnage;
+import td.modele.tir.Tir;
+import td.modele.tourelle.Tourelle;
 
 import java.util.*;
 
 public class Environnement {
 
 	private Map map;
-	List<Tourelle> tours;
+	public List<Tourelle> tours;
 	//HSet, quand declare variable mettre des types superieurs (ex List plutot que arraylist ici :
 	//ArrayList<String> list = new ArrayList<>()
 	//List<String> list = new ArrayList<>()
@@ -17,7 +22,7 @@ public class Environnement {
 	// Hset dif tourelles par id etc
 
 	List<Personnage> persos;
-	ObservableSet<Tir> tirs; // approfondir
+	public ObservableSet<Tir> tirs; // approfondir
 	private BFS bfs;
 	
 	public Environnement() {

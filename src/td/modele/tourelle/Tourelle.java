@@ -1,7 +1,9 @@
-package td.modele;
+package td.modele.tourelle;
 
 import javafx.beans.property.IntegerProperty;
 import javafx.beans.property.SimpleIntegerProperty;
+import td.modele.Environnement;
+import td.modele.personnage.Personnage;
 
 public abstract class Tourelle {
     private IntegerProperty x;

@@ -1,4 +1,4 @@
-package td.modele;
+package td.modele.tir;
 
 import javafx.beans.property.ReadOnlyDoubleWrapper;
 

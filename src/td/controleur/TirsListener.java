@@ -2,8 +2,8 @@ package td.controleur;
 
 import javafx.collections.SetChangeListener;
 import javafx.scene.layout.Pane;
-import td.modele.Tir;
-import td.modele.TirVitamine;
+import td.modele.tir.Tir;
+import td.modele.tir.TirVitamine;
 import td.vue.VueTir;
 import td.vue.VueTirVitamine;
 
