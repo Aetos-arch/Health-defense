@@ -37,9 +37,9 @@ public class Vecteur implements Coordonnee {
         return this.soustraire(vect.getX(), vect.getY());
     }
 
-    public Vecteur multiplier (double factor) {
-        this.x *= factor;
-        this.y *= factor;
+    public Vecteur multiplier (double nbr) {
+        this.x *= nbr;
+        this.y *= nbr;
         return this;
     }
 

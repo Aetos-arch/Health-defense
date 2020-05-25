@@ -16,10 +16,10 @@ public class Position implements Coordonnee {
         this.x = x;
         this.y = y;
     }
-    
-    public Position multiply(double factor) {
-        this.setX(this.getX() * factor);
-        this.setY(this.getY() * factor);
+
+    public Position multiplier(double nbr) {
+        this.setX(this.getX() * nbr);
+        this.setY(this.getY() * nbr);
         return this;
     }
 
