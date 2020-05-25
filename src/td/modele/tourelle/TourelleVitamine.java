@@ -1,4 +1,9 @@
-package td.modele;
+package td.modele.tourelle;
+
+import td.modele.Environnement;
+import td.modele.personnage.Personnage;
+import td.modele.tir.Tir;
+import td.modele.tir.TirVitamine;
 
 public class TourelleVitamine extends Tourelle {
     Environnement env;

@@ -1,4 +1,4 @@
-package td.modele;
+package td.modele.tir;
 
 public interface Coordonnee {
     public double getX();

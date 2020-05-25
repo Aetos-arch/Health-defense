@@ -1,4 +1,4 @@
-package td.modele;
+package td.modele.tir;
 
 public class Vecteur implements Coordonnee {
     private double x;
