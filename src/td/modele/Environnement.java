@@ -61,5 +61,13 @@ public class Environnement {
 
 	public void setTirs(ObservableSet<Tir> tirs) {
 		this.tirs = tirs;
+  }
+  
+	public Sommet trouverSommet(int x, int y){
+		return this.bfs.trouverSommet(x,y);
+	}
+	
+	public void creerArbre() {
+		this.bfs.creationChemin();
 	}
 }

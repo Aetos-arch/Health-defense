@@ -26,6 +26,7 @@ public class Partie {
 	public void unTour() {
 		if (avancement < nombreEnnemi()) {
 			//this.env.ajouterPers(new InfecteSansSymp());
+
 			avancement++;
 //			System.out.println("vague : " + this.niveau + " " + this.env.getPersos().get(avancement));
 		}
