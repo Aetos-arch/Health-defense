@@ -1,11 +1,10 @@
 package td.modele.tir;
 
-import javafx.beans.property.IntegerProperty;
 import td.modele.Environnement;
 
-public class TirVitamine extends TirAngle {
+public class TirVitamine extends TirDirection {
 
-    public TirVitamine(int x, int y, int xCible, int yCible, Environnement env) {
-        super(x, y,10, xCible, yCible,60, env, 5);
+    public TirVitamine(int x, int y, Position cible, Environnement env) {
+        super(x, y,10, cible,30, env, 5);
     }
 }

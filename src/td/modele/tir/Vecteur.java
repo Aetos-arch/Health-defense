@@ -9,8 +9,12 @@ public class Vecteur implements Coordonnee {
         this.y = y;
     }
 
-    public Vecteur(Coordonnee ici, Coordonnee cible) {
-        this(cible.getX() - ici.getX(), cible.getY() - ici.getY());
+    public Vecteur () {
+
+    }
+
+    public Vecteur(Coordonnee a, Coordonnee b) {
+        this(b.getX() - a.getX(), b.getY() - a.getY());
     }
 
     public Vecteur(Coordonnee coords) {
@@ -23,10 +27,6 @@ public class Vecteur implements Coordonnee {
         return this;
     }
 
-    public Vecteur ajouter(Vecteur vect) {
-        return this.ajouter(vect.getX(), vect.getY());
-    }
-
     public Vecteur soustraire(double x, double y) {
         this.x -= x;
         this.y -= y;
@@ -37,15 +37,9 @@ public class Vecteur implements Coordonnee {
         return this.soustraire(vect.getX(), vect.getY());
     }
 
-    public Vecteur multiplier (double factor) {
-        this.x *= factor;
-        this.y *= factor;
-        return this;
-    }
-
-    public Vecteur diviser (double factor) {
-        this.x /= factor;
-        this.y /= factor;
+    public Vecteur multiplier (double nbr) {
+        this.x *= nbr;
+        this.y *= nbr;
         return this;
     }
 

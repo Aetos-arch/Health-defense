@@ -1,9 +1,7 @@
 package td.modele.tir;
 
 import javafx.beans.property.DoubleProperty;
-import javafx.beans.property.IntegerProperty;
 import javafx.beans.property.SimpleDoubleProperty;
-import javafx.beans.property.SimpleIntegerProperty;
 import td.modele.Environnement;
 import td.modele.personnage.Personnage;
 
@@ -15,20 +13,18 @@ public abstract class Tir {
     protected DoubleProperty xProperty, yProperty;
     protected int pointAttaque;
     protected int v;
-    protected double dx,dy;
-    protected double xCible, yCible;
+    protected Vecteur direction;
     protected Environnement env;
     private double portee;
 
-    public Tir(int x, int y, int pointAttaque, int xCible, int yCible, int v, Environnement env, double zone) {
+    public Tir(int x, int y, int pointAttaque, int v, Environnement env, double zone) {
         this.xProperty = new SimpleDoubleProperty(x);
         this.yProperty = new SimpleDoubleProperty(y);
         this.pointAttaque = pointAttaque;
-        this.xCible = xCible;
-        this.yCible = yCible;
+        direction = new Vecteur();
         this.v = v;
         this.env = env;
-        this.portee = zone;
+        this.portee = zone; // refactor
         this.id = idMax++;
         env.tirs.add(this);
     }
@@ -40,10 +36,6 @@ public abstract class Tir {
 
     public boolean collision () {
         for (Personnage p : this.env.getPersos()) {
-            if ((this.getY() - portee <= yCible && yCible <= this.getY() + portee) &&
-                    (this.getX() - portee <=  xCible && xCible <= this.getX() + portee)) {
-                return true;
-            }
             if ((this.getY() - portee <= p.getY() && p.getY() <= this.getY() + portee) &&
                     (this.getX() - portee <=  p.getX() && p.getX() <= this.getX() + portee)) {
                 p.seFaireSoigner(pointAttaque);
@@ -55,11 +47,11 @@ public abstract class Tir {
 
     public void agit () {
         // Si dans la Map
-        if (estDansMap(this.getX()+(dx) , this.getY()+(dy))) {
+        if (estDansMap(this.getX()+(direction.getX()) , this.getY()+(direction.getY()))) {
             // Si le tir a touché ça inflige les dégats sinon met à jour la position du tir
             if (!collision()) {
-                this.xProperty().setValue(this.getX()+dx);
-                this.yProperty().setValue(this.getY()+(dy));
+                this.xProperty().setValue(this.getX()+direction.getX());
+                this.yProperty().setValue(this.getY()+(direction.getY()));
             } else {
                 System.out.println("supprimer tir");
                 env.tirs.remove(this);
@@ -109,22 +101,6 @@ public abstract class Tir {
 
     public void setV(int v) {
         this.v = v;
-    }
-
-    public double getDx() {
-        return dx;
-    }
-
-    public void setDx(double dx) {
-        this.dx = dx;
-    }
-
-    public double getDy() {
-        return dy;
-    }
-
-    public void setDy(double dy) {
-        this.dy = dy;
     }
 
 
