@@ -45,7 +45,6 @@ public class Controleur implements Initializable {
         this.partie.getEnv().creerArbre();
         this.nbTour = new SimpleIntegerProperty();
         this.nbTour.set(0);
-        
     }
     
     private void initGame() {
