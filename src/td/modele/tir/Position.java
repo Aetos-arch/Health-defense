@@ -1,18 +1,20 @@
 package td.modele.tir;
 
+import javafx.beans.property.DoubleProperty;
 import javafx.beans.property.ReadOnlyDoubleWrapper;
+import javafx.beans.property.SimpleDoubleProperty;
 
 public class Position implements Coordonnee {
-    private ReadOnlyDoubleWrapper xProperty;
-    private ReadOnlyDoubleWrapper yProperty;
+    private DoubleProperty xProperty;
+    private DoubleProperty yProperty;
 
     public Position(Coordonnee coords) {
         this(coords.getX(), coords.getY());
     }
 
     public Position(double x, double y) {
-        this.xProperty = new ReadOnlyDoubleWrapper(x);
-        this.yProperty = new ReadOnlyDoubleWrapper(y);
+        this.xProperty = new SimpleDoubleProperty(x);
+        this.yProperty = new SimpleDoubleProperty(y);
     }
 
 
@@ -62,11 +64,11 @@ public class Position implements Coordonnee {
         return this;
     }
 
-    public final ReadOnlyDoubleWrapper xProperty() {
+    public final DoubleProperty xProperty() {
         return this.xProperty;
     }
 
-    public final ReadOnlyDoubleWrapper yProperty() {
+    public final DoubleProperty yProperty() {
         return this.yProperty;
     }
 
