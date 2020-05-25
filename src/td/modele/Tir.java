@@ -52,11 +52,7 @@ public abstract class Tir {
     }
 
     public void agit () {
-        System.out.println("Methode agit");
 
-        // Si dans la Map
-        if (estDansMap(this.getX()+(dx) , this.getY()+(dy))) {
-            System.out.println("est dans la map");
             // Si le tir a touché ça inflige les dégats sinon met à jour la position du tir
             if (!collision()) {
                 System.out.println("pas de collision");
@@ -67,8 +63,6 @@ public abstract class Tir {
                 env.tirs.remove(this);
             }
         }
-    }
-
 
     /**** Getter et Setter ****/
 
