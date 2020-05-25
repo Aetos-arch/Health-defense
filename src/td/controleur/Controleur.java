@@ -10,13 +10,10 @@ import javafx.fxml.Initializable;
 import javafx.scene.layout.Pane;
 import javafx.scene.layout.TilePane;
 import javafx.util.Duration;
-import td.modele.Environnement;
-import td.modele.InfecteSansSymp;
-import td.modele.Map;
-import td.modele.Partie;
-import td.modele.Sommet;
+import td.modele.*;
 import td.vue.VueMap;
 import td.vue.VuePers;
+import td.vue.vueTourelle;
 
 import java.net.URL;
 import java.util.ArrayList;
@@ -31,10 +28,9 @@ public class Controleur implements Initializable {
     private Pane panePers;
 
     private Partie partie;
-
     private VueMap vM;
     private VuePers vP;
-    
+    private vueTourelle vT;
     private Timeline gameLoop;
     
     IntegerProperty nbTour;
@@ -42,6 +38,7 @@ public class Controleur implements Initializable {
     public void initialize(URL url, ResourceBundle resourceBundle) {
         this.partie = new Partie();
         vM = new VueMap(partie.getEnv().getMap(), tilePaneMap);
+        this.partie.getEnv().getTirs().addListener(new TirsListener(panePers));
         initGame();
         this.partie.getEnv().creerArbre();
         this.nbTour = new SimpleIntegerProperty();
@@ -50,18 +47,23 @@ public class Controleur implements Initializable {
     }
     
     private void initGame() {
+		System.out.println("keyframe");
 		gameLoop = new Timeline();
 		gameLoop.setCycleCount(Timeline.INDEFINITE);
 		
-		KeyFrame kf = new KeyFrame(Duration.seconds(0.2),(ev ->{
+		KeyFrame kf = new KeyFrame(Duration.seconds(0.05),(ev ->{
+			System.out.println("dans keyframe");
 			if(this.partie.estPerdu()){
+				System.out.println("perdu");
 				System.out.println("game over");
 				gameLoop.stop();
 			}
 			else if(this.partie.niveauFini()) {
+				System.out.println("Niveau fini");
 				gameLoop.stop();
 			}
 			else {
+				System.out.println("Un tour");
 				this.partie.unTour();
 				this.nbTour.set(this.nbTour.getValue() + 1);
 			}
@@ -77,10 +79,20 @@ public class Controleur implements Initializable {
     	vP.translateYProperty().bind(this.partie.getEnv().getPersos().get(0).getYProperty());
     	this.nbTour.addListener(e -> vP.changerSprite(nbTour.getValue()));
     	this.panePers.getChildren().add(vP);
+      creerTourelle();
     }
+
+	void creerTourelle () {
+    	Tourelle t = new TourelleVitamine(0, 0, partie.getEnv());
+		new TirVitamine(t.getX(), t.getY(), 20,  555, partie.getEnv());
+	}
+
+	void creerTir () {
+
+	}
+
     @FXML
     void action(ActionEvent event) {
     	gameLoop.play();
     }
-
 }

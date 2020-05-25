@@ -7,34 +7,31 @@ public abstract class Tourelle {
     private IntegerProperty x;
     private IntegerProperty y;
     private int cadence;
-    private int portee; // a finir
+    private int portee; // Pour viser
+    Environnement env;
 
 
-    public Tourelle (int c, int m) {
-        this.x = new SimpleIntegerProperty();
-        this.y = new SimpleIntegerProperty();
+    public Tourelle (int x, int y, int c, Environnement env) {
+        this.x = new SimpleIntegerProperty(x);
+        this.y = new SimpleIntegerProperty(y);
         this.cadence = c;
+        this.env = env;
+        env.tours.add(this);
     }
 
-
-    //public Personnage viser () {
-
-    //for (Personnage p : env.getPersos()) {
-
-    //   }
-    //}
+    public String toString () {
+        return "Tourelle : " + this.getX() + "   "+ this.getY();
+    }
 
     public abstract void tir(Personnage p);
 
-    public double getX() {
+    public int getX() {
         return x.getValue();
     }
 
-
-    public double getY() {
+    public int getY() {
         return y.getValue();
     }
-
 
     public IntegerProperty xProperty() {
         return x;
@@ -52,7 +49,6 @@ public abstract class Tourelle {
         this.y.set(y);
     }
 
-
     public int getCadence() {
         return cadence;
     }
@@ -60,4 +56,6 @@ public abstract class Tourelle {
     public void setCadence(int cadence) {
         this.cadence = cadence;
     }
+
+
 }
