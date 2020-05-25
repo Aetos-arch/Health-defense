@@ -71,7 +71,7 @@ public class Controleur implements Initializable {
     
 	@FXML
     void CreePers(ActionEvent event) {
-		this.partie.getEnv().ajouterPers(new InfecteSansSymp(6, 18, this.partie.getEnv()));
+		this.partie.getEnv().ajouterPers(new InfecteSansSymp(0, 18, this.partie.getEnv()));
     	vP = new VuePers();
     	vP.translateXProperty().bind(this.partie.getEnv().getPersos().get(0).getXProperty());
     	vP.translateYProperty().bind(this.partie.getEnv().getPersos().get(0).getYProperty());
