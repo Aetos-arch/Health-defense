@@ -66,6 +66,7 @@ public class Controleur implements Initializable {
 		gameLoop.setCycleCount(Timeline.INDEFINITE);
 		
 		KeyFrame kf = new KeyFrame(Duration.seconds(0.02),(ev ->{
+
 			if(this.partie.estPerdu()){
 				System.out.println("perdu");
 				System.out.println("game over");
@@ -85,7 +86,8 @@ public class Controleur implements Initializable {
     
 	@FXML
     void CreePers(ActionEvent event) {
-		this.partie.getEnv().ajouterPers(new InfecteSansSymp(0, 22, this.partie.getEnv()));
+
+		this.partie.getEnv().ajouterPers(new InfecteSansSymp(0, 18, this.partie.getEnv()));
     	vP = new VuePers();
     	vP.translateXProperty().bind(this.partie.getEnv().getPersos().get(0).getXProperty());
     	vP.translateYProperty().bind(this.partie.getEnv().getPersos().get(0).getYProperty());

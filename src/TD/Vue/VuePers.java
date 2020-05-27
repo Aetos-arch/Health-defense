@@ -14,11 +14,11 @@ public class VuePers extends ImageView{
 	}
 
 	public void changerSprite(int t) {
-		if(t%2 == 1) {
+		if(t%20 == 10) {
 			Rectangle2D rogne = new Rectangle2D(16, 3 ,16,16);
 			this.setViewport(rogne);
 		}
-		else {
+		else if(t%20 == 0){
 			Rectangle2D rogne = new Rectangle2D(16, 19,16,16);
 			this.setViewport(rogne);
 		}
