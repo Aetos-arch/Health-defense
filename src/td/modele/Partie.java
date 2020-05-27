@@ -23,7 +23,7 @@ public class Partie {
 
 	public void lancerNiveau() {
 		avancement = 0;
-		this.setVague(this.getVague()+1);;
+		this.setVague(this.getVague()+1);
 	}
 
 	public void unTour() {
@@ -33,7 +33,6 @@ public class Partie {
 //			System.out.println("vague : " + this.niveau + " " + this.env.getPersos().get(avancement));
 		}
 		this.env.unTour();
-		this.setVague(this.getVague()+1);
 	}
 
 	public boolean estPerdu() {
