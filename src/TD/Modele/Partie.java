@@ -58,7 +58,7 @@ public class Partie {
 	}
 	
 	public void augmenterMoney(int n) {
-		this.setMoney(this.getMoney()+1);
+		this.setMoney(this.getMoney()+n);
 	}
 	
 	public IntegerProperty moneyProperty() {
