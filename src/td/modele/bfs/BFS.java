@@ -11,6 +11,7 @@ public class BFS {
 	private ArrayList<Sommet> sommets;
 	private ArrayList<Sommet> adj;
 	private HashMap<Sommet, Sommet> aretes;
+	private static ArrayList<int> sommetsAutorisés = {0,1,};
 	
 	public BFS(int [][] m) {
 		this.map= m;
@@ -24,13 +25,13 @@ public class BFS {
 	public void creationChemin() {
 		Sommet arr = trouverArr();
 		arr.marque();
-		file.add(arr);
+		file.addLast(arr);
 		while(file.size()!=0) {
 			Sommet s = this.file.poll();
 			this.trouverAdj(s);
 			for(Sommet t : this.adj) {
 				t.marque();
-				this.file.add(t);
+				this.file.addLast(t);
 				this.aretes.put(t, s);
 			}
 		}
@@ -53,6 +54,13 @@ public class BFS {
 	private void creerSommets() {
 		for(int i = 0; i < map.length; i++)
 			for(int j = 0; j< map[i].length; j++)
+				//Enleve les sommets qui ne sont pas du sol
+				if((this.map[i][j]< 94
+						&&(this.map[i][j]< 80||this.map[i][j]> 87)
+						&&(this.map[i][j]< 60||this.map[i][j]> 67)
+						&&(this.map[i][j]< 40||this.map[i][j]> 49)
+						&&(this.map[i][j]< 22||this.map[i][j]> 29)
+						&&(this.map[i][j]< 2||this.map[i][j]> 13))||map[i][j] == 202)
 					this.sommets.add(new Sommet(j,i));
 	}
 	
@@ -63,16 +71,8 @@ public class BFS {
 			if((a.getX()== s.getX()-1 || a.getX()== s.getX()|| a.getX()== s.getX()+1)&&
 				(a.getY()== s.getY()-1 || a.getY()== s.getY()|| a.getY()== s.getY()+1))
 				//Enleve le cas ou les sommets sont identiques et si a est deja marqué
-				if(a != s && a.estMarque() == false)
-					//Enleve les sommets qui ne sont pas du sol
-					if(this.map[a.getY()][a.getX()]< 94
-							&&(this.map[a.getY()][a.getX()]< 80||this.map[a.getY()][a.getX()]> 87)
-							&&(this.map[a.getY()][a.getX()]< 60||this.map[a.getY()][a.getX()]> 67)
-							&&(this.map[a.getY()][a.getX()]< 40||this.map[a.getY()][a.getX()]> 49)
-							&&(this.map[a.getY()][a.getX()]< 22||this.map[a.getY()][a.getX()]> 29)
-							&&(this.map[a.getY()][a.getX()]< 2||this.map[a.getY()][a.getX()]> 13)) {
+				if(!a.equals(s) && !a.estMarque())
 						this.adj.add(a);
-					}
 		}
 	}
 	

@@ -13,7 +13,7 @@ public abstract class TirAngle extends Tir {
         Position projectile = new Position(this.getX(), this.getY());
         Position cible = new Position(xCible, yCible);
         Vecteur v = new Vecteur(projectile, cible);
-        v.multiplier(3 / v.normeVecteur());
+        v.multiplier(15 / v.normeVecteur());
         this.dx = v.getX();
         this.dy = v.getY();
     }
