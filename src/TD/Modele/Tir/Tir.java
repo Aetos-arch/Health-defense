@@ -17,9 +17,9 @@ public abstract class Tir {
     protected Environnement env;
     private double portee;
 
-    public Tir(int x, int y, int pointAttaque, int v, Environnement env, double zone) {
-        this.xProperty = new SimpleDoubleProperty(x);
-        this.yProperty = new SimpleDoubleProperty(y);
+    public Tir(Position p, int pointAttaque, int v, Environnement env, double zone) {
+        this.xProperty = new SimpleDoubleProperty(p.getX());
+        this.yProperty = new SimpleDoubleProperty(p.getY());
         this.pointAttaque = pointAttaque;
         direction = new Vecteur();
         this.v = v;

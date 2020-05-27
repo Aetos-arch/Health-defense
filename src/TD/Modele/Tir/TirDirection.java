@@ -4,12 +4,12 @@ import TD.Modele.Environnement;
 
 public abstract class TirDirection extends Tir {
 
-    public TirDirection(int x, int y, int pointAttaque, Position cible, int v, Environnement env, double portee) {
-        super(x, y, pointAttaque, v, env, portee);
+    public TirDirection(Position p, int pointAttaque, Position cible, int v, Environnement env, double portee) {
+        super(p, pointAttaque, v, env, portee);
         this.calculerDirection(cible);
     }
 
-    public void calculerDirection (Position cible) {
+    public void calculerDirection(Position cible) {
         Position projectile = new Position(this.getX(), this.getY());
         Vecteur v = new Vecteur(projectile, cible);
         v.multiplier(this.v / v.normeVecteur());

@@ -13,17 +13,18 @@ public class TourelleVitamine extends Tourelle {
 
     @Override
     public void tir(Personnage p) {
-        // % idée
-        Position cible = new Position(100, 229);
-        Tir tir = new TirVitamine(this.xProperty().getValue(), this.yProperty().getValue(), cible, env);
+        Position cible = new Position(p.getX(), p.getY());
+        Tir tir = new TirVitamine(this.getPosition(), cible, env);
         env.tirs.add(tir);
     }
 
-    //public Personnage viser () {
+    public Personnage viser() {
+        Personnage persoPlusProche = env.getPersos().get(0);
+        Position positionPersonnageEnCours = new Position(persoPlusProche.getX(), persoPlusProche.getY());
 
-    //for (Personnage p : env.getPersos()) {
+        for (Personnage p : env.getPersos()) {
 
-    //   }
-    //}
+        }
+    }
 
 }
