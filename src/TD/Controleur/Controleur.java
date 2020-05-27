@@ -96,7 +96,7 @@ public class Controleur implements Initializable {
 	@FXML
     void creerTourelle(ActionEvent event) {
         Tourelle t = new TourelleVitamine(0, 0, partie.getEnv());
-        Position cible = new Position(1000, 229);
+        Position cible = new Position(200, 229);
         new TirVitamine(t.getX(), t.getY(), cible, partie.getEnv());
         panePers.getChildren().add(new VueTourelle(t));
     }
