@@ -8,7 +8,7 @@ public class VueTourelle extends ImageView {
 
     public VueTourelle(Tourelle t) {
         super();
-        this.setImage(new Image("Sources/Tourelles/rsz_1wh.png"));
+        this.setImage(new Image("Sources/Tourelles/tourelle1.png"));
         this.setX(t.getX());
         this.setY(t.getY());
     }
