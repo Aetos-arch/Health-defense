@@ -55,10 +55,10 @@ public class Controleur implements Initializable {
         this.partie.getEnv().creerArbre();
         this.nbTour = new SimpleIntegerProperty();
         this.nbTour.set(0);
-        this.partie.vagueProperty().addListener((obs,old,nouv) -> this.labelVague.textProperty().setValue(nouv.toString()));
-        this.partie.scoreProperty().addListener((obs,old,nouv) -> this.labelScore.textProperty().setValue(nouv.toString()));
-        this.partie.moneyProperty().addListener((obs,old,nouv) -> this.labelMoney.textProperty().setValue(nouv.toString()));
-        this.partie.pvProperty().addListener((obs,old,nouv) -> this.labelPV.textProperty().setValue(nouv.toString()));
+        this.labelMoney.textProperty().bind(this.partie.moneyProperty().asString());
+        this.labelScore.textProperty().bind(this.partie.scoreProperty().asString());
+        this.labelVague.textProperty().bind(this.partie.vagueProperty().asString());
+        this.labelPV.textProperty().bind(this.partie.pvProperty().asString());
     }
     
     private void initGame() {
