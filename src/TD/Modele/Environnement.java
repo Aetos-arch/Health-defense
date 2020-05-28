@@ -41,10 +41,11 @@ public class Environnement {
 
 	// Mettre dans partie
 	public void unTour() {
-		for(Personnage p : this.persos) {
+		for (Personnage p : this.persos) {
 			p.agit();
 		}
 		tirs.forEach(tir -> tir.agit());
+		tours.forEach(tourelle -> tourelle.agit());
 	}
 
 	public int[][] getMap () {

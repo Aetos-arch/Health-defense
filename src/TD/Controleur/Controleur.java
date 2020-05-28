@@ -2,8 +2,6 @@ package TD.Controleur;
 
 import TD.Modele.Partie;
 import TD.Modele.Personnage.InfecteSansSymp;
-import TD.Modele.Tir.Position;
-import TD.Modele.Tir.TirVitamine;
 import TD.Modele.Tourelle.Tourelle;
 import TD.Modele.Tourelle.TourelleVitamine;
 import TD.Vue.VueMap;
@@ -95,9 +93,7 @@ public class Controleur implements Initializable {
 
 	@FXML
     void creerTourelle(ActionEvent event) {
-        Tourelle t = new TourelleVitamine(0, 0, partie.getEnv());
-        Position cible = new Position(200, 229);
-        new TirVitamine(t.getX(), t.getY(), cible, partie.getEnv());
+        Tourelle t = new TourelleVitamine(10, 400, partie.getEnv());
         panePers.getChildren().add(new VueTourelle(t));
     }
 
