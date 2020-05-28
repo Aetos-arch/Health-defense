@@ -53,10 +53,10 @@ public class Controleur implements Initializable {
         this.partie.getEnv().creerArbre();
         this.nbTour = new SimpleIntegerProperty();
         this.nbTour.set(0);
-        this.partie.vagueProperty().addListener((obs,old,nouv) -> this.labelVague.textProperty().setValue(nouv.toString()));
-        this.partie.scoreProperty().addListener((obs,old,nouv) -> this.labelScore.textProperty().setValue(nouv.toString()));
-        this.partie.moneyProperty().addListener((obs,old,nouv) -> this.labelMoney.textProperty().setValue(nouv.toString()));
-        this.partie.pvProperty().addListener((obs,old,nouv) -> this.labelPV.textProperty().setValue(nouv.toString()));
+        this.labelMoney.textProperty().bind(this.partie.moneyProperty().asString());
+        this.labelScore.textProperty().bind(this.partie.scoreProperty().asString());
+        this.labelVague.textProperty().bind(this.partie.vagueProperty().asString());
+        this.labelPV.textProperty().bind(this.partie.pvProperty().asString());
     }
     
     private void initGame() {
@@ -64,6 +64,7 @@ public class Controleur implements Initializable {
 		gameLoop.setCycleCount(Timeline.INDEFINITE);
 		
 		KeyFrame kf = new KeyFrame(Duration.seconds(0.02),(ev ->{
+
 			if(this.partie.estPerdu()){
 				System.out.println("perdu");
 				System.out.println("game over");
@@ -83,7 +84,8 @@ public class Controleur implements Initializable {
     
 	@FXML
     void CreePers(ActionEvent event) {
-		this.partie.getEnv().ajouterPers(new InfecteSansSymp(0, 22, this.partie.getEnv()));
+
+		this.partie.getEnv().ajouterPers(new InfecteSansSymp(0, 18, this.partie.getEnv()));
     	vP = new VuePers();
     	vP.translateXProperty().bind(this.partie.getEnv().getPersos().get(0).getXProperty());
     	vP.translateYProperty().bind(this.partie.getEnv().getPersos().get(0).getYProperty());

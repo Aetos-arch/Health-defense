@@ -35,7 +35,7 @@
                      <children>
                         <VBox prefHeight="200.0" prefWidth="100.0">
                            <children>
-                              <Label text="Vague" />
+                              <Label text="Tour" />
                               <Label fx:id="labelVague" text="0" />
                            </children>
                         </VBox>

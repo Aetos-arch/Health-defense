@@ -23,7 +23,7 @@ public class Environnement {
 	// Liste besoin de l'ordre avc index, peut pas si veut sup mettre ref de l'objet : remove nicolas etc, mais i, et ca va bcp plus vite le hset
 	// Hset dif tourelles par id etc
 
-	List<Personnage> persos;
+	private List<Personnage> persos;
 	public ObservableSet<Tir> tirs; // approfondir
 	private BFS bfs;
 	
@@ -37,6 +37,10 @@ public class Environnement {
 	
 	public void ajouterPers(Personnage p) {
 		this.persos.add(p);
+	}
+	
+	public void ajouterTour(Tourelle tour) {
+		this.tours.add(tour);
 	}
 
 	// Mettre dans partie

@@ -1,5 +1,6 @@
 package TD.Modele;
 
+import TD.Modele.Tourelle.TourelleVitamine;
 import javafx.beans.property.IntegerProperty;
 import javafx.beans.property.SimpleIntegerProperty;
 
@@ -35,6 +36,10 @@ public class Partie {
 		this.env.unTour();
 		this.setVague(this.getVague()+1);
 	}
+	
+	public void ajouterTour(int x, int y) {
+		this.env.ajouterTour(new TourelleVitamine(x, y, this.env));
+	}
 
 	public boolean estPerdu() {
 		return this.getPV() <= 0;
@@ -50,6 +55,10 @@ public class Partie {
 	
 	public void augmenterScore(int n) {
 		this.setScore(this.getScore()+n);
+	}
+	
+	public void augmenterMoney(int n) {
+		this.setMoney(this.getMoney()+n);
 	}
 	
 	public IntegerProperty moneyProperty() {
