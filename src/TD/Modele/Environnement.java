@@ -16,13 +16,6 @@ public class Environnement {
 
 	private Map map;
 	public List<Tourelle> tours;
-	//HSet, quand declare variable mettre des types superieurs (ex List plutot que arraylist ici :
-	//ArrayList<String> list = new ArrayList<>()
-	//List<String> list = new ArrayList<>()
-	//Set<String> set =  new HashSet<>()
-	// Liste besoin de l'ordre avc index, peut pas si veut sup mettre ref de l'objet : remove nicolas etc, mais i, et ca va bcp plus vite le hset
-	// Hset dif tourelles par id etc
-
 	private ObservableList<Personnage> persos;
 	private ObservableList<Tir> tirs; 
 	private BFS bfs;
@@ -43,7 +36,6 @@ public class Environnement {
 		this.tours.add(tour);
 	}
 
-	// Mettre dans partie
 	public void unTour() {
 
 		for (int i = this.persos.size() - 1; i >= 0; i--) {
@@ -76,10 +68,6 @@ public class Environnement {
 
 	public ObservableList<Tir> getTirs() {
 		return tirs;
-	}
-  
-	public Sommet trouverSommet(int x, int y){
-		return this.bfs.trouverSommet(x,y);
 	}
 
 	public Sommet trouverSommet(int x, int y) {

@@ -89,13 +89,7 @@ public class Controleur implements Initializable {
         }));
         gameLoop.getKeyFrames().add(kf);
     }
-
-    @FXML
-    void CreePers(ActionEvent event) {
-        this.partie.getEnv().ajouterPers(new InfecteSansSymp(0, 7, this.partie.getEnv()));
-    }
-
-
+    
     @FXML
     void dragDetected(MouseEvent event) {
         Dragboard db = dragTourelle.startDragAndDrop(TransferMode.ANY);
