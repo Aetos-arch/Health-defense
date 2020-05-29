@@ -48,12 +48,14 @@ public class Environnement {
 
 	// Mettre dans partie
 	public void unTour() {
+
 		for(Personnage p : this.persos) {
 			if(p.estSain()||p.estArrive())
 				this.persos.remove(p);
-			p.agit();
+		  	p.agit();
 		}
 		tirs.forEach(tir -> tir.agit());
+		tours.forEach(tourelle -> tourelle.agit());
 	}
 
 	public int[][] getMap () {

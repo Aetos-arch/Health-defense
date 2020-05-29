@@ -1,54 +1,30 @@
 package TD.Modele.Tourelle;
 
 import TD.Modele.Environnement;
-import TD.Modele.Personnage.Personnage;
-import javafx.beans.property.IntegerProperty;
-import javafx.beans.property.SimpleIntegerProperty;
+import TD.Modele.Tir.Position;
 
 public abstract class Tourelle {
-    private IntegerProperty x; // simple int
-    private IntegerProperty y; // simple int
+    Position position;
     private int cadence;
-    private int portee; // Pour viser
-    Environnement env; //
+    private int portee;
+    Environnement env;
 
 
-    public Tourelle (int x, int y, int c, Environnement env) {
-        this.x = new SimpleIntegerProperty(x);
-        this.y = new SimpleIntegerProperty(y);
+    public Tourelle(int x, int y, int c, Environnement env) {
+        position = new Position(x, y);
         this.cadence = c;
         this.env = env;
         env.tours.add(this);
     }
 
-    public String toString () {
-        return "Tourelle : " + this.getX() + "   "+ this.getY();
+    public abstract void agit();
+
+    public Position getPosition() {
+        return position;
     }
 
-    public abstract void tir(Personnage p);
-
-    public int getX() {
-        return x.getValue();
-    }
-
-    public int getY() {
-        return y.getValue();
-    }
-
-    public IntegerProperty xProperty() {
-        return x;
-    }
-
-    public IntegerProperty yProperty() {
-        return y;
-    }
-
-    public void setX(int x) {
-        this.x.set(x);
-    }
-
-    public void setY(int y) {
-        this.y.set(y);
+    public void setPosition(Position position) {
+        this.position = position;
     }
 
     public int getCadence() {
@@ -59,5 +35,11 @@ public abstract class Tourelle {
         this.cadence = cadence;
     }
 
+    public double getX() {
+        return position.getX();
+    }
 
+    public double getY() {
+        return position.getY();
+    }
 }

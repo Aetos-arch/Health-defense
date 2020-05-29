@@ -17,9 +17,9 @@ public abstract class Tir {
     protected Environnement env;
     private double portee;
 
-    public Tir(int x, int y, int pointAttaque, int v, Environnement env, double zone) {
-        this.xProperty = new SimpleDoubleProperty(x);
-        this.yProperty = new SimpleDoubleProperty(y);
+    public Tir(Position p, int pointAttaque, int v, Environnement env, double zone) {
+        this.xProperty = new SimpleDoubleProperty(p.getX());
+        this.yProperty = new SimpleDoubleProperty(p.getY());
         this.pointAttaque = pointAttaque;
         direction = new Vecteur();
         this.v = v;
@@ -36,8 +36,8 @@ public abstract class Tir {
 
     public boolean collision () {
         for (Personnage p : this.env.getPersos()) {
-            if ((this.getY() - portee <= p.getY() && p.getY() <= this.getY() + portee) &&
-                    (this.getX() - portee <=  p.getX() && p.getX() <= this.getX() + portee)) {
+            if ((p.getY() >= this.getY() && p.getY() <= this.getY() + portee) &&
+                    (p.getX() >= this.getX() && p.getX() <= this.getX() + portee)) {
                 p.seFaireSoigner(pointAttaque);
                 return true;
             }
@@ -47,16 +47,17 @@ public abstract class Tir {
 
     public void agit () {
         // Si dans la Map
-        if (estDansMap(this.getX()+(direction.getX()) , this.getY()+(direction.getY()))) {
+        if (estDansMap(this.getX() + (direction.getX()), this.getY() + (direction.getY()))) {
             // Si le tir a touché ça inflige les dégats sinon met à jour la position du tir
             if (!collision()) {
-                this.xProperty().setValue(this.getX()+direction.getX());
-                this.yProperty().setValue(this.getY()+(direction.getY()));
+                this.xProperty().setValue(this.getX() + direction.getX());
+                this.yProperty().setValue(this.getY() + (direction.getY()));
             } else {
                 System.out.println("supprimer tir");
                 env.tirs.remove(this);
             }
-        }
+        } else
+            env.tirs.remove(this);
     }
 
 

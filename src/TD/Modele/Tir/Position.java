@@ -19,9 +19,9 @@ public class Position implements Coordonnee {
         return this;
     }
 
-    //public double distance(Position loc) {
-      //  return Math.sqrt(Math.pow(this.getX() - loc.getX(), 2) + Math.pow(this.getY() - loc.getY(), 2));
-    //}
+    public double distance(Position loc) {
+        return Math.sqrt(Math.pow(this.getX() - loc.getX(), 2) + Math.pow(this.getY() - loc.getY(), 2));
+    }
 
 
     @Override
