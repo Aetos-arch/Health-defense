@@ -53,7 +53,6 @@ public abstract class Tir {
                 this.xProperty().setValue(this.getX() + direction.getX());
                 this.yProperty().setValue(this.getY() + (direction.getY()));
             } else {
-                System.out.println("supprimer tir");
                 env.tirs.remove(this);
             }
         } else
