@@ -70,10 +70,6 @@ public class Environnement {
 		return tirs;
 	}
 
-	public void setTours(List<Tourelle> tours) {
-		this.tours = tours;
-	}
-
 	public Sommet trouverSommet(int x, int y) {
 		return this.bfs.trouverSommet(x, y);
 	}
