@@ -101,4 +101,8 @@ public abstract class Personnage {
 	public int getId() {
 		return this.id;
 	}
+	
+	public boolean estArrive() {
+		return this.arrive;
+	}
 }
