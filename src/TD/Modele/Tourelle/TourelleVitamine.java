@@ -23,7 +23,6 @@ public class TourelleVitamine extends Tourelle {
 	        Tir tir = new TirVitamine(this.getPosition(), positionCible, env);
 	        env.getTirs().add(tir);
 	        }
-    	}
     }
 
     public ArrayList<Personnage> estAPortee() {

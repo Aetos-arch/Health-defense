@@ -22,7 +22,7 @@ public class TirsListener implements ListChangeListener<Tir> {
     @Override
     public void onChanged(Change<? extends Tir> change) {
     	while(change.next()) {
-	        //if (change.wasAdded()) {
+	        if (change.wasAdded()) {
 	        	for(Tir tir :change.getAddedSubList()) {
 		            VueTir vT;
 		            if (tir instanceof TirVitamine) {
@@ -32,17 +32,16 @@ public class TirsListener implements ListChangeListener<Tir> {
 		            }
 		            // garder en memoire association du tir avec son image
 		            modelToView.put(tir, vT);
-		            System.out.println(modelToView.size());
 		            map.getChildren().add(vT);
 	        	}
-	        //}
-	        //if (change.wasRemoved()) {
+	        }
+	        if (change.wasRemoved()) {
 	        	for(Tir tir : change.getRemoved()) {
 	        		map.getChildren().remove(modelToView.get(tir));
 	        		modelToView.remove(tir);
-	        		System.out.println("Supprimer " + modelToView.size());
+
 	        	}
-	        //}  	
+	        }  	
     	}
     }
 
