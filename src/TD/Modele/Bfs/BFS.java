@@ -34,7 +34,6 @@ public class BFS {
 	public void creationChemin() {
 		Sommet arr = trouverArr();
 		arr.marque();
-		System.out.println(arr);
 		file.addLast(arr);
 		while(file.size()!=0) {
 			Sommet s = this.file.removeFirst();
