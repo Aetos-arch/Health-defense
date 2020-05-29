@@ -1,5 +1,6 @@
 package TD.Modele;
 
+import TD.Modele.Personnage.InfecteSansSymp;
 import TD.Modele.Tourelle.TourelleVitamine;
 import javafx.beans.property.IntegerProperty;
 import javafx.beans.property.SimpleIntegerProperty;
@@ -7,6 +8,7 @@ import javafx.beans.property.SimpleIntegerProperty;
 public class Partie {
 
 	private static int avancement = 0;
+	private static int delai = 0;
 
 	private IntegerProperty scoreProperty;
 	private IntegerProperty vagueProperty;
@@ -23,22 +25,27 @@ public class Partie {
 	}
 
 	public void lancerNiveau() {
+		delai = 0;
         avancement = 0;
         this.setVague(this.getVague() + 1);
+        int random = (int)(Math.random()*11)+11;
+		this.env.ajouterPers(new InfecteSansSymp(0, random,this.env));
     }
 
 	public void unTour() {
-		if (avancement < nombreEnnemi()) {
-			//this.env.ajouterPers(new InfecteSansSymp());
-			avancement++;
-//			System.out.println("vague : " + this.niveau + " " + this.env.getPersos().get(avancement));
-		}
+		if(delai%40 == 39)
+			if (avancement < nombreEnnemi()) {
+				int random = (int)(Math.random()*11)+11;
+				this.env.ajouterPers(new InfecteSansSymp(0, random,this.env));
+				avancement++;
+			}
+		delai ++;
 		this.env.unTour();
-		this.setVague(this.getVague()+1);
 	}
 	
 	public void ajouterTour(int x, int y) {
 		this.env.ajouterTour(new TourelleVitamine(x, y, this.env));
+		this.env.modifChemin(x, y);
 	}
 
 	public boolean estPerdu() {
@@ -46,7 +53,7 @@ public class Partie {
 	}
 	
 	public int nombreEnnemi() {
-		return this.getVague()*2;
+		return this.getVague()*3;
 	}
 
 	public void perdrePV(int n) {
@@ -114,6 +121,6 @@ public class Partie {
 	}
 
 	public boolean niveauFini() {
-		return false; //this.env.getPersos().isEmpty();
+		return this.env.getPersos().isEmpty();
 	}
 }

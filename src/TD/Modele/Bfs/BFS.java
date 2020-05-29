@@ -54,7 +54,6 @@ public class BFS {
 	private void resetListes() {
 		this.file.clear();
 		this.adj.clear();
-		this.sommets.clear();
 		this.aretes.clear();
 	}
 
@@ -71,6 +70,12 @@ public class BFS {
 				//Enleve les sommets qui ne sont pas du sol
 				if(this.sommetsACreer.contains(this.map[i][j]))
 					this.sommets.add(new Sommet(j,i));
+	}
+	
+	public void supprimerSommet(int x, int y) {
+		this.sommets.remove(this.trouverSommet(x, y));
+		this.resetListes();
+		this.creationChemin();
 	}
 	
 	private void trouverAdjHV(Sommet s){
