@@ -1,7 +1,6 @@
 package TD.Controleur;
 
 import TD.Modele.Partie;
-import TD.Modele.Personnage.InfecteSansSymp;
 import TD.Modele.Tourelle.Tourelle;
 import TD.Modele.Tourelle.TourelleVitamine;
 import TD.Vue.VueMap;
