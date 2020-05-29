@@ -45,6 +45,7 @@ public class Partie {
 	
 	public void ajouterTour(int x, int y) {
 		this.env.ajouterTour(new TourelleVitamine(x, y, this.env));
+		this.env.modifChemin(x, y);
 	}
 
 	public boolean estPerdu() {
@@ -52,7 +53,7 @@ public class Partie {
 	}
 	
 	public int nombreEnnemi() {
-		return this.getVague()*4;
+		return this.getVague()*3;
 	}
 
 	public void perdrePV(int n) {

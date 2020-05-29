@@ -86,4 +86,8 @@ public class Environnement {
 	public void creerArbre() {
 		this.bfs.creationChemin();
 	}
+	
+	public void modifChemin(int x, int y) {
+		this.bfs.supprimerSommet(x, y);
+	}
 }
