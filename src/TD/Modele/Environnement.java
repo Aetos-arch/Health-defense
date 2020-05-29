@@ -5,12 +5,15 @@ import TD.Modele.Bfs.Sommet;
 import TD.Modele.Personnage.Personnage;
 import TD.Modele.Tir.Tir;
 import TD.Modele.Tourelle.Tourelle;
+import javafx.beans.property.SimpleListProperty;
 import javafx.collections.FXCollections;
+import javafx.collections.ObservableList;
 import javafx.collections.ObservableSet;
-
 import java.util.ArrayList;
 import java.util.HashMap;
 import java.util.List;
+
+import com.sun.deploy.uitoolkit.impl.fx.ui.FXConsole;
 
 public class Environnement {
 
@@ -23,13 +26,13 @@ public class Environnement {
 	// Liste besoin de l'ordre avc index, peut pas si veut sup mettre ref de l'objet : remove nicolas etc, mais i, et ca va bcp plus vite le hset
 	// Hset dif tourelles par id etc
 
-	private List<Personnage> persos;
+	private ObservableList<Personnage> persos;
 	public ObservableSet<Tir> tirs; // approfondir
 	private BFS bfs;
 	
 	public Environnement() {
 		this.tours = new ArrayList<>();
-		this.persos = new ArrayList<>();
+		this.persos = FXCollections.observableArrayList();
 		this.map = new Map("src/Sources/map.csv");
 		this.bfs = new BFS(this.getMap());
 		this.tirs = FXCollections.observableSet();
@@ -46,6 +49,8 @@ public class Environnement {
 	// Mettre dans partie
 	public void unTour() {
 		for(Personnage p : this.persos) {
+			if(p.estSain()||p.estArrive())
+				this.persos.remove(p);
 			p.agit();
 		}
 		tirs.forEach(tir -> tir.agit());
@@ -54,7 +59,7 @@ public class Environnement {
 	public int[][] getMap () {
 		return this.map.getMap();
 	}
-	public List<Personnage> getPersos(){
+	public ObservableList<Personnage> getPersos(){
 		return this.persos;
 	}
 
@@ -80,5 +85,9 @@ public class Environnement {
 	
 	public void creerArbre() {
 		this.bfs.creationChemin();
+	}
+	
+	public void modifChemin(int x, int y) {
+		this.bfs.supprimerSommet(x, y);
 	}
 }

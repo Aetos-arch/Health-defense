@@ -45,12 +45,13 @@ public class Controleur implements Initializable {
     private VueTourelle vT;
     private Timeline gameLoop;
     
-    IntegerProperty nbTour;
+    public IntegerProperty nbTour;
 
     public void initialize(URL url, ResourceBundle resourceBundle) {
         this.partie = new Partie();
         vM = new VueMap(partie.getEnv().getMap(), tilePaneMap);
         this.partie.getEnv().getTirs().addListener(new TirsListener(panePers));
+        this.partie.getEnv().getPersos().addListener(new ListenerPers(panePers, this));
         initGame();
         this.partie.getEnv().creerArbre();
         this.nbTour = new SimpleIntegerProperty();
@@ -86,13 +87,7 @@ public class Controleur implements Initializable {
     
 	@FXML
     void CreePers(ActionEvent event) {
-
-		this.partie.getEnv().ajouterPers(new InfecteSansSymp(0, 18, this.partie.getEnv()));
-    	vP = new VuePers();
-    	vP.translateXProperty().bind(this.partie.getEnv().getPersos().get(0).getXProperty());
-    	vP.translateYProperty().bind(this.partie.getEnv().getPersos().get(0).getYProperty());
-    	this.nbTour.addListener(e -> vP.changerSprite(nbTour.getValue()));
-    	this.panePers.getChildren().add(vP);
+		this.partie.getEnv().ajouterPers(new InfecteSansSymp(0, 7, this.partie.getEnv()));
     }
 
 	@FXML
@@ -106,5 +101,10 @@ public class Controleur implements Initializable {
     @FXML
     void action(ActionEvent event) {
     	gameLoop.play();
+    	this.partie.lancerNiveau();
+    }
+    
+    public int getTour() {
+    	return this.nbTour.get();
     }
 }
