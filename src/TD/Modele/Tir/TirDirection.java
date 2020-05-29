@@ -1,6 +1,7 @@
 package TD.Modele.Tir;
 
 import TD.Modele.Environnement;
+import TD.Utilitaire.Position;
 
 public abstract class TirDirection extends Tir {
 

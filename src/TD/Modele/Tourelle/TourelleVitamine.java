@@ -2,9 +2,9 @@ package TD.Modele.Tourelle;
 
 import TD.Modele.Environnement;
 import TD.Modele.Personnage.Personnage;
-import TD.Modele.Tir.Position;
 import TD.Modele.Tir.Tir;
 import TD.Modele.Tir.TirVitamine;
+import TD.Utilitaire.Position;
 
 import java.util.ArrayList;
 

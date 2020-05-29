@@ -1,7 +1,7 @@
 package TD.Modele.Tourelle;
 
 import TD.Modele.Environnement;
-import TD.Modele.Tir.Position;
+import TD.Utilitaire.Position;
 
 public abstract class Tourelle {
     private Position position;

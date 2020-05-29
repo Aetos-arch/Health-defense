@@ -2,6 +2,8 @@ package TD.Modele.Tir;
 
 import TD.Modele.Environnement;
 import TD.Modele.Personnage.Personnage;
+import TD.Utilitaire.Position;
+import TD.Utilitaire.PositionProperty;
 import javafx.beans.property.DoubleProperty;
 
 import java.util.Objects;

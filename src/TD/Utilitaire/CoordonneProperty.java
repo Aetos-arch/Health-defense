@@ -1,4 +1,4 @@
-package TD.Modele.Tir;
+package TD.Utilitaire;
 
 import javafx.beans.property.SimpleDoubleProperty;
 
