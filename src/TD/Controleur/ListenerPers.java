@@ -20,10 +20,10 @@ public class ListenerPers implements ListChangeListener<Personnage>{
 		this.c = c;
 	}
 	@Override
-	public void onChanged(Change<? extends Personnage> c) {
-		while(c.next()) {
-			if(c.wasAdded()) {
-				for(Personnage p: c.getAddedSubList()) {
+	public void onChanged(Change<? extends Personnage> change) {
+		while(change.next()) {
+			if(change.wasAdded()) {
+				for(Personnage p: change.getAddedSubList()) {
 					VuePers vP;
 					if(p instanceof InfecteSansSymp) {
 						vP = new VuePers();
@@ -35,8 +35,8 @@ public class ListenerPers implements ListChangeListener<Personnage>{
 					}
 				}	
 			}
-			else if(c.wasRemoved()) {
-				for(Personnage p: c.getRemoved()) {
+			else if(change.wasRemoved()) {
+				for(Personnage p: change.getRemoved()) {
 					this.panePers.getChildren().remove(this.correspondance.get(p));
 				}
 					

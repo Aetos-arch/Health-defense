@@ -26,7 +26,6 @@ public abstract class Tir {
         this.env = env;
         this.portee = zone; // refactor
         this.id = idMax++;
-        env.tirs.add(this);
     }
 
     // A mettre dans une class static : massDataBulder, static function
@@ -53,10 +52,10 @@ public abstract class Tir {
                 this.xProperty().setValue(this.getX() + direction.getX());
                 this.yProperty().setValue(this.getY() + (direction.getY()));
             } else {
-                env.tirs.remove(this);
+                env.getTirs().remove(this);
             }
         } else
-            env.tirs.remove(this);
+            env.getTirs().remove(this);
     }
 
 
