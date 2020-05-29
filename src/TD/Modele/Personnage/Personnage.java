@@ -90,15 +90,20 @@ public abstract class Personnage {
 	public IntegerProperty getYProperty() {
 		return y;
 	}
-	
-	public int getX() {
-		return x.getValue();
-	}
-	
-	public int getY() {
-		return y.getValue();
-	}
-	public int getId() {
-		return this.id;
-	}
+
+    public int getX() {
+        return x.getValue();
+    }
+
+    public int getY() {
+        return y.getValue();
+    }
+
+    public int getId() {
+        return this.id;
+    }
+
+    public boolean estArrive() {
+        return this.arrive;
+    }
 }
