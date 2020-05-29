@@ -24,7 +24,7 @@ public class Environnement {
 	// Hset dif tourelles par id etc
 
 	private ObservableList<Personnage> persos;
-	public ObservableList<Tir> tirs; // approfondir
+	private ObservableList<Tir> tirs; 
 	private BFS bfs;
 
 	public Environnement() {
@@ -53,6 +53,7 @@ public class Environnement {
 		}
 		for (int i = this.tirs.size() - 1; i >= 0; i--)
 			this.tirs.get(i).agit();
+
 		for (Tourelle t : this.tours)
 			t.agit();
 	}
@@ -76,9 +77,9 @@ public class Environnement {
 	public ObservableList<Tir> getTirs() {
 		return tirs;
 	}
-
-	public void setTirs(ObservableList<Tir> tirs) {
-		this.tirs = tirs;
+  
+	public Sommet trouverSommet(int x, int y){
+		return this.bfs.trouverSommet(x,y);
 	}
 
 	public Sommet trouverSommet(int x, int y) {

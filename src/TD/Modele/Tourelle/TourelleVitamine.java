@@ -17,12 +17,13 @@ public class TourelleVitamine extends Tourelle {
 
     @Override
     public void agit() {
-        Personnage p = viser();
-        if (p != null) {
-            Position positionCible = new Position(p.getX(), p.getY());
-            Tir tir = new TirVitamine(this.getPosition(), positionCible, env);
-            env.tirs.add(tir);
-        }
+	        Personnage p = viser();
+	        if(p != null) {
+	        Position positionCible = new Position(p.getX(), p.getY());
+	        Tir tir = new TirVitamine(this.getPosition(), positionCible, env);
+	        env.getTirs().add(tir);
+	        }
+    	}
     }
 
     public ArrayList<Personnage> estAPortee() {
