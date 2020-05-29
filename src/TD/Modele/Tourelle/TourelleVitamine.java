@@ -10,8 +10,6 @@ import java.util.ArrayList;
 
 public class TourelleVitamine extends Tourelle {
     private int portee;
-    private static int delai=0;
-    
     public TourelleVitamine(int x, int y, Environnement env) {
         super(x, y, 3, env);
         this.portee = 100;
@@ -19,7 +17,6 @@ public class TourelleVitamine extends Tourelle {
 
     @Override
     public void agit() {
-    	if(delai%30 == 0) {
 	        Personnage p = viser();
 	        if(p != null) {
 	        Position positionCible = new Position(p.getX(), p.getY());
@@ -27,7 +24,6 @@ public class TourelleVitamine extends Tourelle {
 	        env.getTirs().add(tir);
 	        }
     	}
-    	delai++;
     }
 
     public ArrayList<Personnage> estAPortee() {
