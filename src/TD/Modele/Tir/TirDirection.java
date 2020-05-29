@@ -6,8 +6,8 @@ import TD.Utilitaire.Position;
 public abstract class TirDirection extends Tir {
 
 
-    public TirDirection(Position p, int pointAttaque, Position cible, int v, int hitbox, Environnement env) {
-        super(p, pointAttaque, v, hitbox, env);
+    public TirDirection(Position p, int pointAttaque, Position cible, int v, Environnement env) {
+        super(p, pointAttaque, v, 15, env);
         this.calculerDirection(cible);
     }
 
