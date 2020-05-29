@@ -24,9 +24,9 @@ public class Environnement {
 	// Hset dif tourelles par id etc
 
 	private List<Personnage> persos;
-	public ObservableSet<Tir> tirs; // approfondir
+	public ObservableSet<Tir> tirs; // approfondir mettre en pv
 	private BFS bfs;
-	
+
 	public Environnement() {
 		this.tours = new ArrayList<>();
 		this.persos = new ArrayList<>();
