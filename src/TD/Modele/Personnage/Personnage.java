@@ -41,6 +41,7 @@ public abstract class Personnage {
 	}
 
 	public void agit() {
+		this.aretes = this.env.getHashMap();
 		if(!arrive) {
 		if(x.getValue() == this.som.getX()*16 && y.getValue() == this.som.getY()*16) {
 			this.som = this.aretes.get(som);

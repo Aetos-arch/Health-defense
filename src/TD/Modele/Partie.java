@@ -1,6 +1,7 @@
 package TD.Modele;
 
 import TD.Modele.Personnage.InfecteSansSymp;
+import TD.Modele.Tourelle.Tourelle;
 import TD.Modele.Tourelle.TourelleVitamine;
 import javafx.beans.property.IntegerProperty;
 import javafx.beans.property.SimpleIntegerProperty;
@@ -43,9 +44,10 @@ public class Partie {
 		this.env.unTour();
 	}
 	
-	public void ajouterTour(int x, int y) {
-		this.env.ajouterTour(new TourelleVitamine(x, y, this.env));
-		this.env.modifChemin(x / 16, y / 16);
+	public void ajouterTour(Tourelle t) {
+		this.env.ajouterTour(t);
+		this.env.modifChemin((int)(t.getX() / 16), (int)(t.getY() / 16));
+		
 	}
 
 	public boolean estPerdu() {
