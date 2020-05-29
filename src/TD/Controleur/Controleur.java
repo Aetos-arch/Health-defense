@@ -39,7 +39,7 @@ public class Controleur implements Initializable {
     @FXML
     private Label labelMoney;
     @FXML
-    private Label dragTourelle;
+    private Pane dragTourelle;
 
     private Partie partie;
     private VueMap vM;
@@ -63,7 +63,8 @@ public class Controleur implements Initializable {
         this.labelVague.textProperty().bind(this.partie.vagueProperty().asString());
         this.labelPV.textProperty().bind(this.partie.pvProperty().asString());
 
-        dragTourelle.setGraphic(new ImageView(new Image("Sources/Tourelles/tourelle1.png")));
+        this.dragTourelle.getChildren().add(new ImageView(new Image("Sources/Tourelles/tourelle1.png")));
+        
     }
     
     private void initGame() {
@@ -93,22 +94,28 @@ public class Controleur implements Initializable {
     void dragDetected(MouseEvent event) {
         Dragboard db = dragTourelle.startDragAndDrop(TransferMode.ANY);
         ClipboardContent cb = new ClipboardContent();
-        cb.putString(dragTourelle.getText());
+        Image image = ((ImageView) dragTourelle.getChildren().get(0)).getImage();
+        db.setDragView(image,8,8);
+        cb.putImage(image);
         db.setContent(cb);
         event.consume();
     }
 
     @FXML
     void dragOver(DragEvent event) {
-        if (event.getDragboard().hasString()) {
+        if (event.getDragboard().hasImage()) {
             event.acceptTransferModes(TransferMode.ANY);
         }
     }
 
     @FXML
     void dragDropped(DragEvent event) {
-        Tourelle t = new TourelleVitamine((int) event.getX(), (int) event.getY(), partie.getEnv());
-        panePers.getChildren().add(new VueTourelle(t));
+    	if(event.getX() != 800 && event.getY() != 480) {
+	        Tourelle t = new TourelleVitamine((int) Math.floor(event.getX()/16)*16, (int) Math.floor(event.getY()/16)*16, partie.getEnv());
+	        panePers.getChildren().add(new VueTourelle(t));
+    	}
+//    	else
+//    		dragTourelle.textProperty().setValue("emplacement incorrecte");
     }
 
     @FXML
