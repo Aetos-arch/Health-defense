@@ -4,17 +4,15 @@ import TD.Modele.Environnement;
 import TD.Modele.Tir.Position;
 
 public abstract class Tourelle {
-    Position position;
+    private Position position;
     private int cadence;
-    private int portee;
-    Environnement env;
-
+    protected Environnement env;
 
     public Tourelle(int x, int y, int c, Environnement env) {
         position = new Position(x, y);
         this.cadence = c;
         this.env = env;
-        env.tours.add(this);
+        env.ajouterTour(this);
     }
 
     public abstract void agit();
@@ -42,4 +40,5 @@ public abstract class Tourelle {
     public double getY() {
         return position.getY();
     }
+
 }
