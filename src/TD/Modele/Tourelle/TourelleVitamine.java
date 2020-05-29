@@ -23,7 +23,6 @@ public class TourelleVitamine extends Tourelle {
                 Position positionCible = new Position(p.getX(), p.getY());
                 Tir tir = new TirVitamine(this.getPosition(), positionCible, env, this);
                 env.ajouterTir(tir);
-                System.out.println("on tir tourelle");
             }
     }
 
