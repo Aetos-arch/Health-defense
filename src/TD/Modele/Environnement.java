@@ -27,7 +27,7 @@ public class Environnement {
 	// Hset dif tourelles par id etc
 
 	private ObservableList<Personnage> persos;
-	public ObservableSet<Tir> tirs; // approfondir
+	public ObservableList<Tir> tirs; // approfondir
 	private BFS bfs;
 	
 	public Environnement() {
@@ -35,7 +35,7 @@ public class Environnement {
 		this.persos = FXCollections.observableArrayList();
 		this.map = new Map("src/Sources/map.csv");
 		this.bfs = new BFS(this.getMap());
-		this.tirs = FXCollections.observableSet();
+		this.tirs = FXCollections.observableArrayList();
 	}
 	
 	public void ajouterPers(Personnage p) {
@@ -49,13 +49,15 @@ public class Environnement {
 	// Mettre dans partie
 	public void unTour() {
 
-		for(Personnage p : this.persos) {
-			if(p.estSain()||p.estArrive())
-				this.persos.remove(p);
-		  	p.agit();
+		for(int i = this.persos.size()-1; i>= 0; i--) {
+			this.persos.get(i).agit();
+			if(this.persos.get(i).estSain()||this.persos.get(i).estArrive())
+				this.persos.remove(this.persos.get(i));
 		}
-		tirs.forEach(tir -> tir.agit());
-		tours.forEach(tourelle -> tourelle.agit());
+		for(int i = this.tirs.size()-1; i>= 0; i--)
+			this.tirs.get(i).agit();
+		for(Tourelle t : this.tours)
+			t.agit();
 	}
 
 	public int[][] getMap () {
@@ -73,11 +75,11 @@ public class Environnement {
 		return this.bfs.getHashMap();
 	}
 
-	public ObservableSet<Tir> getTirs() {
+	public ObservableList<Tir> getTirs() {
 		return tirs;
 	}
 
-	public void setTirs(ObservableSet<Tir> tirs) {
+	public void setTirs(ObservableList<Tir> tirs) {
 		this.tirs = tirs;
   }
   

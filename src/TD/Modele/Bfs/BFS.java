@@ -74,6 +74,7 @@ public class BFS {
 	
 	public void supprimerSommet(int x, int y) {
 		this.sommets.remove(this.trouverSommet(x, y));
+		this.sommets.remove(this.trouverSommet(x, y+1));
 		this.resetListes();
 		this.creationChemin();
 	}

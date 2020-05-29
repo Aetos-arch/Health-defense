@@ -2,6 +2,8 @@ package TD.Controleur;
 
 import TD.Modele.Partie;
 import TD.Modele.Personnage.InfecteSansSymp;
+import TD.Modele.Tir.Position;
+import TD.Modele.Tir.TirVitamine;
 import TD.Modele.Tourelle.Tourelle;
 import TD.Modele.Tourelle.TourelleVitamine;
 import TD.Vue.VueMap;
@@ -107,7 +109,7 @@ public class Controleur implements Initializable {
     void creerTourelle(ActionEvent event) {
 		Tourelle t = new TourelleVitamine(0, 0, partie.getEnv());
         Position cible = new Position(200, 229);
-        new TirVitamine(t.getX(), t.getY(), cible, partie.getEnv());
+        new TirVitamine(t.getPosition(), cible, partie.getEnv());
         panePers.getChildren().add(new VueTourelle(t));
     }
 	
@@ -130,10 +132,7 @@ public class Controleur implements Initializable {
     
     @FXML
     void dragDropped(DragEvent event) {
-    	Point p = MouseInfo.getPointerInfo().getLocation();
 		Tourelle t = new TourelleVitamine((int) event.getX(), (int) event.getY(), partie.getEnv());
-        Position cible = new Position(200, 229);
-        new TirVitamine(t.getX(), t.getY(), cible, partie.getEnv());
         panePers.getChildren().add(new VueTourelle(t));
     }
 

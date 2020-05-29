@@ -10,7 +10,8 @@ import java.util.ArrayList;
 
 public class TourelleVitamine extends Tourelle {
     private int portee;
-
+    private static int delai=0;
+    
     public TourelleVitamine(int x, int y, Environnement env) {
         super(x, y, 3, env);
         this.portee = 100;
@@ -18,10 +19,15 @@ public class TourelleVitamine extends Tourelle {
 
     @Override
     public void agit() {
-        Personnage p = viser();
-        Position positionCible = new Position(p.getX(), p.getY());
-        Tir tir = new TirVitamine(this.getPosition(), positionCible, env);
-        env.tirs.add(tir);
+    	if(delai%30 == 0) {
+	        Personnage p = viser();
+	        if(p != null) {
+	        Position positionCible = new Position(p.getX(), p.getY());
+	        Tir tir = new TirVitamine(this.getPosition(), positionCible, env);
+	        env.tirs.add(tir);
+	        }
+    	}
+    	delai++;
     }
 
     public ArrayList<Personnage> estAPortee() {
@@ -33,21 +39,14 @@ public class TourelleVitamine extends Tourelle {
                 persosAPortee.add(p);
             }
         }
-        for (Personnage p : persosAPortee) {
-            System.out.println("est à portée : " + p.toString());
-        }
-
         return persosAPortee;
     }
 
     public Personnage viser() {
         if (estAPortee().size() == 0) {
-            System.out.println("pas de personne à portée");
             return null;
         }
-
         Personnage persoPlusProche = estAPortee().get(0);
-        System.out.println("persoLePlusProche : " + persoPlusProche.toString());
 
         for (Personnage p : estAPortee()) {
             Position positionPersoProche = new Position(persoPlusProche.getX(), persoPlusProche.getY());
