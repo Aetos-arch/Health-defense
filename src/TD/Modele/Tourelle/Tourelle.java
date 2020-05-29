@@ -12,7 +12,6 @@ public abstract class Tourelle {
         position = new Position(x, y);
         this.cadence = c;
         this.env = env;
-        env.ajouterTour(this);
     }
 
     public abstract void agit();

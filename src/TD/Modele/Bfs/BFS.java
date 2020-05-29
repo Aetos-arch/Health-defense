@@ -34,6 +34,7 @@ public class BFS {
 	public void creationChemin() {
 		Sommet arr = trouverArr();
 		arr.marque();
+		System.out.println(arr);
 		file.addLast(arr);
 		while(file.size()!=0) {
 			Sommet s = this.file.removeFirst();
@@ -51,9 +52,9 @@ public class BFS {
 			}
 		}
 	}
+	
 	private void resetListes() {
 		this.file.clear();
-		this.adj.clear();
 		this.aretes.clear();
 	}
 
@@ -71,11 +72,21 @@ public class BFS {
                 if (this.sommetsACreer.contains(this.map[i][j]))
                     this.sommets.add(new Sommet(j, i));
     }
+    
+    public Sommet trouverSommet(int x, int y) {
+		for(Sommet s : this.sommets) {
+			if(s.getX()==x && s.getY()==y) {
+				return s;
+			}	
+		}
+		return null;
+	}
 
     public void supprimerSommet(int x, int y) {
         this.sommets.remove(this.trouverSommet(x, y));
-        this.sommets.remove(this.trouverSommet(x, y + 1));
         this.resetListes();
+        for(Sommet s: this.sommets)
+        	s.nonMarque();
         this.creationChemin();
     }
 
@@ -88,8 +99,10 @@ public class BFS {
                     (a.getX() == s.getX() - 1 && a.getY() == s.getY()) ||
                     (a.getX() == s.getX() + 1 && a.getY() == s.getY()))
                 //Enleve le cas ou les sommets sont identiques et si a est deja marqué
-                if (!a.equals(s) && !a.estMarque())
-						this.adj.add(a);
+                if (!a.equals(s) && !a.estMarque()) {
+                	this.adj.add(a);
+                }
+						
 		}
 	}
 	private void trouverAdjD(Sommet s) {
@@ -112,13 +125,5 @@ public class BFS {
 	
 	public ArrayList<Sommet> getSommets(){
 		return this.sommets;
-	}
-	
-	public Sommet trouverSommet(int x, int y) {
-		for(Sommet s : this.sommets) {
-			if(s.getX()==x && s.getY()==y)
-				return s;
-		}
-		return null;
 	}
 }

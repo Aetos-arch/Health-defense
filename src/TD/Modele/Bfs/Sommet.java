@@ -16,6 +16,10 @@ public class Sommet {
 		this.marque = true;
 	}
 	
+	public void nonMarque() {
+		this.marque = false;
+	}
+	
 	public boolean estMarque() {
 		return this.marque;
 	}
@@ -29,7 +33,7 @@ public class Sommet {
 	}
 	
 	public String toString() {
-		return this.x + ", " + this.y;
+		return this.x + "&" + this.y;
 	}
 
 	@Override
