@@ -1,10 +1,12 @@
 package TD.Modele.Tir;
 
+import TD.Utilitaire.Coordonnee;
+
 public class Vecteur implements Coordonnee {
     private double x;
     private double y;
 
-    public Vecteur (double x, double y) {
+    public Vecteur(double x, double y) {
         this.x = x;
         this.y = y;
     }

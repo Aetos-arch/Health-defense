@@ -15,9 +15,9 @@ import java.util.List;
 public class Environnement {
 
 	private Map map;
-	public List<Tourelle> tours;
+	private List<Tourelle> tours;
 	private ObservableList<Personnage> persos;
-	private ObservableList<Tir> tirs; 
+	private ObservableList<Tir> tirs;
 	private BFS bfs;
 
 	public Environnement() {
@@ -80,5 +80,13 @@ public class Environnement {
 
 	public void modifChemin(int x, int y) {
 		this.bfs.supprimerSommet(x, y);
+	}
+
+	public void ajouterTir(Tir t) {
+		this.tirs.add(t);
+	}
+
+	public void ajouterTourelle(Tourelle t) {
+		this.tours.add(t);
 	}
 }

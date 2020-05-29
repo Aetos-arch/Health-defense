@@ -2,34 +2,33 @@ package TD.Modele.Tir;
 
 import TD.Modele.Environnement;
 import TD.Modele.Personnage.Personnage;
+import TD.Utilitaire.Position;
+import TD.Utilitaire.PositionProperty;
 import javafx.beans.property.DoubleProperty;
-import javafx.beans.property.SimpleDoubleProperty;
 
 import java.util.Objects;
 
 public abstract class Tir {
     private static long idMax = 0;
     private long id;
-    protected DoubleProperty xProperty, yProperty;
+    protected PositionProperty positionProperty;
     protected int pointAttaque;
-    protected int v;
+    protected int vitesse;
     protected Vecteur direction;
     protected Environnement env;
-    private double hitbox;
+    private int hitbox;
 
-    public Tir(Position p, int pointAttaque, int v, Environnement env, double hitbox) {
-        this.xProperty = new SimpleDoubleProperty(p.getX());
-        this.yProperty = new SimpleDoubleProperty(p.getY());
+    public Tir(Position p, int pointAttaque, int v, int hitbox, Environnement env) {
+        this.positionProperty = new PositionProperty(p.getX(), p.getY());
         this.pointAttaque = pointAttaque;
         direction = new Vecteur();
-        this.v = v;
+        this.vitesse = v;
         this.env = env;
         this.hitbox = hitbox;
         this.id = idMax++;
     }
 
-    // A mettre dans une class static : massDataBulder, static function
-    public static boolean estDansMap (double positionX, double positionY) {
+    public static boolean estDansMap(double positionX, double positionY) {
         return (positionX > 0 && positionX < 800 && positionY > 0 && positionY < 480);
     }
 
@@ -44,45 +43,33 @@ public abstract class Tir {
         return false;
     }
 
-    public void agit () {
-        // Si dans la Map
-        if (estDansMap(this.getX() + (direction.getX()), this.getY() + (direction.getY()))) {
-            // Si le tir a touché ça inflige les dégats sinon met à jour la position du tir
-            if (!collision()) {
-                this.xProperty().setValue(this.getX() + direction.getX());
-                this.yProperty().setValue(this.getY() + (direction.getY()));
-            } else {
-                env.getTirs().remove(this);
-            }
-        } else
-            env.getTirs().remove(this);
-    }
+    public abstract void agit();
 
 
     /**** Getter et Setter ****/
 
     public double getX() {
-        return xProperty.getValue();
+        return positionProperty.getX();
     }
 
     public DoubleProperty xProperty() {
-        return xProperty;
+        return positionProperty.getXProperty();
     }
 
     public void setX(int x) {
-        this.xProperty.set(x);
+        this.positionProperty.setX(x);
     }
 
     public double getY() {
-        return yProperty.getValue();
+        return positionProperty.getY();
     }
 
     public DoubleProperty yProperty() {
-        return yProperty;
+        return positionProperty.getYProperty();
     }
 
     public void setY(int y) {
-        this.yProperty.set(y);
+        this.positionProperty.setY(y);
     }
 
     public int getPointAttaque() {
@@ -93,14 +80,17 @@ public abstract class Tir {
         this.pointAttaque = pointAttaque;
     }
 
-    public int getV() {
-        return v;
+    public int getVitesse() {
+        return vitesse;
     }
 
-    public void setV(int v) {
-        this.v = v;
+    public void setVitesse(int vitesse) {
+        this.vitesse = vitesse;
     }
 
+    public PositionProperty getPosition() {
+        return positionProperty;
+    }
 
     // Verif l'égalité comme un ==
     @Override
