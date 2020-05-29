@@ -5,15 +5,12 @@ import TD.Modele.Bfs.Sommet;
 import TD.Modele.Personnage.Personnage;
 import TD.Modele.Tir.Tir;
 import TD.Modele.Tourelle.Tourelle;
-import javafx.beans.property.SimpleListProperty;
 import javafx.collections.FXCollections;
 import javafx.collections.ObservableList;
-import javafx.collections.ObservableSet;
+
 import java.util.ArrayList;
 import java.util.HashMap;
 import java.util.List;
-
-import com.sun.deploy.uitoolkit.impl.fx.ui.FXConsole;
 
 public class Environnement {
 
@@ -29,7 +26,7 @@ public class Environnement {
 	private ObservableList<Personnage> persos;
 	private ObservableList<Tir> tirs; 
 	private BFS bfs;
-	
+
 	public Environnement() {
 		this.tours = new ArrayList<>();
 		this.persos = FXCollections.observableArrayList();
@@ -49,30 +46,31 @@ public class Environnement {
 	// Mettre dans partie
 	public void unTour() {
 
-		for(int i = this.persos.size()-1; i>= 0; i--) {
+		for (int i = this.persos.size() - 1; i >= 0; i--) {
 			this.persos.get(i).agit();
-			if(this.persos.get(i).estSain()||this.persos.get(i).estArrive())
+			if (this.persos.get(i).estSain() || this.persos.get(i).estArrive())
 				this.persos.remove(this.persos.get(i));
 		}
-		for(int i = this.tirs.size()-1; i>= 0; i--)
+		for (int i = this.tirs.size() - 1; i >= 0; i--)
 			this.tirs.get(i).agit();
-		
-		for(Tourelle t : this.tours)
+
+		for (Tourelle t : this.tours)
 			t.agit();
 	}
 
-	public int[][] getMap () {
+	public int[][] getMap() {
 		return this.map.getMap();
 	}
-	public ObservableList<Personnage> getPersos(){
+
+	public ObservableList<Personnage> getPersos() {
 		return this.persos;
 	}
 
-	public List<Tourelle> getTours(){
+	public List<Tourelle> getTours() {
 		return this.tours;
 	}
 
-	public HashMap<Sommet, Sommet> getHashMap(){
+	public HashMap<Sommet, Sommet> getHashMap() {
 		return this.bfs.getHashMap();
 	}
 
@@ -83,11 +81,15 @@ public class Environnement {
 	public Sommet trouverSommet(int x, int y){
 		return this.bfs.trouverSommet(x,y);
 	}
-	
+
+	public Sommet trouverSommet(int x, int y) {
+		return this.bfs.trouverSommet(x, y);
+	}
+
 	public void creerArbre() {
 		this.bfs.creationChemin();
 	}
-	
+
 	public void modifChemin(int x, int y) {
 		this.bfs.supprimerSommet(x, y);
 	}

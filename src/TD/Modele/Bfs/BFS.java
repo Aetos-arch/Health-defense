@@ -62,33 +62,33 @@ public class BFS {
 			if (map[s.getY()][s.getX()] == 202)
 				return s;
 		return null;
-	}
-	
-	private void creerSommets() {
-		for(int i = 0; i < map.length; i++)
-			for(int j = 0; j< map[i].length; j++)
-				//Enleve les sommets qui ne sont pas du sol
-				if(this.sommetsACreer.contains(this.map[i][j]))
-					this.sommets.add(new Sommet(j,i));
-	}
-	
-	public void supprimerSommet(int x, int y) {
-		this.sommets.remove(this.trouverSommet(x, y));
-		this.sommets.remove(this.trouverSommet(x, y+1));
-		this.resetListes();
-		this.creationChemin();
-	}
-	
-	private void trouverAdjHV(Sommet s){
-		this.adj.clear();
-		for (Sommet a: this.sommets) {
-			//Determine si le sommet a fait partie des sommets autour de s en vertical ou horizontal
-			if((a.getX()== s.getX()&& a.getY()== s.getY()-1) ||
-					(a.getX()== s.getX()&& a.getY()== s.getY()+1)||
-					(a.getX()== s.getX()-1&& a.getY()== s.getY())||
-					(a.getX()== s.getX()+1 && a.getY()== s.getY()))
-				//Enleve le cas ou les sommets sont identiques et si a est deja marqué
-				if(!a.equals(s) && !a.estMarque())
+    }
+
+    private void creerSommets() {
+        for (int i = 0; i < map.length; i++)
+            for (int j = 0; j < map[i].length; j++)
+                //Enleve les sommets qui ne sont pas du sol
+                if (this.sommetsACreer.contains(this.map[i][j]))
+                    this.sommets.add(new Sommet(j, i));
+    }
+
+    public void supprimerSommet(int x, int y) {
+        this.sommets.remove(this.trouverSommet(x, y));
+        this.sommets.remove(this.trouverSommet(x, y + 1));
+        this.resetListes();
+        this.creationChemin();
+    }
+
+    private void trouverAdjHV(Sommet s) {
+        this.adj.clear();
+        for (Sommet a : this.sommets) {
+            //Determine si le sommet a fait partie des sommets autour de s en vertical ou horizontal
+            if ((a.getX() == s.getX() && a.getY() == s.getY() - 1) ||
+                    (a.getX() == s.getX() && a.getY() == s.getY() + 1) ||
+                    (a.getX() == s.getX() - 1 && a.getY() == s.getY()) ||
+                    (a.getX() == s.getX() + 1 && a.getY() == s.getY()))
+                //Enleve le cas ou les sommets sont identiques et si a est deja marqué
+                if (!a.equals(s) && !a.estMarque())
 						this.adj.add(a);
 		}
 	}

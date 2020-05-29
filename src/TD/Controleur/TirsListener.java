@@ -4,14 +4,11 @@ import TD.Modele.Tir.Tir;
 import TD.Modele.Tir.TirVitamine;
 import TD.Vue.VueTir;
 import TD.Vue.VueTirVitamine;
-import javafx.collections.SetChangeListener;
 import javafx.collections.ListChangeListener;
-import javafx.collections.ListChangeListener.Change;
 import javafx.scene.layout.Pane;
 
 import java.util.HashMap;
 import java.util.Map;
-
 
 public class TirsListener implements ListChangeListener<Tir> { 
     Pane map;
@@ -48,4 +45,5 @@ public class TirsListener implements ListChangeListener<Tir> {
 	        //}  	
     	}
     }
+
 }

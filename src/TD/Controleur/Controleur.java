@@ -2,8 +2,6 @@ package TD.Controleur;
 
 import TD.Modele.Partie;
 import TD.Modele.Personnage.InfecteSansSymp;
-import TD.Modele.Tir.Position;
-import TD.Modele.Tir.TirVitamine;
 import TD.Modele.Tourelle.Tourelle;
 import TD.Modele.Tourelle.TourelleVitamine;
 import TD.Vue.VueMap;
@@ -19,21 +17,13 @@ import javafx.fxml.Initializable;
 import javafx.scene.control.Label;
 import javafx.scene.image.Image;
 import javafx.scene.image.ImageView;
-import javafx.scene.input.ClipboardContent;
-import javafx.scene.input.DragEvent;
-import javafx.scene.input.Dragboard;
-import javafx.scene.input.MouseEvent;
-import javafx.scene.input.TransferMode;
+import javafx.scene.input.*;
 import javafx.scene.layout.Pane;
 import javafx.scene.layout.TilePane;
 import javafx.util.Duration;
 
-import java.awt.MouseInfo;
-import java.awt.Point;
 import java.net.URL;
 import java.util.ResourceBundle;
-
-import com.sun.glass.ui.Clipboard;
 
 public class Controleur implements Initializable {
 
@@ -56,8 +46,8 @@ public class Controleur implements Initializable {
     private VueMap vM;
     private VuePers vP;
     private VueTourelle vT;
-    private Timeline gameLoop;   
-    
+    private Timeline gameLoop;
+
     public IntegerProperty nbTour;
 
     public void initialize(URL url, ResourceBundle resourceBundle) {
@@ -73,7 +63,7 @@ public class Controleur implements Initializable {
         this.labelScore.textProperty().bind(this.partie.scoreProperty().asString());
         this.labelVague.textProperty().bind(this.partie.vagueProperty().asString());
         this.labelPV.textProperty().bind(this.partie.pvProperty().asString());
-        
+
         dragTourelle.setGraphic(new ImageView(new Image("Sources/Tourelles/tourelle1.png")));
     }
     
@@ -96,53 +86,45 @@ public class Controleur implements Initializable {
 				this.partie.unTour();
 				this.nbTour.set(this.nbTour.getValue() + 1);
 			}
-		}));
-		gameLoop.getKeyFrames().add(kf);
-	}
-    
-	@FXML
-    void CreePers(ActionEvent event) {
-		this.partie.getEnv().ajouterPers(new InfecteSansSymp(0, 7, this.partie.getEnv()));
+        }));
+        gameLoop.getKeyFrames().add(kf);
     }
 
-	@FXML
-    void creerTourelle(ActionEvent event) {
-		Tourelle t = new TourelleVitamine(0, 0, partie.getEnv());
-        Position cible = new Position(200, 229);
-        new TirVitamine(t.getPosition(), cible, partie.getEnv());
-        panePers.getChildren().add(new VueTourelle(t));
+    @FXML
+    void CreePers(ActionEvent event) {
+        this.partie.getEnv().ajouterPers(new InfecteSansSymp(0, 7, this.partie.getEnv()));
     }
-	
+
 
     @FXML
     void dragDetected(MouseEvent event) {
-    	Dragboard db = dragTourelle.startDragAndDrop(TransferMode.ANY);
-    	ClipboardContent cb = new ClipboardContent();
-    	cb.putString(dragTourelle.getText());
-    	db.setContent(cb);
-    	event.consume();
+        Dragboard db = dragTourelle.startDragAndDrop(TransferMode.ANY);
+        ClipboardContent cb = new ClipboardContent();
+        cb.putString(dragTourelle.getText());
+        db.setContent(cb);
+        event.consume();
     }
-    
+
     @FXML
     void dragOver(DragEvent event) {
-    	if(event.getDragboard().hasString()) {
-    		event.acceptTransferModes(TransferMode.ANY);
-    	}
+        if (event.getDragboard().hasString()) {
+            event.acceptTransferModes(TransferMode.ANY);
+        }
     }
-    
+
     @FXML
     void dragDropped(DragEvent event) {
-		Tourelle t = new TourelleVitamine((int) event.getX(), (int) event.getY(), partie.getEnv());
+        Tourelle t = new TourelleVitamine((int) event.getX(), (int) event.getY(), partie.getEnv());
         panePers.getChildren().add(new VueTourelle(t));
     }
 
     @FXML
     void action(ActionEvent event) {
-    	gameLoop.play();
-    	this.partie.lancerNiveau();
+        gameLoop.play();
+        this.partie.lancerNiveau();
     }
-    
+
     public int getTour() {
-    	return this.nbTour.get();
+        return this.nbTour.get();
     }
 }

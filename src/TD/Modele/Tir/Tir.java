@@ -15,16 +15,16 @@ public abstract class Tir {
     protected int v;
     protected Vecteur direction;
     protected Environnement env;
-    private double portee;
+    private double hitbox;
 
-    public Tir(Position p, int pointAttaque, int v, Environnement env, double zone) {
+    public Tir(Position p, int pointAttaque, int v, Environnement env, double hitbox) {
         this.xProperty = new SimpleDoubleProperty(p.getX());
         this.yProperty = new SimpleDoubleProperty(p.getY());
         this.pointAttaque = pointAttaque;
         direction = new Vecteur();
         this.v = v;
         this.env = env;
-        this.portee = zone; // refactor
+        this.hitbox = hitbox;
         this.id = idMax++;
     }
 
@@ -35,8 +35,8 @@ public abstract class Tir {
 
     public boolean collision () {
         for (Personnage p : this.env.getPersos()) {
-            if ((p.getY() >= this.getY() && p.getY() <= this.getY() + portee) &&
-                    (p.getX() >= this.getX() && p.getX() <= this.getX() + portee)) {
+            if ((p.getY() >= this.getY() && p.getY() <= this.getY() + hitbox) &&
+                    (p.getX() >= this.getX() && p.getX() <= this.getX() + hitbox)) {
                 p.seFaireSoigner(pointAttaque);
                 return true;
             }
@@ -60,7 +60,6 @@ public abstract class Tir {
 
 
     /**** Getter et Setter ****/
-
 
     public double getX() {
         return xProperty.getValue();

@@ -26,26 +26,26 @@ public class Partie {
 
 	public void lancerNiveau() {
 		delai = 0;
-        avancement = 0;
-        this.setVague(this.getVague() + 1);
-        int random = (int)(Math.random()*11)+11;
-		this.env.ajouterPers(new InfecteSansSymp(0, random,this.env));
-    }
+		avancement = 0;
+		this.setVague(this.getVague() + 1);
+		int random = (int) (Math.random() * 11) + 11;
+		this.env.ajouterPers(new InfecteSansSymp(0, random, this.env));
+	}
 
 	public void unTour() {
-		if(delai%40 == 39)
+		if (delai % 40 == 39)
 			if (avancement < nombreEnnemi()) {
-				int random = (int)(Math.random()*11)+11;
-				this.env.ajouterPers(new InfecteSansSymp(0, random,this.env));
+				int random = (int) (Math.random() * 11) + 11;
+				this.env.ajouterPers(new InfecteSansSymp(0, random, this.env));
 				avancement++;
 			}
-		delai ++;
+		delai++;
 		this.env.unTour();
 	}
 	
 	public void ajouterTour(int x, int y) {
 		this.env.ajouterTour(new TourelleVitamine(x, y, this.env));
-		this.env.modifChemin(x/16, y/16);
+		this.env.modifChemin(x / 16, y / 16);
 	}
 
 	public boolean estPerdu() {
@@ -53,7 +53,7 @@ public class Partie {
 	}
 	
 	public int nombreEnnemi() {
-		return this.getVague()*3;
+		return this.getVague() * 3;
 	}
 
 	public void perdrePV(int n) {
