@@ -9,14 +9,15 @@ public class TirVitamine extends TirDirection {
     private TourelleVitamine tourelle;
 
 
-    public TirVitamine(Position p, Position cible, int hitbox, Environnement env, TourelleVitamine t) {
-        super(p, 5, cible, 5, hitbox, env);
+    public TirVitamine(Position p, Position cible, Environnement env, TourelleVitamine t) {
+        super(p, 1, cible, 5, env);
         this.tourelle = t;
     }
 
     public void agit() {
-        // Si dans la Map
+        // Si va être dans la Map
         if (estDansMap(this.getX() + (direction.getX()), this.getY() + (direction.getY()))) {
+            // Si il est pas à portée on supprime le tir
             if (this.getPosition().distance(this.tourelle.getPosition()) > this.tourelle.getPortee()) {
                 env.getTirs().remove(this);
             }
