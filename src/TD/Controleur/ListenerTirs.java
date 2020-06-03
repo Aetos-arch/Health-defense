@@ -10,11 +10,11 @@ import javafx.scene.layout.Pane;
 import java.util.HashMap;
 import java.util.Map;
 
-public class TirsListener implements ListChangeListener<Tir> { 
+public class ListenerTirs implements ListChangeListener<Tir> { 
     Pane map;
     Map <Tir, VueTir> modelToView;
 
-    public TirsListener(Pane map) {
+    public ListenerTirs(Pane map) {
         this.map = map;
         this.modelToView = new HashMap<Tir, VueTir>();
     }

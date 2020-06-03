@@ -52,7 +52,7 @@ public class Controleur implements Initializable {
     public void initialize(URL url, ResourceBundle resourceBundle) {
         this.partie = new Partie();
         vM = new VueMap(partie.getEnv().getMap(), tilePaneMap);
-        this.partie.getEnv().getTirs().addListener(new TirsListener(panePers));
+        this.partie.getEnv().getTirs().addListener(new ListenerTirs(panePers));
         this.partie.getEnv().getPersos().addListener(new ListenerPers(panePers, this));
         initGame();
         this.partie.getEnv().creerArbre();
@@ -125,5 +125,9 @@ public class Controleur implements Initializable {
 
     public int getTour() {
         return this.nbTour.get();
+    }
+    
+    public Partie getPartie() {
+    	return this.partie;
     }
 }
