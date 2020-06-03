@@ -107,13 +107,11 @@ public class Controleur implements Initializable {
             event.acceptTransferModes(TransferMode.ANY);
         }
     }
-
+    
     @FXML
     void dragDropped(DragEvent event) {   
-    	System.out.println("Allo?");
     	if(event.getX() != 800 && event.getY() != 480) {
 	        Tourelle t = new TourelleVitamine((int) Math.floor(event.getX()/16)*16, (int) Math.floor(event.getY()/16)*16, partie.getEnv());
-	        System.out.println("Tourelle ajouté");
 	        this.partie.ajouterTour(t);  
 	        paneEntite.getChildren().add(new VueTourelle(t));
     	}
