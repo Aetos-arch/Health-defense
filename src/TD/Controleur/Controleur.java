@@ -52,7 +52,7 @@ public class Controleur implements Initializable {
     public void initialize(URL url, ResourceBundle resourceBundle) {
         this.partie = new Partie();
         vM = new VueMap(partie.getEnv().getMap(), tilePaneMap);
-        this.partie.getEnv().getTirs().addListener(new TirsListener(panePers));
+        this.partie.getEnv().getTirs().addListener(new ListenerTirs(panePers));
         this.partie.getEnv().getPersos().addListener(new ListenerPers(panePers, this));
         initGame();
         this.partie.getEnv().creerArbre();
@@ -111,9 +111,9 @@ public class Controleur implements Initializable {
     @FXML
     void dragDropped(DragEvent event) {   
     	if(event.getX() != 800 && event.getY() != 480) {
-	        Tourelle t = new TourelleVitamine((int) Math.floor(event.getX()/16)*16, (int) Math.floor(event.getY()/16)*16, partie.getEnv());
+    		Tourelle t = new TourelleVitamine((int) Math.floor(event.getX()/16)*16, (int) Math.floor(event.getY()/16)*16, partie.getEnv());
 	        this.partie.ajouterTour(t);  
-          panePers.getChildren().add(new VueTourelle(t));
+	        panePers.getChildren().add(new VueTourelle(t));
     	}
     }
 
@@ -125,5 +125,9 @@ public class Controleur implements Initializable {
 
     public int getTour() {
         return this.nbTour.get();
+    }
+    
+    public Partie getPartie() {
+    	return this.partie;
     }
 }
