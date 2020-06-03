@@ -29,7 +29,7 @@ public class Controleur implements Initializable {
     @FXML
     private TilePane tilePaneMap;
     @FXML
-    private Pane panePers;
+    private Pane paneEntite;
     @FXML
     private Label labelPV;
     @FXML
@@ -39,7 +39,7 @@ public class Controleur implements Initializable {
     @FXML
     private Label labelMoney;
     @FXML
-    private Pane dragTourelle;
+    private ImageView dragTourelle;
 
     private Partie partie;
     private VueMap vM;
@@ -52,8 +52,8 @@ public class Controleur implements Initializable {
     public void initialize(URL url, ResourceBundle resourceBundle) {
         this.partie = new Partie();
         vM = new VueMap(partie.getEnv().getMap(), tilePaneMap);
-        this.partie.getEnv().getTirs().addListener(new TirsListener(panePers));
-        this.partie.getEnv().getPersos().addListener(new ListenerPers(panePers, this));
+        this.partie.getEnv().getTirs().addListener(new TirsListener(paneEntite));
+        this.partie.getEnv().getPersos().addListener(new ListenerPers(paneEntite, this));
         initGame();
         this.partie.getEnv().creerArbre();
         this.nbTour = new SimpleIntegerProperty();
@@ -63,7 +63,7 @@ public class Controleur implements Initializable {
         this.labelVague.textProperty().bind(this.partie.vagueProperty().asString());
         this.labelPV.textProperty().bind(this.partie.pvProperty().asString());
 
-        this.dragTourelle.getChildren().add(new ImageView(new Image("Sources/Tourelles/tourelle1.png")));
+        this.dragTourelle.setImage(new Image("Sources/Tourelles/tourelle1.png"));
         
     }
     
@@ -94,7 +94,7 @@ public class Controleur implements Initializable {
     void dragDetected(MouseEvent event) {
         Dragboard db = dragTourelle.startDragAndDrop(TransferMode.ANY);
         ClipboardContent cb = new ClipboardContent();
-        Image image = ((ImageView) dragTourelle.getChildren().get(0)).getImage();
+        Image image = (dragTourelle.getImage());
         db.setDragView(image,8,8);
         cb.putImage(image);
         db.setContent(cb);
@@ -110,10 +110,12 @@ public class Controleur implements Initializable {
 
     @FXML
     void dragDropped(DragEvent event) {   
+    	System.out.println("Allo?");
     	if(event.getX() != 800 && event.getY() != 480) {
 	        Tourelle t = new TourelleVitamine((int) Math.floor(event.getX()/16)*16, (int) Math.floor(event.getY()/16)*16, partie.getEnv());
+	        System.out.println("Tourelle ajouté");
 	        this.partie.ajouterTour(t);  
-          panePers.getChildren().add(new VueTourelle(t));
+	        paneEntite.getChildren().add(new VueTourelle(t));
     	}
     }
 
