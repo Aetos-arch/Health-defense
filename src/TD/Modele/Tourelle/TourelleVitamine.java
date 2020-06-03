@@ -21,7 +21,7 @@ public class TourelleVitamine extends Tourelle {
 	        Personnage p = viser();
 	        if(p != null) {
                 Position positionCible = new Position(p.getX(), p.getY());
-                Tir tir = new TirVitamine(this.getPosition(), positionCible, portee, env, this);
+                Tir tir = new TirVitamine(this.getPosition(), positionCible, env, this);
                 env.ajouterTir(tir);
             }
     }
