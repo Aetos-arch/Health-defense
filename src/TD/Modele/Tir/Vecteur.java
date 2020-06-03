@@ -12,7 +12,8 @@ public class Vecteur implements Coordonnee {
     }
 
     public Vecteur () {
-
+        this.x = 0;
+        this.y = 0;
     }
 
     public Vecteur(Coordonnee a, Coordonnee b) {

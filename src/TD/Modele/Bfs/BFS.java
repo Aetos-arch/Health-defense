@@ -115,7 +115,6 @@ public class BFS {
 				if(!a.equals(s) && !a.estMarque())
 						this.adj.add(a);
 		}
-		
 	}
 	
 	public HashMap<Sommet, Sommet> getHashMap(){
