@@ -40,6 +40,8 @@ public class Controleur implements Initializable {
     private Label labelMoney;
     @FXML
     private ImageView dragTourelle;
+    @FXML
+    private Label labelInfo;
 
     private Partie partie;
     private VueMap vM;
@@ -74,12 +76,10 @@ public class Controleur implements Initializable {
 		KeyFrame kf = new KeyFrame(Duration.seconds(0.02),(ev ->{
 
 			if(this.partie.estPerdu()){
-				System.out.println("perdu");
-				System.out.println("game over");
+				this.labelInfo.textProperty().setValue("game over");
 				gameLoop.stop();
 			}
 			else if(this.partie.niveauFini()) {
-				System.out.println("Niveau fini");
 				gameLoop.stop();
 			}
 			else {
@@ -109,18 +109,29 @@ public class Controleur implements Initializable {
     }
     
     @FXML
-    void dragDropped(DragEvent event) {   
-    	if(event.getX() != 800 && event.getY() != 480) {
-	        Tourelle t = new TourelleVitamine((int) Math.floor(event.getX()/16)*16, (int) Math.floor(event.getY()/16)*16, partie.getEnv());
-	        this.partie.ajouterTour(t);  
-	        paneEntite.getChildren().add(new VueTourelle(t));
+    void dragDropped(DragEvent event) {
+    	if(event.getX() != 800 && event.getY() != 480 && this.partie.getEnv().trouverSommet((int) Math.floor(event.getX()/16), (int) Math.floor(event.getY()/16)) != null) {
+    		if(this.partie.getMoney() < 500)
+    			this.labelInfo.textProperty().setValue("fond insuffisant");
+    		else {
+		        Tourelle t = new TourelleVitamine((int) Math.floor(event.getX()/16)*16, (int) Math.floor(event.getY()/16)*16, partie.getEnv());
+		        this.partie.ajouterTour(t);
+		        this.partie.diminuerMoney(500);
+		        paneEntite.getChildren().add(new VueTourelle(t));
+    		}
     	}
+    	else
+        	this.labelInfo.textProperty().setValue("placement impossible");
     }
+
 
     @FXML
     void action(ActionEvent event) {
         gameLoop.play();
-        this.partie.lancerNiveau();
+        if(this.partie.getVague() == 0)
+        	this.partie.lancerNiveau();
+        if(this.partie.niveauFini())
+        	this.partie.lancerNiveau();
     }
 
     public int getTour() {
