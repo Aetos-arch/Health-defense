@@ -127,6 +127,6 @@ public class Partie {
 	}
 
 	public boolean niveauFini() {
-		return this.env.getPersos().isEmpty();
+		return this.env.getPersos().isEmpty()&& this.env.getTirs().isEmpty();
 	}
 }
