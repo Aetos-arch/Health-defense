@@ -59,4 +59,7 @@
          </children>
       </HBox>
    </left>
+   <top>
+      <Label fx:id="labelInfo" BorderPane.alignment="CENTER" />
+   </top>
 </BorderPane>

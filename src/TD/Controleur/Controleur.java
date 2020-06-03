@@ -40,6 +40,8 @@ public class Controleur implements Initializable {
     private Label labelMoney;
     @FXML
     private ImageView dragTourelle;
+    @FXML
+    private Label labelInfo;
 
     private Partie partie;
     private VueMap vM;
@@ -109,10 +111,13 @@ public class Controleur implements Initializable {
     }
     
     @FXML
-    void dragDropped(DragEvent event) {   
+    void dragDropped(DragEvent event) {
+    	if(this.partie.getMoney() < 500)
+    		this.labelInfo.textProperty().setValue("fond insuffisant");
     	if(event.getX() != 800 && event.getY() != 480) {
 	        Tourelle t = new TourelleVitamine((int) Math.floor(event.getX()/16)*16, (int) Math.floor(event.getY()/16)*16, partie.getEnv());
-	        this.partie.ajouterTour(t);  
+	        this.partie.ajouterTour(t);
+	        this.partie.diminuerMoney(500);
 	        paneEntite.getChildren().add(new VueTourelle(t));
     	}
     }
