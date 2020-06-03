@@ -16,7 +16,7 @@
         </Pane>
     </center>
     <bottom>
-        <Button mnemonicParsing="false" onAction="#action" text="C'est parti!" BorderPane.alignment="CENTER" />
+        <Button mnemonicParsing="false" onAction="#action" text="Lancer niveau suivant" BorderPane.alignment="CENTER" />
     </bottom>
    <left>
       <HBox BorderPane.alignment="CENTER">
@@ -30,22 +30,10 @@
                      <children>
                         <Label text="Tour" />
                         <Label fx:id="labelVague" text="0" />
-                     </children>
-                  </VBox>
-                  <VBox prefHeight="200.0" prefWidth="100.0">
-                     <children>
                         <Label text="Score" />
                         <Label fx:id="labelScore" text="0" />
-                     </children>
-                  </VBox>
-                  <VBox prefHeight="200.0" prefWidth="100.0">
-                     <children>
                         <Label text="Money" />
                         <Label fx:id="labelMoney" text="0" />
-                     </children>
-                  </VBox>
-                  <VBox prefHeight="200.0" prefWidth="100.0">
-                     <children>
                         <Label text="PV" />
                         <Label fx:id="labelPV" text="30" />
                      </children>
