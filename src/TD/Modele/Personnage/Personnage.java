@@ -75,6 +75,9 @@ public abstract class Personnage {
 	}
 
 	public void seFaireSoigner(int d) {
+		this.soin(d);
+	}
+	protected void soin(int d) {
 		this.nivCont -= d;
 	}
 	protected void setVit(int v) {

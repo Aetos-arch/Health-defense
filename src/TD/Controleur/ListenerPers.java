@@ -1,5 +1,6 @@
 package TD.Controleur;
 
+import TD.Modele.Personnage.InfecteGrave;
 import TD.Modele.Personnage.InfecteJogger;
 import TD.Modele.Personnage.InfecteSansSymp;
 import TD.Modele.Personnage.Personnage;
@@ -44,6 +45,14 @@ public class ListenerPers implements ListChangeListener<Personnage> {
 						this.panePers.getChildren().add(vP);
 						this.correspondance.put(p, vP);
 					}
+					else if (p instanceof InfecteGrave) {
+						vP = new VuePers("Sources/Males/M_10.png");
+						vP.translateXProperty().bind(p.getXProperty());
+						vP.translateYProperty().bind(p.getYProperty());
+						this.c.nbTour.addListener(e -> vP.changerSprite(this.c.nbTour.getValue()));
+						this.panePers.getChildren().add(vP);
+						this.correspondance.put(p, vP);
+					}
 				}	
 			}
 			else if(change.wasRemoved()) {
@@ -51,6 +60,14 @@ public class ListenerPers implements ListChangeListener<Personnage> {
 					if(p instanceof InfecteSansSymp && !p.estArrive()) {
 						this.c.getPartie().augmenterMoney(100);
 						this.c.getPartie().augmenterScore(50);
+					}
+					else if(p instanceof InfecteJogger&& !p.estArrive()) {
+						this.c.getPartie().augmenterMoney(200);
+						this.c.getPartie().augmenterScore(100);
+					}
+					else if(p instanceof InfecteGrave&& !p.estArrive()) {
+						this.c.getPartie().augmenterMoney(250);
+						this.c.getPartie().augmenterScore(150);
 					}
 					else {
 						this.c.getPartie().perdrePV(1);
