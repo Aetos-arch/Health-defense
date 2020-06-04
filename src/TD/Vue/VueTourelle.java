@@ -1,15 +1,13 @@
 package TD.Vue;
 
-import TD.Modele.Tourelle.Tourelle;
 import javafx.scene.image.Image;
 import javafx.scene.image.ImageView;
 
 public class VueTourelle extends ImageView {
+    private final String[] URL = {"Sources/Tourelles/tourelle1.png", "Sources/Tourelles/TourelleSeringue.png"};
 
-    public VueTourelle(Tourelle t) {
+    public VueTourelle(int url) {
         super();
-        this.setImage(new Image("Sources/Tourelles/tourelle1.png"));
-        this.setX(t.getX());
-        this.setY(t.getY());
+        this.setImage(new Image(URL[url]));
     }
 }

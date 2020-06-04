@@ -52,4 +52,8 @@ public class TourelleDegatUnique extends Tourelle {
     public void agit() {
 
     }
+
+    public int getPortee() {
+        return this.portee;
+    }
 }
