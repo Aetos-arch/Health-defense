@@ -1,5 +1,6 @@
 package TD.Modele;
 
+import TD.Modele.Personnage.InfecteJogger;
 import TD.Modele.Personnage.InfecteSansSymp;
 import TD.Modele.Tourelle.Tourelle;
 import TD.Modele.Tourelle.TourelleVitamine;
@@ -39,6 +40,10 @@ public class Partie {
 				int random = (int) (Math.random() * 11) + 11;
 				this.env.ajouterPers(new InfecteSansSymp(0, random, this.env));
 				avancement++;
+				if(this.vagueProperty.getValue()> 2) {
+					random = (int) (Math.random() * 11) + 11;
+					this.env.ajouterPers(new InfecteJogger(0, random, this.env));
+				}
 			}
 		delai++;
 		this.env.unTour();

@@ -1,5 +1,6 @@
 package TD.Controleur;
 
+import TD.Modele.Personnage.InfecteJogger;
 import TD.Modele.Personnage.InfecteSansSymp;
 import TD.Modele.Personnage.Personnage;
 import TD.Vue.VuePers;
@@ -28,7 +29,15 @@ public class ListenerPers implements ListChangeListener<Personnage> {
 
 					VuePers vP;
 					if (p instanceof InfecteSansSymp) {
-						vP = new VuePers();
+						vP = new VuePers("Sources/Males/M_07.png");
+						vP.translateXProperty().bind(p.getXProperty());
+						vP.translateYProperty().bind(p.getYProperty());
+						this.c.nbTour.addListener(e -> vP.changerSprite(this.c.nbTour.getValue()));
+						this.panePers.getChildren().add(vP);
+						this.correspondance.put(p, vP);
+					}
+					else if (p instanceof InfecteJogger) {
+						vP = new VuePers("Sources/Females/F_07.png");
 						vP.translateXProperty().bind(p.getXProperty());
 						vP.translateYProperty().bind(p.getYProperty());
 						this.c.nbTour.addListener(e -> vP.changerSprite(this.c.nbTour.getValue()));

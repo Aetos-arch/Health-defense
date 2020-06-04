@@ -40,6 +40,7 @@ public class Controleur implements Initializable {
     private Label labelMoney;
     @FXML
     private ImageView dragTourelle;
+
     @FXML
     private Label labelInfo;
 
