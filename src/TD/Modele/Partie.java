@@ -19,8 +19,8 @@ public class Partie {
 
 	public Partie() {
 		this.scoreProperty = new SimpleIntegerProperty(0);
-		this.vagueProperty = new SimpleIntegerProperty(1);
-		this.moneyProperty = new SimpleIntegerProperty(0);
+		this.vagueProperty = new SimpleIntegerProperty(0);
+		this.moneyProperty = new SimpleIntegerProperty(1000);
 		this.env = new Environnement();
 		this.pvProperty = new SimpleIntegerProperty(30);
 	}
@@ -68,6 +68,10 @@ public class Partie {
 	
 	public void augmenterMoney(int n) {
 		this.setMoney(this.getMoney()+n);
+	}
+	
+	public void diminuerMoney(int n) {
+		this.setMoney(this.getMoney()-n);
 	}
 	
 	public IntegerProperty moneyProperty() {
@@ -123,6 +127,6 @@ public class Partie {
 	}
 
 	public boolean niveauFini() {
-		return this.env.getPersos().isEmpty();
+		return this.env.getPersos().isEmpty() && this.env.getTirs().isEmpty();
 	}
 }

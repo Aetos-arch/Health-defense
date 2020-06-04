@@ -1,5 +1,6 @@
 <?xml version="1.0" encoding="UTF-8"?>
 
+<?import javafx.scene.image.*?>
 <?import java.lang.*?>
 <?import javafx.geometry.*?>
 <?import javafx.geometry.Insets?>
@@ -8,14 +9,14 @@
 
 <BorderPane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="500.0" prefWidth="1500.0" xmlns="http://javafx.com/javafx/8" xmlns:fx="http://javafx.com/fxml/1" fx:controller="TD.Controleur.Controleur">
     <center>
-        <Pane fx:id="panePers" maxHeight="480.0" maxWidth="800.0" prefHeight="480.0" prefWidth="800.0" BorderPane.alignment="CENTER_LEFT">
+        <Pane fx:id="paneEntite" maxHeight="480.0" maxWidth="800.0" onDragDropped="#dragDropped" onDragOver="#dragOver" prefHeight="480.0" prefWidth="800.0" BorderPane.alignment="CENTER_LEFT">
             <children>
-                <TilePane fx:id="tilePaneMap" alignment="CENTER" maxHeight="480.0" maxWidth="800.0" onDragDropped="#dragDropped" onDragOver="#dragOver" prefHeight="480.0" prefWidth="800.0" BorderPane.alignment="CENTER" />
+                <TilePane fx:id="tilePaneMap" alignment="CENTER" maxHeight="480.0" maxWidth="800.0" prefHeight="480.0" prefWidth="800.0" BorderPane.alignment="CENTER" />
             </children>
         </Pane>
     </center>
     <bottom>
-        <Button mnemonicParsing="false" onAction="#action" text="C'est parti!" BorderPane.alignment="CENTER" />
+        <Button mnemonicParsing="false" onAction="#action" text="Lancer niveau suivant" BorderPane.alignment="CENTER" />
     </bottom>
    <left>
       <HBox BorderPane.alignment="CENTER">
@@ -27,33 +28,17 @@
                <children>
                   <VBox prefHeight="200.0" prefWidth="100.0">
                      <children>
-                        <VBox prefHeight="200.0" prefWidth="100.0">
-                           <children>
-                              <Label text="Tour" />
-                              <Label fx:id="labelVague" text="0" />
-                           </children>
-                        </VBox>
-                        <VBox prefHeight="200.0" prefWidth="100.0">
-                           <children>
-                              <Label text="Score" />
-                              <Label fx:id="labelScore" text="0" />
-                           </children>
-                        </VBox>
-                        <VBox prefHeight="200.0" prefWidth="100.0">
-                           <children>
-                              <Label text="Money" />
-                              <Label fx:id="labelMoney" text="0" />
-                           </children>
-                        </VBox>
-                        <VBox prefHeight="200.0" prefWidth="100.0">
-                           <children>
-                              <Label text="PV" />
-                              <Label fx:id="labelPV" text="30" />
-                           </children>
-                        </VBox>
-                        <Pane fx:id="dragTourelle" onDragDetected="#dragDetected" prefHeight="200.0" prefWidth="200.0" />
+                        <Label text="Tour" />
+                        <Label fx:id="labelVague" text="0" />
+                        <Label text="Score" />
+                        <Label fx:id="labelScore" text="0" />
+                        <Label text="Money" />
+                        <Label fx:id="labelMoney" text="0" />
+                        <Label text="PV" />
+                        <Label fx:id="labelPV" text="30" />
                      </children>
                   </VBox>
+                  <ImageView fx:id="dragTourelle" fitHeight="16.0" fitWidth="16.0" onDragDetected="#dragDetected" pickOnBounds="true" preserveRatio="true" />
                </children>
                <HBox.margin>
                   <Insets top="100.0" />
@@ -62,4 +47,7 @@
          </children>
       </HBox>
    </left>
+   <top>
+      <Label fx:id="labelInfo" BorderPane.alignment="CENTER" />
+   </top>
 </BorderPane>

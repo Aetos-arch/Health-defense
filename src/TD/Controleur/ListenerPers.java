@@ -39,9 +39,12 @@ public class ListenerPers implements ListChangeListener<Personnage> {
 			}
 			else if(change.wasRemoved()) {
 				for(Personnage p: change.getRemoved()) {
-					if(p instanceof InfecteSansSymp) {
+					if(p instanceof InfecteSansSymp && !p.estArrive()) {
 						this.c.getPartie().augmenterMoney(100);
 						this.c.getPartie().augmenterScore(50);
+					}
+					else {
+						this.c.getPartie().perdrePV(1);
 					}
 					this.panePers.getChildren().remove(this.correspondance.get(p));
 				}
