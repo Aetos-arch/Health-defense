@@ -5,21 +5,17 @@ import TD.Modele.Tourelle.TourelleVitamine;
 import TD.Utilitaire.Position;
 
 public class TirVitamine extends TirDirection {
-
     private TourelleVitamine tourelle;
 
-
-    public TirVitamine(Position pDuTir, Position pCible, Environnement env, TourelleVitamine t) {
-        super(pDuTir, 3, pCible, 8, env);
+    public TirVitamine(Position cible, Environnement env, TourelleVitamine t) {
+        super(t.getPosition(), 1, cible, 5, env);
         this.tourelle = t;
     }
 
-    // Supprime le tir si est plus dans la map ou plus à portée de la tourelle
-    // Si touche la cible inflige des dégats, sinon met à jour la position
     public void agit() {
         // Si va être dans la Map
         if (estDansMap(this.getX() + (direction.getX()), this.getY() + (direction.getY()))) {
-            // Si il est pas à portée on supprime le tir
+            // Si il est à une portée supérieur on supprime le tir
             if (this.getPosition().distance(this.tourelle.getPosition()) > this.tourelle.getPortee()) {
                 env.getTirs().remove(this);
             }
