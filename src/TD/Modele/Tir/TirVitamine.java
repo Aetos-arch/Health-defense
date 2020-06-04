@@ -12,6 +12,8 @@ public class TirVitamine extends TirDirection {
         this.tourelle = t;
     }
 
+    //////////////////////// TIR DIRECTION ? ABSTRACT
+
     public void agit() {
         // Si va être dans la Map
         if (estDansMap(this.getX() + (direction.getX()), this.getY() + (direction.getY()))) {

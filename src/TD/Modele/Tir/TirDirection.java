@@ -18,4 +18,6 @@ public abstract class TirDirection extends Tir {
         this.direction.setX(v.getX());
         this.direction.setY(v.getY());
     }
+
+
 }
