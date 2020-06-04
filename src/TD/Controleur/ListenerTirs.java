@@ -3,7 +3,6 @@ package TD.Controleur;
 import TD.Modele.Tir.Tir;
 import TD.Modele.Tir.TirVitamine;
 import TD.Vue.VueTir;
-import TD.Vue.VueTirVitamine;
 import javafx.collections.ListChangeListener;
 import javafx.scene.layout.Pane;
 
@@ -24,23 +23,23 @@ public class ListenerTirs implements ListChangeListener<Tir> {
     	while(change.next()) {
 	        if (change.wasAdded()) {
 	        	for(Tir tir :change.getAddedSubList()) {
-		            VueTir vT;
-		            if (tir instanceof TirVitamine) {
-		                vT = new VueTirVitamine(tir);
-		            }else {
-		                throw new IllegalArgumentException();
-		            }
-		            // garder en memoire association du tir avec son image
-		            modelToView.put(tir, vT);
-		            map.getChildren().add(vT);
-	        	}
+                    VueTir vT = null;
+                    if (tir instanceof TirVitamine) {
+                        vT = new VueTir(0);
+                        vT.xProperty().bind(tir.xProperty());
+                        vT.yProperty().bind(tir.yProperty());
+                    }
+                    // garder en memoire association du tir avec son image
+                    modelToView.put(tir, vT);
+                    map.getChildren().add(vT);
+                }
 	        }
 	        if (change.wasRemoved()) {
-	        	for(Tir tir : change.getRemoved()) {
-	        		map.getChildren().remove(modelToView.get(tir));
-	        		modelToView.remove(tir);
-	        	}
-	        }  	
+                for (Tir tir : change.getRemoved()) {
+                    map.getChildren().remove(modelToView.get(tir));
+                    modelToView.remove(tir);
+                }
+            }
     	}
     }
 

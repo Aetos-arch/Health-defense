@@ -8,20 +8,19 @@ import TD.Modele.Tourelle.Tourelle;
 import javafx.collections.FXCollections;
 import javafx.collections.ObservableList;
 
-import java.util.ArrayList;
 import java.util.HashMap;
-import java.util.List;
+
 
 public class Environnement {
 
 	private Map map;
-	private List<Tourelle> tours;
+	private ObservableList<Tourelle> tours;
 	private ObservableList<Personnage> persos;
 	private ObservableList<Tir> tirs;
 	private BFS bfs;
 
 	public Environnement() {
-		this.tours = new ArrayList<>();
+		this.tours = FXCollections.observableArrayList();
 		this.persos = FXCollections.observableArrayList();
 		this.map = new Map("src/Sources/map.csv");
 		this.bfs = new BFS(this.getMap());
@@ -58,7 +57,7 @@ public class Environnement {
 		return this.persos;
 	}
 
-	public List<Tourelle> getTours() {
+	public ObservableList<Tourelle> getTours() {
 		return this.tours;
 	}
 

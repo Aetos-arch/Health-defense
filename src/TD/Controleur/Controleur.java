@@ -55,6 +55,7 @@ public class Controleur implements Initializable {
         this.partie = new Partie();
         vM = new VueMap(partie.getEnv().getMap(), tilePaneMap);
         this.partie.getEnv().getTirs().addListener(new ListenerTirs(paneEntite));
+        this.partie.getEnv().getTours().addListener(new ListenerTourelles(paneEntite));
         this.partie.getEnv().getPersos().addListener(new ListenerPers(paneEntite, this));
         initGame();
         this.partie.getEnv().creerArbre();
@@ -114,11 +115,11 @@ public class Controleur implements Initializable {
     		if(this.partie.getMoney() < 500)
     			this.labelInfo.textProperty().setValue("fond insuffisant");
     		else {
-		        Tourelle t = new TourelleVitamine((int) Math.floor(event.getX()/16)*16, (int) Math.floor(event.getY()/16)*16, partie.getEnv());
-		        this.partie.ajouterTour(t);
-		        this.partie.diminuerMoney(500);
-		        paneEntite.getChildren().add(new VueTourelle(t));
-    		}
+                Tourelle t = new TourelleVitamine((int) Math.floor(event.getX() / 16) * 16, (int) Math.floor(event.getY() / 16) * 16, partie.getEnv());
+                this.partie.ajouterTour(t);
+                this.partie.diminuerMoney(500);
+               // paneEntite.getChildren().add(new VueTourelle(0));
+            }
     	}
     	else
         	this.labelInfo.textProperty().setValue("placement impossible");

@@ -24,8 +24,4 @@ public class TourelleVitamine extends TourelleDegatUnique {
         }
         delai++;
     }
-
-    public int getPortee() {
-        return this.portee;
-    }
 }

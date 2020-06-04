@@ -27,5 +27,4 @@ public abstract class Tourelle {
     public double getY() {
         return position.getY();
     }
-
 }

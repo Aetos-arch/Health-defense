@@ -20,7 +20,5 @@ public class VuePers extends ImageView {
 			Rectangle2D rogne = new Rectangle2D(16, 18, 16, 16);
 			this.setViewport(rogne);
 		}
-
 	}
-
 }

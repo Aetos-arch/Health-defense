@@ -1,14 +1,14 @@
 package TD.Modele.Tir;
 
 import TD.Modele.Environnement;
-import TD.Modele.Tourelle.TourelleVitamine;
+import TD.Modele.Tourelle.TourelleSeringue;
 import TD.Utilitaire.Position;
 
-public class TirVitamine extends TirDirection {
-    private TourelleVitamine tourelle;
+public class TirSeringue extends TirDirection {
+    private TourelleSeringue tourelle;
 
-    public TirVitamine(Position cible, Environnement env, TourelleVitamine t) {
-        super(t.getPosition(), 10, cible, 5, env);
+    public TirSeringue(Position cible, Environnement env, TourelleSeringue t) {
+        super(t.getPosition(), 20, cible, 10, env);
         this.tourelle = t;
     }
 

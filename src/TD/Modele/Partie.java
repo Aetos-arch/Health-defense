@@ -55,8 +55,7 @@ public class Partie {
 
 	public void ajouterTour(Tourelle t) {
 		this.env.ajouterTour(t);
-		this.env.modifChemin((int) (t.getX() / 16), (int) (t.getY() / 16));
-
+		this.env.modifChemin((int)(t.getX() / 16), (int)(t.getY() / 16));
 	}
 
 	public boolean estPerdu() {
