@@ -1,6 +1,4 @@
-package TD.Modele.Tir;
-
-import TD.Utilitaire.Coordonnee;
+package TD.Utilitaire;
 
 public class Vecteur implements Coordonnee {
     private double x;

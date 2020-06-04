@@ -4,6 +4,7 @@ import TD.Modele.Environnement;
 import TD.Modele.Personnage.Personnage;
 import TD.Utilitaire.Position;
 import TD.Utilitaire.PositionProperty;
+import TD.Utilitaire.Vecteur;
 import javafx.beans.property.DoubleProperty;
 
 import java.util.Objects;
@@ -34,8 +35,8 @@ public abstract class Tir {
 
     public boolean collision () {
         for (Personnage p : this.env.getPersos()) {
-            if ((p.getY() >= this.getY() && p.getY() <= this.getY() + hitbox) &&
-                    (p.getX() >= this.getX() && p.getX() <= this.getX() + hitbox)) {
+            if ((p.getY() >= this.getY() - hitbox && p.getY() <= this.getY() + hitbox) &&
+                    (p.getX() >= this.getX() - hitbox && p.getX() <= this.getX() + hitbox)) {
                 p.seFaireSoigner(pointAttaque);
                 return true;
             }

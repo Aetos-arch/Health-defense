@@ -7,8 +7,8 @@ import TD.Utilitaire.Position;
 public class TirVitamine extends TirDirection {
     private TourelleVitamine tourelle;
 
-    public TirVitamine(Position p, Position cible, Environnement env, TourelleVitamine t) {
-        super(p, 1, cible, 5, env); // t.getPosition();
+    public TirVitamine(Position cible, Environnement env, TourelleVitamine t) {
+        super(t.getPosition(), 1, cible, 5, env);
         this.tourelle = t;
     }
 

@@ -2,12 +2,12 @@ package TD.Modele.Tir;
 
 import TD.Modele.Environnement;
 import TD.Utilitaire.Position;
+import TD.Utilitaire.Vecteur;
 
 public abstract class TirDirection extends Tir {
 
-
     public TirDirection(Position p, int pointAttaque, Position cible, int v, Environnement env) {
-        super(p, pointAttaque, v, 15, env);
+        super(p, pointAttaque, v, 8, env);
         this.calculerDirection(cible);
     }
 
