@@ -6,12 +6,10 @@ import TD.Modele.Tir.Tir;
 import TD.Modele.Tir.TirVitamine;
 import TD.Utilitaire.Position;
 
-public class TourelleVitamine extends TourelleViser {
-    private int delai;
+public class TourelleVitamine extends TourelleDegatUnique {
 
     public TourelleVitamine(int x, int y, Environnement env) {
-        super(x, y, 3, env);
-        this.delai = 0;
+        super(x, y, env, 100, 10);
     }
 
     @Override
@@ -29,9 +27,5 @@ public class TourelleVitamine extends TourelleViser {
 
     public int getPortee() {
         return this.portee;
-    }
-
-    public void setPortee(int portee) {
-        this.portee = portee;
     }
 }

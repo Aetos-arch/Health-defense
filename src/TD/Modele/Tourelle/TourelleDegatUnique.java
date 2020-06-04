@@ -6,11 +6,12 @@ import TD.Utilitaire.Position;
 
 import java.util.ArrayList;
 
-public class TourelleViser extends Tourelle {
+public class TourelleDegatUnique extends Tourelle {
     protected int portee;
 
-    public TourelleViser(int x, int y, int c, Environnement env) {
-        super(x, y, 3, env);
+    public TourelleDegatUnique(int x, int y, Environnement env, int portee, int delai) {
+        super(x, y, delai, env);
+        this.portee = portee;
     }
 
     public ArrayList<Personnage> estAPortee() {
@@ -42,6 +43,10 @@ public class TourelleViser extends Tourelle {
         }
         return persoPlusProche;
     }
+
+    //public ArrayList listeInfecteGrave (ArrayList<Personnage>) {
+    //
+    //}
 
     @Override
     public void agit() {
