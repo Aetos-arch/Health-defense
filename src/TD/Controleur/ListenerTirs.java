@@ -39,7 +39,6 @@ public class ListenerTirs implements ListChangeListener<Tir> {
 	        	for(Tir tir : change.getRemoved()) {
 	        		map.getChildren().remove(modelToView.get(tir));
 	        		modelToView.remove(tir);
-
 	        	}
 	        }  	
     	}
