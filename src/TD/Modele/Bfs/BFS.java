@@ -28,7 +28,6 @@ public class BFS {
 		for (int i : this.tuilesSol)
 			this.sommetsACreer.add(i);
 		this.creerSommets();
-		
 	}
 	
 	public void creationChemin() {

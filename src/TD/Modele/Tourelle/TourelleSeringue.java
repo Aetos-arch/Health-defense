@@ -2,30 +2,28 @@ package TD.Modele.Tourelle;
 
 import TD.Modele.Environnement;
 import TD.Modele.Personnage.Personnage;
-import TD.Modele.Tir.Tir;
-import TD.Modele.Tir.TirVitamine;
 import TD.Utilitaire.Position;
 
 import java.util.ArrayList;
 
-public class TourelleVitamine extends Tourelle {
+public class TourelleSeringue extends Tourelle {
     private int portee;
     private int delai;
 
-    public TourelleVitamine(int x, int y, Environnement env) {
+    public TourelleSeringue(int x, int y, Environnement env) {
         super(x, y, 3, env);
-        this.portee = 100;
+        this.portee = 200;
         this.delai = 0;
     }
 
     @Override
     public void agit() {
-        if (delai % 2 == 0) {
+        if (delai % 100 == 0) {
             Personnage p = viser();
             if (p != null) {
                 Position positionCible = new Position(p.getX() + 8, p.getY() + 8);
-                Tir tir = new TirVitamine(this.getPosition(), positionCible, env, this);
-                env.ajouterTir(tir);
+                // Tir tir = new TirVitamine(this.getPosition(), positionCible, env, this);
+                //   env.ajouterTir(tir);
             }
         }
         delai++;
@@ -59,13 +57,5 @@ public class TourelleVitamine extends Tourelle {
             }
         }
         return persoPlusProche;
-    }
-
-    public int getPortee() {
-        return this.portee;
-    }
-
-    public void setPortee(int portee) {
-        this.portee = portee;
     }
 }

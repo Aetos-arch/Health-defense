@@ -15,7 +15,6 @@ public class Map {
 			BufferedReader csvReader = new BufferedReader(new FileReader(url)); // pour lire un fichier
 			while ((ligne = csvReader.readLine())!= null) { // donner ligne préparer dans tableau de String
 				String [] data = ligne.split(","); // pour lui dire le caractère de séparation
-				
 				for (int j = 0; j< 50; j++) {
 					map[numLigne][j] = Integer.parseInt(data[j]);
 				}
@@ -24,8 +23,8 @@ public class Map {
 			csvReader.close();
 		}
 		catch (Exception e){
-			System.out.println("le fichier n'existe pas! ");
-		}
+            System.out.println("le fichier n'existe pas !"); // add e.error
+        }
 	}
 	
 	public int[][] getMap(){
