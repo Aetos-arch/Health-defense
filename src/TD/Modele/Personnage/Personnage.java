@@ -9,7 +9,6 @@ import java.util.HashMap;
 
 public abstract class Personnage {
 	
-	int id;
 	private IntegerProperty x;
 	private IntegerProperty y;
 	private int nivCont;
@@ -21,14 +20,13 @@ public abstract class Personnage {
 	private HashMap<Sommet, Sommet> aretes;
 	private boolean arrive;
 	
-	public Personnage(int vit, int nivContamination, int id, int xS, int yS, Environnement e) {
+	public Personnage(int vit, int nivContamination, int xS, int yS, Environnement e) {
 		this.x = new SimpleIntegerProperty();
 		this.y = new SimpleIntegerProperty();
 		this.x.set(xS*16);
 		this.y.set(yS*16);
 		this.nivCont = nivContamination;
 		this.vitesse = vit;
-		this.id = id;
 		this.env = e;
 		this.aretes = this.env.getHashMap();
 		this.initSom(xS, yS);
@@ -79,7 +77,9 @@ public abstract class Personnage {
 	public void seFaireSoigner(int d) {
 		this.nivCont -= d;
 	}
-	
+	protected void setVit(int v) {
+		this.vitesse = v;
+	}
 	public boolean estSain() {
 		return this.nivCont<= 0;
 	}
@@ -98,10 +98,6 @@ public abstract class Personnage {
 
     public int getY() {
         return y.getValue();
-    }
-
-    public int getId() {
-        return this.id;
     }
 
     public boolean estArrive() {

@@ -40,11 +40,9 @@ public class Controleur implements Initializable {
     private Label labelMoney;
     @FXML
     private ImageView dragTourelle;
-<<<<<<< HEAD
-=======
+
     @FXML
     private Label labelInfo;
->>>>>>> 7ff71d8d3ef5c145a11b14c29dd8711ea7d624b3
 
     private Partie partie;
     private VueMap vM;
