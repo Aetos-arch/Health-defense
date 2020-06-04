@@ -6,8 +6,8 @@ import javafx.scene.image.ImageView;
 
 public class VuePers extends ImageView {
 
-	public VuePers() {
-		this.setImage(new Image("Sources/Males/M_07.png"));
+	public VuePers(String url) {
+		this.setImage(new Image(url));
 		Rectangle2D rogne = new Rectangle2D(16, 1, 16, 16);
 		this.setViewport(rogne);
 	}
