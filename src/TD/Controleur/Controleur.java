@@ -40,7 +40,6 @@ public class Controleur implements Initializable {
     private Label labelMoney;
     @FXML
     private ImageView dragTourelle;
-
     @FXML
     private Label labelInfo;
 
@@ -92,7 +91,7 @@ public class Controleur implements Initializable {
     }
     
     @FXML
-    void dragDetected(MouseEvent event) {
+    void onDragDetected(MouseEvent event) {
         Dragboard db = dragTourelle.startDragAndDrop(TransferMode.ANY);
         ClipboardContent cb = new ClipboardContent();
         Image image = (dragTourelle.getImage());
@@ -103,14 +102,14 @@ public class Controleur implements Initializable {
     }
 
     @FXML
-    void dragOver(DragEvent event) {
+    void onDragOver(DragEvent event) {
         if (event.getDragboard().hasImage()) {
             event.acceptTransferModes(TransferMode.ANY);
         }
     }
     
     @FXML
-    void dragDropped(DragEvent event) {
+    void onDragDropped(DragEvent event) {
     	if(event.getX() != 800 && event.getY() != 480 && this.partie.getEnv().trouverSommet((int) Math.floor(event.getX()/16), (int) Math.floor(event.getY()/16)) != null) {
     		if(this.partie.getMoney() < 500)
     			this.labelInfo.textProperty().setValue("fond insuffisant");

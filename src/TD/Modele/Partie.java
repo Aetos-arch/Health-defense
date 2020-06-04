@@ -4,7 +4,6 @@ import TD.Modele.Personnage.InfecteGrave;
 import TD.Modele.Personnage.InfecteJogger;
 import TD.Modele.Personnage.InfecteSansSymp;
 import TD.Modele.Tourelle.Tourelle;
-import TD.Modele.Tourelle.TourelleVitamine;
 import javafx.beans.property.IntegerProperty;
 import javafx.beans.property.SimpleIntegerProperty;
 
@@ -41,11 +40,11 @@ public class Partie {
 				int random = (int) (Math.random() * 11) + 11;
 				this.env.ajouterPers(new InfecteSansSymp(0, random, this.env));
 				avancement++;
-				if(this.vagueProperty.getValue()> 2) {
+				if (this.vagueProperty.getValue() > 2) {
 					random = (int) (Math.random() * 11) + 11;
 					this.env.ajouterPers(new InfecteJogger(0, random, this.env));
 				}
-				if(this.vagueProperty.getValue()> 2) {
+				if (this.vagueProperty.getValue() > 2) {
 					random = (int) (Math.random() * 11) + 11;
 					this.env.ajouterPers(new InfecteGrave(0, random, this.env));
 				}
@@ -53,81 +52,81 @@ public class Partie {
 		delai++;
 		this.env.unTour();
 	}
-	
+
 	public void ajouterTour(Tourelle t) {
 		this.env.ajouterTour(t);
-		this.env.modifChemin((int)(t.getX() / 16), (int)(t.getY() / 16));
-		
+		this.env.modifChemin((int) (t.getX() / 16), (int) (t.getY() / 16));
+
 	}
 
 	public boolean estPerdu() {
 		return this.getPV() <= 0;
 	}
-	
+
 	public int nombreEnnemi() {
 		return this.getVague() * 3;
 	}
 
 	public void perdrePV(int n) {
-		this.setPV(this.getPV()-n);
+		this.setPV(this.getPV() - n);
 	}
-	
+
 	public void augmenterScore(int n) {
-		this.setScore(this.getScore()+n);
+		this.setScore(this.getScore() + n);
 	}
-	
+
 	public void augmenterMoney(int n) {
-		this.setMoney(this.getMoney()+n);
+		this.setMoney(this.getMoney() + n);
 	}
-	
+
 	public void diminuerMoney(int n) {
-		this.setMoney(this.getMoney()-n);
+		this.setMoney(this.getMoney() - n);
 	}
-	
+
 	public IntegerProperty moneyProperty() {
 		return this.moneyProperty;
 	}
-	
+
 	public int getMoney() {
 		return this.moneyProperty.getValue();
 	}
-	
+
 	public void setMoney(int n) {
 		this.moneyProperty.set(n);
 	}
-	
+
 	public IntegerProperty pvProperty() {
 		return this.pvProperty;
 	}
-	
+
 	public int getPV() {
 		return this.pvProperty.getValue();
 	}
-	
+
 	public void setPV(int n) {
 		this.pvProperty.set(n);
 	}
-	
+
 	public IntegerProperty vagueProperty() {
 		return this.vagueProperty;
 	}
-	
+
 	public int getVague() {
 		return this.vagueProperty.getValue();
 	}
-	
+
 	public void setVague(int n) {
 		this.vagueProperty.set(n);
 	}
-	
+
 	public IntegerProperty scoreProperty() {
 		return this.scoreProperty;
 	}
-	
+
 	public int getScore() {
 		return this.scoreProperty.getValue();
 	}
-	
+
 	public void setScore(int n) {
 		this.scoreProperty.set(n);
 	}
