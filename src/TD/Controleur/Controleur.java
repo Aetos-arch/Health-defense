@@ -137,7 +137,7 @@ public class Controleur implements Initializable {
     			this.labelInfo.textProperty().setValue("Placement impossible");
     		}
     	}
-    }
+    } 
 
 
     @FXML
