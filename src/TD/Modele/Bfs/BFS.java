@@ -116,6 +116,8 @@ public class BFS {
 						
 		}
 	}
+    
+    
 	private void trouverAdjD(Sommet s) {
 		this.adj.clear();
 		for (Sommet a: this.sommets) {
