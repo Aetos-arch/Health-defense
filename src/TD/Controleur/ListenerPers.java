@@ -30,7 +30,7 @@ public class ListenerPers implements ListChangeListener<Personnage> {
 
 					VuePers vP;
 					if (p instanceof InfecteSansSymp) {
-						vP = new VuePers("Sources/Males/M_07.png");
+						vP = new VuePers(0);
 						vP.translateXProperty().bind(p.getXProperty());
 						vP.translateYProperty().bind(p.getYProperty());
 						this.c.nbTour.addListener(e -> vP.changerSprite(this.c.nbTour.getValue()));
@@ -38,7 +38,7 @@ public class ListenerPers implements ListChangeListener<Personnage> {
 						this.correspondance.put(p, vP);
 					}
 					else if (p instanceof InfecteJogger) {
-						vP = new VuePers("Sources/Females/F_07.png");
+						vP = new VuePers(1);
 						vP.translateXProperty().bind(p.getXProperty());
 						vP.translateYProperty().bind(p.getYProperty());
 						this.c.nbTour.addListener(e -> vP.changerSprite(this.c.nbTour.getValue()));
@@ -46,7 +46,7 @@ public class ListenerPers implements ListChangeListener<Personnage> {
 						this.correspondance.put(p, vP);
 					}
 					else if (p instanceof InfecteGrave) {
-						vP = new VuePers("Sources/Males/M_10.png");
+						vP = new VuePers(2);
 						vP.translateXProperty().bind(p.getXProperty());
 						vP.translateYProperty().bind(p.getYProperty());
 						this.c.nbTour.addListener(e -> vP.changerSprite(this.c.nbTour.getValue()));

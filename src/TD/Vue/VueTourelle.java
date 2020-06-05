@@ -8,6 +8,6 @@ public class VueTourelle extends ImageView {
 
     public VueTourelle(int url) {
         super();
-        this.setImage(new Image(URL[url]));
+        	this.setImage(new Image(URL[url]));
     }
 }

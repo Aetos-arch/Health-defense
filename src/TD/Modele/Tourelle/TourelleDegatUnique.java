@@ -9,8 +9,8 @@ import java.util.ArrayList;
 public class TourelleDegatUnique extends Tourelle {
     protected int portee;
 
-    public TourelleDegatUnique(int x, int y, Environnement env, int portee, int delai) {
-        super(x, y, delai, env);
+    public TourelleDegatUnique(int x, int y, Environnement env, int portee, int delai, int prix) {
+        super(x, y, delai, env, prix);
         this.portee = portee;
     }
 
