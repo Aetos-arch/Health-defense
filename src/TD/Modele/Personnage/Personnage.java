@@ -39,17 +39,19 @@ public abstract class Personnage {
 	}
 
 	public void agit() {
+		//On actualise le chemin
 		this.aretes = this.env.getHashMap();
-		if(!arrive) {
-		if(x.getValue() == this.som.getX()*16 && y.getValue() == this.som.getY()*16) {
-			this.som = this.aretes.get(som);
-			if(this.som == null) {
-				this.arrive = true;
+		if(!arrive) { //Tant qu'on est pas arrive
+			//si on arrive au sommet cible on change de cible
+			if(x.getValue() == this.som.getX()*16 && y.getValue() == this.som.getY()*16) {
+				this.som = this.aretes.get(som);
+				if(this.som == null) {
+					this.arrive = true;
+				}
+				else{
+					this.calculerDir();	
+				}
 			}
-			else{
-				this.calculerDir();	
-			}
-		}
 		this.x.set(this.x.getValue() + this.dirX);
 		this.y.set(this.y.getValue() + this.dirY);
 		}
