@@ -61,11 +61,11 @@ public class Partie {
 		if(t.getPrix()< this.moneyProperty.getValue()) {
 			this.env.ajouterTour(t);
 			this.env.modifChemin((int)(t.getX() / 16), (int)(t.getY() / 16));
+			this.diminuerMoney(t.getPrix());
 		}
 		else {
 			throw new MoneyException();
 		}
-		
 	}
 
 	public boolean estPerdu() {
