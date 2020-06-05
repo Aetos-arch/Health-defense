@@ -6,6 +6,8 @@ import TD.Modele.Tir.Tir;
 import TD.Modele.Tir.TirSeringue;
 import TD.Utilitaire.Position;
 
+import java.util.Optional;
+
 public class TourelleSeringue extends TourelleDegatUnique {
 
     public TourelleSeringue(int x, int y, Environnement env) {
@@ -15,9 +17,10 @@ public class TourelleSeringue extends TourelleDegatUnique {
     @Override
     public void agit() {
         if (delai % 40 == 0) {
-            Personnage p = viser();
-            if (p != null) {
-                Position positionCible = new Position(p.getX() + 8, p.getY() + 8);
+            Optional<Personnage> optionalPersonnage = Optional.ofNullable(viser());
+            if (optionalPersonnage.isPresent()) {
+                Personnage personnage = optionalPersonnage.get();
+                Position positionCible = new Position(personnage.getX() + 8, personnage.getY() + 8);
                 Tir tir = new TirSeringue(positionCible, env, this);
                 env.ajouterTir(tir);
             }
