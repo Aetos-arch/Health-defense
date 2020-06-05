@@ -4,6 +4,8 @@ import java.util.ArrayList;
 import java.util.HashMap;
 import java.util.LinkedList;
 
+import TD.Exception.PlacementException;
+
 public class BFS {
 
 	private int [][] map;
@@ -12,11 +14,14 @@ public class BFS {
 	private ArrayList<Sommet> adj;
 	private HashMap<Sommet, Sommet> aretes;
 	private ArrayList<Integer> sommetsACreer;
+	private ArrayList<Integer> sommetsSol;
 	private static int[] tuilesSol = {0,1,14,15,16,17,18,19
 			,20,21,30,31,32,33,34,35,36,37,38,39
 			,50,51,52,53,54,55,56,57,58,59
 			,68,69,70,71,72,73,74,75,76,77,78,79
 			,88,89,90,91,92,93,202};
+	private static int[] tuilesSolSansRoute = {0,1,20,21};
+	
 	
 	public BFS(int [][] m) {
 		this.map= m;
@@ -27,6 +32,8 @@ public class BFS {
 		this.sommetsACreer = new ArrayList<Integer>();
 		for (int i : this.tuilesSol)
 			this.sommetsACreer.add(i);
+		for (int i : this.tuilesSolSansRoute)
+			this.sommetsSol.add(i);
 		this.creerSommets();
 	}
 	
@@ -80,12 +87,18 @@ public class BFS {
 		return null;
 	}
 
-    public void supprimerSommet(int x, int y) {
-        this.sommets.remove(this.trouverSommet(x, y));
-        this.resetListes();
-        for(Sommet s: this.sommets)
-        	s.nonMarque();
-        this.creationChemin();
+    public void supprimerSommet(int x, int y) throws PlacementException {
+    	if(this.sommetsSol.contains(this.map[y][x])) {
+    		this.sommets.remove(this.trouverSommet(x, y));
+            this.resetListes();
+            for(Sommet s: this.sommets)
+            	s.nonMarque();
+            this.creationChemin();
+    	}
+    	else {
+    		throw new PlacementException();
+    	}
+        
     }
 
     private void trouverAdjHV(Sommet s) {
