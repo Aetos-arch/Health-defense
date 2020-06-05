@@ -4,7 +4,7 @@ import javafx.scene.image.Image;
 import javafx.scene.image.ImageView;
 
 public class VueTourelle extends ImageView {
-    private final String[] URL = {"Sources/Tourelles/tourelle1.png", "Sources/Tourelles/TourelleSeringue.png"};
+    private final String[] URL = {"Sources/Tourelles/tourelleVitamineDragged.png", "Sources/Tourelles/tourelleSeringueDragged.png"};
 
     public VueTourelle(int url) {
         super();
