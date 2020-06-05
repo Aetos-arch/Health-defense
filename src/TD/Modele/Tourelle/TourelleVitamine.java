@@ -11,7 +11,7 @@ import java.util.Optional;
 public class TourelleVitamine extends TourelleDegatUnique {
 
     public TourelleVitamine(int x, int y, Environnement env) {
-        super(x, y, env, 600, 10, 500);
+        super(x, y, env, 100, 10, 500);
     }
 
     @Override
@@ -20,7 +20,7 @@ public class TourelleVitamine extends TourelleDegatUnique {
             Optional<Personnage> optionalPersonnage = Optional.ofNullable(viser());
             if (optionalPersonnage.isPresent()) {
                 Personnage personnage = optionalPersonnage.get();
-                Position positionCible = new Position(personnage.getX() + 8, personnage.getY() + 8);
+                Position positionCible = new Position(personnage.getX() + 8, personnage.getY());
                 Tir tir = new TirVitamine(positionCible, env, this);
                 env.ajouterTir(tir);
             }

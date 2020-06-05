@@ -1,8 +1,8 @@
 package TD.Controleur;
 
 import TD.Exception.MoneyException;
+import TD.Exception.PlacementException;
 import TD.Modele.Partie;
-import TD.Modele.Tourelle.Tourelle;
 import TD.Modele.Tourelle.TourelleSeringue;
 import TD.Modele.Tourelle.TourelleVitamine;
 import TD.Vue.VueMap;
@@ -114,27 +114,26 @@ public class Controleur implements Initializable {
     
     @FXML
     void onDragDropped(DragEvent event) {
-    	if(event.getX() != 800 && event.getY() != 480 && this.partie.getEnv().trouverSommet((int) Math.floor(event.getX()/16), (int) Math.floor(event.getY()/16)) != null) {
-    		try {
-    			switch (event.getDragboard().getString()) {
-			          case "dragTourVitamine":
-			            this.partie.ajouterTour(new TourelleVitamine((int) Math.floor(event.getX() / 16) * 16, (int) Math.floor(event.getY() / 16) * 16, partie.getEnv()));
-			            break;
+        if (event.getX() != 800 && event.getY() != 480) {
+            try {
+                switch (event.getDragboard().getString()) {
+                    case "dragTourVitamine":
+                        this.partie.ajouterTour(new TourelleVitamine((int) Math.floor(event.getX() / 16) * 16, (int) Math.floor(event.getY() / 16) * 16, partie.getEnv()));
+                        break;
 
-			          case "dragTourSeringue":
-			            this.partie.ajouterTour(new TourelleSeringue((int) Math.floor(event.getX() / 16) * 16, (int) Math.floor(event.getY() / 16) * 16, partie.getEnv()));
-			            break;
-			
-			          default:
-			            break;
-		        }
-    		}
-    		catch (MoneyException e) {
-    			this.labelInfo.textProperty().setValue("Pas assez d'argent!");
-    		}
-    	}
-    	else
-        	this.labelInfo.textProperty().setValue("placement impossible");
+                    case "dragTourSeringue":
+                        this.partie.ajouterTour(new TourelleSeringue((int) Math.floor(event.getX() / 16) * 16, (int) Math.floor(event.getY() / 16) * 16, partie.getEnv()));
+                        break;
+
+                    default:
+                        break;
+                }
+            } catch (MoneyException e) {
+                this.labelInfo.textProperty().setValue("Pas assez d'argent!");
+            } catch (PlacementException e) {
+                this.labelInfo.textProperty().setValue("Placement impossible");
+            }
+        }
     }
 
 

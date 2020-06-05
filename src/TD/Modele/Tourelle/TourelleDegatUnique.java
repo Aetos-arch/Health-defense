@@ -71,7 +71,6 @@ public abstract class TourelleDegatUnique extends Tourelle {
 
     public abstract void agit();
 
-
     public int getPortee() {
         return portee;
     }
