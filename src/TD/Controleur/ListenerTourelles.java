@@ -3,6 +3,7 @@ package TD.Controleur;
 
 import TD.Modele.Tourelle.Tourelle;
 import TD.Modele.Tourelle.TourelleSeringue;
+import TD.Modele.Tourelle.TourelleVaccin;
 import TD.Modele.Tourelle.TourelleVitamine;
 import TD.Vue.VueTourelle;
 import javafx.collections.ListChangeListener;
@@ -30,6 +31,8 @@ public class ListenerTourelles implements ListChangeListener<Tourelle> {
                         vT = new VueTourelle(0);
                     } else if (tourelle instanceof TourelleSeringue) {
                         vT = new VueTourelle(1);
+                    } else if (tourelle instanceof TourelleVaccin) {
+                        vT = new VueTourelle(2);
                     }
                     vT.setX(tourelle.getX());
                     vT.setY(tourelle.getY());
