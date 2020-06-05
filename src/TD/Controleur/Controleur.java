@@ -120,11 +120,9 @@ public class Controleur implements Initializable {
                     case "dragTourVitamine":
                         this.partie.ajouterTour(new TourelleVitamine((int) Math.floor(event.getX() / 16) * 16, (int) Math.floor(event.getY() / 16) * 16, partie.getEnv()));
                         break;
-
                     case "dragTourSeringue":
                         this.partie.ajouterTour(new TourelleSeringue((int) Math.floor(event.getX() / 16) * 16, (int) Math.floor(event.getY() / 16) * 16, partie.getEnv()));
                         break;
-
                     default:
                         break;
                 }

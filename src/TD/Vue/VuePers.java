@@ -7,7 +7,7 @@ import javafx.scene.image.ImageView;
 public class VuePers extends ImageView {
 
 	private final String[] Url = {"Sources/Males/M_07.png", "Sources/Females/F_07.png",
-									"Sources/Males/M_10.png"};
+									"Sources/Males/M_10.png", "Sources/Males/M_2.png"};
 	
 	public VuePers(int url) {
 			this.setImage(new Image(Url[url]));
@@ -23,5 +23,9 @@ public class VuePers extends ImageView {
 			Rectangle2D rogne = new Rectangle2D(16, 18, 16, 16);
 			this.setViewport(rogne);
 		}
+	}
+
+	public void changerSpriteSain() {
+		this.setImage(new Image(Url[4]));
 	}
 }
