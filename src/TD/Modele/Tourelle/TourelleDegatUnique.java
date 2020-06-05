@@ -1,12 +1,13 @@
 package TD.Modele.Tourelle;
 
 import TD.Modele.Environnement;
+import TD.Modele.Personnage.InfecteGrave;
 import TD.Modele.Personnage.Personnage;
 import TD.Utilitaire.Position;
 
 import java.util.ArrayList;
 
-public class TourelleDegatUnique extends Tourelle {
+public abstract class TourelleDegatUnique extends Tourelle {
     protected int portee;
 
     public TourelleDegatUnique(int x, int y, Environnement env, int portee, int delai, int prix) {
@@ -14,7 +15,23 @@ public class TourelleDegatUnique extends Tourelle {
         this.portee = portee;
     }
 
-    public ArrayList<Personnage> estAPortee() {
+    public Personnage viser() {
+        // Si pas de persos à portée return null
+        if (listePersosAPortee().isEmpty()) {
+            return null;
+        }
+
+        // Infecté grave à portée on vise eux en priorité
+        else if (!filtrerInfectesGrave(listePersosAPortee()).isEmpty()) {
+            ArrayList<Personnage> listeInfecteGrave = filtrerInfectesGrave(listePersosAPortee());
+            return getPersoLePlusProche(listeInfecteGrave);
+        }
+
+        // Sinon les personnages pas infecté grave
+        return getPersoLePlusProche(listePersosAPortee());
+    }
+
+    public ArrayList<Personnage> listePersosAPortee() {
         ArrayList<Personnage> persosAPortee = new ArrayList<>();
 
         for (Personnage p : env.getPersos()) {
@@ -26,14 +43,22 @@ public class TourelleDegatUnique extends Tourelle {
         return persosAPortee;
     }
 
-    public Personnage viser() {
-        if (estAPortee().size() == 0) {
-            return null;
+
+    public ArrayList<Personnage> filtrerInfectesGrave(ArrayList<Personnage> listePersos) {
+        ArrayList<Personnage> listePersosInfecteGrave = new ArrayList<>();
+        for (Personnage p : listePersos) {
+            if (p instanceof InfecteGrave) {
+                listePersosInfecteGrave.add(p);
+            }
         }
+        return listePersosInfecteGrave;
+    }
 
-        Personnage persoPlusProche = estAPortee().get(0);
 
-        for (Personnage p : estAPortee()) {
+    public Personnage getPersoLePlusProche(ArrayList<Personnage> listePersos) {
+        Personnage persoPlusProche = listePersosAPortee().get(0);
+
+        for (Personnage p : listePersos) {
             Position positionPersoProche = new Position(persoPlusProche.getX(), persoPlusProche.getY());
             Position positionPersoActuel = new Position(p.getX(), p.getY());
 
@@ -44,14 +69,8 @@ public class TourelleDegatUnique extends Tourelle {
         return persoPlusProche;
     }
 
-    //public ArrayList listeInfecteGrave (ArrayList<Personnage>) {
-    //
-    //}
+    public abstract void agit();
 
-    @Override
-    public void agit() {
-
-    }
 
     public int getPortee() {
         return portee;
