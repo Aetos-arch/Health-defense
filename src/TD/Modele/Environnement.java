@@ -1,5 +1,6 @@
 package TD.Modele;
 
+import TD.Exception.PlacementException;
 import TD.Modele.Bfs.BFS;
 import TD.Modele.Bfs.Sommet;
 import TD.Modele.Personnage.Personnage;
@@ -77,7 +78,7 @@ public class Environnement {
 		this.bfs.creationChemin();
 	}
 
-	public void modifChemin(int x, int y) {
+	public void modifChemin(int x, int y) throws PlacementException {
 		this.bfs.supprimerSommet(x, y);
 	}
 

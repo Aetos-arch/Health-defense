@@ -1,6 +1,7 @@
 package TD.Modele;
 
 import TD.Exception.MoneyException;
+import TD.Exception.PlacementException;
 import TD.Modele.Personnage.InfecteGrave;
 import TD.Modele.Personnage.InfecteJogger;
 import TD.Modele.Personnage.InfecteSansSymp;

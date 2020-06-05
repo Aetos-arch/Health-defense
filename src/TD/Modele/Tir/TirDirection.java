@@ -8,8 +8,8 @@ import TD.Utilitaire.Vecteur;
 public abstract class TirDirection extends Tir {
     private TourelleDegatUnique tourelle;
 
-    public TirDirection(int pointAttaque, Position cible, int v, Environnement env, TourelleDegatUnique t) {
-        super(t.getPosition(), pointAttaque, v, 8, env);
+    public TirDirection(int pointAttaque, Position cible, int v, Environnement env, int hitbox, TourelleDegatUnique t) {
+        super(t.getPosition(), pointAttaque, v, hitbox, env);
         this.calculerDirection(cible);
         this.tourelle = t;
     }

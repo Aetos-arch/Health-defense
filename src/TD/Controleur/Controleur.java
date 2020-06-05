@@ -1,6 +1,7 @@
 package TD.Controleur;
 
 import TD.Exception.MoneyException;
+import TD.Exception.PlacementException;
 import TD.Modele.Partie;
 import TD.Modele.Tourelle.TourelleSeringue;
 import TD.Modele.Tourelle.TourelleVitamine;
@@ -113,7 +114,7 @@ public class Controleur implements Initializable {
     
     @FXML
     void onDragDropped(DragEvent event) {
-    	if(event.getX() != 800 && event.getY() != 480 && this.partie.getEnv().trouverSommet((int) Math.floor(event.getX()/16), (int) Math.floor(event.getY()/16)) != null) {
+    	if(event.getX() != 800 && event.getY() != 480) {
     		try {
     			switch (event.getDragboard().getString()) {
 			          case "dragTourVitamine":
@@ -131,9 +132,10 @@ public class Controleur implements Initializable {
     		catch (MoneyException e) {
     			this.labelInfo.textProperty().setValue("Pas assez d'argent!");
     		}
+    		catch (PlacementException e) {
+    			this.labelInfo.textProperty().setValue("Placement impossible");
+    		}
     	}
-    	else
-        	this.labelInfo.textProperty().setValue("placement impossible");
     }
 
 
