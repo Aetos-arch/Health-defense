@@ -51,14 +51,30 @@ public class BFS {
 				this.aretes.put(t, s);
 			}
 			this.trouverAdjD(s);
-			for(Sommet t : this.adj) {
+			for (Sommet t : this.adj) {
 				t.marque();
 				this.file.addLast(t);
 				this.aretes.put(t, s);
 			}
 		}
 	}
-	
+
+	private void trouverAdjHV(Sommet s) {
+		this.adj.clear();
+		for (Sommet a : this.sommets) {
+			//Determine si le sommet a fait partie des sommets autour de s en vertical ou horizontal
+			if ((a.getX() == s.getX() && a.getY() == s.getY() - 1) ||
+					(a.getX() == s.getX() && a.getY() == s.getY() + 1) ||
+					(a.getX() == s.getX() - 1 && a.getY() == s.getY()) ||
+					(a.getX() == s.getX() + 1 && a.getY() == s.getY()))
+				//Enleve le cas ou les sommets sont identiques et si a est deja marqué
+				if (!a.equals(s) && !a.estMarque()) {
+					this.adj.add(a);
+				}
+
+		}
+	}
+
 	private void resetListes() {
 		this.file.clear();
 		this.aretes.clear();
