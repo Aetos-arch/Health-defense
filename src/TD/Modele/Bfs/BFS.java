@@ -88,7 +88,7 @@ public class BFS {
 	}
 
     public void supprimerSommet(int x, int y) throws PlacementException {
-    	if(this.sommetsSol.contains(this.map[y][x])) {
+    	if(this.sommetsSol.contains(this.map[y][x])&& x!= 0) {
     		this.sommets.remove(this.trouverSommet(x, y));
             this.resetListes();
             for(Sommet s: this.sommets)
