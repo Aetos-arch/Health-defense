@@ -40,7 +40,7 @@ public class Environnement {
 
 		for (int i = this.persos.size() - 1; i >= 0; i--) {
 			this.persos.get(i).agit();
-			if (this.persos.get(i).estSain() || this.persos.get(i).estArrive())
+			if (this.persos.get(i).estArrive())
 				this.persos.remove(this.persos.get(i));
 		}
 		for (int i = this.tirs.size() - 1; i >= 0; i--)

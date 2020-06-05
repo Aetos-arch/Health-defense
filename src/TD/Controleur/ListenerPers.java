@@ -33,6 +33,7 @@ public class ListenerPers implements ListChangeListener<Personnage> {
 						vP = new VuePers(0);
 						vP.translateXProperty().bind(p.getXProperty());
 						vP.translateYProperty().bind(p.getYProperty());
+						p.getSainProperty().addListener(e -> vP.changerSpriteSain());
 						this.c.nbTour.addListener(e -> vP.changerSprite(this.c.nbTour.getValue()));
 						this.panePers.getChildren().add(vP);
 						this.correspondance.put(p, vP);
