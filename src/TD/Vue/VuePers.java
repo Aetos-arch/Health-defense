@@ -26,6 +26,6 @@ public class VuePers extends ImageView {
 	}
 
 	public void changerSpriteSain() {
-		this.setImage(new Image(Url[4]));
+		this.setImage(new Image(Url[3]));
 	}
 }
