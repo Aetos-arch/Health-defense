@@ -19,6 +19,8 @@ public abstract class Personnage {
 	private Environnement env;
 	private HashMap<Sommet, Sommet> aretes;
 	private boolean arrive;
+	private int healOnTime;
+	private IntegerProperty sainProperty;
 	
 	public Personnage(int vit, int nivContamination, int xS, int yS, Environnement e) {
 		this.x = new SimpleIntegerProperty();
@@ -32,6 +34,8 @@ public abstract class Personnage {
 		this.initSom(xS, yS);
 		this.calculerDir();
 		this.arrive = false;
+		this.healOnTime = 0;
+		this.sainProperty = new SimpleIntegerProperty(0);
 	}
 	
 	protected void initSom(int x, int y) {
@@ -39,19 +43,27 @@ public abstract class Personnage {
 	}
 
 	public void agit() {
+		//On actualise le chemin
 		this.aretes = this.env.getHashMap();
-		if(!arrive) {
-		if(x.getValue() == this.som.getX()*16 && y.getValue() == this.som.getY()*16) {
-			this.som = this.aretes.get(som);
-			if(this.som == null) {
-				this.arrive = true;
+		if(!arrive) { //Tant qu'on est pas arrive
+			//si on arrive au sommet cible on change de cible
+			if(x.getValue() == this.som.getX()*16 && y.getValue() == this.som.getY()*16) {
+				this.som = this.aretes.get(som);
+				if(this.som == null) {
+					this.arrive = true;
+				}
+				else{
+					this.calculerDir();	
+				}
 			}
-			else{
-				this.calculerDir();	
+			this.x.set(this.x.getValue() + this.dirX);
+			this.y.set(this.y.getValue() + this.dirY);
+			if(this.healOnTime>0) { //Met les soins sur la durée
+				this.seFaireSoigner(1);
+				this.healOnTime -=1;
 			}
-		}
-		this.x.set(this.x.getValue() + this.dirX);
-		this.y.set(this.y.getValue() + this.dirY);
+			if(this.estSain())
+				this.sainProperty.setValue(1);
 		}
 		
 	}
@@ -77,12 +89,19 @@ public abstract class Personnage {
 	public void seFaireSoigner(int d) {
 		this.soin(d);
 	}
+	
+	public void prendreUnHoT(int d) { // Permet de prendre des soins sur la durée
+		this.seFaireSoigner(d/2);
+		this.healOnTime += d/2;
+	}
+	
 	protected void soin(int d) {
 		this.nivCont -= d;
 	}
 	protected void setVit(int v) {
 		this.vitesse = v;
 	}
+	
 	public boolean estSain() {
 		return this.nivCont<= 0;
 	}
@@ -93,6 +112,10 @@ public abstract class Personnage {
 
 	public IntegerProperty getYProperty() {
 		return y;
+	}
+	
+	public IntegerProperty getSainProperty() {
+		return this.sainProperty;
 	}
 
     public int getX() {

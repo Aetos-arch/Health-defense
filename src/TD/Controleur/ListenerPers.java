@@ -33,6 +33,7 @@ public class ListenerPers implements ListChangeListener<Personnage> {
 						vP = new VuePers(0);
 						vP.translateXProperty().bind(p.getXProperty());
 						vP.translateYProperty().bind(p.getYProperty());
+						p.getSainProperty().addListener(e -> vP.changerSpriteSain());
 						this.c.nbTour.addListener(e -> vP.changerSprite(this.c.nbTour.getValue()));
 						this.panePers.getChildren().add(vP);
 						this.correspondance.put(p, vP);
@@ -41,6 +42,7 @@ public class ListenerPers implements ListChangeListener<Personnage> {
 						vP = new VuePers(1);
 						vP.translateXProperty().bind(p.getXProperty());
 						vP.translateYProperty().bind(p.getYProperty());
+						p.getSainProperty().addListener(e -> vP.changerSpriteSain());
 						this.c.nbTour.addListener(e -> vP.changerSprite(this.c.nbTour.getValue()));
 						this.panePers.getChildren().add(vP);
 						this.correspondance.put(p, vP);
@@ -49,6 +51,7 @@ public class ListenerPers implements ListChangeListener<Personnage> {
 						vP = new VuePers(2);
 						vP.translateXProperty().bind(p.getXProperty());
 						vP.translateYProperty().bind(p.getYProperty());
+						p.getSainProperty().addListener(e -> vP.changerSpriteSain());
 						this.c.nbTour.addListener(e -> vP.changerSprite(this.c.nbTour.getValue()));
 						this.panePers.getChildren().add(vP);
 						this.correspondance.put(p, vP);
@@ -57,17 +60,19 @@ public class ListenerPers implements ListChangeListener<Personnage> {
 			}
 			else if(change.wasRemoved()) {
 				for(Personnage p: change.getRemoved()) {
-					if(p instanceof InfecteSansSymp && !p.estArrive()) {
-						this.c.getPartie().augmenterMoney(100);
-						this.c.getPartie().augmenterScore(50);
-					}
-					else if(p instanceof InfecteJogger&& !p.estArrive()) {
-						this.c.getPartie().augmenterMoney(200);
-						this.c.getPartie().augmenterScore(100);
-					}
-					else if(p instanceof InfecteGrave&& !p.estArrive()) {
-						this.c.getPartie().augmenterMoney(250);
-						this.c.getPartie().augmenterScore(150);
+					if(p.estSain()) {
+						if(p instanceof InfecteSansSymp) {
+							this.c.getPartie().augmenterMoney(100);
+							this.c.getPartie().augmenterScore(50);
+						}
+						else if(p instanceof InfecteJogger) {
+							this.c.getPartie().augmenterMoney(200);
+							this.c.getPartie().augmenterScore(100);
+						}
+						else if(p instanceof InfecteGrave) {
+							this.c.getPartie().augmenterMoney(250);
+							this.c.getPartie().augmenterScore(150);
+						}
 					}
 					else {
 						this.c.getPartie().perdrePV(1);

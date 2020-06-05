@@ -1,12 +1,13 @@
 package TD.Modele.Tir;
 
 import TD.Modele.Environnement;
+import TD.Modele.Personnage.Personnage;
 import TD.Modele.Tourelle.TourelleDegatUnique;
 import TD.Utilitaire.Position;
 import TD.Utilitaire.Vecteur;
 
 public abstract class TirDirection extends Tir {
-    private TourelleDegatUnique tourelle;
+    protected TourelleDegatUnique tourelle;
 
     public TirDirection(int pointAttaque, Position cible, int v, Environnement env, int hitbox, TourelleDegatUnique t) {
         super(t.getPosition(), pointAttaque, v, hitbox, env);
@@ -22,6 +23,19 @@ public abstract class TirDirection extends Tir {
         this.direction.setY(v.getY());
     }
 
+    @Override
+    public boolean collision() {
+        for (Personnage p : this.env.getPersos()) {
+            if ((p.getY() >= this.getY() - hitbox && p.getY() <= this.getY() + hitbox) &&
+                    (p.getX() >= this.getX() - hitbox && p.getX() <= this.getX() + hitbox)) {
+                p.seFaireSoigner(this.pointAttaque);
+                return true;
+            }
+        }
+        return false;
+    }
+
+    @Override
     public void agit() {
         // Si va être dans la Map
         if (estDansMap(this.getX() + (direction.getX()), this.getY() + (direction.getY()))) {

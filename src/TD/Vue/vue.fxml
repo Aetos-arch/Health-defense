@@ -6,13 +6,16 @@
 <?import javafx.geometry.*?>
 <?import javafx.geometry.Insets?>
 <?import javafx.scene.control.*?>
+<?import javafx.scene.image.Image?>
+<?import javafx.scene.image.ImageView?>
 <?import javafx.scene.layout.*?>
 
 <BorderPane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="800.0" prefWidth="1200.0" styleClass="background" stylesheets="@../../Sources/style.css" xmlns="http://javafx.com/javafx/8" xmlns:fx="http://javafx.com/fxml/1" fx:controller="TD.Controleur.Controleur">
     <center>
         <Pane fx:id="paneEntite" maxHeight="480.0" maxWidth="800.0" onDragDropped="#onDragDropped" onDragOver="#onDragOver" prefHeight="480.0" prefWidth="800.0" styleClass="pane" BorderPane.alignment="CENTER">
             <children>
-                <TilePane fx:id="tilePaneMap" alignment="CENTER" maxHeight="480.0" maxWidth="800.0" prefHeight="480.0" prefWidth="800.0" BorderPane.alignment="CENTER" />
+                <TilePane fx:id="tilePaneMap" alignment="CENTER" maxHeight="480.0" maxWidth="800.0" prefHeight="480.0"
+                          prefWidth="800.0" BorderPane.alignment="CENTER"/>
             </children>
         </Pane>
     </center>
@@ -59,13 +62,13 @@
             <VBox alignment="CENTER" maxHeight="480.0" maxWidth="200.0" minHeight="480.0" minWidth="200.0">
                <children>
                   <Label text="Tour" />
-                  <Label fx:id="labelVague" />
+                   <Label fx:id="labelVague"/>
                   <Label text="Score" />
-                  <Label fx:id="labelScore" />
+                   <Label fx:id="labelScore"/>
                   <Label text="Money" />
-                  <Label fx:id="labelMoney" />
+                   <Label fx:id="labelMoney"/>
                   <Label text="PV" />
-                  <Label fx:id="labelPV" />
+                   <Label fx:id="labelPV"/>
                </children>
             </VBox>
          </children>
