@@ -3,7 +3,6 @@ package TD.Controleur;
 import TD.Exception.MoneyException;
 import TD.Exception.PlacementException;
 import TD.Modele.Partie;
-import TD.Modele.Tourelle.Tourelle;
 import TD.Modele.Tourelle.TourelleSeringue;
 import TD.Modele.Tourelle.TourelleVitamine;
 import TD.Vue.VueMap;

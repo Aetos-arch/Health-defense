@@ -10,6 +10,6 @@ public class InfecteJogger extends Personnage {
 	@Override
 	public void seFaireSoigner(int d) {
 		this.soin(d);
-		this.setVit(8);
+		this.setVit(4);
 	}
 }
