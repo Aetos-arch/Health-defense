@@ -36,12 +36,24 @@
                   <Label fx:id="labelPV" text="30" />
                </children>
             </VBox>
-            <ImageView fx:id="dragTourelle" fitHeight="16.0" fitWidth="16.0" onDragDetected="#onDragDetected" pickOnBounds="true" preserveRatio="true">
+            <ImageView fx:id="dragTourVitamine" fitHeight="16.0" fitWidth="16.0" onDragDetected="#onDragDetected" pickOnBounds="true" preserveRatio="true">
                <VBox.margin>
                   <Insets left="67.0" />
                </VBox.margin>
+               <image>
+                  <Image url="@../../Sources/Tourelles/tourelle1.png" />
+               </image>
             </ImageView>
             <Label alignment="CENTER" prefHeight="17.0" prefWidth="150.0" text="Tourelle vitamine 500" />
+            <ImageView fx:id="dragTourSeringue" fitHeight="16.0" fitWidth="16.0" onDragDetected="#onDragDetected" pickOnBounds="true" preserveRatio="true">
+               <VBox.margin>
+                  <Insets left="67.0" />
+               </VBox.margin>
+               <image>
+                  <Image url="@../../Sources/Tourelles/TourelleSeringue.png" />
+               </image>
+            </ImageView>
+            <Label alignment="CENTER" prefHeight="17.0" prefWidth="150.0" text="Tourelle seringue 750" />
          </children>
          <BorderPane.margin>
             <Insets top="200.0" />
