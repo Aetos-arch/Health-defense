@@ -1,22 +1,24 @@
 <?xml version="1.0" encoding="UTF-8"?>
 
-<?import javafx.scene.image.*?>
-<?import java.lang.*?>
-<?import javafx.geometry.*?>
 <?import javafx.geometry.Insets?>
 <?import javafx.scene.control.*?>
+<?import javafx.scene.image.Image?>
+<?import javafx.scene.image.ImageView?>
 <?import javafx.scene.layout.*?>
-
-<BorderPane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="800.0" prefWidth="1200.0" xmlns="http://javafx.com/javafx/8" xmlns:fx="http://javafx.com/fxml/1" fx:controller="TD.Controleur.Controleur">
+<BorderPane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="800.0"
+            prefWidth="1200.0" xmlns="http://javafx.com/javafx/8" xmlns:fx="http://javafx.com/fxml/1"
+            fx:controller="TD.Controleur.Controleur">
     <center>
-        <Pane fx:id="paneEntite" maxHeight="480.0" maxWidth="800.0" onDragDropped="#onDragDropped" onDragOver="#onDragOver" prefHeight="480.0" prefWidth="800.0" BorderPane.alignment="CENTER_LEFT">
+        <Pane fx:id="paneEntite" maxHeight="480.0" maxWidth="800.0" onDragDropped="#onDragDropped"
+              onDragOver="#onDragOver" prefHeight="480.0" prefWidth="800.0" BorderPane.alignment="CENTER_LEFT">
             <children>
-                <TilePane fx:id="tilePaneMap" alignment="CENTER" maxHeight="480.0" maxWidth="800.0" prefHeight="480.0" prefWidth="800.0" BorderPane.alignment="CENTER" />
+                <TilePane fx:id="tilePaneMap" alignment="CENTER" maxHeight="480.0" maxWidth="800.0" prefHeight="480.0"
+                          prefWidth="800.0" BorderPane.alignment="CENTER"/>
             </children>
         </Pane>
     </center>
     <bottom>
-        <Button mnemonicParsing="false" onAction="#action" text="Lancer niveau suivant" BorderPane.alignment="CENTER" />
+        <Button mnemonicParsing="false" onAction="#action" text="Lancer niveau suivant" BorderPane.alignment="CENTER"/>
     </bottom>
    <top>
       <Label fx:id="labelInfo" BorderPane.alignment="CENTER" />
@@ -27,13 +29,13 @@
             <VBox alignment="CENTER" prefHeight="200.0" prefWidth="100.0">
                <children>
                   <Label text="Tour" />
-                  <Label fx:id="labelVague" />
+                   <Label fx:id="labelVague"/>
                   <Label text="Score" />
-                  <Label fx:id="labelScore" />
+                   <Label fx:id="labelScore"/>
                   <Label text="Money" />
-                  <Label fx:id="labelMoney" />
+                   <Label fx:id="labelMoney"/>
                   <Label text="PV" />
-                  <Label fx:id="labelPV" />
+                   <Label fx:id="labelPV"/>
                </children>
             </VBox>
             <ImageView fx:id="dragTourVitamine" fitHeight="16.0" fitWidth="16.0" onDragDetected="#onDragDetected" pickOnBounds="true" preserveRatio="true">
