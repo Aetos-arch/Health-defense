@@ -1,0 +1,10 @@
+.background {
+	-fx-background-color: #dbe4eb;
+}
+
+.pane {
+	-fx-border-color : black;
+	-fx-border-style : solid outside;
+	-fx-border-width : 8px;
+	-fx-border-radius : 5px;
+}

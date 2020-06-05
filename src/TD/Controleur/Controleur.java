@@ -41,10 +41,6 @@ public class Controleur implements Initializable {
     @FXML
     private Label labelMoney;
     @FXML
-    private ImageView dragTourVitamine;
-    @FXML
-    private ImageView dragTourSeringue;
-    @FXML
     private Label labelInfo;
 
     private Partie partie;
@@ -98,7 +94,7 @@ public class Controleur implements Initializable {
     	ImageView imageview = (ImageView) event.getTarget();
         Dragboard db = imageview.startDragAndDrop(TransferMode.ANY);
         ClipboardContent cb = new ClipboardContent();
-        Image image = imageview.getImage();
+        Image image = new Image("Sources/Tourelles/" + imageview.getId() + "Dragged.png");
         db.setDragView(image,8,8);
         cb.putString(imageview.getId());
         db.setContent(cb);
@@ -114,24 +110,28 @@ public class Controleur implements Initializable {
     
     @FXML
     void onDragDropped(DragEvent event) {
-        if (event.getX() != 800 && event.getY() != 480) {
-            try {
-                switch (event.getDragboard().getString()) {
-                    case "dragTourVitamine":
-                        this.partie.ajouterTour(new TourelleVitamine((int) Math.floor(event.getX() / 16) * 16, (int) Math.floor(event.getY() / 16) * 16, partie.getEnv()));
-                        break;
-                    case "dragTourSeringue":
-                        this.partie.ajouterTour(new TourelleSeringue((int) Math.floor(event.getX() / 16) * 16, (int) Math.floor(event.getY() / 16) * 16, partie.getEnv()));
-                        break;
-                    default:
-                        break;
-                }
-            } catch (MoneyException e) {
-                this.labelInfo.textProperty().setValue("Pas assez d'argent!");
-            } catch (PlacementException e) {
-                this.labelInfo.textProperty().setValue("Placement impossible");
-            }
-        }
+    	if(event.getX() != 800 && event.getY() != 480) {
+    		try {
+    			switch (event.getDragboard().getString()) {
+			          case "tourelleVitamine":
+			            this.partie.ajouterTour(new TourelleVitamine((int) Math.floor(event.getX() / 16) * 16, (int) Math.floor(event.getY() / 16) * 16, partie.getEnv()));
+			            break;
+
+			          case "tourelleSeringue":
+			            this.partie.ajouterTour(new TourelleSeringue((int) Math.floor(event.getX() / 16) * 16, (int) Math.floor(event.getY() / 16) * 16, partie.getEnv()));
+			            break;
+			
+			          default:
+			            break;
+		        }
+    		}
+    		catch (MoneyException e) {
+    			this.labelInfo.textProperty().setValue("Pas assez d'argent!");
+    		}
+    		catch (PlacementException e) {
+    			this.labelInfo.textProperty().setValue("Placement impossible");
+    		}
+    	}
     }
 
 
