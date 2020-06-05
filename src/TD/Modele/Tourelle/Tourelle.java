@@ -7,13 +7,16 @@ public abstract class Tourelle {
     private Position position;
     protected Environnement env;
     protected int delai;
+    protected int portee;
     private int prix;
 
-    public Tourelle(int x, int y, int delai, Environnement env, int p) {
+
+    public Tourelle(int x, int y, int delai, Environnement env, int portee, int prix) {
         position = new Position(x, y);
         this.env = env;
         this.delai = delai;
-        this.prix = p;
+        this.portee = portee;
+        this.prix = prix;
     }
 
     public abstract void agit();
