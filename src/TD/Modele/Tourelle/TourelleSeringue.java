@@ -9,12 +9,12 @@ import TD.Utilitaire.Position;
 public class TourelleSeringue extends TourelleDegatUnique {
 
     public TourelleSeringue(int x, int y, Environnement env) {
-        super(x, y, env, 200, 20, 100);
+        super(x, y, env, 400, 20, 100);
     }
 
     @Override
     public void agit() {
-        if (delai % 20 == 0) {
+        if (delai % 40 == 0) {
             Personnage p = viser();
             if (p != null) {
                 Position positionCible = new Position(p.getX() + 8, p.getY() + 8);
