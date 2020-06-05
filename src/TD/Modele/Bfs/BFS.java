@@ -117,7 +117,6 @@ public class BFS {
     		throw new PlacementException();
     	}
 	}
-
 	private void trouverAdjD(Sommet s) {
 		this.adj.clear();
 		for (Sommet a : this.sommets) {

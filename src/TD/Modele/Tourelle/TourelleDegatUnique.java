@@ -35,7 +35,7 @@ public abstract class TourelleDegatUnique extends Tourelle {
 
         for (Personnage p : env.getPersos()) {
             Position positionPersoActuel = new Position(p.getX(), p.getY());
-            if (this.getPosition().distance(positionPersoActuel) <= portee) {
+            if (this.getPosition().distance(positionPersoActuel) <= portee && !p.estSain()) {
                 persosAPortee.add(p);
             }
         }
