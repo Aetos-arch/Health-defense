@@ -2,6 +2,8 @@ package TD.Modele.Tourelle;
 
 import TD.Modele.Environnement;
 import TD.Modele.Personnage.Personnage;
+import TD.Modele.Tir.Tir;
+import TD.Modele.Tir.TirSeringue;
 import TD.Utilitaire.Position;
 
 public class TourelleSeringue extends TourelleDegatUnique {
@@ -16,8 +18,8 @@ public class TourelleSeringue extends TourelleDegatUnique {
             Personnage p = viser();
             if (p != null) {
                 Position positionCible = new Position(p.getX() + 8, p.getY() + 8);
-                // Tir tir = new TirVitamine(this.getPosition(), positionCible, env, this);
-                //   env.ajouterTir(tir);
+                Tir tir = new TirSeringue(positionCible, env, this);
+                env.ajouterTir(tir);
             }
         }
         delai++;

@@ -54,6 +54,6 @@ public class TourelleDegatUnique extends Tourelle {
     }
 
     public int getPortee() {
-        return this.portee;
+        return portee;
     }
 }
