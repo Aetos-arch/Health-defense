@@ -30,6 +30,7 @@ public class BFS {
 		this.adj = new ArrayList<Sommet>();
 		this.aretes = new HashMap<Sommet, Sommet>();
 		this.sommetsACreer = new ArrayList<Integer>();
+		this.sommetsSol = new ArrayList<Integer>();
 		for (int i : this.tuilesSol)
 			this.sommetsACreer.add(i);
 		for (int i : this.tuilesSolSansRoute)
@@ -88,7 +89,7 @@ public class BFS {
 	}
 
     public void supprimerSommet(int x, int y) throws PlacementException {
-    	if(this.sommetsSol.contains(this.map[y][x])) {
+    	if(this.sommetsSol.contains(this.map[y][x]) && x != 0) {
     		this.sommets.remove(this.trouverSommet(x, y));
             this.resetListes();
             for(Sommet s: this.sommets)
