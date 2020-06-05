@@ -120,29 +120,9 @@ public class Controleur implements Initializable {
                     case "dragTourVitamine":
                         this.partie.ajouterTour(new TourelleVitamine((int) Math.floor(event.getX() / 16) * 16, (int) Math.floor(event.getY() / 16) * 16, partie.getEnv()));
                         break;
-
-<<<<<<< HEAD
-			          case "dragTourSeringue":
-			            this.partie.ajouterTour(new TourelleSeringue((int) Math.floor(event.getX() / 16) * 16, (int) Math.floor(event.getY() / 16) * 16, partie.getEnv()));
-			            break;
-			
-			          default:
-			            break;
-		        }
-    		}
-    		catch (MoneyException e) {
-    			this.labelInfo.textProperty().setValue("Pas assez d'argent!");
-    		}
-    		catch (PlacementException e) {
-    			this.labelInfo.textProperty().setValue("Placement impossible");
-    		}
-    	}
-    } 
-=======
                     case "dragTourSeringue":
                         this.partie.ajouterTour(new TourelleSeringue((int) Math.floor(event.getX() / 16) * 16, (int) Math.floor(event.getY() / 16) * 16, partie.getEnv()));
                         break;
-
                     default:
                         break;
                 }
@@ -153,7 +133,6 @@ public class Controleur implements Initializable {
             }
         }
     }
->>>>>>> master
 
 
     @FXML
