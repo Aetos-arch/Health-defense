@@ -7,7 +7,7 @@ import javafx.scene.image.ImageView;
 public class VuePers extends ImageView {
 
 	private final String[] Url = {"Sources/Males/M_07.png", "Sources/Females/F_07.png",
-									"Sources/Males/M_10.png", "Sources/Males/M_2.png"};
+									"Sources/Males/M_10.png", "Sources/Males/M_01.png"};
 	
 	public VuePers(int url) {
 			this.setImage(new Image(Url[url]));
