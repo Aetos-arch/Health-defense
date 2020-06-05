@@ -39,11 +39,11 @@ public abstract class TirDirection extends Tir {
     public void agit() {
         // Si va être dans la Map
         if (estDansMap(this.getX() + (direction.getX()), this.getY() + (direction.getY()))) {
-            // Si il est à une portée supérieur on supprime le tir
+            // Si il est à une portée supérieur à la portée de la tourelle on supprime le tir
             if (this.getPosition().distance(this.tourelle.getPosition()) > this.tourelle.getPortee()) {
                 env.getTirs().remove(this);
             }
-            // Si le tir a touché ça inflige les dégats sinon met à jour la position du tir
+            // Si le tir a touché un ennemie, ça inflige les dégats, sinon met à jour la position du tir
             else if (!collision()) {
                 this.xProperty().setValue(this.getX() + direction.getX());
                 this.yProperty().setValue(this.getY() + (direction.getY()));

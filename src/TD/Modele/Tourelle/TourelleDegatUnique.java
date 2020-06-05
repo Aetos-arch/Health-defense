@@ -21,9 +21,9 @@ public abstract class TourelleDegatUnique extends Tourelle {
             return null;
         }
 
+        ArrayList<Personnage> listeInfecteGrave = filtrerInfectesGrave(listePersosAPortee());
         // Infecté grave à portée on vise eux en priorité
-        else if (!filtrerInfectesGrave(listePersosAPortee()).isEmpty()) {
-            ArrayList<Personnage> listeInfecteGrave = filtrerInfectesGrave(listePersosAPortee());
+        if (!listeInfecteGrave.isEmpty()) {
             return getPersoLePlusProche(listeInfecteGrave);
         }
 
