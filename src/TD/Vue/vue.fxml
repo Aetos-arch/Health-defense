@@ -14,8 +14,7 @@
     <center>
         <Pane fx:id="paneEntite" maxHeight="480.0" maxWidth="800.0" onDragDropped="#onDragDropped" onDragOver="#onDragOver" prefHeight="480.0" prefWidth="800.0" styleClass="pane" BorderPane.alignment="CENTER">
             <children>
-                <TilePane fx:id="tilePaneMap" alignment="CENTER" maxHeight="480.0" maxWidth="800.0" prefHeight="480.0"
-                          prefWidth="800.0" BorderPane.alignment="CENTER"/>
+                <TilePane fx:id="tilePaneMap" alignment="CENTER" maxHeight="480.0" maxWidth="800.0" prefHeight="480.0" prefWidth="800.0" BorderPane.alignment="CENTER" />
             </children>
         </Pane>
     </center>
@@ -32,7 +31,7 @@
                         <Insets left="67.0" />
                      </VBox.margin>
                      <image>
-                        <Image url="@../../Sources/Tourelles/tourelleVitamine.png" />
+                        <Image url="@../../Sources/Tourelles/TourelleVitamine.png" />
                      </image>
                   </ImageView>
                   <Label alignment="CENTER" prefHeight="17.0" prefWidth="150.0" text="Tourelle vitamine 500" />
@@ -51,7 +50,18 @@
                   <Label alignment="CENTER" prefHeight="17.0" prefWidth="150.0" text="Tourelle seringue 750" />
                </children>
             </VBox>
-            <VBox prefHeight="200.0" prefWidth="150.0" />
+            <VBox prefHeight="200.0" prefWidth="150.0">
+               <children>
+                  <ImageView fx:id="tourelleVaccin" fitHeight="32.0" fitWidth="32.0" onDragDetected="#onDragDetected" pickOnBounds="true" preserveRatio="true">
+                     <VBox.margin>
+                        <Insets left="67.0" />
+                     </VBox.margin>
+                     <image>
+                        <Image url="@../../Sources/Tourelles/TourelleVaccin.png" />
+                     </image>
+                  </ImageView>
+                  <Label alignment="CENTER" prefHeight="17.0" prefWidth="150.0" text="Tourelle vaccin 1000" />
+               </children></VBox>
               <Button mnemonicParsing="false" onAction="#action" text="Lancer niveau suivant" />
          </children>
       </HBox>
@@ -62,13 +72,13 @@
             <VBox alignment="CENTER" maxHeight="480.0" maxWidth="200.0" minHeight="480.0" minWidth="200.0">
                <children>
                   <Label text="Tour" />
-                   <Label fx:id="labelVague"/>
+                   <Label fx:id="labelVague" />
                   <Label text="Score" />
-                   <Label fx:id="labelScore"/>
+                   <Label fx:id="labelScore" />
                   <Label text="Money" />
-                   <Label fx:id="labelMoney"/>
+                   <Label fx:id="labelMoney" />
                   <Label text="PV" />
-                   <Label fx:id="labelPV"/>
+                   <Label fx:id="labelPV" />
                </children>
             </VBox>
          </children>

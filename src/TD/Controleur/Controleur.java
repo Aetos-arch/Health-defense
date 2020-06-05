@@ -4,6 +4,7 @@ import TD.Exception.MoneyException;
 import TD.Exception.PlacementException;
 import TD.Modele.Partie;
 import TD.Modele.Tourelle.TourelleSeringue;
+import TD.Modele.Tourelle.TourelleVaccin;
 import TD.Modele.Tourelle.TourelleVitamine;
 import TD.Vue.VueMap;
 import TD.Vue.VuePers;
@@ -114,15 +115,19 @@ public class Controleur implements Initializable {
     		try {
     			switch (event.getDragboard().getString()) {
 			          case "tourelleVitamine":
-			            this.partie.ajouterTour(new TourelleVitamine((int) Math.floor(event.getX() / 16) * 16, (int) Math.floor(event.getY() / 16) * 16, partie.getEnv()));
-			            break;
+			        	  this.partie.ajouterTour(new TourelleVitamine((int) Math.floor(event.getX() / 16) * 16, (int) Math.floor(event.getY() / 16) * 16, partie.getEnv()));
+			        	  break;
 
 			          case "tourelleSeringue":
-			            this.partie.ajouterTour(new TourelleSeringue((int) Math.floor(event.getX() / 16) * 16, (int) Math.floor(event.getY() / 16) * 16, partie.getEnv()));
-			            break;
-			
+			        	  this.partie.ajouterTour(new TourelleSeringue((int) Math.floor(event.getX() / 16) * 16, (int) Math.floor(event.getY() / 16) * 16, partie.getEnv()));
+			        	  break;
+			            
+			          case "tourelleVaccin":
+			        	  this.partie.ajouterTour(new TourelleVaccin((int) Math.floor(event.getX() / 16) * 16, (int) Math.floor(event.getY() / 16) * 16, partie.getEnv()));
+			        	  break;
+			        	  
 			          default:
-			            break;
+			        	  break;
 		        }
     		}
     		catch (MoneyException e) {
