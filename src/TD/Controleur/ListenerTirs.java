@@ -1,6 +1,7 @@
 package TD.Controleur;
 
 import TD.Modele.Tir.Tir;
+import TD.Modele.Tir.TirSeringue;
 import TD.Modele.Tir.TirVitamine;
 import TD.Vue.VueTir;
 import javafx.collections.ListChangeListener;
@@ -26,9 +27,11 @@ public class ListenerTirs implements ListChangeListener<Tir> {
                     VueTir vT = null;
                     if (tir instanceof TirVitamine) {
                         vT = new VueTir(0);
-                        vT.xProperty().bind(tir.xProperty());
-                        vT.yProperty().bind(tir.yProperty());
+                    } else if (tir instanceof TirSeringue) {
+                        vT = new VueTir((1));
                     }
+                    vT.xProperty().bind(tir.xProperty());
+                    vT.yProperty().bind(tir.yProperty());
                     // garder en memoire association du tir avec son image
                     modelToView.put(tir, vT);
                     map.getChildren().add(vT);
