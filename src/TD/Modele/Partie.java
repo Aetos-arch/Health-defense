@@ -37,17 +37,20 @@ public class Partie {
 	public void unTour() {
 		if (delai % 40 == 39)
 			if (avancement < nombreEnnemi()) {
-				int random = (int) (Math.random() * 11) + 11;
-				this.env.ajouterPers(new InfecteSansSymp(0, random, this.env));
-				avancement++;
-				if (this.vagueProperty.getValue() > 2) {
-					random = (int) (Math.random() * 11) + 11;
+				double spawnAleatoire = Math.random()*3;
+				if(spawnAleatoire < 1) {
+					int random = (int) (Math.random() * 11) + 11;
+					this.env.ajouterPers(new InfecteSansSymp(0, random, this.env));
+				}		
+				else if (spawnAleatoire < 2) {
+					int random = (int) (Math.random() * 11) + 11;
 					this.env.ajouterPers(new InfecteJogger(0, random, this.env));
 				}
-				if (this.vagueProperty.getValue() > 2) {
-					random = (int) (Math.random() * 11) + 11;
+				else{
+					int random = (int) (Math.random() * 11) + 11;
 					this.env.ajouterPers(new InfecteGrave(0, random, this.env));
 				}
+				avancement++;
 			}
 		delai++;
 		this.env.unTour();
@@ -135,6 +138,6 @@ public class Partie {
 	}
 
 	public boolean niveauFini() {
-		return this.env.getPersos().isEmpty() && this.env.getTirs().isEmpty();
+		return this.env.getPersos().isEmpty() && this.env.getTirs().isEmpty() && avancement >= this.nombreEnnemi();
 	}
 }
