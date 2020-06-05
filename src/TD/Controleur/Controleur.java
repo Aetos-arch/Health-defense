@@ -117,17 +117,17 @@ public class Controleur implements Initializable {
     	if(event.getX() != 800 && event.getY() != 480 && this.partie.getEnv().trouverSommet((int) Math.floor(event.getX()/16), (int) Math.floor(event.getY()/16)) != null) {
     		try {
     			switch (event.getDragboard().getString()) {
-          case "dragTourVitamine":
-            this.partie.ajouterTour(new TourelleVitamine((int) Math.floor(event.getX() / 16) * 16, (int) Math.floor(event.getY() / 16) * 16, partie.getEnv()));
-            break;
+			          case "dragTourVitamine":
+			            this.partie.ajouterTour(new TourelleVitamine((int) Math.floor(event.getX() / 16) * 16, (int) Math.floor(event.getY() / 16) * 16, partie.getEnv()));
+			            break;
 
-          case "dragTourSeringue":
-            this.partie.ajouterTour(new TourelleSeringue((int) Math.floor(event.getX() / 16) * 16, (int) Math.floor(event.getY() / 16) * 16, partie.getEnv()));
-            break;
-
-          default:
-            break;
-          }
+			          case "dragTourSeringue":
+			            this.partie.ajouterTour(new TourelleSeringue((int) Math.floor(event.getX() / 16) * 16, (int) Math.floor(event.getY() / 16) * 16, partie.getEnv()));
+			            break;
+			
+			          default:
+			            break;
+		        }
     		}
     		catch (MoneyException e) {
     			this.labelInfo.textProperty().setValue("Pas assez d'argent!");
