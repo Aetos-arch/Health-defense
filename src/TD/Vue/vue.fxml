@@ -7,7 +7,7 @@
 <?import javafx.scene.control.*?>
 <?import javafx.scene.layout.*?>
 
-<BorderPane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="500.0" prefWidth="1500.0" xmlns="http://javafx.com/javafx/8" xmlns:fx="http://javafx.com/fxml/1" fx:controller="TD.Controleur.Controleur">
+<BorderPane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="800.0" prefWidth="1200.0" xmlns="http://javafx.com/javafx/8" xmlns:fx="http://javafx.com/fxml/1" fx:controller="TD.Controleur.Controleur">
     <center>
         <Pane fx:id="paneEntite" maxHeight="480.0" maxWidth="800.0" onDragDropped="#onDragDropped" onDragOver="#onDragOver" prefHeight="480.0" prefWidth="800.0" BorderPane.alignment="CENTER_LEFT">
             <children>
@@ -27,13 +27,13 @@
             <VBox alignment="CENTER" prefHeight="200.0" prefWidth="100.0">
                <children>
                   <Label text="Tour" />
-                  <Label fx:id="labelVague" text="0" />
+                  <Label fx:id="labelVague" />
                   <Label text="Score" />
-                  <Label fx:id="labelScore" text="0" />
+                  <Label fx:id="labelScore" />
                   <Label text="Money" />
-                  <Label fx:id="labelMoney" text="0" />
+                  <Label fx:id="labelMoney" />
                   <Label text="PV" />
-                  <Label fx:id="labelPV" text="30" />
+                  <Label fx:id="labelPV" />
                </children>
             </VBox>
             <ImageView fx:id="dragTourVitamine" fitHeight="16.0" fitWidth="16.0" onDragDetected="#onDragDetected" pickOnBounds="true" preserveRatio="true">
