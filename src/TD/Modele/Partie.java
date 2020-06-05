@@ -58,8 +58,8 @@ public class Partie {
 		this.env.unTour();
 	}
 
-	public void ajouterTour(Tourelle t) throws MoneyException, PlacementException {
-		if(t.getPrix()< this.moneyProperty.getValue()) {
+	public void ajouterTour(Tourelle t) throws MoneyException {
+		if(t.getPrix() <= this.moneyProperty.getValue()) {
 			this.env.ajouterTour(t);
 			this.env.modifChemin((int)(t.getX() / 16), (int)(t.getY() / 16));
 			this.diminuerMoney(t.getPrix());
