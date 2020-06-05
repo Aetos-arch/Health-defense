@@ -1,5 +1,6 @@
 package TD.Controleur;
 
+import TD.Exception.MoneyException;
 import TD.Modele.Partie;
 import TD.Modele.Tourelle.Tourelle;
 import TD.Modele.Tourelle.TourelleVitamine;
@@ -112,14 +113,14 @@ public class Controleur implements Initializable {
     @FXML
     void onDragDropped(DragEvent event) {
     	if(event.getX() != 800 && event.getY() != 480 && this.partie.getEnv().trouverSommet((int) Math.floor(event.getX()/16), (int) Math.floor(event.getY()/16)) != null) {
-    		if(this.partie.getMoney() < 500)
-    			this.labelInfo.textProperty().setValue("fond insuffisant");
-    		else {
-                Tourelle t = new TourelleVitamine((int) Math.floor(event.getX() / 16) * 16, (int) Math.floor(event.getY() / 16) * 16, partie.getEnv());
+    		try {
+    			Tourelle t = new TourelleVitamine((int) Math.floor(event.getX() / 16) * 16, (int) Math.floor(event.getY() / 16) * 16, partie.getEnv());
                 this.partie.ajouterTour(t);
                 this.partie.diminuerMoney(500);
-               // paneEntite.getChildren().add(new VueTourelle(0));
-            }
+    		}
+    		catch (MoneyException e) {
+    			this.labelInfo.textProperty().setValue("Pas assez d'argent!");
+    		}
     	}
     	else
         	this.labelInfo.textProperty().setValue("placement impossible");

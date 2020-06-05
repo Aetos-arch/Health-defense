@@ -1,5 +1,6 @@
 package TD.Modele;
 
+import TD.Exception.MoneyException;
 import TD.Modele.Personnage.InfecteGrave;
 import TD.Modele.Personnage.InfecteJogger;
 import TD.Modele.Personnage.InfecteSansSymp;
@@ -56,9 +57,15 @@ public class Partie {
 		this.env.unTour();
 	}
 
-	public void ajouterTour(Tourelle t) {
-		this.env.ajouterTour(t);
-		this.env.modifChemin((int)(t.getX() / 16), (int)(t.getY() / 16));
+	public void ajouterTour(Tourelle t) throws MoneyException {
+		if(t.getPrix()< this.moneyProperty.getValue()) {
+			this.env.ajouterTour(t);
+			this.env.modifChemin((int)(t.getX() / 16), (int)(t.getY() / 16));
+		}
+		else {
+			throw new MoneyException();
+		}
+		
 	}
 
 	public boolean estPerdu() {

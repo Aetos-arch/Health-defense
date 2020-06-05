@@ -9,7 +9,7 @@ import TD.Utilitaire.Position;
 public class TourelleSeringue extends TourelleDegatUnique {
 
     public TourelleSeringue(int x, int y, Environnement env) {
-        super(x, y, env, 200, 20);
+        super(x, y, env, 200, 20, 100);
     }
 
     @Override
