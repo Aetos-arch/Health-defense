@@ -2,6 +2,7 @@ package TD.Controleur;
 
 import TD.Modele.Tir.Tir;
 import TD.Modele.Tir.TirSeringue;
+import TD.Modele.Tir.TirVaccin;
 import TD.Modele.Tir.TirVitamine;
 import TD.Vue.VueTir;
 import javafx.collections.ListChangeListener;
@@ -29,6 +30,8 @@ public class ListenerTirs implements ListChangeListener<Tir> {
                         vT = new VueTir(0);
                     } else if (tir instanceof TirSeringue) {
                         vT = new VueTir((1));
+                    } else if (tir instanceof TirVaccin) {
+                        vT = new VueTir(2);
                     }
                     vT.xProperty().bind(tir.xProperty());
                     vT.yProperty().bind(tir.yProperty());

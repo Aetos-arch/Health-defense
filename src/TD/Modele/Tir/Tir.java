@@ -1,7 +1,6 @@
 package TD.Modele.Tir;
 
 import TD.Modele.Environnement;
-import TD.Modele.Personnage.Personnage;
 import TD.Utilitaire.Position;
 import TD.Utilitaire.PositionProperty;
 import TD.Utilitaire.Vecteur;
@@ -17,7 +16,7 @@ public abstract class Tir {
     protected int vitesse;
     protected Vecteur direction;
     protected Environnement env;
-    private int hitbox;
+    protected int hitbox;
 
     public Tir(Position p, int pointAttaque, int v, int hitbox, Environnement env) {
         this.positionProperty = new PositionProperty(p.getX(), p.getY());
@@ -33,19 +32,9 @@ public abstract class Tir {
         return (positionX > 0 && positionX < 800 && positionY > 0 && positionY < 480);
     }
 
-    public boolean collision () {
-        for (Personnage p : this.env.getPersos()) {
-            if ((p.getY() >= this.getY() - hitbox && p.getY() <= this.getY() + hitbox) &&
-                    (p.getX() >= this.getX() - hitbox && p.getX() <= this.getX() + hitbox)) {
-                p.seFaireSoigner(pointAttaque);
-                return true;
-            }
-        }
-        return false;
-    }
+    public abstract boolean collision();
 
     public abstract void agit();
-
 
     /**** Getter et Setter ****/
 

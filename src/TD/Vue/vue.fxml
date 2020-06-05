@@ -43,7 +43,7 @@
                   <Insets left="67.0" />
                </VBox.margin>
                <image>
-                  <Image url="@../../Sources/Tourelles/tourelle1.png" />
+                  <Image url="@../../Sources/Tourelles/TourelleVitamine.png"/>
                </image>
             </ImageView>
             <Label alignment="CENTER" prefHeight="17.0" prefWidth="150.0" text="Tourelle vitamine 500" />
