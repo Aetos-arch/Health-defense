@@ -3,6 +3,7 @@ package TD.Controleur;
 import TD.Exception.MoneyException;
 import TD.Modele.Partie;
 import TD.Modele.Tourelle.Tourelle;
+import TD.Modele.Tourelle.TourelleSeringue;
 import TD.Modele.Tourelle.TourelleVitamine;
 import TD.Vue.VueMap;
 import TD.Vue.VuePers;
@@ -40,7 +41,9 @@ public class Controleur implements Initializable {
     @FXML
     private Label labelMoney;
     @FXML
-    private ImageView dragTourelle;
+    private ImageView dragTourVitamine;
+    @FXML
+    private ImageView dragTourSeringue;
     @FXML
     private Label labelInfo;
 
@@ -66,8 +69,6 @@ public class Controleur implements Initializable {
         this.labelScore.textProperty().bind(this.partie.scoreProperty().asString());
         this.labelVague.textProperty().bind(this.partie.vagueProperty().asString());
         this.labelPV.textProperty().bind(this.partie.pvProperty().asString());
-
-        this.dragTourelle.setImage(new Image("Sources/Tourelles/tourelle1.png"));
         
     }
     
@@ -94,18 +95,19 @@ public class Controleur implements Initializable {
     
     @FXML
     void onDragDetected(MouseEvent event) {
-        Dragboard db = dragTourelle.startDragAndDrop(TransferMode.ANY);
+    	ImageView imageview = (ImageView) event.getTarget();
+        Dragboard db = imageview.startDragAndDrop(TransferMode.ANY);
         ClipboardContent cb = new ClipboardContent();
-        Image image = (dragTourelle.getImage());
+        Image image = imageview.getImage();
         db.setDragView(image,8,8);
-        cb.putImage(image);
+        cb.putString(imageview.getId());
         db.setContent(cb);
         event.consume();
     }
 
     @FXML
     void onDragOver(DragEvent event) {
-        if (event.getDragboard().hasImage()) {
+        if (event.getDragboard().hasString()) {
             event.acceptTransferModes(TransferMode.ANY);
         }
     }
@@ -114,9 +116,18 @@ public class Controleur implements Initializable {
     void onDragDropped(DragEvent event) {
     	if(event.getX() != 800 && event.getY() != 480 && this.partie.getEnv().trouverSommet((int) Math.floor(event.getX()/16), (int) Math.floor(event.getY()/16)) != null) {
     		try {
-    			Tourelle t = new TourelleVitamine((int) Math.floor(event.getX() / 16) * 16, (int) Math.floor(event.getY() / 16) * 16, partie.getEnv());
-                this.partie.ajouterTour(t);
-                this.partie.diminuerMoney(500);
+    			switch (event.getDragboard().getString()) {
+          case "dragTourVitamine":
+            this.partie.ajouterTour(new TourelleVitamine((int) Math.floor(event.getX() / 16) * 16, (int) Math.floor(event.getY() / 16) * 16, partie.getEnv()));
+            break;
+
+          case "dragTourSeringue":
+            this.partie.ajouterTour(new TourelleSeringue((int) Math.floor(event.getX() / 16) * 16, (int) Math.floor(event.getY() / 16) * 16, partie.getEnv()));
+            break;
+
+          default:
+            break;
+          }
     		}
     		catch (MoneyException e) {
     			this.labelInfo.textProperty().setValue("Pas assez d'argent!");
