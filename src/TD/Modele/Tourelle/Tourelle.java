@@ -1,7 +1,11 @@
 package TD.Modele.Tourelle;
 
 import TD.Modele.Environnement;
+import TD.Modele.Personnage.InfecteGrave;
+import TD.Modele.Personnage.Personnage;
 import TD.Utilitaire.Position;
+
+import java.util.ArrayList;
 
 public abstract class Tourelle {
     private Position position;
@@ -20,6 +24,29 @@ public abstract class Tourelle {
     }
 
     public abstract void agit();
+
+    public ArrayList<Personnage> listePersosAPortee() {
+        ArrayList<Personnage> persosAPortee = new ArrayList<>();
+
+        for (Personnage p : env.getPersos()) {
+            Position positionPersoActuel = new Position(p.getX(), p.getY());
+            if (this.getPosition().distance(positionPersoActuel) <= portee && !p.estSain()) {
+                persosAPortee.add(p);
+            }
+        }
+        return persosAPortee;
+    }
+
+
+    public ArrayList<Personnage> filtrerInfectesGrave(ArrayList<Personnage> listePersos) {
+        ArrayList<Personnage> listePersosInfecteGrave = new ArrayList<>();
+        for (Personnage p : listePersos) {
+            if (p instanceof InfecteGrave) {
+                listePersosInfecteGrave.add(p);
+            }
+        }
+        return listePersosInfecteGrave;
+    }
 
     public Position getPosition() {
         return position;
