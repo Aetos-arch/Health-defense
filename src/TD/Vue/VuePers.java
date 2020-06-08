@@ -1,5 +1,7 @@
 package TD.Vue;
 
+import java.util.ArrayList;
+
 import javafx.geometry.Rectangle2D;
 import javafx.scene.image.Image;
 import javafx.scene.image.ImageView;
@@ -9,12 +11,14 @@ public class VuePers extends ImageView {
 
 	private final String[] Url = {"Sources/Males/M_07.png", "Sources/Females/F_07.png",
 									"Sources/Males/M_10.png", "Sources/Males/M_01.png"};
-	private VueHoT h;
+	
+	private ArrayList<VueHoT> listeHoT;
 
 	public VuePers(int url) {
 			this.setImage(new Image(Url[url]));
 			Rectangle2D rogne = new Rectangle2D(16, 1, 16, 16);
-			this.setViewport(rogne);	
+			this.setViewport(rogne);
+			this.listeHoT = new ArrayList<VueHoT>();
 	}
 
 	public void changerSprite(int t) {
@@ -27,19 +31,22 @@ public class VuePers extends ImageView {
 		}
 	}
 
-	public void changerSpriteSain() {
+	public void changerSpriteSain(Pane p) {
 		this.setImage(new Image(Url[3]));
+		p.getChildren().removeAll(listeHoT);
 	}
 
 	public void afficherHoT(Integer value, Pane p) {
-		if(value != 0) {
-			h = new VueHoT();
-			h.translateXProperty().bind(this.translateXProperty());
-			h.translateYProperty().bind(this.translateYProperty());
-			p.getChildren().add(h);
-		}
-		else {
-			p.getChildren().remove(this.h);
-		}
+		VueHoT h = new VueHoT();
+		h.translateXProperty().bind(this.translateXProperty());
+		h.translateYProperty().bind(this.translateYProperty());
+		p.getChildren().add(h);
+		this.listeHoT.add(h);
+		if(value == 0)
+			p.getChildren().removeAll(listeHoT);
+	}
+	
+	public void enleverHoT(Pane p) {
+		p.getChildren().removeAll(listeHoT);		
 	}
 }
