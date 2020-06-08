@@ -12,12 +12,12 @@ import java.util.HashMap;
 
 public class ListenerPers implements ListChangeListener<Personnage> {
 
-	Pane panePers;
+	Pane paneEntite;
 	HashMap<Personnage, VuePers> correspondance;
 	Controleur c;
 
 	public ListenerPers(Pane p, Controleur c) {
-		this.panePers = p;
+		this.paneEntite = p;
 		this.correspondance = new HashMap<Personnage, VuePers>();
 		this.c = c;
 	}
@@ -27,7 +27,6 @@ public class ListenerPers implements ListChangeListener<Personnage> {
 		while(change.next()) {
 			if(change.wasAdded()) {
 				for(Personnage p: change.getAddedSubList()) {
-
 					VuePers vP;
 					if (p instanceof InfecteSansSymp) {
 						vP = new VuePers(0);
@@ -35,8 +34,9 @@ public class ListenerPers implements ListChangeListener<Personnage> {
 						vP.translateYProperty().bind(p.getYProperty());
 						p.getSainProperty().addListener(e -> vP.changerSpriteSain());
 						this.c.nbTour.addListener(e -> vP.changerSprite(this.c.nbTour.getValue()));
-						this.panePers.getChildren().add(vP);
+						this.paneEntite.getChildren().add(vP);
 						this.correspondance.put(p, vP);
+						p.getHotProprety().addListener(e -> vP.afficherHoT(p.getHotProprety().getValue(), paneEntite));
 					}
 					else if (p instanceof InfecteJogger) {
 						vP = new VuePers(1);
@@ -44,8 +44,9 @@ public class ListenerPers implements ListChangeListener<Personnage> {
 						vP.translateYProperty().bind(p.getYProperty());
 						p.getSainProperty().addListener(e -> vP.changerSpriteSain());
 						this.c.nbTour.addListener(e -> vP.changerSprite(this.c.nbTour.getValue()));
-						this.panePers.getChildren().add(vP);
+						this.paneEntite.getChildren().add(vP);
 						this.correspondance.put(p, vP);
+						p.getHotProprety().addListener(e -> vP.afficherHoT(p.getHotProprety().getValue(), paneEntite));
 					}
 					else if (p instanceof InfecteGrave) {
 						vP = new VuePers(2);
@@ -53,8 +54,9 @@ public class ListenerPers implements ListChangeListener<Personnage> {
 						vP.translateYProperty().bind(p.getYProperty());
 						p.getSainProperty().addListener(e -> vP.changerSpriteSain());
 						this.c.nbTour.addListener(e -> vP.changerSprite(this.c.nbTour.getValue()));
-						this.panePers.getChildren().add(vP);
+						this.paneEntite.getChildren().add(vP);
 						this.correspondance.put(p, vP);
+						p.getHotProprety().addListener(e -> vP.afficherHoT(p.getHotProprety().getValue(), paneEntite));
 					}
 				}	
 			}
@@ -77,7 +79,7 @@ public class ListenerPers implements ListChangeListener<Personnage> {
 					else {
 						this.c.getPartie().perdrePV(1);
 					}
-					this.panePers.getChildren().remove(this.correspondance.get(p));
+					this.paneEntite.getChildren().remove(this.correspondance.get(p));
 				}
 
 			}

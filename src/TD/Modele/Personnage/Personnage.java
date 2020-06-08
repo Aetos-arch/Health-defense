@@ -19,7 +19,7 @@ public abstract class Personnage {
 	private Environnement env;
 	private HashMap<Sommet, Sommet> aretes;
 	private boolean arrive;
-	private int healOnTime;
+	private IntegerProperty healOnTime;
 	private IntegerProperty sainProperty;
 	
 	public Personnage(int vit, int nivContamination, int xS, int yS, Environnement e) {
@@ -34,7 +34,7 @@ public abstract class Personnage {
 		this.initSom(xS, yS);
 		this.calculerDir();
 		this.arrive = false;
-		this.healOnTime = 0;
+		this.healOnTime = new SimpleIntegerProperty(0);
 		this.sainProperty = new SimpleIntegerProperty(0);
 	}
 	
@@ -58,9 +58,9 @@ public abstract class Personnage {
 			}
 			this.x.set(this.x.getValue() + this.dirX);
 			this.y.set(this.y.getValue() + this.dirY);
-			if(this.healOnTime>0) { //Met les soins sur la durée
+			if(this.healOnTime.getValue()>0) { //Met les soins sur la durée
 				this.seFaireSoigner(1);
-				this.healOnTime -=1;
+				this.healOnTime.subtract(1);
 			}
 			if(this.estSain())
 				this.sainProperty.setValue(1);
@@ -92,7 +92,7 @@ public abstract class Personnage {
 	
 	public void prendreUnHoT(int d) { // Permet de prendre des soins sur la durée
 		this.seFaireSoigner(d/2);
-		this.healOnTime += d/2;
+		this.healOnTime.add(d/2);
 	}
 	
 	protected void soin(int d) {
@@ -116,6 +116,10 @@ public abstract class Personnage {
 	
 	public IntegerProperty getSainProperty() {
 		return this.sainProperty;
+	}
+	
+	public IntegerProperty getHotProprety() {
+		return this.healOnTime;
 	}
 
     public int getX() {
