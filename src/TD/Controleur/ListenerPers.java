@@ -32,7 +32,7 @@ public class ListenerPers implements ListChangeListener<Personnage> {
 						vP = new VuePers(0);
 						vP.translateXProperty().bind(p.getXProperty());
 						vP.translateYProperty().bind(p.getYProperty());
-						p.getSainProperty().addListener(e -> vP.changerSpriteSain());
+						p.getSainProperty().addListener(e -> vP.changerSpriteSain(paneEntite));
 						this.c.nbTour.addListener(e -> vP.changerSprite(this.c.nbTour.getValue()));
 						this.paneEntite.getChildren().add(vP);
 						this.correspondance.put(p, vP);
@@ -42,7 +42,7 @@ public class ListenerPers implements ListChangeListener<Personnage> {
 						vP = new VuePers(1);
 						vP.translateXProperty().bind(p.getXProperty());
 						vP.translateYProperty().bind(p.getYProperty());
-						p.getSainProperty().addListener(e -> vP.changerSpriteSain());
+						p.getSainProperty().addListener(e -> vP.changerSpriteSain(paneEntite));
 						this.c.nbTour.addListener(e -> vP.changerSprite(this.c.nbTour.getValue()));
 						this.paneEntite.getChildren().add(vP);
 						this.correspondance.put(p, vP);
@@ -52,7 +52,7 @@ public class ListenerPers implements ListChangeListener<Personnage> {
 						vP = new VuePers(2);
 						vP.translateXProperty().bind(p.getXProperty());
 						vP.translateYProperty().bind(p.getYProperty());
-						p.getSainProperty().addListener(e -> vP.changerSpriteSain());
+						p.getSainProperty().addListener(e -> vP.changerSpriteSain(paneEntite));
 						this.c.nbTour.addListener(e -> vP.changerSprite(this.c.nbTour.getValue()));
 						this.paneEntite.getChildren().add(vP);
 						this.correspondance.put(p, vP);
@@ -79,6 +79,7 @@ public class ListenerPers implements ListChangeListener<Personnage> {
 					else {
 						this.c.getPartie().perdrePV(1);
 					}
+					this.correspondance.get(p).enleverHoT(paneEntite);
 					this.paneEntite.getChildren().remove(this.correspondance.get(p));
 				}
 

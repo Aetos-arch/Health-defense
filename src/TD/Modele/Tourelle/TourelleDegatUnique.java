@@ -30,29 +30,6 @@ public abstract class TourelleDegatUnique extends Tourelle {
         return getPersoLePlusProche(listePersosAPortee());
     }
 
-    public ArrayList<Personnage> listePersosAPortee() {
-        ArrayList<Personnage> persosAPortee = new ArrayList<>();
-
-        for (Personnage p : env.getPersos()) {
-            Position positionPersoActuel = new Position(p.getX(), p.getY());
-            if (this.getPosition().distance(positionPersoActuel) <= portee && !p.estSain()) {
-                persosAPortee.add(p);
-            }
-        }
-        return persosAPortee;
-    }
-
-
-    public ArrayList<Personnage> filtrerInfectesGrave(ArrayList<Personnage> listePersos) {
-        ArrayList<Personnage> listePersosInfecteGrave = new ArrayList<>();
-        for (Personnage p : listePersos) {
-            if (p instanceof InfecteGrave) {
-                listePersosInfecteGrave.add(p);
-            }
-        }
-        return listePersosInfecteGrave;
-    }
-
 
     public Personnage getPersoLePlusProche(ArrayList<Personnage> listePersos) {
         Personnage persoPlusProche = listePersosAPortee().get(0);

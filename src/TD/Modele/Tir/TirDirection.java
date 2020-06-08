@@ -15,6 +15,7 @@ public abstract class TirDirection extends Tir {
         this.tourelle = t;
     }
 
+    // Calcule la direction entre le tir et la cible
     public void calculerDirection(Position cible) {
         Position projectile = new Position(this.getX(), this.getY());
         Vecteur v = new Vecteur(projectile, cible);
@@ -23,6 +24,7 @@ public abstract class TirDirection extends Tir {
         this.direction.setY(v.getY());
     }
 
+    // Parcours les personnages pour vérifier si collision, si collision inflige les dégats
     @Override
     public boolean collision() {
         for (Personnage p : this.env.getPersos()) {
