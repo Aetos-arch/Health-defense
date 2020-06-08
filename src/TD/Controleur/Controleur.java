@@ -162,7 +162,7 @@ public class Controleur implements Initializable {
 					+ "Soin : important\n"
 					+ "Cadence de tir : moyenne\n"
 					+ "Portée : courte\n"
-					+ "Coût : 750");
+					+ "Coût : 1000");
 			break;
 			
 		case "tourelleVaccin":
@@ -171,7 +171,7 @@ public class Controleur implements Initializable {
 					+ "Soin : sur la durée\n"
 					+ "Cadence de tir : faible\n"
 					+ "Portée : longue\n"
-					+ "Coût : 1000");
+					+ "Coût : 2000");
 			break;
 
 		default:

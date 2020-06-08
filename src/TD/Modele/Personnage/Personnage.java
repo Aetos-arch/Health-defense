@@ -91,19 +91,24 @@ public abstract class Personnage {
 	}
 	
 	public void prendreUnHoT(int d) { // Permet de prendre des soins sur la durée
-		this.seFaireSoigner(d/2);
-		this.healOnTime.setValue(this.healOnTime.getValue() + d/2);
+		this.seFaireSoigner(d);
+		this.healOnTime.setValue(this.healOnTime.getValue() + d / 2);
 	}
-	
+
 	protected void soin(int d) {
 		this.nivCont -= d;
 	}
+
 	protected void setVit(int v) {
 		this.vitesse = v;
 	}
-	
+
+	public void ralentir() {
+		this.setVit(this.getVitesse() / 2);
+	}
+
 	public boolean estSain() {
-		return this.nivCont<= 0;
+		return this.nivCont <= 0;
 	}
 
 	public IntegerProperty getXProperty() {
@@ -123,14 +128,18 @@ public abstract class Personnage {
 	}
 
     public int getX() {
-        return x.getValue();
-    }
+		return x.getValue();
+	}
 
-    public int getY() {
-        return y.getValue();
-    }
+	public int getY() {
+		return y.getValue();
+	}
 
-    public boolean estArrive() {
-        return this.arrive;
-    }
+	public boolean estArrive() {
+		return this.arrive;
+	}
+
+	public int getVitesse() {
+		return vitesse;
+	}
 }
