@@ -44,7 +44,9 @@ public class Controleur implements Initializable {
     @FXML
     private Label labelInfo;
     @FXML
-    private Label infoTourelle;
+    private Label legendeText;
+    @FXML
+    private Label legendeNom;
 
     private Partie partie;
     private VueMap vM;
@@ -146,7 +148,8 @@ public class Controleur implements Initializable {
     	ImageView imageview = (ImageView) event.getTarget();
     	switch (imageview.getId()) {
 		case "tourelleVitamine":
-			this.infoTourelle.textProperty().setValue("Type de tir : Mitraillette\n"
+			this.legendeNom.textProperty().setValue("Tourelle vitamine");
+			this.legendeText.textProperty().setValue("Type de tir : Mitraillette\n"
 					+ "Soin : peu\n"
 					+ "Cadence de tir : forte\n"
 					+ "Portée : courte\n"
@@ -154,7 +157,8 @@ public class Controleur implements Initializable {
 			break;
 			
 		case "tourelleSeringue":
-			this.infoTourelle.textProperty().setValue("Type de tir : Coup par coup\n"
+			this.legendeNom.textProperty().setValue("Tourelle seringue");
+			this.legendeText.textProperty().setValue("Type de tir : Coup par coup\n"
 					+ "Soin : important\n"
 					+ "Cadence de tir : moyenne\n"
 					+ "Portée : courte\n"
@@ -162,7 +166,8 @@ public class Controleur implements Initializable {
 			break;
 			
 		case "tourelleVaccin":
-			this.infoTourelle.textProperty().setValue("Type de tir : Sniper\n"
+			this.legendeNom.textProperty().setValue("Tourelle vaccin");
+			this.legendeText.textProperty().setValue("Type de tir : Sniper\n"
 					+ "Soin : sur la durée\n"
 					+ "Cadence de tir : faible\n"
 					+ "Portée : longue\n"
@@ -176,7 +181,42 @@ public class Controleur implements Initializable {
     
     @FXML
     void onMouseExited(MouseEvent event) {
-    	this.infoTourelle.textProperty().setValue("");
+    	this.legendeNom.textProperty().setValue("");
+    	this.legendeText.textProperty().setValue("");
+    }
+    
+    @FXML
+    void onMouseClicked(MouseEvent event) {
+    	ImageView imageview = (ImageView) event.getTarget();
+    	switch (imageview.getId()) {
+		case "infecteSansSymptome":
+			this.legendeNom.textProperty().setValue("Infecté sans symptôme");
+			this.legendeText.textProperty().setValue("Contamination : faible\n"
+					+ "Vitesse : moyenne");
+			break;
+
+		case "infecteJogger":
+			this.legendeNom.textProperty().setValue("Infecté jogger");
+			this.legendeText.textProperty().setValue("Contamination : moyenne\n"
+					+ "Vitesse : moyenne\n"
+					+ "Accélère quand soigné");
+			break;
+			
+		case "infecteGrave":
+			this.legendeNom.textProperty().setValue("Infecté grave");
+			this.legendeText.textProperty().setValue("Contamination : élevée\n"
+					+ "Vitesse : lente\n"
+					+ "Force l’attaque des tours\nsur lui");
+			break;
+			
+		case "personnageSain":
+			this.legendeNom.textProperty().setValue("Personnage sain");
+			this.legendeText.textProperty().setValue("Personne soigné");
+			break;
+			
+		default:
+			break;
+		}
     }
 
     @FXML
