@@ -24,13 +24,13 @@
       <Label fx:id="labelInfo" BorderPane.alignment="CENTER" />
    </top>
    <bottom>
-      <HBox minHeight="120.0" prefHeight="120.0" prefWidth="1200.0" BorderPane.alignment="CENTER">
+      <HBox alignment="CENTER" minHeight="120.0" prefHeight="120.0" prefWidth="1200.0" BorderPane.alignment="CENTER">
          <children>
-            <VBox prefHeight="200.0" prefWidth="150.0">
+            <VBox alignment="TOP_CENTER" prefHeight="200.0" prefWidth="150.0">
                <children>
                   <ImageView fx:id="tourelleVitamine" fitHeight="32.0" fitWidth="32.0" onDragDetected="#onDragDetected" pickOnBounds="true" preserveRatio="true">
                      <VBox.margin>
-                        <Insets left="67.0" />
+                        <Insets />
                      </VBox.margin>
                      <image>
                         <Image url="@../../Sources/Tourelles/TourelleVitamine.png" />
@@ -39,11 +39,11 @@
                   <Label alignment="CENTER" prefHeight="17.0" prefWidth="150.0" text="Tourelle vitamine 500" />
                </children>
             </VBox>
-            <VBox fillWidth="false" prefHeight="200.0" prefWidth="150.0">
+            <VBox alignment="TOP_CENTER" prefHeight="200.0" prefWidth="150.0">
                <children>
                   <ImageView fx:id="tourelleSeringue" fitHeight="32.0" fitWidth="32.0" onDragDetected="#onDragDetected" pickOnBounds="true" preserveRatio="true">
                      <VBox.margin>
-                        <Insets left="67.0" />
+                        <Insets />
                      </VBox.margin>
                      <image>
                         <Image url="@../../Sources/Tourelles/tourelleSeringue.png" />
@@ -52,11 +52,11 @@
                   <Label alignment="CENTER" prefHeight="17.0" prefWidth="150.0" text="Tourelle seringue 750" />
                </children>
             </VBox>
-            <VBox prefHeight="200.0" prefWidth="150.0">
+            <VBox alignment="TOP_CENTER" prefHeight="200.0" prefWidth="150.0">
                <children>
                   <ImageView fx:id="tourelleVaccin" fitHeight="32.0" fitWidth="32.0" onDragDetected="#onDragDetected" pickOnBounds="true" preserveRatio="true">
                      <VBox.margin>
-                        <Insets left="67.0" />
+                        <Insets />
                      </VBox.margin>
                      <image>
                         <Image url="@../../Sources/Tourelles/TourelleVaccin.png" />
@@ -64,10 +64,15 @@
                   </ImageView>
                   <Label alignment="CENTER" prefHeight="17.0" prefWidth="150.0" text="Tourelle vaccin 1000" />
                </children></VBox>
-              <Button alignment="TOP_LEFT" mnemonicParsing="false" onAction="#action" prefHeight="100.0" prefWidth="200.0" styleClass="bouton" text="Lancer niveau suivant" textOverrun="CLIP" wrapText="true">
-               <cursor>
-                  <Cursor fx:constant="DEFAULT" />
-               </cursor></Button>
+            <VBox alignment="CENTER_RIGHT" prefHeight="100.0" prefWidth="150.0">
+               <children>
+                    <Button alignment="TOP_LEFT" mnemonicParsing="false" onAction="#action" prefHeight="100.0" prefWidth="150.0" styleClass="bouton" text="Vague suivante" textAlignment="CENTER" textOverrun="CLIP" wrapText="true">
+                     <cursor>
+                        <Cursor fx:constant="DEFAULT" />
+                     </cursor>
+                  </Button>
+               </children>
+            </VBox>
          </children>
       </HBox>
    </bottom>
@@ -76,7 +81,7 @@
          <children>
             <VBox alignment="CENTER" maxHeight="480.0" maxWidth="200.0" minHeight="480.0" minWidth="200.0" styleClass="infoLabel">
                <children>
-                  <Label text="Tour" />
+                  <Label text="Vague" />
                    <Label fx:id="labelVague" />
                   <Label text="Score" />
                    <Label fx:id="labelScore" />
