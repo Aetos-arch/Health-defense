@@ -8,10 +8,9 @@ import TD.Utilitaire.Position;
 import java.util.ArrayList;
 
 public abstract class TourelleDegatUnique extends Tourelle {
-    protected int portee;
 
     public TourelleDegatUnique(int x, int y, Environnement env, int portee, int delai, int prix) {
-        super(x, y, delai, env, prix);
+        super(x, y, delai, env, portee, prix);
         this.portee = portee;
     }
 
@@ -21,9 +20,9 @@ public abstract class TourelleDegatUnique extends Tourelle {
             return null;
         }
 
+        ArrayList<Personnage> listeInfecteGrave = filtrerInfectesGrave(listePersosAPortee());
         // Infecté grave à portée on vise eux en priorité
-        else if (!filtrerInfectesGrave(listePersosAPortee()).isEmpty()) {
-            ArrayList<Personnage> listeInfecteGrave = filtrerInfectesGrave(listePersosAPortee());
+        if (!listeInfecteGrave.isEmpty()) {
             return getPersoLePlusProche(listeInfecteGrave);
         }
 
