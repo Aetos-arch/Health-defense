@@ -14,7 +14,6 @@ public abstract class Tourelle {
     protected int portee;
     private int prix;
 
-
     public Tourelle(int x, int y, int delai, Environnement env, int portee, int prix) {
         position = new Position(x, y);
         this.env = env;
@@ -25,16 +24,16 @@ public abstract class Tourelle {
 
     public abstract void agit();
 
-    public ArrayList<Personnage> listePersosAPortee() {
-        ArrayList<Personnage> persosAPortee = new ArrayList<>();
+    public ArrayList<Personnage> getListePersosAPortee() {
+        ArrayList<Personnage> listePersosAPortee = new ArrayList<>();
 
         for (Personnage p : env.getPersos()) {
             Position positionPersoActuel = new Position(p.getX(), p.getY());
             if (this.getPosition().distance(positionPersoActuel) <= portee && !p.estSain()) {
-                persosAPortee.add(p);
+                listePersosAPortee.add(p);
             }
         }
-        return persosAPortee;
+        return listePersosAPortee;
     }
 
 

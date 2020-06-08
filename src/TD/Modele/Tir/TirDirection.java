@@ -8,11 +8,13 @@ import TD.Utilitaire.Vecteur;
 
 public abstract class TirDirection extends Tir {
     protected TourelleDegatUnique tourelle;
+    protected int vitesse;
 
     public TirDirection(int pointAttaque, Position cible, int v, Environnement env, int hitbox, TourelleDegatUnique t) {
-        super(t.getPosition(), pointAttaque, v, hitbox, env);
-        this.calculerDirection(cible);
+        super(t.getPosition(), pointAttaque, hitbox, env);
         this.tourelle = t;
+        this.vitesse = v;
+        this.calculerDirection(cible);
     }
 
     // Calcule la direction entre le tir et la cible
@@ -25,7 +27,7 @@ public abstract class TirDirection extends Tir {
     }
 
     // Parcours les personnages pour vérifier si collision, si collision inflige les dégats
-    @Override
+
     public boolean collision() {
         for (Personnage p : this.env.getPersos()) {
             if ((p.getY() >= this.getY() - hitbox && p.getY() <= this.getY() + hitbox) &&
@@ -48,7 +50,7 @@ public abstract class TirDirection extends Tir {
             // Si le tir a touché un ennemie, ça inflige les dégats, sinon met à jour la position du tir
             else if (!collision()) {
                 this.xProperty().setValue(this.getX() + direction.getX());
-                this.yProperty().setValue(this.getY() + (direction.getY()));
+                this.yProperty().setValue(this.getY() + direction.getY());
             } else {
                 env.getTirs().remove(this);
             }

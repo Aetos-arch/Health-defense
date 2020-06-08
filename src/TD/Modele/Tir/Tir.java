@@ -13,16 +13,14 @@ public abstract class Tir {
     private long id;
     protected PositionProperty positionProperty;
     protected int pointAttaque;
-    protected int vitesse;
     protected Vecteur direction;
     protected Environnement env;
     protected int hitbox;
 
-    public Tir(Position p, int pointAttaque, int v, int hitbox, Environnement env) {
+    public Tir(Position p, int pointAttaque, int hitbox, Environnement env) {
         this.positionProperty = new PositionProperty(p.getX(), p.getY());
         this.pointAttaque = pointAttaque;
         direction = new Vecteur();
-        this.vitesse = v;
         this.env = env;
         this.hitbox = hitbox;
         this.id = idMax++;
@@ -31,8 +29,6 @@ public abstract class Tir {
     public static boolean estDansMap(double positionX, double positionY) {
         return (positionX > 0 && positionX < 800 && positionY > 0 && positionY < 480);
     }
-
-    public abstract boolean collision();
 
     public abstract void agit();
 
@@ -60,22 +56,6 @@ public abstract class Tir {
 
     public void setY(int y) {
         this.positionProperty.setY(y);
-    }
-
-    public int getPointAttaque() {
-        return pointAttaque;
-    }
-
-    public void setPointAttaque(int pointAttaque) {
-        this.pointAttaque = pointAttaque;
-    }
-
-    public int getVitesse() {
-        return vitesse;
-    }
-
-    public void setVitesse(int vitesse) {
-        this.vitesse = vitesse;
     }
 
     public PositionProperty getPosition() {
