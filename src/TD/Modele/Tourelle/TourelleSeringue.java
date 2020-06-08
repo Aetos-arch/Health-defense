@@ -28,7 +28,7 @@ public class TourelleSeringue extends TourelleDegatUnique {
         delai++;
     }
 
-   /* public void ralentie () {
+  /* public void ralentie () {
             for (Personnage p : this.env.getPersos()) {
                 if (((p.getY() >= this.getY() - 70 && p.getY() <= this.getY() + 70) &&
                         (p.getX() >= this.getX() - 70 && p.getX() <= this.getX() + 70))&& !p.estSain()) {
