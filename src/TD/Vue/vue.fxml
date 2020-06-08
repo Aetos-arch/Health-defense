@@ -1,5 +1,8 @@
 <?xml version="1.0" encoding="UTF-8"?>
 
+<?import javafx.scene.shape.*?>
+<?import javafx.scene.text.*?>
+<?import javafx.scene.*?>
 <?import java.net.*?>
 <?import javafx.scene.image.*?>
 <?import java.lang.*?>
@@ -10,73 +13,118 @@
 <?import javafx.scene.image.ImageView?>
 <?import javafx.scene.layout.*?>
 
-<BorderPane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="800.0" prefWidth="1200.0" styleClass="background" stylesheets="@../../Sources/style.css" xmlns="http://javafx.com/javafx/8" xmlns:fx="http://javafx.com/fxml/1" fx:controller="TD.Controleur.Controleur">
+<BorderPane maxHeight="800.0" maxWidth="1200.0" prefHeight="800.0" prefWidth="1200.0" styleClass="background" stylesheets="@../../Sources/style.css" xmlns="http://javafx.com/javafx/8" xmlns:fx="http://javafx.com/fxml/1" fx:controller="TD.Controleur.Controleur">
     <center>
-        <Pane fx:id="paneEntite" maxHeight="480.0" maxWidth="800.0" onDragDropped="#onDragDropped" onDragOver="#onDragOver" prefHeight="480.0" prefWidth="800.0" styleClass="pane" BorderPane.alignment="CENTER">
+        <Pane fx:id="paneEntite" maxHeight="480.0" maxWidth="800.0" minHeight="480.0" minWidth="800.0" onDragDropped="#onDragDropped" onDragOver="#onDragOver" prefHeight="480.0" prefWidth="800.0" styleClass="pane" BorderPane.alignment="CENTER">
             <children>
-                <TilePane fx:id="tilePaneMap" alignment="CENTER" maxHeight="480.0" maxWidth="800.0" prefHeight="480.0" prefWidth="800.0" BorderPane.alignment="CENTER" />
+                <TilePane fx:id="tilePaneMap" alignment="CENTER" maxHeight="480.0" maxWidth="800.0" minHeight="480.0" minWidth="800.0" prefHeight="480.0" prefWidth="800.0" BorderPane.alignment="CENTER" />
             </children>
         </Pane>
     </center>
    <top>
-      <Label fx:id="labelInfo" BorderPane.alignment="CENTER" />
+      <Label fx:id="labelInfo" minHeight="160.0" minWidth="1200.0" BorderPane.alignment="CENTER" />
    </top>
    <bottom>
-      <HBox minHeight="120.0" prefHeight="43.0" prefWidth="1200.0" BorderPane.alignment="CENTER">
+      <HBox alignment="CENTER" minHeight="160.0" prefHeight="120.0" prefWidth="1200.0" BorderPane.alignment="CENTER">
          <children>
-            <VBox prefHeight="200.0" prefWidth="150.0">
+            <VBox alignment="CENTER" prefHeight="160.0" prefWidth="200.0">
                <children>
-                  <ImageView fx:id="tourelleVitamine" fitHeight="32.0" fitWidth="32.0" onDragDetected="#onDragDetected" pickOnBounds="true" preserveRatio="true">
-                     <VBox.margin>
-                        <Insets left="67.0" />
-                     </VBox.margin>
-                     <image>
-                        <Image url="@../../Sources/Tourelles/TourelleVitamine.png" />
-                     </image>
-                  </ImageView>
-                  <Label alignment="CENTER" prefHeight="17.0" prefWidth="150.0" text="Tourelle vitamine 500" />
+                  <VBox maxHeight="140.0" maxWidth="180.0" minHeight="150.0" minWidth="180.0" styleClass="infoLegende">
+                     <children>
+                        <Label fx:id="legendeNom" alignment="CENTER" minWidth="170.0" prefHeight="20.0" prefWidth="190.0">
+                           <font>
+                              <Font name="System Bold" size="12.0" />
+                           </font></Label>
+                        <Label fx:id="legendeText" alignment="TOP_LEFT" contentDisplay="CENTER" maxHeight="120.0" minHeight="120.0" minWidth="170.0" prefHeight="140.0" prefWidth="180.0" textOverrun="CLIP">
+                           <VBox.margin>
+                              <Insets left="4.0" />
+                           </VBox.margin>
+                           <opaqueInsets>
+                              <Insets />
+                           </opaqueInsets>
+                        </Label>
+                     </children>
+                  </VBox>
                </children>
             </VBox>
-            <VBox prefHeight="200.0" prefWidth="150.0">
+            <HBox alignment="CENTER" maxHeight="160.0" maxWidth="800.0" prefHeight="160.0" prefWidth="800.0" styleClass="tourellesBox">
                <children>
-                  <ImageView fx:id="tourelleSeringue" fitHeight="32.0" fitWidth="32.0" onDragDetected="#onDragDetected" pickOnBounds="true" preserveRatio="true">
-                     <VBox.margin>
-                        <Insets left="67.0" />
-                     </VBox.margin>
-                     <image>
-                        <Image url="@../../Sources/Tourelles/tourelleSeringue.png" />
-                     </image>
-                  </ImageView>
-                  <Label alignment="CENTER" prefHeight="17.0" prefWidth="150.0" text="Tourelle seringue 750" />
+                  <VBox alignment="CENTER" prefHeight="200.0" prefWidth="150.0">
+                     <children>
+                        <ImageView fx:id="tourelleVitamine" fitHeight="32.0" fitWidth="32.0" onDragDetected="#onDragDetected" onMouseEntered="#onMouseEntered" onMouseExited="#onMouseExited" pickOnBounds="true" preserveRatio="true">
+                           <VBox.margin>
+                              <Insets />
+                           </VBox.margin>
+                           <image>
+                              <Image url="@../../Sources/Tourelles/TourelleVitamine.png" />
+                           </image>
+                        </ImageView>
+                        <Label alignment="CENTER" prefHeight="17.0" prefWidth="150.0" text="Tourelle vitamine" />
+                     </children>
+                  </VBox>
+                  <VBox alignment="CENTER" prefHeight="200.0" prefWidth="150.0">
+                     <children>
+                        <ImageView fx:id="tourelleSeringue" fitHeight="32.0" fitWidth="32.0" onDragDetected="#onDragDetected" onMouseEntered="#onMouseEntered" onMouseExited="#onMouseExited" pickOnBounds="true" preserveRatio="true">
+                           <VBox.margin>
+                              <Insets />
+                           </VBox.margin>
+                           <image>
+                              <Image url="@../../Sources/Tourelles/tourelleSeringue.png" />
+                           </image>
+                        </ImageView>
+                        <Label alignment="CENTER" prefHeight="17.0" prefWidth="150.0" text="Tourelle seringue" />
+                     </children>
+                  </VBox>
+                  <VBox alignment="CENTER" prefHeight="200.0" prefWidth="150.0">
+                     <children>
+                        <ImageView fx:id="tourelleVaccin" fitHeight="32.0" fitWidth="32.0" onDragDetected="#onDragDetected" onMouseEntered="#onMouseEntered" onMouseExited="#onMouseExited" pickOnBounds="true" preserveRatio="true">
+                           <VBox.margin>
+                              <Insets />
+                           </VBox.margin>
+                           <image>
+                              <Image url="@../../Sources/Tourelles/TourelleVaccin.png" />
+                           </image>
+                        </ImageView>
+                        <Label alignment="CENTER" prefHeight="17.0" prefWidth="150.0" text="Tourelle vaccin" />
+                     </children>
+                  </VBox>
+               </children>
+            </HBox>
+            <VBox alignment="CENTER" maxHeight="160.0" maxWidth="200.0" prefHeight="160.0" prefWidth="200.0">
+               <children>
+                    <Button alignment="CENTER" contentDisplay="CENTER" mnemonicParsing="false" onAction="#action" prefHeight="120.0" prefWidth="170.0" styleClass="bouton" text="Vague suivante" textAlignment="CENTER" textOverrun="CLIP" wrapText="true">
+                     <cursor>
+                        <Cursor fx:constant="DEFAULT" />
+                     </cursor>
+                  </Button>
                </children>
             </VBox>
-            <VBox prefHeight="200.0" prefWidth="150.0">
-               <children>
-                  <ImageView fx:id="tourelleVaccin" fitHeight="32.0" fitWidth="32.0" onDragDetected="#onDragDetected" pickOnBounds="true" preserveRatio="true">
-                     <VBox.margin>
-                        <Insets left="67.0" />
-                     </VBox.margin>
-                     <image>
-                        <Image url="@../../Sources/Tourelles/TourelleVaccin.png" />
-                     </image>
-                  </ImageView>
-                  <Label alignment="CENTER" prefHeight="17.0" prefWidth="150.0" text="Tourelle vaccin 1000" />
-               </children></VBox>
-              <Button mnemonicParsing="false" onAction="#action" text="Lancer niveau suivant" />
          </children>
       </HBox>
    </bottom>
    <right>
-      <VBox maxHeight="150.0" prefHeight="150.0" prefWidth="150.0" BorderPane.alignment="CENTER">
+      <VBox maxHeight="480.0" minHeight="480.0" minWidth="200.0" prefHeight="480.0" prefWidth="200.0" styleClass="infoPartie" BorderPane.alignment="CENTER">
          <children>
-            <VBox alignment="CENTER" maxHeight="480.0" maxWidth="200.0" minHeight="480.0" minWidth="200.0">
+            <VBox alignment="TOP_CENTER" prefHeight="200.0" prefWidth="100.0">
                <children>
-                  <Label text="Tour" />
+                  <Label text="Vague" />
                    <Label fx:id="labelVague" />
+               </children>
+            </VBox>
+            <VBox alignment="TOP_CENTER" prefHeight="200.0" prefWidth="100.0">
+               <children>
                   <Label text="Score" />
                    <Label fx:id="labelScore" />
+               </children>
+            </VBox>
+            <VBox alignment="TOP_CENTER" prefHeight="200.0" prefWidth="100.0">
+               <children>
                   <Label text="Money" />
                    <Label fx:id="labelMoney" />
+               </children>
+            </VBox>
+            <VBox alignment="TOP_CENTER" prefHeight="200.0" prefWidth="100.0">
+               <children>
                   <Label text="PV" />
                    <Label fx:id="labelPV" />
                </children>
@@ -88,6 +136,54 @@
       </VBox>
    </right>
    <left>
-      <VBox maxHeight="480.0" maxWidth="200.0" minHeight="480.0" minWidth="200.0" BorderPane.alignment="CENTER" />
+      <VBox maxHeight="480.0" maxWidth="200.0" minHeight="480.0" minWidth="200.0" BorderPane.alignment="CENTER">
+         <children>
+            <VBox prefHeight="330.0" prefWidth="200.0" />
+            <Label alignment="CENTER" minHeight="30.0" prefHeight="30.0" prefWidth="200.0" text="Liste des personnages">
+               <font>
+                  <Font size="18.0" />
+               </font>
+            </Label>
+            <VBox prefHeight="200.0" prefWidth="200.0">
+               <children>
+                  <HBox prefHeight="100.0" prefWidth="200.0">
+                     <children>
+                        <HBox alignment="CENTER" prefHeight="100.0" prefWidth="200.0" spacing="30.0">
+                           <children>
+                              <ImageView fx:id="infecteSansSymptome" fitHeight="32.0" fitWidth="32.0" onMouseClicked="#onMouseClicked" pickOnBounds="true" preserveRatio="true">
+                                 <image>
+                                    <Image url="@../../Sources/Males/infecteSansSymptome.png" />
+                                 </image>
+                              </ImageView>
+                              <ImageView fx:id="infecteJogger" fitHeight="32.0" fitWidth="32.0" onMouseClicked="#onMouseClicked" pickOnBounds="true" preserveRatio="true">
+                                 <image>
+                                    <Image url="@../../Sources/Females/infecteJogger.png" />
+                                 </image>
+                              </ImageView>
+                           </children>
+                        </HBox>
+                     </children>
+                  </HBox>
+                  <HBox prefHeight="100.0" prefWidth="200.0">
+                     <children>
+                        <HBox alignment="CENTER" prefHeight="100.0" prefWidth="200.0" spacing="30.0">
+                           <children>
+                              <ImageView fx:id="infecteGrave" fitHeight="32.0" fitWidth="32.0" onMouseClicked="#onMouseClicked" pickOnBounds="true" preserveRatio="true">
+                                 <image>
+                                    <Image url="@../../Sources/Males/infecteGrave.png" />
+                                 </image>
+                              </ImageView>
+                              <ImageView fx:id="personnageSain" fitHeight="32.0" fitWidth="32.0" onMouseClicked="#onMouseClicked" pickOnBounds="true" preserveRatio="true">
+                                 <image>
+                                    <Image url="@../../Sources/Males/personnageSain.png" />
+                                 </image>
+                              </ImageView>
+                           </children>
+                        </HBox>
+                     </children>
+                  </HBox>
+               </children>
+            </VBox>
+         </children></VBox>
    </left>
 </BorderPane>
