@@ -43,6 +43,8 @@ public class Controleur implements Initializable {
     private Label labelMoney;
     @FXML
     private Label labelInfo;
+    @FXML
+    private Label infoTourelle;
 
     private Partie partie;
     private VueMap vM;
@@ -138,7 +140,44 @@ public class Controleur implements Initializable {
     		}
     	}
     }
+    
+    @FXML
+    void onMouseEntered(MouseEvent event) {
+    	ImageView imageview = (ImageView) event.getTarget();
+    	switch (imageview.getId()) {
+		case "tourelleVitamine":
+			this.infoTourelle.textProperty().setValue("Type de tir : Mitraillette\n"
+					+ "Soin : peu\n"
+					+ "Cadence de tir : forte\n"
+					+ "Portée : courte\n"
+					+ "Coût : 500");
+			break;
+			
+		case "tourelleSeringue":
+			this.infoTourelle.textProperty().setValue("Type de tir : Coup par coup\n"
+					+ "Soin : important\n"
+					+ "Cadence de tir : moyenne\n"
+					+ "Portée : courte\n"
+					+ "Coût : 750");
+			break;
+			
+		case "tourelleVaccin":
+			this.infoTourelle.textProperty().setValue("Type de tir : Sniper\n"
+					+ "Soin : sur la durée\n"
+					+ "Cadence de tir : faible\n"
+					+ "Portée : longue\n"
+					+ "Coût : 1000");
+			break;
 
+		default:
+			break;
+		}
+    }
+    
+    @FXML
+    void onMouseExited(MouseEvent event) {
+    	this.infoTourelle.textProperty().setValue("");
+    }
 
     @FXML
     void action(ActionEvent event) {
