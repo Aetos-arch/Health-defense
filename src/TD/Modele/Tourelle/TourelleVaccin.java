@@ -20,8 +20,8 @@ public class TourelleVaccin extends TourelleDegatUnique {
             if (optionalPersonnage.isPresent()) {
                 Personnage personnage = optionalPersonnage.get();
                 Position positionCible = new Position(personnage.getX() + 8, personnage.getY() + 8);
-                Tir tir = new TirVaccin(positionCible, env, this);
-                env.ajouterTir(tir);
+                Tir tir = new TirVaccin(positionCible, this.env, this);
+                this.env.ajouterTir(tir);
             }
         }
         delai++;

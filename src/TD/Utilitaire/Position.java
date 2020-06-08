@@ -1,5 +1,9 @@
 package TD.Utilitaire;
 
+import TD.Modele.Personnage.Personnage;
+
+import java.awt.geom.Point2D;
+
 public class Position implements Coordonnee {
     private double x;
     private double y;

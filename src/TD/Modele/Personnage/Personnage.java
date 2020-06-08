@@ -37,6 +37,7 @@ public abstract class Personnage {
 		this.healOnTime = new SimpleIntegerProperty(0);
 		this.sainProperty = new SimpleIntegerProperty(0);
 	}
+
 	
 	protected void initSom(int x, int y) {
 		this.som = this.env.trouverSommet(x, y);
