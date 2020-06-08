@@ -60,12 +60,12 @@ public abstract class Personnage {
 			this.y.set(this.y.getValue() + this.dirY);
 			if(this.healOnTime.getValue()>0) { //Met les soins sur la durée
 				this.seFaireSoigner(1);
-				this.healOnTime.subtract(1);
+				this.healOnTime.setValue(this.healOnTime.getValue() -1);
+				System.out.println(healOnTime);
 			}
 			if(this.estSain())
 				this.sainProperty.setValue(1);
 		}
-		
 	}
 	
 	private void calculerDir() {
@@ -92,7 +92,7 @@ public abstract class Personnage {
 	
 	public void prendreUnHoT(int d) { // Permet de prendre des soins sur la durée
 		this.seFaireSoigner(d/2);
-		this.healOnTime.add(d/2);
+		this.healOnTime.setValue(this.healOnTime.getValue() + d/2);
 	}
 	
 	protected void soin(int d) {

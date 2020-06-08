@@ -8,7 +8,7 @@ public class VueHoT extends ImageView {
 
 	public VueHoT() {
 		this.setImage(new Image("Sources/HoT.png"));
-		Rectangle2D rogne = new Rectangle2D(56, 16, 16, 16);
-		this.setViewport(rogne);
+		//Rectangle2D rogne = new Rectangle2D(58, 16, 16, 16);
+		//this.setViewport(rogne);
 	}
 }
