@@ -40,7 +40,6 @@ public class Environnement {
 	}
 
 	public void unTour() {
-
 		for (int i = this.persos.size() - 1; i >= 0; i--) {
 			this.persos.get(i).agit();
 			if (this.persos.get(i).estArrive())
