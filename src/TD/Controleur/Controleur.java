@@ -32,55 +32,57 @@ import java.util.ResourceBundle;
 
 public class Controleur implements Initializable {
 
-	public IntegerProperty nbTour;
-	@FXML
-	private TilePane tilePaneMap;
-	@FXML
-	private Pane paneEntite;
-	@FXML
-	private Label labelPV;
-	@FXML
-	private Label labelVague;
-	@FXML
-	private Label labelScore;
-	@FXML
-	private Label labelMoney;
-	@FXML
-	private Label labelInfo;
-	@FXML
-	private Label legendeText;
-	@FXML
-	private Label legendeNom;
-	@FXML
-	private VBox boxPersonnages;
-	private Partie partie;
-	private VueMap vM;
-	private VuePers vP;
-	private VueTourelle vT;
-	private Timeline gameLoop;
+    @FXML
+    private TilePane tilePaneMap;
+    @FXML
+    private Pane paneEntite;
+    @FXML
+    private Label labelPV;
+    @FXML
+    private Label labelVague;
+    @FXML
+    private Label labelScore;
+    @FXML
+    private Label labelMoney;
+    @FXML
+    private Label labelInfo;
+    @FXML
+    private Label legendeText;
+    @FXML
+    private Label legendeNom;
+    @FXML
+    private VBox boxPersonnages;
 
-	public void initialize(URL url, ResourceBundle resourceBundle) {
-		this.partie = new Partie();
-		vM = new VueMap(partie.getEnv().getMap(), tilePaneMap);
-		this.partie.getEnv().getTirs().addListener(new ListenerTirs(paneEntite));
-		this.partie.getEnv().getTours().addListener(new ListenerTourelles(paneEntite));
-		this.partie.getEnv().getPersos().addListener(new ListenerPers(paneEntite, this));
-		initGame();
-		this.partie.getEnv().creerArbre();
-		this.nbTour = new SimpleIntegerProperty();
-		this.nbTour.set(0);
-		this.labelMoney.textProperty().bind(this.partie.moneyProperty().asString());
-		this.labelScore.textProperty().bind(this.partie.scoreProperty().asString());
-		this.labelVague.textProperty().bind(this.partie.vagueProperty().asString());
-		this.labelPV.textProperty().bind(this.partie.pvProperty().asString());
+    private Partie partie;
+    private VueMap vM;
+    private VuePers vP;
+    private VueTourelle vT;
+    private Timeline gameLoop;
 
-	}
+    public IntegerProperty nbTour;
 
-	private void initGame() {
+    public void initialize(URL url, ResourceBundle resourceBundle) {
+        this.partie = new Partie();
+        vM = new VueMap(partie.getEnv().getMap(), tilePaneMap);
+        this.partie.getEnv().getTirs().addListener(new ListenerTirs(paneEntite));
+        this.partie.getEnv().getTours().addListener(new ListenerTourelles(paneEntite));
+        this.partie.getEnv().getPersos().addListener(new ListenerPers(paneEntite, this));
+        initGame();
+        this.partie.getEnv().creerArbre();
+        this.nbTour = new SimpleIntegerProperty();
+        this.nbTour.set(0);
+        this.labelMoney.textProperty().bind(this.partie.moneyProperty().asString());
+        this.labelScore.textProperty().bind(this.partie.scoreProperty().asString());
+        this.labelVague.textProperty().bind(this.partie.vagueProperty().asString());
+        this.labelPV.textProperty().bind(this.partie.pvProperty().asString());
+
+    }
+
+    private void initGame() {
 		gameLoop = new Timeline();
 		gameLoop.setCycleCount(Timeline.INDEFINITE);
 
-		KeyFrame kf = new KeyFrame(Duration.seconds(0.03), (ev -> {
+		KeyFrame kf = new KeyFrame(Duration.seconds(0.04), (ev -> {
 
 			if (this.partie.estPerdu()) {
 				this.labelInfo.textProperty().setValue("game over");
@@ -91,21 +93,21 @@ public class Controleur implements Initializable {
 				this.partie.unTour();
 				this.nbTour.set(this.nbTour.getValue() + 1);
 			}
-		}));
+        }));
         gameLoop.getKeyFrames().add(kf);
     }
     
     @FXML
     void onDragDetected(MouseEvent event) {
-		ImageView imageview = (ImageView) event.getSource();
-		Dragboard db = imageview.startDragAndDrop(TransferMode.ANY);
-		ClipboardContent cb = new ClipboardContent();
-		Image image = new Image("Sources/Tourelles/" + imageview.getId() + "Dragged.png");
-		db.setDragView(image, 8, 8);
-		cb.putString(imageview.getId());
-		db.setContent(cb);
-		event.consume();
-	}
+    	ImageView imageview = (ImageView) event.getSource();
+        Dragboard db = imageview.startDragAndDrop(TransferMode.ANY);
+        ClipboardContent cb = new ClipboardContent();
+        Image image = new Image("Sources/Tourelles/" + imageview.getId() + "Dragged.png");
+        db.setDragView(image,8,8);
+        cb.putString(imageview.getId());
+        db.setContent(cb);
+        event.consume();
+    }
 
     @FXML
     void onDragOver(DragEvent event) {
@@ -203,53 +205,52 @@ public class Controleur implements Initializable {
 					+ "Vitesse : moyenne\n"
 					+ "Accélère quand soigné");
 			break;
-
-			case "infecteGrave":
-				this.legendeNom.textProperty().setValue("Infecté grave");
-				this.legendeText.textProperty().setValue("Contamination : élevée\n"
-						+ "Vitesse : lente\n"
-						+ "Force l’attaque des tours\nsur lui");
-				break;
-
-			case "personnageSain":
-				this.legendeNom.textProperty().setValue("Personnage sain");
-				this.legendeText.textProperty().setValue("Personne soigné");
-				break;
-
-			default:
-				break;
+			
+		case "infecteGrave":
+			this.legendeNom.textProperty().setValue("Infecté grave");
+			this.legendeText.textProperty().setValue("Contamination : élevée\n"
+					+ "Vitesse : lente\n"
+					+ "Force l’attaque des tours\nsur lui");
+			break;
+			
+		case "personnageSain":
+			this.legendeNom.textProperty().setValue("Personnage sain");
+			this.legendeText.textProperty().setValue("Personne soigné");
+			break;
+			
+		default:
+			break;
 		}
-	}
+    }
 
-	@FXML
-	void action(ActionEvent event) {
-		gameLoop.play();
-		if (this.partie.getVague() == 0)
-			this.partie.lancerNiveau();
-		if (this.partie.niveauFini())
-			this.partie.lancerNiveau();
-	}
-
-	@FXML
-	void regles(ActionEvent event) {
+    @FXML
+    void action(ActionEvent event) {
+        gameLoop.play();
+        if(this.partie.getVague() == 0)
+        	this.partie.lancerNiveau();
+        if(this.partie.niveauFini())
+        	this.partie.lancerNiveau();
+    }
+    
+    @FXML
+    void regles(ActionEvent event) {
 //    	this.boxPersonnages.setVisible(false);
 	}
 
-	public int getTour() {
-		return this.nbTour.get();
-	}
+    public int getTour() {
+        return this.nbTour.get();
+    }
 
-	public Partie getPartie() {
-		return this.partie;
-	}
+    public Partie getPartie() {
+    	return this.partie;
+    }
 
 
-	@FXML
-	void ajoutTour(ActionEvent event) { //A Supprimer pour le rendu, utile pour Vincent pour ajouter des tours vu que le drag and drop marche pas
-		try {
-			this.partie.getEnv().ajouterPers(new InfecteSansSymp(0, 15, this.partie.getEnv()));
+    @FXML
+    void ajoutTour(ActionEvent event) { //A Supprimer pour le rendu, utile pour Vincent pour ajouter des tours vu que le drag and drop marche pas
+    	try {
+    		this.partie.getEnv().ajouterPers(new InfecteSansSymp(0, 15, this.partie.getEnv()));
 			this.partie.ajouterTour(new TourelleDuCiel(500, 180, this.partie.getEnv()));
-
 			gameLoop.play();
 		} catch (MoneyException | PlacementException e) {
 			e.printStackTrace();
