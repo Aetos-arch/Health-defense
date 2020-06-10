@@ -4,6 +4,7 @@ import TD.Exception.MoneyException;
 import TD.Exception.PlacementException;
 import TD.Modele.Personnage.InfecteGrave;
 import TD.Modele.Personnage.InfecteJogger;
+import TD.Modele.Personnage.InfecteQuiTousse;
 import TD.Modele.Personnage.InfecteSansSymp;
 import TD.Modele.Tourelle.Tourelle;
 import javafx.beans.property.IntegerProperty;
@@ -39,16 +40,19 @@ public class Partie {
 	public void unTour() {
 		if (delai % 20 == 10)
 			if (avancement < nombreEnnemi()) {
-				double spawnAleatoire = Math.random() * 3;
+				double spawnAleatoire = Math.random() * 4;
 				if (spawnAleatoire < 1) {
 					int random = (int) (Math.random() * 11) + 11;
 					this.env.ajouterPers(new InfecteSansSymp(0, random, this.env));
 				} else if (spawnAleatoire < 2) {
 					int random = (int) (Math.random() * 11) + 11;
 					this.env.ajouterPers(new InfecteJogger(0, random, this.env));
-				} else {
+				} else if (spawnAleatoire < 3){
 					int random = (int) (Math.random() * 11) + 11;
 					this.env.ajouterPers(new InfecteGrave(0, random, this.env));
+				} else {
+					int random = (int) (Math.random() * 11) + 11;
+					this.env.ajouterPers(new InfecteQuiTousse(0, random, this.env));
 				}
 				avancement++;
 			}
