@@ -29,7 +29,7 @@ public abstract class Tourelle {
 
         for (Personnage p : env.getPersos()) {
             Position positionPersoActuel = new Position(p.getX(), p.getY());
-            if (this.getPosition().distance(positionPersoActuel) <= portee && !p.estSain()) {
+            if (this.getPosition().distance(positionPersoActuel) <= portee && !p.estSain() && p.estProtege().getValue() == 0) {
                 listePersosAPortee.add(p);
             }
         }
