@@ -78,7 +78,7 @@ public class Controleur implements Initializable {
 		gameLoop = new Timeline();
 		gameLoop.setCycleCount(Timeline.INDEFINITE);
 		
-		KeyFrame kf = new KeyFrame(Duration.seconds(0.02),(ev ->{
+		KeyFrame kf = new KeyFrame(Duration.seconds(0.05),(ev ->{
 
 			if(this.partie.estPerdu()){
 				this.labelInfo.textProperty().setValue("game over");
@@ -242,7 +242,7 @@ public class Controleur implements Initializable {
     void ajoutTour(ActionEvent event) { //A Supprimer pour le rendu, utile pour Vincent pour ajouter des tours vu que le drag and drop marche pas
     	try {
     		this.partie.getEnv().ajouterPers(new InfecteSansSymp(0, 15, this.partie.getEnv()));
-			this.partie.ajouterTour(new TourelleVitamine(500, 180, this.partie.getEnv()));
+			this.partie.ajouterTour(new TourelleSeringue(500, 180, this.partie.getEnv()));
 			gameLoop.play();
 		} catch (MoneyException | PlacementException e) {
 			e.printStackTrace();
