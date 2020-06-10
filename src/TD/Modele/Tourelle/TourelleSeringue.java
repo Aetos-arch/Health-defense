@@ -11,7 +11,7 @@ import java.util.Optional;
 public class TourelleSeringue extends TourelleDegatUnique {
 
     public TourelleSeringue(int x, int y, Environnement env) {
-        super(x, y, env, 200, 20, 750);
+        super(x, y, env, 200, 20, 1000);
     }
 
     @Override
@@ -27,4 +27,13 @@ public class TourelleSeringue extends TourelleDegatUnique {
         }
         delai++;
     }
+
+  /* public void ralentie () {
+            for (Personnage p : this.env.getPersos()) {
+                if (((p.getY() >= this.getY() - 70 && p.getY() <= this.getY() + 70) &&
+                        (p.getX() >= this.getX() - 70 && p.getX() <= this.getX() + 70))&& !p.estSain()) {
+                    p.ralentir();
+                }
+            }
+    }*/
 }
