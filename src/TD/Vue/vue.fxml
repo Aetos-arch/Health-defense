@@ -24,6 +24,7 @@
    <bottom>
       <HBox minHeight="120.0" prefHeight="43.0" prefWidth="1200.0" BorderPane.alignment="CENTER">
          <children>
+            <Button mnemonicParsing="false" onAction="#ajoutTour" text="AjouterTourelle" />
             <VBox prefHeight="200.0" prefWidth="150.0">
                <children>
                   <ImageView fx:id="tourelleVitamine" fitHeight="32.0" fitWidth="32.0" onDragDetected="#onDragDetected" pickOnBounds="true" preserveRatio="true">
