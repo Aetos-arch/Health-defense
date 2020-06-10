@@ -16,7 +16,7 @@ public class TourelleSeringue extends TourelleDegatUnique {
 
     @Override
     public void agit() {
-    	this.ralentie();
+        this.ralentie();
         if (delai % 40 == 0) {
             Optional<Personnage> optionalPersonnage = Optional.ofNullable(viser());
             if (optionalPersonnage.isPresent()) {
@@ -29,14 +29,13 @@ public class TourelleSeringue extends TourelleDegatUnique {
         delai++;
     }
 
-    public void ralentie () {
-            for (Personnage p : this.env.getPersos()) {
-                if (((p.getY() >= this.getY() - 70 && p.getY() <= this.getY() + 70) &&
-                        (p.getX() >= this.getX() - 70 && p.getX() <= this.getX() + 70))&& !p.estSain()) {
-                    p.ralentir();
-                }
-                else
-                	p.nonRalenti();
-            }
+    public void ralentie() {
+        for (Personnage p : this.env.getPersos()) {
+            if (((p.getY() >= this.getY() - 70 && p.getY() <= this.getY() + 70) &&
+                    (p.getX() >= this.getX() - 70 && p.getX() <= this.getX() + 70)) && !p.estSain()) {
+                p.ralentir();
+            } else
+                p.nonRalenti();
+        }
     }
 }

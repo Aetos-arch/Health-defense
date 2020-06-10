@@ -75,9 +75,9 @@ public class Controleur implements Initializable {
         this.labelScore.textProperty().bind(this.partie.scoreProperty().asString());
         this.labelVague.textProperty().bind(this.partie.vagueProperty().asString());
         this.labelPV.textProperty().bind(this.partie.pvProperty().asString());
-        
+
     }
-    
+
     private void initGame() {
 		gameLoop = new Timeline();
 		gameLoop.setCycleCount(Timeline.INDEFINITE);
@@ -235,17 +235,17 @@ public class Controleur implements Initializable {
     @FXML
     void regles(ActionEvent event) {
 //    	this.boxPersonnages.setVisible(false);
-    }
+	}
 
     public int getTour() {
         return this.nbTour.get();
     }
-    
+
     public Partie getPartie() {
     	return this.partie;
     }
-    
-    
+
+
     @FXML
     void ajoutTour(ActionEvent event) { //A Supprimer pour le rendu, utile pour Vincent pour ajouter des tours vu que le drag and drop marche pas
     	try {
@@ -255,5 +255,5 @@ public class Controleur implements Initializable {
 		} catch (MoneyException | PlacementException e) {
 			e.printStackTrace();
 		}
-    }
+	}
 }
