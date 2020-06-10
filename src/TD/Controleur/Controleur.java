@@ -163,7 +163,8 @@ public class Controleur implements Initializable {
 					+ "Soin : important\n"
 					+ "Cadence de tir : moyenne\n"
 					+ "Portée : courte\n"
-					+ "Coût : 1000");
+					+ "Coût : 1000\n"
+					+ "Ralenti passivement les ennemis proches");
 			break;
 			
 		case "tourelleVaccin":
