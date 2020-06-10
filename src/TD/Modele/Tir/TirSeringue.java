@@ -6,6 +6,6 @@ import TD.Utilitaire.Position;
 
 public class TirSeringue extends TirDirection {
     public TirSeringue(Position cible, Environnement env, TourelleSeringue t) {
-        super(60, cible, 20, env, 20, t);
+        super(60, cible, 40, env, 20, t);
     }
 }

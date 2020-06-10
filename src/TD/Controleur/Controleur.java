@@ -81,17 +81,15 @@ public class Controleur implements Initializable {
     private void initGame() {
 		gameLoop = new Timeline();
 		gameLoop.setCycleCount(Timeline.INDEFINITE);
-		
-		KeyFrame kf = new KeyFrame(Duration.seconds(0.02),(ev ->{
 
-			if(this.partie.estPerdu()){
+		KeyFrame kf = new KeyFrame(Duration.seconds(0.04), (ev -> {
+
+			if (this.partie.estPerdu()) {
 				this.labelInfo.textProperty().setValue("game over");
 				gameLoop.stop();
-			}
-			else if(this.partie.niveauFini()) {
+			} else if (this.partie.niveauFini()) {
 				gameLoop.stop();
-			}
-			else {
+			} else {
 				this.partie.unTour();
 				this.nbTour.set(this.nbTour.getValue() + 1);
 			}
@@ -167,7 +165,8 @@ public class Controleur implements Initializable {
 					+ "Soin : important\n"
 					+ "Cadence de tir : moyenne\n"
 					+ "Portée : courte\n"
-					+ "Coût : 1000");
+					+ "Coût : 1000\n"
+					+ "Ralenti passivement les ennemis proches");
 			break;
 			
 		case "tourelleVaccin":
@@ -251,7 +250,11 @@ public class Controleur implements Initializable {
     void ajoutTour(ActionEvent event) { //A Supprimer pour le rendu, utile pour Vincent pour ajouter des tours vu que le drag and drop marche pas
     	try {
     		this.partie.getEnv().ajouterPers(new InfecteSansSymp(0, 15, this.partie.getEnv()));
+<<<<<<< HEAD
 			this.partie.ajouterTour(new TourelleDuCiel(500, 180, this.partie.getEnv()));
+=======
+			this.partie.ajouterTour(new TourelleSeringue(500, 180, this.partie.getEnv()));
+>>>>>>> refs/heads/master
 			gameLoop.play();
 		} catch (MoneyException | PlacementException e) {
 			e.printStackTrace();

@@ -23,6 +23,7 @@ public abstract class Personnage {
 	private IntegerProperty sainProperty;
 	private IntegerProperty protege;
 	private int tpsProtec;
+	private boolean ralenti;
 	
 	public Personnage(int vit, int nivContamination, int xS, int yS, Environnement e) {
 		this.x = new SimpleIntegerProperty();
@@ -40,6 +41,7 @@ public abstract class Personnage {
 		this.sainProperty = new SimpleIntegerProperty(0);
 		this.protege = new SimpleIntegerProperty(0);
 		this.tpsProtec = 0;
+		this.ralenti = false;
 	}
 
 	
@@ -111,10 +113,6 @@ public abstract class Personnage {
 		this.vitesse = v;
 	}
 
-	public void ralentir() {
-		this.setVit(this.vitesse/ 2);
-	}
-
 	public boolean estSain() {
 		return this.nivCont <= 0;
 	}
@@ -159,4 +157,19 @@ public abstract class Personnage {
     public void nonProtege() {
 		this.protege.setValue(0);
     }
+
+
+	public void ralentir() {
+		if(!this.ralenti) {
+			this.ralenti = true;
+			this.vitesse = this.vitesse/2;
+		}
+	}
+	
+	public void nonRalenti() {
+		if(this.ralenti) {
+			this.ralenti = false;
+			this.vitesse = this.vitesse*2;
+		}
+	}
 }

@@ -7,7 +7,7 @@ import TD.Utilitaire.Position;
 
 public class TirVaccin extends TirDirection {
     public TirVaccin(Position cible, Environnement env, TourelleVaccin t) {
-        super(90, cible, 25, env, 20, t);
+        super(90, cible, 50, env, 20, t);
     }
 
     // Parcours les personnages pour vérifier si collision, si collision inflige les dégats
