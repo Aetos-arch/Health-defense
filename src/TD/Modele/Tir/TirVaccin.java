@@ -15,7 +15,7 @@ public class TirVaccin extends TirDirection {
     public boolean collision() {
         for (Personnage p : this.env.getPersos()) {
             if (((p.getY() >= this.getY() - hitbox && p.getY() <= this.getY() + hitbox) &&
-                    (p.getX() >= this.getX() - hitbox && p.getX() <= this.getX() + hitbox))&& !p.estSain()) {
+                    (p.getX() >= this.getX() - hitbox && p.getX() <= this.getX() + hitbox))&& !p.estSain() && p.estProtege().getValue() ==0) {
                 p.prendreUnHoT(this.pointAttaque);
                 return true;
             }
