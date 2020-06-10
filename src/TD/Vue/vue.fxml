@@ -1,18 +1,11 @@
 <?xml version="1.0" encoding="UTF-8"?>
 
-<?import javafx.scene.shape.*?>
-<?import javafx.scene.text.*?>
-<?import javafx.scene.*?>
-<?import java.net.*?>
-<?import javafx.scene.image.*?>
-<?import java.lang.*?>
 <?import javafx.geometry.*?>
-<?import javafx.geometry.Insets?>
 <?import javafx.scene.control.*?>
-<?import javafx.scene.image.Image?>
-<?import javafx.scene.image.ImageView?>
+<?import javafx.scene.Cursor?>
+<?import javafx.scene.image.*?>
 <?import javafx.scene.layout.*?>
-
+<?import javafx.scene.text.Font?>
 <BorderPane maxHeight="800.0" maxWidth="1200.0" prefHeight="800.0" prefWidth="1200.0" styleClass="background" stylesheets="@../../Sources/style.css" xmlns="http://javafx.com/javafx/8" xmlns:fx="http://javafx.com/fxml/1" fx:controller="TD.Controleur.Controleur">
     <center>
         <Pane fx:id="paneEntite" maxHeight="480.0" maxWidth="800.0" minHeight="480.0" minWidth="800.0" onDragDropped="#onDragDropped" onDragOver="#onDragOver" prefHeight="480.0" prefWidth="800.0" styleClass="pane" BorderPane.alignment="CENTER">
@@ -24,8 +17,9 @@
    <top>
       <Label fx:id="labelInfo" minHeight="160.0" minWidth="1200.0" BorderPane.alignment="CENTER">
          <graphic>
-            <Button mnemonicParsing="false" onAction="#ajoutTour" text="AjouterTourelle" />
-         </graphic></Label>
+            <Button mnemonicParsing="false" onAction="#ajoutTour" text="AjouterTourelle"/>
+         </graphic>
+      </Label>
    </top>
    <bottom>
       <HBox alignment="CENTER" minHeight="160.0" prefHeight="120.0" prefWidth="1200.0" BorderPane.alignment="CENTER">
@@ -149,32 +143,37 @@
          <children>
             <VBox alignment="TOP_CENTER" prefHeight="330.0" prefWidth="200.0">
                <children>
-                  <Button contentDisplay="CENTER" mnemonicParsing="false" onAction="#regles" prefHeight="25.0" prefWidth="160.0" styleClass="regles" text="Règles">
+                  <Button contentDisplay="CENTER" mnemonicParsing="false" onAction="#regles" prefHeight="25.0"
+                          prefWidth="160.0" styleClass="regles" text="Règles">
                      <VBox.margin>
-                        <Insets bottom="5.0" top="5.0" />
+                        <Insets bottom="5.0" top="5.0"/>
                      </VBox.margin>
                   </Button>
-                  <Label text="Label" />
-               </children></VBox>
+                  <Label text="Label"/>
+               </children>
+            </VBox>
             <VBox fx:id="boxPersonnages" alignment="CENTER" prefHeight="200.0" prefWidth="200.0">
                <children>
-                  <Label alignment="CENTER" minHeight="30.0" prefHeight="30.0" prefWidth="200.0" text="Liste des personnages">
+                  <Label alignment="CENTER" minHeight="30.0" prefHeight="30.0" prefWidth="200.0"
+                         text="Liste des personnages">
                      <font>
-                        <Font size="18.0" />
+                        <Font size="18.0"/>
                      </font>
                   </Label>
                   <HBox prefHeight="100.0" prefWidth="200.0">
                      <children>
                         <HBox alignment="CENTER" prefHeight="100.0" prefWidth="200.0" spacing="30.0">
                            <children>
-                              <ImageView fx:id="infecteSansSymptome" fitHeight="32.0" fitWidth="32.0" onMouseClicked="#onMouseClicked" pickOnBounds="true" preserveRatio="true">
+                              <ImageView fx:id="infecteSansSymptome" fitHeight="32.0" fitWidth="32.0"
+                                         onMouseClicked="#onMouseClicked" pickOnBounds="true" preserveRatio="true">
                                  <image>
-                                    <Image url="@../../Sources/Males/infecteSansSymptome.png" />
+                                    <Image url="@../../Sources/Males/infecteSansSymptome.png"/>
                                  </image>
                               </ImageView>
-                              <ImageView fx:id="infecteJogger" fitHeight="32.0" fitWidth="32.0" onMouseClicked="#onMouseClicked" pickOnBounds="true" preserveRatio="true">
+                              <ImageView fx:id="infecteJogger" fitHeight="32.0" fitWidth="32.0"
+                                         onMouseClicked="#onMouseClicked" pickOnBounds="true" preserveRatio="true">
                                  <image>
-                                    <Image url="@../../Sources/Females/infecteJogger.png" />
+                                    <Image url="@../../Sources/Females/infecteJogger.png"/>
                                  </image>
                               </ImageView>
                            </children>

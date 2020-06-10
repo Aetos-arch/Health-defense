@@ -24,12 +24,12 @@ public abstract class Personnage {
 	private IntegerProperty protege;
 	private int tpsProtec;
 	private boolean ralenti;
-	
+
 	public Personnage(int vit, int nivContamination, int xS, int yS, Environnement e) {
 		this.x = new SimpleIntegerProperty();
 		this.y = new SimpleIntegerProperty();
-		this.x.set(xS*16);
-		this.y.set(yS*16);
+		this.x.set(xS * 16);
+		this.y.set(yS * 16);
 		this.nivCont = nivContamination;
 		this.vitesse = vit;
 		this.env = e;
@@ -144,32 +144,33 @@ public abstract class Personnage {
 	public boolean estArrive() {
 		return this.arrive;
 	}
-    
-    public IntegerProperty estProtege() { //renvoie 1 si le personnage est proteger et 0 sinon
-    	return this.protege;
-    }
-    
-    protected void protege() {
-    	this.protege.setValue(1);;
-    	this.tpsProtec = 40;
-    }
-    
-    public void nonProtege() {
+
+	public IntegerProperty estProtege() { //renvoie 1 si le personnage est proteger et 0 sinon
+		return this.protege;
+	}
+
+	protected void protege() {
+		this.protege.setValue(1);
+		;
+		this.tpsProtec = 40;
+	}
+
+	public void nonProtege() {
 		this.protege.setValue(0);
-    }
+	}
 
 
 	public void ralentir() {
-		if(!this.ralenti) {
+		if (!this.ralenti) {
 			this.ralenti = true;
-			this.vitesse = this.vitesse/2;
+			this.vitesse = this.vitesse / 2;
 		}
 	}
-	
+
 	public void nonRalenti() {
-		if(this.ralenti) {
+		if (this.ralenti) {
 			this.ralenti = false;
-			this.vitesse = this.vitesse*2;
+			this.vitesse = this.vitesse * 2;
 		}
 	}
 }

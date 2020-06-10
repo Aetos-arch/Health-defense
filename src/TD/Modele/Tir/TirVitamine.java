@@ -7,6 +7,6 @@ import TD.Utilitaire.Position;
 public class TirVitamine extends TirDirection {
 
     public TirVitamine(Position cible, Environnement env, TourelleVitamine t) {
-        super(6, cible, 20, env, 8, t);
+        super(20, cible, 24, env, 8, t);
     }
 }

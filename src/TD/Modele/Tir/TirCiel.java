@@ -10,7 +10,7 @@ public class TirCiel extends Tir {
     protected TourelleDuCiel tourelle;
 
     public TirCiel(int pointAttaque, Position cible, Environnement env, TourelleDuCiel t) {
-        super(cible, pointAttaque, 100, env);
+        super(cible, pointAttaque, 32, env);
         this.tourelle = t;
     }
 
