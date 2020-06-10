@@ -16,11 +16,13 @@ public abstract class Personnage {
 	private int dirX;
 	private int dirY;
 	private Sommet som;
-	private Environnement env;
+	protected Environnement env;
 	private HashMap<Sommet, Sommet> aretes;
 	private boolean arrive;
 	private IntegerProperty healOnTime;
 	private IntegerProperty sainProperty;
+	private IntegerProperty protege;
+	private int tpsProtec;
 	
 	public Personnage(int vit, int nivContamination, int xS, int yS, Environnement e) {
 		this.x = new SimpleIntegerProperty();
@@ -36,6 +38,8 @@ public abstract class Personnage {
 		this.arrive = false;
 		this.healOnTime = new SimpleIntegerProperty(0);
 		this.sainProperty = new SimpleIntegerProperty(0);
+		this.protege = new SimpleIntegerProperty(0);
+		this.tpsProtec = 0;
 	}
 	
 	protected void initSom(int x, int y) {
@@ -64,7 +68,11 @@ public abstract class Personnage {
 			}
 			if(this.estSain())
 				this.sainProperty.setValue(1);
+			if(tpsProtec <= 0)
+				this.nonProtege();
+			tpsProtec --;
 		}
+		
 	}
 	
 	private void calculerDir() {
@@ -132,4 +140,17 @@ public abstract class Personnage {
     public boolean estArrive() {
         return this.arrive;
     }
+    
+    public IntegerProperty estProtege() { //renvoie 1 si le personnage est proteger et 0 sinon
+    	return this.protege;
+    }
+    
+    protected void protege() {
+    	this.protege.setValue(1);;
+    	this.tpsProtec = 40;
+    }
+    
+    public void nonProtege() {
+		this.protege.setValue(0);;
+	}
 }

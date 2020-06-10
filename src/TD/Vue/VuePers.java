@@ -10,9 +10,10 @@ import javafx.scene.layout.Pane;
 public class VuePers extends ImageView {
 
 	private final String[] Url = {"Sources/Males/M_07.png", "Sources/Females/F_07.png",
-									"Sources/Males/M_10.png", "Sources/Males/M_01.png"};
+									"Sources/Males/M_10.png", "Sources/Males/M_01.png", "Sources/Females/F_11.png" };
 	
 	private ArrayList<VueHoT> listeHoT;
+	private VueProtect vueProt;
 
 	public VuePers(int url) {
 			this.setImage(new Image(Url[url]));
@@ -48,5 +49,19 @@ public class VuePers extends ImageView {
 	
 	public void enleverHoT(Pane p) {
 		p.getChildren().removeAll(listeHoT);		
+	}
+	
+	public void protectionPers(Integer v, Pane p) {
+		if(v == 1) {
+			this.vueProt = new VueProtect();
+			this.vueProt.translateXProperty().bind(this.translateXProperty());
+			this.vueProt.translateYProperty().bind(this.translateYProperty());
+			this.vueProt.setY(this.vueProt.getY()-8);
+			this.vueProt.setX(this.vueProt.getX()+4);
+			p.getChildren().add(vueProt);
+		}
+		else
+			p.getChildren().remove(vueProt);
+		
 	}
 }

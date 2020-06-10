@@ -32,7 +32,10 @@ public class Environnement {
 		this.persos.add(p);
 	}
 	
-	public void ajouterTour(Tourelle tour) {
+	public void ajouterTour(Tourelle tour) throws PlacementException {
+		for(Tourelle t : this.tours)
+			if(t.getX()==tour.getX() && t.getY() == tour.getY())
+				throw new PlacementException();
 		this.tours.add(tour);
 	}
 
