@@ -36,7 +36,6 @@ public abstract class Tourelle {
         return listePersosAPortee;
     }
 
-
     public ArrayList<Personnage> filtrerInfectesGrave(ArrayList<Personnage> listePersos) {
         ArrayList<Personnage> listePersosInfecteGrave = new ArrayList<>();
         for (Personnage p : listePersos) {
