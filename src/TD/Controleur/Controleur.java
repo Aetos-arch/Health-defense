@@ -18,6 +18,7 @@ import javafx.beans.property.SimpleIntegerProperty;
 import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
 import javafx.fxml.Initializable;
+import javafx.scene.control.Button;
 import javafx.scene.control.Label;
 import javafx.scene.image.Image;
 import javafx.scene.image.ImageView;
@@ -75,7 +76,6 @@ public class Controleur implements Initializable {
         this.labelScore.textProperty().bind(this.partie.scoreProperty().asString());
         this.labelVague.textProperty().bind(this.partie.vagueProperty().asString());
         this.labelPV.textProperty().bind(this.partie.pvProperty().asString());
-
     }
 
     private void initGame() {
@@ -121,8 +121,8 @@ public class Controleur implements Initializable {
     	if(event.getX() != 800 && event.getY() != 480) {
     		try {
     			switch (event.getDragboard().getString()) {
-			          case "tourelleVitamine":
-			        	  this.partie.ajouterTour(new TourelleVitamine((int) Math.floor(event.getX() / 16) * 16, (int) Math.floor(event.getY() / 16) * 16, partie.getEnv()));
+    					case "tourelleVitamine":
+    					this.partie.ajouterTour(new TourelleVitamine((int) Math.floor(event.getX() / 16) * 16, (int) Math.floor(event.getY() / 16) * 16, partie.getEnv()));
 			        	  break;
 
 			          case "tourelleSeringue":
@@ -133,6 +133,10 @@ public class Controleur implements Initializable {
 			        	  this.partie.ajouterTour(new TourelleVaccin((int) Math.floor(event.getX() / 16) * 16, (int) Math.floor(event.getY() / 16) * 16, partie.getEnv()));
 			        	  break;
 			        	  
+			          case "tourelleFiole":
+			        	  this.partie.ajouterTour(new TourelleDuCiel((int) Math.floor(event.getX() / 16) * 16, (int) Math.floor(event.getY() / 16) * 16, partie.getEnv()));
+			        	  break;
+			        
 			          default:
 			        	  break;
 		        }
@@ -144,49 +148,6 @@ public class Controleur implements Initializable {
     			this.labelInfo.textProperty().setValue("Placement impossible");
     		}
     	}
-    }
-    
-    @FXML
-    void onMouseEntered(MouseEvent event) {
-    	ImageView imageview = (ImageView) event.getTarget();
-    	switch (imageview.getId()) {
-		case "tourelleVitamine":
-			this.legendeNom.textProperty().setValue("Tourelle vitamine");
-			this.legendeText.textProperty().setValue("Type de tir : Mitraillette\n"
-					+ "Soin : peu\n"
-					+ "Cadence de tir : forte\n"
-					+ "Portée : courte\n"
-					+ "Coût : 500");
-			break;
-			
-		case "tourelleSeringue":
-			this.legendeNom.textProperty().setValue("Tourelle seringue");
-			this.legendeText.textProperty().setValue("Type de tir : Coup par coup\n"
-					+ "Soin : important\n"
-					+ "Cadence de tir : moyenne\n"
-					+ "Portée : courte\n"
-					+ "Coût : 1000\n"
-					+ "Ralenti passivement les ennemis proches");
-			break;
-			
-		case "tourelleVaccin":
-			this.legendeNom.textProperty().setValue("Tourelle vaccin");
-			this.legendeText.textProperty().setValue("Type de tir : Sniper\n"
-					+ "Soin : sur la durée\n"
-					+ "Cadence de tir : faible\n"
-					+ "Portée : longue\n"
-					+ "Coût : 2000");
-			break;
-
-		default:
-			break;
-		}
-    }
-    
-    @FXML
-    void onMouseExited(MouseEvent event) {
-    	this.legendeNom.textProperty().setValue("");
-    	this.legendeText.textProperty().setValue("");
     }
     
     @FXML
@@ -213,18 +174,70 @@ public class Controleur implements Initializable {
 					+ "Force l’attaque des tours\nsur lui");
 			break;
 			
+		case "infecteQuiTousse":
+			this.legendeNom.textProperty().setValue("Infecté qui tousse");
+			this.legendeText.textProperty().setValue("Contamination : moyenne\n"
+					+ "Vitesse : moyenne\n"
+					+ "Empêche les tirs des\n"
+					+ "tourelles sur les infectés\n"
+					+ "à proximité de lui\n"
+					+ "quand il est soigné");
+			break;
+			
 		case "personnageSain":
 			this.legendeNom.textProperty().setValue("Personnage sain");
-			this.legendeText.textProperty().setValue("Personne soigné");
+			this.legendeText.textProperty().setValue("Personnage soigné");
 			break;
 			
 		default:
 			break;
 		}
     }
+    
+    @FXML
+    void onAction(ActionEvent event) {
+    	Button bouton = (Button) event.getSource();
+    	switch (bouton.getId()) {
+		case "infoVitamine":
+			this.legendeNom.textProperty().setValue("Tourelle vitamine");
+			this.legendeText.textProperty().setValue("Type de tir : Mitraillette\n"
+					+ "Soin : peu\n"
+					+ "Cadence de tir : forte\n"
+					+ "Portée : courte");
+			break;
+			
+		case "infoSeringue":
+			this.legendeNom.textProperty().setValue("Tourelle seringue");
+			this.legendeText.textProperty().setValue("Type de tir : Coup par coup\n"
+					+ "Soin : important\n"
+					+ "Cadence de tir : moyenne\n"
+					+ "Portée : courte\n"
+					+ "Ralenti les ennemis proches");
+			break;
+			
+		case "infoVaccin":
+			this.legendeNom.textProperty().setValue("Tourelle vaccin");
+			this.legendeText.textProperty().setValue("Type de tir : Sniper\n"
+					+ "Soin : sur la durée\n"
+					+ "Cadence de tir : faible\n"
+					+ "Portée : longue");
+			break;
+			
+		case "infoFiole":
+			this.legendeNom.textProperty().setValue("Tourelle fiole");
+			this.legendeText.textProperty().setValue("Type de tir : Dégât de zone\n"
+					+ "Soin : moyen\n"
+					+ "Cadence de tir : faible\n"
+					+ "Portée : très longue");
+			break;
+
+		default:
+			break;
+		}
+    }
 
     @FXML
-    void action(ActionEvent event) {
+    void vagueSuivante(ActionEvent event) {
         gameLoop.play();
         if(this.partie.getVague() == 0)
         	this.partie.lancerNiveau();
