@@ -96,7 +96,7 @@ public class Controleur implements Initializable {
     
     @FXML
     void onDragDetected(MouseEvent event) {
-    	ImageView imageview = (ImageView) event.getTarget();
+    	ImageView imageview = (ImageView) event.getSource();
         Dragboard db = imageview.startDragAndDrop(TransferMode.ANY);
         ClipboardContent cb = new ClipboardContent();
         Image image = new Image("Sources/Tourelles/" + imageview.getId() + "Dragged.png");
