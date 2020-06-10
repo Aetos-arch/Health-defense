@@ -3,6 +3,7 @@ package TD.Controleur;
 import TD.Exception.MoneyException;
 import TD.Exception.PlacementException;
 import TD.Modele.Partie;
+import TD.Modele.Personnage.InfecteSansSymp;
 import TD.Modele.Tourelle.TourelleSeringue;
 import TD.Modele.Tourelle.TourelleVaccin;
 import TD.Modele.Tourelle.TourelleVitamine;
@@ -242,5 +243,17 @@ public class Controleur implements Initializable {
     
     public Partie getPartie() {
     	return this.partie;
+    }
+    
+    
+    @FXML
+    void ajoutTour(ActionEvent event) { //A Supprimer pour le rendu, utile pour Vincent pour ajouter des tours vu que le drag and drop marche pas
+    	try {
+    		this.partie.getEnv().ajouterPers(new InfecteSansSymp(0, 15, this.partie.getEnv()));
+			this.partie.ajouterTour(new TourelleVitamine(500, 180, this.partie.getEnv()));
+			gameLoop.play();
+		} catch (MoneyException | PlacementException e) {
+			e.printStackTrace();
+		}
     }
 }

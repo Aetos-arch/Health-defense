@@ -1,6 +1,5 @@
 package TD.Modele.Tourelle;
 
-import TD.Exception.PasDePersoAPorteeException;
 import TD.Modele.Environnement;
 import TD.Modele.Personnage.Personnage;
 import TD.Utilitaire.Position;
@@ -29,6 +28,18 @@ public abstract class TourelleDegatUnique extends Tourelle {
         return getPersoLePlusProche(getListePersosAPortee());
     }
 
+    public ArrayList<Personnage> listePersosAPortee() {
+        ArrayList<Personnage> persosAPortee = new ArrayList<>();
+
+        for (Personnage p : env.getPersos()) {
+            Position positionPersoActuel = new Position(p.getX(), p.getY());
+            if (this.getPosition().distance(positionPersoActuel) <= portee && !p.estSain() && p.estProtege().getValue()==0) {
+                persosAPortee.add(p);
+            }
+        }
+        return persosAPortee;
+    }
+        
     public Personnage getPersoLePlusProche(ArrayList<Personnage> listePersos) {
         Personnage persoPlusProche = getListePersosAPortee().get(0);
 
