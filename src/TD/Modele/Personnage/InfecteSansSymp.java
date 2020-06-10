@@ -5,7 +5,7 @@ import TD.Modele.Environnement;
 public class InfecteSansSymp extends Personnage{
 
 	public InfecteSansSymp(int x, int y, Environnement e) {
-		super(1, 100, x, y, e);
-	}
+        super(4, 100, x, y, e);
+    }
 	
 }

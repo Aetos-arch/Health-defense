@@ -8,7 +8,7 @@ public class InfecteQuiTousse extends Personnage {
 	private int delaiDeCompetence;
 
 	public InfecteQuiTousse(int xS, int yS, Environnement e) {
-		super(2, 150, xS, yS, e);
+		super(4, 150, xS, yS, e);
 		this.portee = 100;
 	}
 

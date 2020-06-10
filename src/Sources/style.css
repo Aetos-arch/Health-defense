@@ -33,3 +33,10 @@
 	-fx-border-style: solid outside;
 	-fx-border-width: 2px;
 }
+
+.regles {
+	-fx-font-size: 14px;
+	-fx-border-style: solid inside;
+	-fx-border-width: 3px;
+	-fx-border-color: black;
+}

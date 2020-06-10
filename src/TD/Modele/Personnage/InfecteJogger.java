@@ -4,12 +4,12 @@ import TD.Modele.Environnement;
 
 public class InfecteJogger extends Personnage {
 	public InfecteJogger(int x, int y, Environnement e) {
-        super(2, 150, x, y, e);
+        super(4, 150, x, y, e);
     }
 	
 	@Override
 	public void seFaireSoigner(int d) {
         this.soin(d);
-        this.setVit(4);
+        this.setVit(8);
     }
 }
