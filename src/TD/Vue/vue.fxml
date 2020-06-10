@@ -22,12 +22,14 @@
         </Pane>
     </center>
    <top>
-      <Label fx:id="labelInfo" minHeight="160.0" minWidth="1200.0" BorderPane.alignment="CENTER" />
+      <Label fx:id="labelInfo" minHeight="160.0" minWidth="1200.0" BorderPane.alignment="CENTER">
+         <graphic>
+            <Button mnemonicParsing="false" onAction="#ajoutTour" text="AjouterTourelle" />
+         </graphic></Label>
    </top>
    <bottom>
       <HBox alignment="CENTER" minHeight="160.0" prefHeight="120.0" prefWidth="1200.0" BorderPane.alignment="CENTER">
          <children>
-            <Button mnemonicParsing="false" onAction="#ajoutTour" text="AjouterTourelle" />
             <VBox alignment="CENTER" prefHeight="160.0" prefWidth="200.0">
                <children>
                   <VBox maxHeight="140.0" maxWidth="180.0" minHeight="150.0" minWidth="180.0" styleClass="infoLegende">
@@ -139,14 +141,22 @@
    <left>
       <VBox maxHeight="480.0" maxWidth="200.0" minHeight="480.0" minWidth="200.0" BorderPane.alignment="CENTER">
          <children>
-            <VBox prefHeight="330.0" prefWidth="200.0" />
-            <Label alignment="CENTER" minHeight="30.0" prefHeight="30.0" prefWidth="200.0" text="Liste des personnages">
-               <font>
-                  <Font size="18.0" />
-               </font>
-            </Label>
-            <VBox prefHeight="200.0" prefWidth="200.0">
+            <VBox alignment="TOP_CENTER" prefHeight="330.0" prefWidth="200.0">
                <children>
+                  <Button contentDisplay="CENTER" mnemonicParsing="false" onAction="#regles" prefHeight="25.0" prefWidth="160.0" styleClass="regles" text="Règles">
+                     <VBox.margin>
+                        <Insets bottom="5.0" top="5.0" />
+                     </VBox.margin>
+                  </Button>
+                  <Label text="Label" />
+               </children></VBox>
+            <VBox fx:id="boxPersonnages" alignment="CENTER" prefHeight="200.0" prefWidth="200.0">
+               <children>
+                  <Label alignment="CENTER" minHeight="30.0" prefHeight="30.0" prefWidth="200.0" text="Liste des personnages">
+                     <font>
+                        <Font size="18.0" />
+                     </font>
+                  </Label>
                   <HBox prefHeight="100.0" prefWidth="200.0">
                      <children>
                         <HBox alignment="CENTER" prefHeight="100.0" prefWidth="200.0" spacing="30.0">

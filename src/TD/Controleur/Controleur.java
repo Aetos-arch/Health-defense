@@ -23,6 +23,7 @@ import javafx.scene.image.ImageView;
 import javafx.scene.input.*;
 import javafx.scene.layout.Pane;
 import javafx.scene.layout.TilePane;
+import javafx.scene.layout.VBox;
 import javafx.util.Duration;
 
 import java.net.URL;
@@ -48,6 +49,8 @@ public class Controleur implements Initializable {
     private Label legendeText;
     @FXML
     private Label legendeNom;
+    @FXML
+    private VBox boxPersonnages;
 
     private Partie partie;
     private VueMap vM;
@@ -97,7 +100,7 @@ public class Controleur implements Initializable {
     
     @FXML
     void onDragDetected(MouseEvent event) {
-    	ImageView imageview = (ImageView) event.getTarget();
+    	ImageView imageview = (ImageView) event.getSource();
         Dragboard db = imageview.startDragAndDrop(TransferMode.ANY);
         ClipboardContent cb = new ClipboardContent();
         Image image = new Image("Sources/Tourelles/" + imageview.getId() + "Dragged.png");
@@ -227,6 +230,11 @@ public class Controleur implements Initializable {
         	this.partie.lancerNiveau();
         if(this.partie.niveauFini())
         	this.partie.lancerNiveau();
+    }
+    
+    @FXML
+    void regles(ActionEvent event) {
+    	this.boxPersonnages.setVisible(false);
     }
 
     public int getTour() {
