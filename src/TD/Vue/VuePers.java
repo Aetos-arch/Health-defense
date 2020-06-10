@@ -1,16 +1,16 @@
 package TD.Vue;
 
-import java.util.ArrayList;
-
 import javafx.geometry.Rectangle2D;
 import javafx.scene.image.Image;
 import javafx.scene.image.ImageView;
 import javafx.scene.layout.Pane;
 
+import java.util.ArrayList;
+
 public class VuePers extends ImageView {
 
 	private final String[] Url = {"Sources/Males/M_07.png", "Sources/Females/F_07.png",
-									"Sources/Males/M_10.png", "Sources/Males/M_01.png", "Sources/Females/F_11.png" };
+			"Sources/Males/M_10.png", "Sources/Males/M_01.png", "Sources/Females/F_03.png"};
 	
 	private ArrayList<VueHoT> listeHoT;
 	private VueProtect vueProt;
