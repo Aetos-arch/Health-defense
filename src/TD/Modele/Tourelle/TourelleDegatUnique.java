@@ -1,7 +1,6 @@
 package TD.Modele.Tourelle;
 
 import TD.Modele.Environnement;
-import TD.Modele.Personnage.InfecteGrave;
 import TD.Modele.Personnage.Personnage;
 import TD.Utilitaire.Position;
 
@@ -14,20 +13,19 @@ public abstract class TourelleDegatUnique extends Tourelle {
         this.portee = portee;
     }
 
+    public abstract void agit();
+
     public Personnage viser() {
         // Si pas de persos à portée return null
-        if (listePersosAPortee().isEmpty()) {
+        if (getListePersosAPortee().isEmpty())
             return null;
-        }
 
-        ArrayList<Personnage> listeInfecteGrave = filtrerInfectesGrave(listePersosAPortee());
+        ArrayList<Personnage> listeInfecteGrave = filtrerInfectesGrave(getListePersosAPortee());
         // Infecté grave à portée on vise eux en priorité
-        if (!listeInfecteGrave.isEmpty()) {
+        if (!listeInfecteGrave.isEmpty())
             return getPersoLePlusProche(listeInfecteGrave);
-        }
-
         // Sinon les personnages pas infecté grave
-        return getPersoLePlusProche(listePersosAPortee());
+        return getPersoLePlusProche(getListePersosAPortee());
     }
 
     public ArrayList<Personnage> listePersosAPortee() {
@@ -41,21 +39,9 @@ public abstract class TourelleDegatUnique extends Tourelle {
         }
         return persosAPortee;
     }
-
-
-    public ArrayList<Personnage> filtrerInfectesGrave(ArrayList<Personnage> listePersos) {
-        ArrayList<Personnage> listePersosInfecteGrave = new ArrayList<>();
-        for (Personnage p : listePersos) {
-            if (p instanceof InfecteGrave) {
-                listePersosInfecteGrave.add(p);
-            }
-        }
-        return listePersosInfecteGrave;
-    }
-
-
+        
     public Personnage getPersoLePlusProche(ArrayList<Personnage> listePersos) {
-        Personnage persoPlusProche = listePersosAPortee().get(0);
+        Personnage persoPlusProche = getListePersosAPortee().get(0);
 
         for (Personnage p : listePersos) {
             Position positionPersoProche = new Position(persoPlusProche.getX(), persoPlusProche.getY());
@@ -67,8 +53,6 @@ public abstract class TourelleDegatUnique extends Tourelle {
         }
         return persoPlusProche;
     }
-
-    public abstract void agit();
 
     public int getPortee() {
         return portee;

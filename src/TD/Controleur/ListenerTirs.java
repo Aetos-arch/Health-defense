@@ -1,9 +1,6 @@
 package TD.Controleur;
 
-import TD.Modele.Tir.Tir;
-import TD.Modele.Tir.TirSeringue;
-import TD.Modele.Tir.TirVaccin;
-import TD.Modele.Tir.TirVitamine;
+import TD.Modele.Tir.*;
 import TD.Vue.VueTir;
 import javafx.collections.ListChangeListener;
 import javafx.scene.layout.Pane;
@@ -32,7 +29,8 @@ public class ListenerTirs implements ListChangeListener<Tir> {
                         vT = new VueTir((1));
                     } else if (tir instanceof TirVaccin) {
                         vT = new VueTir(2);
-                    }
+                    } else if (tir instanceof TirCiel)
+                        vT = new VueTir(3);
                     vT.xProperty().bind(tir.xProperty());
                     vT.yProperty().bind(tir.yProperty());
                     // garder en memoire association du tir avec son image

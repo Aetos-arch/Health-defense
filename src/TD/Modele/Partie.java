@@ -38,7 +38,7 @@ public class Partie {
 	}
 
 	public void unTour() {
-		if (delai % 40 == 39)
+		if (delai % 20 == 10)
 			if (avancement < nombreEnnemi()) {
 				double spawnAleatoire = Math.random() * 4;
 				if (spawnAleatoire < 1) {
@@ -75,7 +75,7 @@ public class Partie {
 	}
 
 	public int nombreEnnemi() {
-		return this.getVague() * 3;
+		return this.getVague() * 5;
 	}
 
 	public void perdrePV(int n) {

@@ -10,7 +10,7 @@ import java.util.Optional;
 
 public class TourelleVaccin extends TourelleDegatUnique {
     public TourelleVaccin(int x, int y, Environnement env) {
-        super(x, y, env, 500, 30, 1000);
+        super(x, y, env, 500, 30, 2000);
     }
 
     @Override
@@ -20,8 +20,8 @@ public class TourelleVaccin extends TourelleDegatUnique {
             if (optionalPersonnage.isPresent()) {
                 Personnage personnage = optionalPersonnage.get();
                 Position positionCible = new Position(personnage.getX() + 8, personnage.getY() + 8);
-                Tir tir = new TirVaccin(positionCible, env, this);
-                env.ajouterTir(tir);
+                Tir tir = new TirVaccin(positionCible, this.env, this);
+                this.env.ajouterTir(tir);
             }
         }
         delai++;
