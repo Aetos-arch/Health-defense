@@ -10,7 +10,7 @@ import java.util.Optional;
 
 public class TourelleVaccin extends TourelleDegatUnique {
     public TourelleVaccin(int x, int y, Environnement env) {
-        super(x, y, env, 500, 30, 2000);
+        super(x, y, env, 500, 30, 3000);
     }
 
     @Override

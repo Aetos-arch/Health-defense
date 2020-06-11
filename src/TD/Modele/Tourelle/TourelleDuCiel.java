@@ -13,7 +13,7 @@ import java.util.Optional;
 public class TourelleDuCiel extends Tourelle {
 
     public TourelleDuCiel(int x, int y, Environnement env) {
-        super(x, y, 100, env, 500, 2200);
+        super(x, y, 100, env, 500, 8000);
     }
 
     @Override
