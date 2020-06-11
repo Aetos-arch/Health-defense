@@ -153,6 +153,9 @@ public class Controleur implements Initializable {
     void onMouseClicked(MouseEvent event) {
     	ImageView imageview = (ImageView) event.getTarget();
     	switch (imageview.getId()) {
+    	
+    	// Légende personnages
+    	
 		case "infecteSansSymptome":
 			this.legendeNom.textProperty().setValue("Infecté sans symptôme");
 			this.legendeText.textProperty().setValue("Contamination : faible\n"
@@ -188,13 +191,27 @@ public class Controleur implements Initializable {
 			this.legendeText.textProperty().setValue("Personnage soigné");
 			break;
 			
+		// Légende statuts
+			
+		case "infecteHot":
+			this.legendeNom.textProperty().setValue("Soin sur la durée");
+			this.legendeText.textProperty().setValue("L'infecté prend du soin\n"
+					+ "chaque tour");
+			break;
+			
+		case "infecteProtection":
+			this.legendeNom.textProperty().setValue("Protection");
+			this.legendeText.textProperty().setValue("L'infecté est protégé\n"
+					+ "des tirs");
+			break;
+			
 		default:
 			break;
 		}
     }
     
     @FXML
-    void onAction(ActionEvent event) {
+    void info(ActionEvent event) {
     	Button bouton = (Button) event.getSource();
     	switch (bouton.getId()) {
 		case "infoVitamine":

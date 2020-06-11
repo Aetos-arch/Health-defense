@@ -58,7 +58,7 @@
                         </ImageView>
                         <Label alignment="CENTER" prefHeight="25.0" prefWidth="150.0" text="Tourelle vitamine" />
                         <Label alignment="CENTER" prefHeight="25.0" prefWidth="150.0" text="Coût : 500" />
-                        <Button fx:id="infoVitamine" mnemonicParsing="false" onAction="#onAction" text="Info" />
+                        <Button fx:id="infoVitamine" mnemonicParsing="false" onAction="#info" text="Info" />
                      </children>
                   </VBox>
                   <VBox alignment="CENTER" prefHeight="160.0" prefWidth="150.0">
@@ -73,7 +73,7 @@
                         </ImageView>
                         <Label alignment="CENTER" prefHeight="25.0" prefWidth="150.0" text="Tourelle seringue" />
                         <Label alignment="CENTER" prefHeight="25.0" prefWidth="150.0" text="Coût : 1000" />
-                        <Button fx:id="infoSeringue" mnemonicParsing="false" onAction="#onAction" text="Info" />
+                        <Button fx:id="infoSeringue" mnemonicParsing="false" onAction="#info" text="Info" />
                      </children>
                   </VBox>
                   <VBox alignment="CENTER" prefHeight="160.0" prefWidth="150.0">
@@ -88,7 +88,7 @@
                         </ImageView>
                         <Label alignment="CENTER" prefHeight="25.0" prefWidth="150.0" text="Tourelle vaccin" />
                         <Label alignment="CENTER" prefHeight="25.0" prefWidth="150.0" text="Coût : 2000" />
-                        <Button fx:id="infoVaccin" mnemonicParsing="false" onAction="#onAction" text="Info" />
+                        <Button fx:id="infoVaccin" mnemonicParsing="false" onAction="#info" text="Info" />
                      </children>
                   </VBox>
                   <VBox alignment="CENTER" prefHeight="160.0" prefWidth="150.0">
@@ -99,7 +99,7 @@
                            </image></ImageView>
                         <Label alignment="CENTER" prefHeight="25.0" prefWidth="150.0" text="Tourelle fiole" />
                         <Label alignment="CENTER" prefHeight="25.0" prefWidth="150.0" text="Coût : 2000" />
-                        <Button fx:id="infoFiole" mnemonicParsing="false" onAction="#onAction" text="Info" />
+                        <Button fx:id="infoFiole" mnemonicParsing="false" onAction="#info" text="Info" />
                      </children>
                   </VBox>
                </children>
@@ -152,7 +152,7 @@
    <left>
       <VBox maxHeight="480.0" maxWidth="200.0" minHeight="480.0" minWidth="200.0" BorderPane.alignment="CENTER">
          <children>
-            <VBox alignment="TOP_CENTER" prefHeight="330.0" prefWidth="200.0">
+            <VBox alignment="TOP_CENTER" prefHeight="195.0" prefWidth="200.0">
                <children>
                   <Button contentDisplay="CENTER" mnemonicParsing="false" onAction="#regles" prefHeight="25.0" prefWidth="160.0" styleClass="regles" text="Règles">
                      <VBox.margin>
@@ -162,7 +162,7 @@
                   <Label text="Label" />
                </children>
             </VBox>
-            <VBox fx:id="boxPersonnages" alignment="CENTER" prefHeight="200.0" prefWidth="200.0">
+            <VBox fx:id="boxPersonnages" alignment="CENTER" prefHeight="180.0" prefWidth="200.0">
                <children>
                   <Label alignment="CENTER" minHeight="30.0" prefHeight="30.0" prefWidth="200.0" text="Liste des personnages">
                      <font>
@@ -171,7 +171,7 @@
                   </Label>
                   <HBox prefHeight="100.0" prefWidth="200.0">
                      <children>
-                        <HBox alignment="CENTER" prefHeight="100.0" prefWidth="200.0" spacing="30.0">
+                        <HBox alignment="CENTER" minHeight="75.0" prefHeight="75.0" prefWidth="200.0" spacing="30.0">
                            <children>
                               <ImageView fx:id="infecteSansSymptome" fitHeight="32.0" fitWidth="32.0" onMouseClicked="#onMouseClicked" pickOnBounds="true" preserveRatio="true">
                                  <image>
@@ -194,7 +194,7 @@
                   </HBox>
                   <HBox prefHeight="100.0" prefWidth="200.0">
                      <children>
-                        <HBox alignment="CENTER" prefHeight="100.0" prefWidth="200.0" spacing="30.0">
+                        <HBox alignment="CENTER" minHeight="75.0" prefHeight="75.0" prefWidth="200.0" spacing="30.0">
                            <children>
                               <ImageView fx:id="infecteQuiTousse" fitHeight="32.0" fitWidth="32.0" onMouseClicked="#onMouseClicked" pickOnBounds="true" preserveRatio="true">
                                  <image>
@@ -208,6 +208,29 @@
                               </ImageView>
                            </children>
                         </HBox>
+                     </children>
+                  </HBox>
+               </children>
+            </VBox>
+            <VBox prefHeight="95.0" prefWidth="100.0">
+               <children>
+                  <Label alignment="CENTER" minHeight="30.0" prefHeight="30.0" prefWidth="200.0" text="Liste des statuts">
+                     <font>
+                        <Font size="18.0" />
+                     </font>
+                  </Label>
+                  <HBox alignment="BASELINE_CENTER" maxHeight="75.0" minHeight="75.0" prefHeight="75.0" prefWidth="200.0" spacing="30.0">
+                     <children>
+                        <ImageView fx:id="infecteHot" fitHeight="32.0" fitWidth="32.0" onMouseClicked="#onMouseClicked" pickOnBounds="true" preserveRatio="true">
+                           <image>
+                              <Image url="@../../Sources/Statuts/infecteHot.png" />
+                           </image>
+                        </ImageView>
+                        <ImageView fx:id="infecteProtection" fitHeight="64.0" fitWidth="32.0" onMouseClicked="#onMouseClicked" pickOnBounds="true" preserveRatio="true">
+                           <image>
+                              <Image url="@../../Sources/Statuts/infecteProtection.png" />
+                           </image>
+                        </ImageView>
                      </children>
                   </HBox>
                </children>
