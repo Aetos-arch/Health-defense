@@ -69,7 +69,7 @@
                            </image>
                         </ImageView>
                         <Label alignment="CENTER" prefHeight="25.0" prefWidth="150.0" text="Tourelle seringue" />
-                        <Label alignment="CENTER" prefHeight="25.0" prefWidth="150.0" text="Coût : 1000" />
+                        <Label alignment="CENTER" prefHeight="25.0" prefWidth="150.0" text="Coût : 3000" />
                         <Button fx:id="infoSeringue" mnemonicParsing="false" onAction="#info" styleClass="boutonInfo" text="Info" />
                      </children>
                   </VBox>
@@ -84,7 +84,7 @@
                            </image>
                         </ImageView>
                         <Label alignment="CENTER" prefHeight="25.0" prefWidth="150.0" text="Tourelle vaccin" />
-                        <Label alignment="CENTER" prefHeight="25.0" prefWidth="150.0" text="Coût : 2000" />
+                        <Label alignment="CENTER" prefHeight="25.0" prefWidth="150.0" text="Coût : 3000" />
                         <Button fx:id="infoVaccin" mnemonicParsing="false" onAction="#info" styleClass="boutonInfo" text="Info" />
                      </children>
                   </VBox>
@@ -95,7 +95,7 @@
                               <Image url="@../../Sources/Tourelles/tourelleFiole.png" />
                            </image></ImageView>
                         <Label alignment="CENTER" prefHeight="25.0" prefWidth="150.0" text="Tourelle fiole" />
-                        <Label alignment="CENTER" prefHeight="25.0" prefWidth="150.0" text="Coût : 2000" />
+                        <Label alignment="CENTER" prefHeight="25.0" prefWidth="150.0" text="Coût : 8000" />
                         <Button fx:id="infoFiole" mnemonicParsing="false" onAction="#info" styleClass="boutonInfo" text="Info" />
                      </children>
                   </VBox>
