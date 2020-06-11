@@ -18,9 +18,25 @@
 	-fx-font-family: "Segoe UI Semibold";
 }
 
-.bouton {
+.boutonVagueSuivante {
 	-fx-font-size: 26px;
 	-fx-font-family: "Segoe UI Semibold";
+}
+
+.boutonInfo {
+	-fx-background-color : #889199;
+	-fx-border-style: solid;
+	-fx-border-color: #889199;
+	-fx-border-width: 2px;
+	-fx-border-radius: 3px;
+}
+
+.boutonInfo:hover {
+	-fx-text-fill : #ffffff;
+	-fx-border-style: solid;
+	-fx-border-color: black;
+	-fx-border-width: 2px;
+	-fx-border-radius: 3px;
 }
 
 .tourellesBox {
@@ -32,11 +48,26 @@
 	-fx-border-color: black;
 	-fx-border-style: solid outside;
 	-fx-border-width: 2px;
+	-fx-border-radius: 3px;
 }
 
 .regles {
 	-fx-font-size: 14px;
-	-fx-border-style: solid inside;
-	-fx-border-width: 3px;
+	-fx-background-color : #889199;
+	-fx-border-style: solid;
+	-fx-border-color: #889199;
+	-fx-border-width: 2px;
+	-fx-border-radius: 3px;
+}
+
+.regles:hover {
+	-fx-text-fill : #ffffff;
+	-fx-border-style: solid;
 	-fx-border-color: black;
+	-fx-border-width: 2px;
+	-fx-border-radius: 3px;
+}
+
+.gameName {
+	-fx-font-size: 30px;
 }
