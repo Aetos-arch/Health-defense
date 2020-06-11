@@ -48,10 +48,24 @@
 	-fx-border-color: black;
 	-fx-border-style: solid outside;
 	-fx-border-width: 2px;
+	-fx-border-radius: 3px;
 }
 
 .regles {
 	-fx-font-size: 14px;
+	-fx-background-color : #889199;
+	-fx-border-style: solid;
+	-fx-border-color: #889199;
+	-fx-border-width: 2px;
+	-fx-border-radius: 3px;
+}
+
+.regles:hover {
+	-fx-text-fill : #ffffff;
+	-fx-border-style: solid;
+	-fx-border-color: black;
+	-fx-border-width: 2px;
+	-fx-border-radius: 3px;
 }
 
 .gameName {

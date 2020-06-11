@@ -25,6 +25,7 @@ import javafx.scene.input.*;
 import javafx.scene.layout.Pane;
 import javafx.scene.layout.TilePane;
 import javafx.scene.layout.VBox;
+import javafx.scene.text.Text;
 import javafx.util.Duration;
 
 import java.net.URL;
@@ -47,11 +48,17 @@ public class Controleur implements Initializable {
     @FXML
     private Label labelInfo;
     @FXML
-    private Label legendeText;
+    private Text legendeText;
     @FXML
     private Label legendeNom;
     @FXML
     private VBox boxPersonnages;
+    @FXML
+    private VBox boxStatuts;
+    @FXML
+    private Button boutonRegles;
+    @FXML
+    private Text textRegles;
 
     private Partie partie;
     private VueMap vM;
@@ -180,10 +187,7 @@ public class Controleur implements Initializable {
 			this.legendeNom.textProperty().setValue("Infecté qui tousse");
 			this.legendeText.textProperty().setValue("Contamination : moyenne\n"
 					+ "Vitesse : moyenne\n"
-					+ "Empêche les tirs des\n"
-					+ "tourelles sur les infectés\n"
-					+ "à proximité de lui\n"
-					+ "quand il est soigné");
+					+ "Empêche les tirs des tourelles sur les infectés à proximité de lui quand il est soigné");
 			break;
 			
 		case "personnageSain":
@@ -195,14 +199,12 @@ public class Controleur implements Initializable {
 			
 		case "infecteHot":
 			this.legendeNom.textProperty().setValue("Soin sur la durée");
-			this.legendeText.textProperty().setValue("L'infecté prend du soin\n"
-					+ "chaque tour");
+			this.legendeText.textProperty().setValue("L'infecté prend du soin chaque tour");
 			break;
 			
 		case "infecteProtection":
 			this.legendeNom.textProperty().setValue("Protection");
-			this.legendeText.textProperty().setValue("L'infecté est protégé\n"
-					+ "des tirs");
+			this.legendeText.textProperty().setValue("L'infecté est protégé des tirs");
 			break;
 			
 		default:
@@ -263,7 +265,24 @@ public class Controleur implements Initializable {
     
     @FXML
     void regles(ActionEvent event) {
-//    	this.boxPersonnages.setVisible(false);
+    	if(this.boutonRegles.getText().equals("Règles")) {
+    		this.boxPersonnages.setVisible(false);
+        	this.boxStatuts.setVisible(false);
+        	this.boutonRegles.setText("Masquer règles");
+        	this.textRegles.setText("Vous êtes dans un univers moderne apocalyptique où des personnes infectés tentent d'aller dans un bunker de gens sains. "
+        			+ "Vous devez les soigner avant qu’ils arrivent au bunker en achetant des tourelles mis à disposition sous le plateau de jeu "
+        			+ "avec de l'argent obtenu en soignant les infectés.\nPour acheter une tourelle, il faut cliquer sur l'image de la tourelle et la glisser sur la map. \n"
+        			+ "Pour avoir plus d'informations sur les tourelles, les infectés et les statuts. Vous pouvez cliquer sur les boutons \"Info\" sous les tourelles "
+        			+ "ou cliquer sur les differents images des infectés et statuts. \n\n"
+        			+ "Si vous avez fini de lire les règles, vous pouvez les masquer avec le bouton juste au dessus.\n\n"
+        			+ "Bon jeu !");
+    	}
+    	else if(this.boutonRegles.getText().equals("Masquer règles")) {
+    		this.boxPersonnages.setVisible(true);
+        	this.boxStatuts.setVisible(true);
+        	this.boutonRegles.setText("Règles");
+        	this.textRegles.setText("");
+    	}
 	}
 
     public int getTour() {

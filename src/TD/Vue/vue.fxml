@@ -29,14 +29,11 @@
                            <font>
                               <Font name="System Bold" size="12.0" />
                            </font></Label>
-                        <Label fx:id="legendeText" alignment="TOP_LEFT" contentDisplay="CENTER" maxHeight="120.0" minHeight="120.0" minWidth="170.0" prefHeight="140.0" prefWidth="180.0" textOverrun="CLIP">
+                        <Text fx:id="legendeText" strokeType="OUTSIDE" strokeWidth="0.0" wrappingWidth="174.0">
                            <VBox.margin>
                               <Insets left="4.0" />
                            </VBox.margin>
-                           <opaqueInsets>
-                              <Insets />
-                           </opaqueInsets>
-                        </Label>
+                        </Text>
                      </children>
                   </VBox>
                </children>
@@ -154,12 +151,12 @@
          <children>
             <VBox alignment="TOP_CENTER" prefHeight="195.0" prefWidth="200.0">
                <children>
-                  <Button contentDisplay="CENTER" mnemonicParsing="false" onAction="#regles" prefHeight="25.0" prefWidth="160.0" styleClass="regles" text="Règles">
+                  <Button fx:id="boutonRegles" contentDisplay="CENTER" mnemonicParsing="false" onAction="#regles" prefHeight="25.0" prefWidth="160.0" styleClass="regles" text="Règles">
                      <VBox.margin>
                         <Insets bottom="5.0" top="5.0" />
                      </VBox.margin>
                   </Button>
-                  <Label text="Label" />
+                  <Text fx:id="textRegles" strokeType="OUTSIDE" strokeWidth="0.0" textAlignment="JUSTIFY" wrappingWidth="180.0" />
                </children>
             </VBox>
             <VBox fx:id="boxPersonnages" alignment="CENTER" prefHeight="180.0" prefWidth="200.0">
@@ -212,7 +209,7 @@
                   </HBox>
                </children>
             </VBox>
-            <VBox prefHeight="95.0" prefWidth="100.0">
+            <VBox fx:id="boxStatuts" prefHeight="95.0" prefWidth="100.0">
                <children>
                   <Label alignment="CENTER" minHeight="30.0" prefHeight="30.0" prefWidth="200.0" text="Liste des statuts">
                      <font>
@@ -240,7 +237,7 @@
    <top>
       <VBox alignment="TOP_CENTER" maxHeight="100.0" prefHeight="200.0" prefWidth="100.0" BorderPane.alignment="CENTER">
          <children>
-            <Label alignment="CENTER" prefHeight="50.0" prefWidth="300.0" styleClass="gameName" text="Tower Defense">
+            <Label alignment="CENTER" prefHeight="50.0" prefWidth="300.0" styleClass="gameName" text="INSERER NOM">
                <VBox.margin>
                   <Insets bottom="20.0" />
                </VBox.margin>
