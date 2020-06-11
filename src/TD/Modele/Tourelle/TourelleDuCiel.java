@@ -13,7 +13,7 @@ import java.util.Optional;
 public class TourelleDuCiel extends Tourelle {
 
     public TourelleDuCiel(int x, int y, Environnement env) {
-        super(x, y, 100, env, 500, 2000);
+        super(x, y, 100, env, 500, 2200);
     }
 
     @Override
@@ -22,8 +22,8 @@ public class TourelleDuCiel extends Tourelle {
             Optional<Personnage> optionalPersonnage = Optional.ofNullable(viser());
             if (optionalPersonnage.isPresent()) {
                Personnage personnage = optionalPersonnage.get();
-               Position positionCible = new Position(personnage.getX() + 8, personnage.getY() + 8);
-               Tir tir = new TirCiel(90, positionCible, this.env, this);
+               Position positionCible = new Position(personnage.getX(), personnage.getY());
+               Tir tir = new TirCiel(100, positionCible, this.env, this);
                env.ajouterTir(tir);
             }
         }

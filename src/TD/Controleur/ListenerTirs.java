@@ -26,13 +26,21 @@ public class ListenerTirs implements ListChangeListener<Tir> {
                     if (tir instanceof TirVitamine) {
                         vT = new VueTir(0);
                     } else if (tir instanceof TirSeringue) {
-                        vT = new VueTir((1));
+                        vT = new VueTir(1);
                     } else if (tir instanceof TirVaccin) {
                         vT = new VueTir(2);
-                    } else if (tir instanceof TirCiel)
+                    } else if (tir instanceof TirCiel) {
                         vT = new VueTir(3);
-                    vT.xProperty().bind(tir.xProperty());
-                    vT.yProperty().bind(tir.yProperty());
+                    }
+
+                    vT.translateXProperty().bind(tir.xProperty());
+                    vT.translateYProperty().bind(tir.yProperty());
+
+                    if (tir instanceof TirCiel) {
+                        vT.setX(vT.getX() - 24);
+                        vT.setY(vT.getY() - 24);
+                    }
+
                     // garder en memoire association du tir avec son image
                     modelToView.put(tir, vT);
                     map.getChildren().add(vT);
