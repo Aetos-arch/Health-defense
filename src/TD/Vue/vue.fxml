@@ -10,7 +10,7 @@
 <?import javafx.scene.layout.*?>
 <?import javafx.scene.text.Font?>
 
-<BorderPane maxHeight="800.0" maxWidth="1200.0" prefHeight="800.0" prefWidth="1200.0" styleClass="background" stylesheets="@../../Sources/style.css" xmlns="http://javafx.com/javafx/8" xmlns:fx="http://javafx.com/fxml/1" fx:controller="TD.Controleur.Controleur">
+<BorderPane maxHeight="700.0" maxWidth="1200.0" prefHeight="700.0" prefWidth="1200.0" styleClass="background" stylesheets="@../../Sources/style.css" xmlns="http://javafx.com/javafx/8" xmlns:fx="http://javafx.com/fxml/1" fx:controller="TD.Controleur.Controleur">
     <center>
         <Pane fx:id="paneEntite" maxHeight="480.0" maxWidth="800.0" minHeight="480.0" minWidth="800.0" onDragDropped="#onDragDropped" onDragOver="#onDragOver" prefHeight="480.0" prefWidth="800.0" styleClass="pane" BorderPane.alignment="CENTER">
             <children>
@@ -19,7 +19,7 @@
         </Pane>
     </center>
    <top>
-      <Label fx:id="labelInfo" minHeight="160.0" minWidth="1200.0" BorderPane.alignment="CENTER">
+      <Label fx:id="labelInfo" minHeight="100.0" minWidth="1200.0" BorderPane.alignment="CENTER">
          <graphic>
             <Button mnemonicParsing="false" onAction="#ajoutTour" text="AjouterTourelle" />
          </graphic>
