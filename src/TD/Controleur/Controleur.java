@@ -82,7 +82,7 @@ public class Controleur implements Initializable {
 		gameLoop = new Timeline();
 		gameLoop.setCycleCount(Timeline.INDEFINITE);
 
-		KeyFrame kf = new KeyFrame(Duration.seconds(0.04), (ev -> {
+		KeyFrame kf = new KeyFrame(Duration.seconds(0.14), (ev -> {
 
 			if (this.partie.estPerdu()) {
 				this.labelInfo.textProperty().setValue("game over");
