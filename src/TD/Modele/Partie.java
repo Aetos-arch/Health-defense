@@ -24,7 +24,7 @@ public class Partie {
 	public Partie() {
 		this.scoreProperty = new SimpleIntegerProperty(0);
 		this.vagueProperty = new SimpleIntegerProperty(0);
-		this.moneyProperty = new SimpleIntegerProperty(1000);
+		this.moneyProperty = new SimpleIntegerProperty(1500);
 		this.env = new Environnement();
 		this.pvProperty = new SimpleIntegerProperty(30);
 	}
