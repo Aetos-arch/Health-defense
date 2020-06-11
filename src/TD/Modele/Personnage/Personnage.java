@@ -69,8 +69,10 @@ public abstract class Personnage {
 				this.seFaireSoigner(1);
 				this.healOnTime.setValue(this.healOnTime.getValue() -1);
 			}
-			if(this.estSain())
+			if(this.estSain()) {
 				this.sainProperty.setValue(1);
+				this.healOnTime.setValue(0);
+			}
 			if(tpsProtec <= 0)
 				this.nonProtege();
 			tpsProtec --;
@@ -151,7 +153,6 @@ public abstract class Personnage {
 
 	protected void protege() {
 		this.protege.setValue(1);
-		;
 		this.tpsProtec = 40;
 	}
 

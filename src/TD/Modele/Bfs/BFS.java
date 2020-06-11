@@ -59,28 +59,12 @@ public class BFS {
 		}
 	}
 
-	private void trouverAdjHV(Sommet s) {
-		this.adj.clear();
-		for (Sommet a : this.sommets) {
-			//Determine si le sommet a fait partie des sommets autour de s en vertical ou horizontal
-			if ((a.getX() == s.getX() && a.getY() == s.getY() - 1) ||
-					(a.getX() == s.getX() && a.getY() == s.getY() + 1) ||
-					(a.getX() == s.getX() - 1 && a.getY() == s.getY()) ||
-					(a.getX() == s.getX() + 1 && a.getY() == s.getY()))
-				//Enleve le cas ou les sommets sont identiques et si a est deja marqué
-				if (!a.equals(s) && !a.estMarque()) {
-					this.adj.add(a);
-				}
-
-		}
-	}
-
 	private void resetListes() {
 		this.file.clear();
 		this.aretes.clear();
 	}
 
-	private Sommet trouverArr() {
+	public Sommet trouverArr() {
 		for (Sommet s : this.sommets)
 			if (map[s.getY()][s.getX()] == 202)
 				return s;
@@ -106,7 +90,6 @@ public class BFS {
 
     public void supprimerSommet(int x, int y) throws PlacementException {
     	if(this.sommetsSol.contains(this.map[y][x]) && x != 0) {
-
     		this.sommets.remove(this.trouverSommet(x, y));
             this.resetListes();
             for(Sommet s: this.sommets)
@@ -117,6 +100,23 @@ public class BFS {
     		throw new PlacementException();
     	}
 	}
+
+	private void trouverAdjHV(Sommet s) {
+		this.adj.clear();
+		for (Sommet a : this.sommets) {
+			//Determine si le sommet a fait partie des sommets autour de s en vertical ou horizontal
+			if ((a.getX() == s.getX() && a.getY() == s.getY() - 1) ||
+					(a.getX() == s.getX() && a.getY() == s.getY() + 1) ||
+					(a.getX() == s.getX() - 1 && a.getY() == s.getY()) ||
+					(a.getX() == s.getX() + 1 && a.getY() == s.getY()))
+				//Enleve le cas ou les sommets sont identiques et si a est deja marqué
+				if (!a.equals(s) && !a.estMarque()) {
+					this.adj.add(a);
+				}
+
+		}
+	}
+
 	private void trouverAdjD(Sommet s) {
 		this.adj.clear();
 		for (Sommet a : this.sommets) {
