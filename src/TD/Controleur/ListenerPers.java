@@ -1,10 +1,6 @@
 package TD.Controleur;
 
-import TD.Modele.Personnage.InfecteGrave;
-import TD.Modele.Personnage.InfecteJogger;
-import TD.Modele.Personnage.InfecteQuiTousse;
-import TD.Modele.Personnage.InfecteSansSymp;
-import TD.Modele.Personnage.Personnage;
+import TD.Modele.Personnage.*;
 import TD.Vue.VuePers;
 import javafx.collections.ListChangeListener;
 import javafx.scene.layout.Pane;
@@ -79,20 +75,20 @@ public class ListenerPers implements ListChangeListener<Personnage> {
 				for(Personnage p: change.getRemoved()) {
 					if(p.estSain()) {
 						if(p instanceof InfecteSansSymp) {
+							this.c.getPartie().augmenterMoney(25);
+							this.c.getPartie().augmenterScore(10);
+						}
+						else if(p instanceof InfecteJogger) {
 							this.c.getPartie().augmenterMoney(50);
 							this.c.getPartie().augmenterScore(25);
 						}
-						else if(p instanceof InfecteJogger) {
+						else if(p instanceof InfecteGrave) {
 							this.c.getPartie().augmenterMoney(100);
 							this.c.getPartie().augmenterScore(50);
 						}
-						else if(p instanceof InfecteGrave) {
-							this.c.getPartie().augmenterMoney(200);
-							this.c.getPartie().augmenterScore(120);
-						}
 						else if(p instanceof InfecteQuiTousse) {
-							this.c.getPartie().augmenterMoney(250);
-							this.c.getPartie().augmenterScore(150);
+							this.c.getPartie().augmenterMoney(150);
+							this.c.getPartie().augmenterScore(75);
 						}
 					}
 					else {
