@@ -57,7 +57,7 @@
                               <Insets />
                            </VBox.margin>
                            <image>
-                              <Image url="@../../Sources/Tourelles/TourelleVitamine.png" />
+                              <Image url="@../../Sources/Tourelles/tourelleVitamine.png" />
                            </image>
                         </ImageView>
                         <Label alignment="CENTER" prefHeight="25.0" prefWidth="150.0" text="Tourelle vitamine" />
@@ -87,7 +87,7 @@
                               <Insets />
                            </VBox.margin>
                            <image>
-                              <Image url="@../../Sources/Tourelles/TourelleVaccin.png" />
+                              <Image url="@../../Sources/Tourelles/tourelleVaccin.png" />
                            </image>
                         </ImageView>
                         <Label alignment="CENTER" prefHeight="25.0" prefWidth="150.0" text="Tourelle vaccin" />
