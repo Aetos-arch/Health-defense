@@ -9,31 +9,31 @@ import java.util.ArrayList;
 
 public class VuePers extends ImageView {
 
-	private final String[] Url = {"Sources/Males/M_07.png", "Sources/Females/F_07.png",
-			"Sources/Males/M_10.png", "Sources/Males/M_01.png", "Sources/Females/F_03.png"};
+	private final String[] Url = {"Sources/Personnages/infecteSansSymptomeMove.png", "Sources/Personnages/infecteJoggerMove.png",
+			"Sources/Personnages/infecteGraveMove.png", "Sources/Personnages/infecteQuiTousseMove.png", "Sources/Personnages/personnageSainMove.png"};
 
 	private ArrayList<VueHoT> listeHoT;
 	private VueProtect vueProt;
 
 	public VuePers(int url) {
 		this.setImage(new Image(Url[url]));
-		Rectangle2D rogne = new Rectangle2D(16, 1, 16, 16);
+		Rectangle2D rogne = new Rectangle2D(0, 0, 16, 16);
 		this.setViewport(rogne);
 		this.listeHoT = new ArrayList<VueHoT>();
 	}
 
 	public void changerSprite(int t) {
 		if (t % 20 == 10) {
-			Rectangle2D rogne = new Rectangle2D(16, 1, 16, 16);
+			Rectangle2D rogne = new Rectangle2D(0, 0, 16, 16);
 			this.setViewport(rogne);
 		} else if (t % 20 == 0) {
-			Rectangle2D rogne = new Rectangle2D(16, 18, 16, 16);
+			Rectangle2D rogne = new Rectangle2D(16, 0, 16, 16);
 			this.setViewport(rogne);
 		}
 	}
 
 	public void changerSpriteSain(Pane p) {
-		this.setImage(new Image(Url[3]));
+		this.setImage(new Image(Url[4]));
 		p.getChildren().removeAll(listeHoT);
 	}
 

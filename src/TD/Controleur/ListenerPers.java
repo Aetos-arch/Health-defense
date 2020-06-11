@@ -63,7 +63,7 @@ public class ListenerPers implements ListChangeListener<Personnage> {
 						p.estProtege().addListener(e -> vP.protectionPers(p.estProtege().getValue(), paneEntite));
 					}
 					else if (p instanceof InfecteQuiTousse) {
-						vP = new VuePers(4);
+						vP = new VuePers(3);
 						vP.translateXProperty().bind(p.getXProperty());
 						vP.translateYProperty().bind(p.getYProperty());
 						p.getSainProperty().addListener(e -> vP.changerSpriteSain(paneEntite));
