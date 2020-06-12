@@ -261,7 +261,7 @@ public class Controleur implements Initializable {
 		case "infoSeringue":
 			this.legendeNom.textProperty().setValue("Tourelle seringue");
 			this.legendeText.textProperty().setValue("Type de tir : Coup par coup\n"
-					+ "Soin : important\n"
+					+ "Soin : moyen\n"
 					+ "Cadence de tir : moyenne\n"
 					+ "Portée : moyenne\n"
 					+ "Ralenti les ennemis proches.");
@@ -270,7 +270,7 @@ public class Controleur implements Initializable {
 		case "infoVaccin":
 			this.legendeNom.textProperty().setValue("Tourelle vaccin");
 			this.legendeText.textProperty().setValue("Type de tir : Sniper\n"
-					+ "Soin : sur la durée\n"
+					+ "Soin : important, sur la durée\n"
 					+ "Cadence de tir : faible\n"
 					+ "Portée : longue");
 			break;
@@ -278,7 +278,7 @@ public class Controleur implements Initializable {
 		case "infoFiole":
 			this.legendeNom.textProperty().setValue("Tourelle fiole");
 			this.legendeText.textProperty().setValue("Type de tir : Dégât de zone\n"
-					+ "Soin : moyen\n"
+					+ "Soin : très important\n"
 					+ "Cadence de tir : faible\n"
 					+ "Portée : très longue");
 			break;
