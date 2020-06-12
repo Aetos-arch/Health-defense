@@ -13,16 +13,9 @@ public class Position implements Coordonnee {
         this.y = y;
     }
 
-    public Position multiplier(double nbr) {
-        this.setX(this.getX() * nbr);
-        this.setY(this.getY() * nbr);
-        return this;
-    }
-
     public double distance(Position loc) {
         return Math.sqrt(Math.pow(this.getX() - loc.getX(), 2) + Math.pow(this.getY() - loc.getY(), 2));
     }
-
 
     @Override
     public double getX() {
