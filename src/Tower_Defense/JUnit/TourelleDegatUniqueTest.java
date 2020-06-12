@@ -91,4 +91,11 @@ public class TourelleDegatUniqueTest {
         this.tourelle.setPosition(19*16, 10*16);
         assertSame(true,this.tourelle.getPersoLePlusProche(listeDesPersos) == listeDesPersos.get(2));
     }
+
+    @org.junit.Test
+    public void testFocusInfecteGrave() {
+        // focus indice 5 pour infecté grave, alors que l'indice 4 est à la même position que la tourelle
+        this.tourelle.setPosition(24*16, 10*16);
+        assertSame(listeDesPersos.get(5), this.tourelle.viser());
+    }
 }
