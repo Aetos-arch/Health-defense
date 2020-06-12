@@ -10,9 +10,9 @@ public class TirFiole extends Tir {
     protected TourelleFiole tourelle;
     private int delai;
 
-    public TirFiole(int pointAttaque, Position cible, Environnement env, TourelleFiole t) {
+    public TirFiole(int pointAttaque, Position cible, Environnement env, TourelleFiole tourelleFiole) {
         super(cible, pointAttaque, 32, env);
-        this.tourelle = t;
+        this.tourelle = tourelleFiole;
         this.delai = 20;
     }
 
