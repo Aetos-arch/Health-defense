@@ -22,8 +22,7 @@ public class Score {
 			writer.write("Score " +nom+ " : " + i + "\n") ;
 			writer.close();
 		} catch (IOException e) {
-			// TODO Auto-generated catch block
-			e.printStackTrace();
+			System.out.println("Problème dans l'écriture du fichier!");
 		}
 	}
 	
