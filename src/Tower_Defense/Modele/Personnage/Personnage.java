@@ -73,7 +73,7 @@ public abstract class Personnage {
 				this.sainProperty.setValue(1);
 				this.healOnTime.setValue(0);
 			}
-			if(tpsProtec <= 0)
+			if(tpsProtec <= 0) //Permet de gerer le nombre de tour de protection
 				this.nonProtege();
 			tpsProtec --;
 		}
@@ -173,5 +173,13 @@ public abstract class Personnage {
 			this.ralenti = false;
 			this.vitesse = this.vitesse * 2;
 		}
+	}
+	
+	public int getVit() {
+		return this.vitesse;
+	}
+	
+	public void ameliorationPers() {
+		this.nivCont += this.nivCont/3;
 	}
 }

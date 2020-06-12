@@ -10,6 +10,7 @@ public class InfecteQuiTousse extends Personnage {
 	public InfecteQuiTousse(int xS, int yS, Environnement e) {
 		super(4, 150, xS, yS, e);
 		this.portee = 100;
+		this.delaiDeCompetence = 0;
 	}
 
 	@Override
