@@ -7,6 +7,7 @@ import Tower_Defense.Modele.Tir.TirDirection;
 import Tower_Defense.Modele.Tir.TirVitamine;
 import Tower_Defense.Modele.Tourelle.TourelleVitamine;
 import Tower_Defense.Utilitaire.Position;
+import org.junit.After;
 import org.junit.Before;
 
 import static org.junit.Assert.assertTrue;
@@ -29,6 +30,13 @@ public class TirVitamineTest {
         this.env.ajouterTour(tourelle);
         this.positionCible = new Position(this.personnage.getX(), this.personnage.getY());
         this.tir = new TirVitamine(this.positionCible, this.env, this.tourelle);
+    }
+
+    @After
+    public void clear() {
+        this.env.getTours().clear();
+        this.env.getTirs().clear();
+        this.env.getPersos().clear();
     }
 
     @org.junit.Test
