@@ -119,6 +119,7 @@ public abstract class Personnage {
 		return this.nivCont <= 0;
 	}
 
+
 	public IntegerProperty getXProperty() {
 		return x;
 	}
@@ -179,7 +180,7 @@ public abstract class Personnage {
 		return this.vitesse;
 	}
 	
-	public void ameliorationPers() {
-		this.nivCont += this.nivCont;
+	public void ameliorationPers(int i) {
+		this.nivCont *= i;
 	}
 }

@@ -33,12 +33,15 @@ public class Partie {
 		delai = 0;
 		avancement = 0;
 		this.setVague(this.getVague() + 1);
-		if(this.vagueProperty.getValue()%3==0)
-			this.env.amelioPers();
+		if(this.vagueProperty.getValue()%5==0)
+			this.env.amelioPers(2);
+		if(this.vagueProperty.getValue()%15==0) {
+			this.env.amelioPers(6);
+		}
 	}
 
 	public void unTour() {
-		if (delai % 15 == 5)
+		if (delai % 17 == 0)
 			if (avancement < nombreEnnemi()) {
 				double spawnAleatoire = Math.random() * 4;
 				if (spawnAleatoire < 1) {
