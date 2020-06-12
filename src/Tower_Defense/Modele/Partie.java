@@ -21,6 +21,7 @@ public class Partie {
 	private Environnement env;
 	private IntegerProperty pvProperty;
 	private Score score;
+	private String nomJoueur;
 
 	public Partie() {
 		this.scoreProperty = new SimpleIntegerProperty(10);
@@ -36,7 +37,7 @@ public class Partie {
 		this.env.nouvPartie();
 		this.scoreProperty.setValue(0);
 		this.vagueProperty.setValue(0);
-		this.pvProperty.setValue(30);
+		this.pvProperty.setValue(1);
 		this.moneyProperty.setValue(4000);
 	}
 	
@@ -165,6 +166,6 @@ public class Partie {
 	}
 	
 	public void ajouterScore() {
-		this.score.ajouterScore(this.getScore());
+		this.score.ajouterScore(this.getScore(), this.nomJoueur);
 	}
 }
