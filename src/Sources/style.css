@@ -30,7 +30,7 @@
 
 .boutonVagueSuivante:hover {
 	-fx-text-fill : #ffffff;
-	-fx-background-color : #943343;
+	-fx-background-color : red;
 	-fx-border-style: solid;
 	-fx-border-color: black;
 	-fx-border-width: 2px;
@@ -78,15 +78,6 @@
 	-fx-text-fill : #ffffff;
 	-fx-border-style: solid;
 	-fx-border-color: black;
-	-fx-border-width: 2px;
-	-fx-border-radius: 3px;
-}
-
-.boutonJouer {
-	-fx-font-size: 14px;
-	-fx-background-color : #889199;
-	-fx-border-style: solid;
-	-fx-border-color: #889199;
 	-fx-border-width: 2px;
 	-fx-border-radius: 3px;
 }
