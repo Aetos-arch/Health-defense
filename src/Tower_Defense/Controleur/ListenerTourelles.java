@@ -36,7 +36,7 @@ public class ListenerTourelles implements ListChangeListener<Tourelle> {
                     vT.setX(tourelle.getX());
                     vT.setY(tourelle.getY());
 
-                    // garder en memoire association du tir avec son image
+                    // garder en memoire association du tourelle avec son image
                     modelToView.put(tourelle, vT);
                     map.getChildren().add(vT);
                 }

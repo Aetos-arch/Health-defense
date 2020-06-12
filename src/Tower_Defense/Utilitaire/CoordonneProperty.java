@@ -6,7 +6,6 @@ public interface CoordonneProperty {
     SimpleDoubleProperty getXProperty();
     SimpleDoubleProperty getYProperty();
 
-    // DELETE
     double getX();
     double getY();
 }

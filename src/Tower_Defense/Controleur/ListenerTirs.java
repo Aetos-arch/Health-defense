@@ -33,8 +33,8 @@ public class ListenerTirs implements ListChangeListener<Tir> {
                         vT = new VueTir(3);
                     }
 
-                    vT.translateXProperty().bind(tir.xProperty());
-                    vT.translateYProperty().bind(tir.yProperty());
+                    vT.translateXProperty().bind(tir.getXProperty());
+                    vT.translateYProperty().bind(tir.getYProperty());
 
                     if (tir instanceof TirFiole) {
                         vT.setX(vT.getX() - 24);
