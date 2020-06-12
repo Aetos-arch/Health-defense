@@ -98,7 +98,6 @@ public class Controleur implements Initializable {
 				this.partie.ajouterScore();
 				this.gameOver.setVisible(true);
 				this.boutonVagueSuivante.textProperty().setValue("Recommencer");
-				System.out.println("Score : " + this.partie.getScore());
 				gameLoop.stop();
 			} else if (this.partie.niveauFini()) {
 				gameLoop.stop();
