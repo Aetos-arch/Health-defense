@@ -73,7 +73,7 @@ public abstract class Personnage {
 				this.sainProperty.setValue(1);
 				this.healOnTime.setValue(0);
 			}
-			if(tpsProtec <= 0)
+			if(tpsProtec <= 0) //Permet de gerer le nombre de tour de protection
 				this.nonProtege();
 			tpsProtec --;
 		}
