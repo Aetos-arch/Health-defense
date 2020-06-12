@@ -82,6 +82,19 @@
 	-fx-border-radius: 3px;
 }
 
+.boutonJouer {
+	-fx-font-size: 14px;
+	-fx-background-color : #889199;
+	-fx-border-style: solid;
+	-fx-border-color: #889199;
+	-fx-border-width: 2px;
+	-fx-border-radius: 3px;
+}
+
+.textSaisirNom {
+	-fx-font-size: 14px;
+}
+
 .gameOver {
 	-fx-font-size: 50px;
 	-fx-text-fill: red;
