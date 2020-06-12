@@ -113,7 +113,8 @@ public class TourelleTest {
 
     @org.junit.Test
     public void testRemove() {
-        this.env.unTour();
+        this.env.getTours().get(0).agit();
+        this.env.getTirs().get(0).agit();
         assertTrue(this.env.getTirs().isEmpty());
     }
 
