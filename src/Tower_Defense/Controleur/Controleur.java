@@ -75,7 +75,6 @@ public class Controleur implements Initializable {
         this.partie.getEnv().getTours().addListener(new ListenerTourelles(paneEntite));
         this.partie.getEnv().getPersos().addListener(new ListenerPers(paneEntite, this));
         initGame();
-        this.partie.getEnv().creerArbre();
         this.nbTour = new SimpleIntegerProperty();
         this.nbTour.set(0);
         this.labelMoney.textProperty().bind(this.partie.moneyProperty().asString());

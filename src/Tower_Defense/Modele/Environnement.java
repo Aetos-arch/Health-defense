@@ -94,4 +94,12 @@ public class Environnement {
 			p.ameliorationPers(i);
 		}
 	}
+
+	public void nouvPartie() {
+		this.tours.clear();
+		this.persos.clear();
+		this.tirs.clear();
+		this.bfs.recommencer();
+		this.creerArbre();
+	}
 }

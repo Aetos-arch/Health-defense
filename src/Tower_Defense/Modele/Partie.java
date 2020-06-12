@@ -27,8 +27,17 @@ public class Partie {
 		this.moneyProperty = new SimpleIntegerProperty(4000);
 		this.env = new Environnement();
 		this.pvProperty = new SimpleIntegerProperty(30);
+		this.env.creerArbre();
 	}
 
+	public void nouvellePartie() {
+		this.scoreProperty.setValue(0);
+		this.vagueProperty.setValue(0);
+		this.pvProperty.setValue(30);
+		this.moneyProperty.setValue(4000);
+		this.env.nouvPartie();
+	}
+	
 	public void lancerNiveau() {
 		delai = 0;
 		avancement = 0;

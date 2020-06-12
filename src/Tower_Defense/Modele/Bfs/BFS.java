@@ -137,4 +137,12 @@ public class BFS {
 	public ArrayList<Sommet> getSommets(){
 		return this.sommets;
 	}
+
+	public void recommencer() {
+		this.resetListes();
+		this.sommets.clear();
+		this.adj.clear();
+		this.creerSommets();
+		
+	}
 }
