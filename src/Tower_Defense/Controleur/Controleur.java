@@ -59,6 +59,12 @@ public class Controleur implements Initializable {
     private Button boutonRegles;
     @FXML
     private Text textRegles;
+    @FXML
+    private VBox blocInfo;
+    @FXML
+    private Label gameOver;
+    @FXML
+    private Button boutonVagueSuivante;
 
     private Partie partie;
     private VueMap vM;
@@ -75,8 +81,7 @@ public class Controleur implements Initializable {
         this.partie.getEnv().getTours().addListener(new ListenerTourelles(paneEntite));
         this.partie.getEnv().getPersos().addListener(new ListenerPers(paneEntite, this));
         initGame();
-        this.nbTour = new SimpleIntegerProperty();
-        this.nbTour.set(0);
+        this.nbTour = new SimpleIntegerProperty(0);
         this.labelMoney.textProperty().bind(this.partie.moneyProperty().asString());
         this.labelScore.textProperty().bind(this.partie.scoreProperty().asString());
         this.labelVague.textProperty().bind(this.partie.vagueProperty().asString());
@@ -90,7 +95,9 @@ public class Controleur implements Initializable {
 		KeyFrame kf = new KeyFrame(Duration.seconds(0.04), (ev -> {
 
 			if (this.partie.estPerdu()) {
-				this.labelInfo.textProperty().setValue("game over");
+				this.gameOver.setVisible(true);
+				this.boutonVagueSuivante.textProperty().setValue("Recommencer");
+				System.out.println("Score : " + this.partie.getScore());
 				gameLoop.stop();
 			} else if (this.partie.niveauFini()) {
 				gameLoop.stop();
@@ -147,10 +154,12 @@ public class Controleur implements Initializable {
 		        }
     		}
     		catch (MoneyException e) {
-    			this.labelInfo.textProperty().setValue("Pas assez d'argent!");
+    			this.legendeNom.textProperty().setValue("Avertissement");
+    			this.legendeText.textProperty().setValue("Vous n'avez pas assez d'argent pour acheter cette tourelle.");
     		}
     		catch (PlacementException e) {
-    			this.labelInfo.textProperty().setValue("Placement impossible");
+    			this.legendeNom.textProperty().setValue("Avertissement");
+    			this.legendeText.textProperty().setValue("Le placement est impossible sur d'autres tourelles, sur les batiments, sur la route et sur la première colonne.");
     		}
     	}
     }
@@ -172,38 +181,38 @@ public class Controleur implements Initializable {
 			this.legendeNom.textProperty().setValue("Infecté jogger");
 			this.legendeText.textProperty().setValue("Contamination : moyenne\n"
 					+ "Vitesse : moyenne\n"
-					+ "Accélère quand soigné");
+					+ "Il accélère quand on lui tire dessus.");
 			break;
 			
 		case "infecteGrave":
 			this.legendeNom.textProperty().setValue("Infecté grave");
 			this.legendeText.textProperty().setValue("Contamination : élevée\n"
 					+ "Vitesse : lente\n"
-					+ "Force l’attaque des tours\nsur lui");
+					+ "Force l’attaque des tours sur lui.");
 			break;
 			
 		case "infecteQuiTousse":
 			this.legendeNom.textProperty().setValue("Infecté qui tousse");
 			this.legendeText.textProperty().setValue("Contamination : moyenne\n"
 					+ "Vitesse : moyenne\n"
-					+ "Empêche les tirs des tourelles sur les infectés à proximité de lui quand il est soigné");
+					+ "Il empêche les tirs des tourelles sur les infectés à proximité de lui quand on lui tire dessus.");
 			break;
 			
 		case "personnageSain":
 			this.legendeNom.textProperty().setValue("Personnage sain");
-			this.legendeText.textProperty().setValue("Personnage soigné");
+			this.legendeText.textProperty().setValue("Personnage soigné.");
 			break;
 			
 		// Légende statuts
 			
 		case "infecteHot":
 			this.legendeNom.textProperty().setValue("Soin sur la durée");
-			this.legendeText.textProperty().setValue("L'infecté prend du soin chaque tour");
+			this.legendeText.textProperty().setValue("L'infecté prend du soin chaque tour.");
 			break;
 			
 		case "infecteProtection":
 			this.legendeNom.textProperty().setValue("Protection");
-			this.legendeText.textProperty().setValue("L'infecté est protégé des tirs");
+			this.legendeText.textProperty().setValue("L'infecté est protégé des tirs.");
 			break;
 			
 		default:
@@ -229,7 +238,7 @@ public class Controleur implements Initializable {
 					+ "Soin : important\n"
 					+ "Cadence de tir : moyenne\n"
 					+ "Portée : moyenne\n"
-					+ "Ralenti les ennemis proches");
+					+ "Ralenti les ennemis proches.");
 			break;
 			
 		case "infoVaccin":
@@ -255,11 +264,19 @@ public class Controleur implements Initializable {
 
     @FXML
     void vagueSuivante(ActionEvent event) {
-        gameLoop.play();
-        if(this.partie.getVague() == 0)
-        	this.partie.lancerNiveau();
-        if(this.partie.niveauFini())
-        	this.partie.lancerNiveau();
+    	if(this.boutonVagueSuivante.getText().equals("Recommencer")) {
+    		this.partie.nouvellePartie();
+    		this.nbTour.setValue(0);
+    		this.gameOver.setVisible(false);
+    		this.boutonVagueSuivante.setText("Vague suivante");
+    	}
+    	else {
+	        gameLoop.play();
+	        if(this.partie.getVague() == 0)
+	        	this.partie.lancerNiveau();
+	        if(this.partie.niveauFini())
+	        	this.partie.lancerNiveau();
+    	}
     }
     
     @FXML
@@ -267,6 +284,7 @@ public class Controleur implements Initializable {
     	if(this.boutonRegles.getText().equals("Règles")) {
     		this.boxPersonnages.setVisible(false);
         	this.boxStatuts.setVisible(false);
+        	this.blocInfo.setVisible(false);
         	this.boutonRegles.setText("Masquer règles");
         	this.textRegles.setText("Vous êtes dans un univers moderne apocalyptique où des personnes infectés tentent d'aller dans un bunker de gens sains. "
         			+ "Vous devez les soigner avant qu’ils arrivent au bunker en achetant des tourelles mis à disposition sous le plateau de jeu "
@@ -279,6 +297,7 @@ public class Controleur implements Initializable {
     	else if(this.boutonRegles.getText().equals("Masquer règles")) {
     		this.boxPersonnages.setVisible(true);
         	this.boxStatuts.setVisible(true);
+        	this.blocInfo.setVisible(true);
         	this.boutonRegles.setText("Règles");
         	this.textRegles.setText("");
     	}

@@ -31,11 +31,11 @@ public class Partie {
 	}
 
 	public void nouvellePartie() {
+		this.env.nouvPartie();
 		this.scoreProperty.setValue(0);
 		this.vagueProperty.setValue(0);
 		this.pvProperty.setValue(30);
 		this.moneyProperty.setValue(4000);
-		this.env.nouvPartie();
 	}
 	
 	public void lancerNiveau() {
