@@ -91,4 +91,9 @@ public class Environnement {
 	public void ajouterTourelle(Tourelle t) {
 		this.tours.add(t);
 	}
+
+	public void amelioPers() {
+		for(Personnage p : this.persos)
+			p.ameliorationPers();
+	}
 }

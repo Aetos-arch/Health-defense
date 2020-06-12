@@ -33,8 +33,8 @@ public class Partie {
 		delai = 0;
 		avancement = 0;
 		this.setVague(this.getVague() + 1);
-		int random = (int) (Math.random() * 11) + 11;
-		this.env.ajouterPers(new InfecteSansSymp(0, random, this.env));
+		if(this.vagueProperty.getValue()%6==0)
+			this.env.amelioPers();
 	}
 
 	public void unTour() {

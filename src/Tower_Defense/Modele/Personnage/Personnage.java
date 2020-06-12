@@ -174,4 +174,12 @@ public abstract class Personnage {
 			this.vitesse = this.vitesse * 2;
 		}
 	}
+	
+	public int getVit() {
+		return this.vitesse;
+	}
+	
+	public void ameliorationPers() {
+		this.nivCont += this.nivCont/3;
+	}
 }
