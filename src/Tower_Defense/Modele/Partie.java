@@ -24,11 +24,11 @@ public class Partie {
 	private String nomJoueur;
 
 	public Partie() {
-		this.scoreProperty = new SimpleIntegerProperty(10);
+		this.scoreProperty = new SimpleIntegerProperty(0);
 		this.vagueProperty = new SimpleIntegerProperty(0);
 		this.moneyProperty = new SimpleIntegerProperty(4000);
 		this.env = new Environnement();
-		this.pvProperty = new SimpleIntegerProperty(1);
+		this.pvProperty = new SimpleIntegerProperty(30);
 		this.env.creerArbre();
 		this.score = new Score();
 	}
@@ -37,7 +37,7 @@ public class Partie {
 		this.env.nouvPartie();
 		this.scoreProperty.setValue(0);
 		this.vagueProperty.setValue(0);
-		this.pvProperty.setValue(1);
+		this.pvProperty.setValue(30);
 		this.moneyProperty.setValue(4000);
 	}
 	
@@ -167,5 +167,9 @@ public class Partie {
 	
 	public void ajouterScore() {
 		this.score.ajouterScore(this.getScore(), this.nomJoueur);
+	}
+	
+	public void setNomJoueur(String s) {
+		this.nomJoueur = s;
 	}
 }
