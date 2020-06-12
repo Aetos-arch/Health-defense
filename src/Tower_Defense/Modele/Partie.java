@@ -44,7 +44,7 @@ public class Partie {
 	public void lancerNiveau() {
 		delai = 0;
 		avancement = 0;
-		this.setVague(this.getVague() + 1);
+		this.vagueProperty.set(this.getVague() + 1);
 		if(this.vagueProperty.getValue()%5==0)
 			this.env.amelioPers(2);
 		if(this.vagueProperty.getValue()%15==0) {
@@ -79,7 +79,7 @@ public class Partie {
 		if (t.getPrix() <= this.moneyProperty.getValue()) {
 			this.env.modifChemin((int) (t.getX() / 16), (int) (t.getY() / 16));
 			this.env.ajouterTour(t);
-			this.diminuerMoney(t.getPrix());
+			this.moneyProperty.setValue(this.moneyProperty.getValue() - t.getPrix());
 		} else {
 			throw new MoneyException();
 		}
@@ -94,19 +94,15 @@ public class Partie {
 	}
 
 	public void perdrePV(int n) {
-		this.setPV(this.getPV() - n);
+		this.pvProperty.setValue(this.getPV() - n);
 	}
 
 	public void augmenterScore(int n) {
-		this.setScore(this.getScore() + n);
+		this.scoreProperty.set(this.scoreProperty.getValue() + n);
 	}
 
 	public void augmenterMoney(int n) {
-		this.setMoney(this.getMoney() + n);
-	}
-
-	public void diminuerMoney(int n) {
-		this.setMoney(this.getMoney() - n);
+		this.moneyProperty.setValue(this.getMoney() + n);
 	}
 
 	public IntegerProperty moneyProperty() {
@@ -116,21 +112,13 @@ public class Partie {
 	public int getMoney() {
 		return this.moneyProperty.getValue();
 	}
-
-	public void setMoney(int n) {
-		this.moneyProperty.set(n);
-	}
-
+	
 	public IntegerProperty pvProperty() {
 		return this.pvProperty;
 	}
 
 	public int getPV() {
 		return this.pvProperty.getValue();
-	}
-
-	public void setPV(int n) {
-		this.pvProperty.set(n);
 	}
 
 	public IntegerProperty vagueProperty() {
@@ -141,22 +129,14 @@ public class Partie {
 		return this.vagueProperty.getValue();
 	}
 
-	public void setVague(int n) {
-		this.vagueProperty.set(n);
-	}
-
 	public IntegerProperty scoreProperty() {
 		return this.scoreProperty;
 	}
 
-	public int getScore() {
-		return this.scoreProperty.getValue();
+	public String afficheScores() {
+		return this.score.affScores();
 	}
-
-	public void setScore(int n) {
-		this.scoreProperty.set(n);
-	}
-
+  
 	public Environnement getEnv() {
 		return this.env;
 	}
@@ -166,7 +146,7 @@ public class Partie {
 	}
 	
 	public void ajouterScore() {
-		this.score.ajouterScore(this.getScore(), this.nomJoueur);
+		this.score.ajouterScore(this.scoreProperty.getValue(), this.nomJoueur);
 	}
 	
 	public void setNomJoueur(String s) {

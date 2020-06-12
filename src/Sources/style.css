@@ -82,6 +82,12 @@
 	-fx-border-radius: 3px;
 }
 
+.textSaisirNom {
+	-fx-font-size: 24px;
+	-fx-text-fill: red;
+	-fx-font-weight: bold;
+}
+
 .gameOver {
 	-fx-font-size: 50px;
 	-fx-text-fill: red;

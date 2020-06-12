@@ -1,6 +1,8 @@
 package Tower_Defense.Controleur;
 
 import Tower_Defense.Exception.MoneyException;
+import Tower_Defense.Exception.NomTropLongException;
+import Tower_Defense.Exception.PasDeNomException;
 import Tower_Defense.Exception.PlacementException;
 import Tower_Defense.Modele.Partie;
 import Tower_Defense.Modele.Tourelle.TourelleFiole;
@@ -19,6 +21,7 @@ import javafx.fxml.FXML;
 import javafx.fxml.Initializable;
 import javafx.scene.control.Button;
 import javafx.scene.control.Label;
+import javafx.scene.control.TextField;
 import javafx.scene.image.Image;
 import javafx.scene.image.ImageView;
 import javafx.scene.input.*;
@@ -58,13 +61,21 @@ public class Controleur implements Initializable {
     @FXML
     private Button boutonRegles;
     @FXML
-    private Text textRegles;
+    private Text textRegleEtScore;
+    @FXML
+    private Button boutonScores;
+    @FXML
+    private Text textScores;
     @FXML
     private VBox blocInfo;
     @FXML
     private Label gameOver;
     @FXML
     private Button boutonVagueSuivante;
+    @FXML
+    private Label textSaisirNom;
+    @FXML
+    private TextField saisirNom;
 
     private Partie partie;
     private VueMap vM;
@@ -264,19 +275,34 @@ public class Controleur implements Initializable {
 
     @FXML
     void vagueSuivante(ActionEvent event) {
-    	if(this.boutonVagueSuivante.getText().equals("Recommencer")) {
-    		this.partie.nouvellePartie();
-    		this.nbTour.setValue(0);
-    		this.gameOver.setVisible(false);
-    		this.boutonVagueSuivante.setText("Vague suivante");
-    	}
-    	else {
-	        gameLoop.play();
-	        if(this.partie.getVague() == 0)
-	        	this.partie.lancerNiveau();
-	        if(this.partie.niveauFini())
-	        	this.partie.lancerNiveau();
-    	}
+    	try {
+	    	if(this.boutonVagueSuivante.getText().equals("Recommencer")) {
+	    		this.textSaisirNom.setVisible(true);
+	    		this.saisirNom.setVisible(true);
+	    		this.partie.nouvellePartie();
+	    		this.nbTour.setValue(0);
+	    		this.gameOver.setVisible(false);
+	    		this.boutonVagueSuivante.setText("Vague suivante");
+	    	}
+	    	else if(this.boutonVagueSuivante.getText().equals("Vague suivante")){
+	    		if(this.saisirNom.getText().isEmpty()) throw new PasDeNomException();
+	    		if(this.saisirNom.getText().length() > 10) throw new NomTropLongException();
+	    		this.partie.setNomJoueur(this.saisirNom.getText());
+	    		this.textSaisirNom.setVisible(false);
+	    		this.saisirNom.setVisible(false);
+		        gameLoop.play();
+		        if(this.partie.getVague() == 0)
+		        	this.partie.lancerNiveau();
+		        if(this.partie.niveauFini())
+		        	this.partie.lancerNiveau();
+	    	}
+    	} catch (PasDeNomException e) {
+    		this.legendeNom.textProperty().setValue("Avertissement");
+			this.legendeText.textProperty().setValue("Vous n'avez pas saisie de nom.");
+    	} catch (NomTropLongException e) {
+    		this.legendeNom.textProperty().setValue("Avertissement");
+			this.legendeText.textProperty().setValue("Vous avez saisie un nom trop long.\n(<= 10 caractères)");
+		}
     }
     
     @FXML
@@ -285,8 +311,9 @@ public class Controleur implements Initializable {
     		this.boxPersonnages.setVisible(false);
         	this.boxStatuts.setVisible(false);
         	this.blocInfo.setVisible(false);
+        	this.boutonScores.setVisible(false);
         	this.boutonRegles.setText("Masquer règles");
-        	this.textRegles.setText("Vous êtes dans un univers moderne apocalyptique où des personnes infectés tentent d'aller dans un bunker de gens sains. "
+        	this.textRegleEtScore.setText("Vous êtes dans un univers moderne apocalyptique où des personnes infectés tentent d'aller dans un bunker de gens sains. "
         			+ "Vous devez les soigner avant qu’ils arrivent au bunker en achetant des tourelles mis à disposition sous le plateau de jeu "
         			+ "avec de l'argent obtenu en soignant les infectés.\nPour acheter une tourelle, il faut cliquer sur l'image de la tourelle et la glisser sur la map. \n"
         			+ "Pour avoir plus d'informations sur les tourelles, les infectés et les statuts. Vous pouvez cliquer sur les boutons \"Info\" sous les tourelles "
@@ -294,14 +321,30 @@ public class Controleur implements Initializable {
         			+ "Si vous avez fini de lire les règles, vous pouvez les masquer avec le bouton juste au dessus.\n\n"
         			+ "Bon jeu !");
     	}
-    	else if(this.boutonRegles.getText().equals("Masquer règles")) {
+    	else if(this.boutonRegles.getText().equals("Masquer règles") || this.boutonRegles.getText().equals("Masquer scores")) {
     		this.boxPersonnages.setVisible(true);
         	this.boxStatuts.setVisible(true);
         	this.blocInfo.setVisible(true);
+        	this.boutonScores.setVisible(true);
         	this.boutonRegles.setText("Règles");
-        	this.textRegles.setText("");
+        	this.textRegleEtScore.setText("");
     	}
 	}
+    
+    @FXML
+    void scores(ActionEvent event) {
+    	if(this.boutonScores.getText().equals("Scores")) {
+    		this.boxPersonnages.setVisible(false);
+        	this.boxStatuts.setVisible(false);
+        	this.blocInfo.setVisible(false);
+        	this.boutonScores.setVisible(false);
+        	if(this.partie.afficheScores().isEmpty())
+        		this.textRegleEtScore.setText("Aucun score enregistré.");
+        	else
+        		this.textRegleEtScore.setText(this.partie.afficheScores());
+        	this.boutonRegles.setText("Masquer scores");
+    	}
+    }
 
     public int getTour() {
         return this.nbTour.get();
