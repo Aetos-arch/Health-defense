@@ -19,7 +19,7 @@ public class Score {
 		System.out.println("On ajoute un score");
 		try {
 			writer = new FileWriter(nomFichier, true);
-			writer.write("Score " +nom+ " : " + i +"\n") ;
+			writer.write("Score " +nom+ " : " + i + "\n") ;
 			writer.close();
 		} catch (IOException e) {
 			System.out.println("Problème dans l'écriture du fichier!");

@@ -133,6 +133,10 @@ public class Partie {
 		return this.scoreProperty;
 	}
 
+	public String afficheScores() {
+		return this.score.affScores();
+	}
+  
 	public Environnement getEnv() {
 		return this.env;
 	}
