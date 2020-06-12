@@ -285,7 +285,6 @@ public class Controleur implements Initializable {
     		this.boxPersonnages.setVisible(false);
         	this.boxStatuts.setVisible(false);
         	this.blocInfo.setVisible(false);
- 
         	this.boutonRegles.setText("Masquer règles");
         	this.textRegles.setText("Vous êtes dans un univers moderne apocalyptique où des personnes infectés tentent d'aller dans un bunker de gens sains. "
         			+ "Vous devez les soigner avant qu’ils arrivent au bunker en achetant des tourelles mis à disposition sous le plateau de jeu "
