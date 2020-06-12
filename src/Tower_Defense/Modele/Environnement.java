@@ -88,9 +88,18 @@ public class Environnement {
 		this.tirs.add(t);
 	}
 
-	public void amelioPers() {
-		for(Personnage p : this.persos)
-			p.ameliorationPers();
+	public void amelioPers(int i) {
+		System.out.println("amelioration des persos");
+		for(Personnage p : this.persos) {
+			p.ameliorationPers(i);
+		}
 	}
 
+	public void nouvPartie() {
+		this.tours.clear();
+		this.persos.clear();
+		this.tirs.clear();
+		this.bfs.recommencer();
+		this.creerArbre();
+	}
 }

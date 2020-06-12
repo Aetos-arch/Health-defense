@@ -27,18 +27,30 @@ public class Partie {
 		this.moneyProperty = new SimpleIntegerProperty(4000);
 		this.env = new Environnement();
 		this.pvProperty = new SimpleIntegerProperty(30);
+		this.env.creerArbre();
 	}
 
+	public void nouvellePartie() {
+		this.scoreProperty.setValue(0);
+		this.vagueProperty.setValue(0);
+		this.pvProperty.setValue(30);
+		this.moneyProperty.setValue(4000);
+		this.env.nouvPartie();
+	}
+	
 	public void lancerNiveau() {
 		delai = 0;
 		avancement = 0;
 		this.setVague(this.getVague() + 1);
-		if(this.vagueProperty.getValue()%6==0)
-			this.env.amelioPers();
+		if(this.vagueProperty.getValue()%5==0)
+			this.env.amelioPers(2);
+		if(this.vagueProperty.getValue()%15==0) {
+			this.env.amelioPers(6);
+		}
 	}
 
 	public void unTour() {
-		if (delai % 20 == 10)
+		if (delai % 17 == 0)
 			if (avancement < nombreEnnemi()) {
 				double spawnAleatoire = Math.random() * 4;
 				if (spawnAleatoire < 1) {
@@ -75,7 +87,7 @@ public class Partie {
 	}
 
 	public int nombreEnnemi() {
-		return this.getVague() * 5;
+		return this.getVague() * 4;
 	}
 
 	public void perdrePV(int n) {

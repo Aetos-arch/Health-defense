@@ -81,7 +81,6 @@ public class Controleur implements Initializable {
         this.partie.getEnv().getTours().addListener(new ListenerTourelles(paneEntite));
         this.partie.getEnv().getPersos().addListener(new ListenerPers(paneEntite, this));
         initGame();
-        this.partie.getEnv().creerArbre();
         this.nbTour = new SimpleIntegerProperty(0);
         this.labelMoney.textProperty().bind(this.partie.moneyProperty().asString());
         this.labelScore.textProperty().bind(this.partie.scoreProperty().asString());
@@ -264,11 +263,16 @@ public class Controleur implements Initializable {
 
     @FXML
     void vagueSuivante(ActionEvent event) {
+    	if(this.boutonVagueSuivante.getText().equals("Recommencer")) {
+    		this.partie.nouvellePartie();
+    		this.nbTour.setValue(0);
+    	}
         gameLoop.play();
         if(this.partie.getVague() == 0)
         	this.partie.lancerNiveau();
         if(this.partie.niveauFini())
         	this.partie.lancerNiveau();
+        
     }
     
     @FXML
