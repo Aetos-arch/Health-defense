@@ -87,8 +87,4 @@ public class Environnement {
 	public void ajouterTir(Tir t) {
 		this.tirs.add(t);
 	}
-
-	public void ajouterTourelle(Tourelle t) {
-		this.tours.add(t);
-	}
 }
