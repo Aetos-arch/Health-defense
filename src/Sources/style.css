@@ -19,7 +19,7 @@
 }
 
 .boutonVagueSuivante {
-	-fx-font-size: 26px;
+	-fx-font-size: 20px;
 	-fx-font-family: "Segoe UI Semibold";
 }
 
@@ -68,6 +68,8 @@
 	-fx-border-radius: 3px;
 }
 
-.gameName {
-	-fx-font-size: 30px;
+.gameOver {
+	-fx-font-size: 50px;
+	-fx-text-fill: red;
+	-fx-font-weight: bold;
 }

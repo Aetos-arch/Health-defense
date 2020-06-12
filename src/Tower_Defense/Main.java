@@ -13,6 +13,7 @@ public class Main extends Application {
 		try {
 			BorderPane root = FXMLLoader.load(getClass().getResource("/Tower_Defense/Vue/vue.fxml"));
 			Scene scene = new Scene(root, 1200, 740);
+			primaryStage.setTitle("Tower Defense NAV");
 			primaryStage.setScene(scene);
 			primaryStage.show();
 			primaryStage.centerOnScreen();
