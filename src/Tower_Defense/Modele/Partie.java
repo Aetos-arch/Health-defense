@@ -20,14 +20,16 @@ public class Partie {
 	private IntegerProperty moneyProperty;
 	private Environnement env;
 	private IntegerProperty pvProperty;
+	private Score score;
 
 	public Partie() {
-		this.scoreProperty = new SimpleIntegerProperty(0);
+		this.scoreProperty = new SimpleIntegerProperty(10);
 		this.vagueProperty = new SimpleIntegerProperty(0);
 		this.moneyProperty = new SimpleIntegerProperty(4000);
 		this.env = new Environnement();
-		this.pvProperty = new SimpleIntegerProperty(30);
+		this.pvProperty = new SimpleIntegerProperty(1);
 		this.env.creerArbre();
+		this.score = new Score();
 	}
 
 	public void nouvellePartie() {
@@ -160,5 +162,9 @@ public class Partie {
 
 	public boolean niveauFini() {
 		return this.env.getPersos().isEmpty() && this.env.getTirs().isEmpty() && avancement >= this.nombreEnnemi();
+	}
+	
+	public void ajouterScore() {
+		this.score.ajouterScore(this.getScore());
 	}
 }
