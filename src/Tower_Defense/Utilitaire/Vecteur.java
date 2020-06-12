@@ -34,18 +34,10 @@ public class Vecteur implements Coordonnee {
         return this;
     }
 
-    public Vecteur soustraire(Vecteur vect) {
-        return this.soustraire(vect.getX(), vect.getY());
-    }
-
     public Vecteur multiplier (double nbr) {
         this.x *= nbr;
         this.y *= nbr;
         return this;
-    }
-
-    public Vecteur inverse () {
-        return this.multiplier(-1);
     }
 
     public double normeVecteur () {
@@ -72,6 +64,6 @@ public class Vecteur implements Coordonnee {
 
     @Override
     public String toString() {
-        return "Vector [x=" + x + ", y=" + y + "]";
+        return "Vecteur [x=" + x + ", y=" + y + "]";
     }
 }

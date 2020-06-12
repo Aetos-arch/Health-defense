@@ -6,19 +6,9 @@ public class PositionProperty implements CoordonneProperty {
     private SimpleDoubleProperty xProperty;
     private SimpleDoubleProperty yProperty;
 
-    public PositionProperty(CoordonneProperty coords) {
-        this(coords.getX(), coords.getY());
-    }
-
     public PositionProperty(double xProperty, double yProperty) {
         this.xProperty = new SimpleDoubleProperty(xProperty);
         this.yProperty = new SimpleDoubleProperty(yProperty);
-    }
-
-    public PositionProperty multiplier(double nbr) {
-        this.setX(this.getX() * nbr);
-        this.setY(this.getY() * nbr);
-        return this;
     }
 
     public double distance(Position loc) {
@@ -33,14 +23,6 @@ public class PositionProperty implements CoordonneProperty {
     @Override
     public double getY() {
         return yProperty.doubleValue();
-    }
-
-    public void setX(double x) {
-        this.xProperty.setValue(x);
-    }
-
-    public void setY(double y) {
-        this.yProperty.setValue(y);
     }
 
     @Override

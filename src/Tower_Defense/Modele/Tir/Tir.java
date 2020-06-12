@@ -45,7 +45,7 @@ public abstract class Tir {
         return positionProperty.getYProperty();
     }
 
-    public PositionProperty getPosition() {
+    public PositionProperty getPositionProperty() {
         return positionProperty;
     }
 }
