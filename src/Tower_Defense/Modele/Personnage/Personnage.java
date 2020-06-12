@@ -68,7 +68,6 @@ public abstract class Personnage {
 			if(this.healOnTime.getValue()>0) { //Met les soins sur la durée
 				this.seFaireSoigner(1);
 				this.healOnTime.setValue(this.healOnTime.getValue()-1);
-				System.out.println(this.healOnTime.getValue());
 			}
 			if(this.estSain()) {
 				this.sainProperty.setValue(1);
