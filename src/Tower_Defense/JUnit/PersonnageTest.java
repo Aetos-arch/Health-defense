@@ -31,9 +31,8 @@ public class PersonnageTest {
 	@Test
 	public void testHealOnTime() {
 		this.p1.prendreUnHoT(100);
-		assertTrue(this.p1.getHotProprety().getValue() == 100/2 );
-		for (int i = 0; i<50;i++)
-			this.p1.agit();
+		assertTrue(this.p1.getHotProprety().getValue() == 100/2);
+		this.p1.seFaireSoigner(this.p1.getHotProprety().getValue());
 		assertTrue(this.p1.estSain());
 	}
 	

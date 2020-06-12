@@ -67,7 +67,8 @@ public abstract class Personnage {
 			this.y.set(this.y.getValue() + this.dirY);
 			if(this.healOnTime.getValue()>0) { //Met les soins sur la durée
 				this.seFaireSoigner(1);
-				this.healOnTime.setValue(this.healOnTime.getValue() -1);
+				this.healOnTime.setValue(this.healOnTime.getValue()-1);
+				System.out.println(this.healOnTime.getValue());
 			}
 			if(this.estSain()) {
 				this.sainProperty.setValue(1);
@@ -103,8 +104,8 @@ public abstract class Personnage {
 	}
 	
 	public void prendreUnHoT(int d) { // Permet de prendre des soins sur la durée
-		this.seFaireSoigner(d);
-		this.healOnTime.setValue(this.healOnTime.getValue() + d / 2);
+		this.seFaireSoigner(d/2);
+		this.healOnTime.setValue(this.healOnTime.getValue() + d/2);
 	}
 
 	protected void soin(int d) {
@@ -118,7 +119,6 @@ public abstract class Personnage {
 	public boolean estSain() {
 		return this.nivCont <= 0;
 	}
-
 
 	public IntegerProperty getXProperty() {
 		return x;

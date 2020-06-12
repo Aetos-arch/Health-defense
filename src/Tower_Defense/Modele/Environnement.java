@@ -89,7 +89,6 @@ public class Environnement {
 	}
 
 	public void amelioPers(int i) {
-		System.out.println("amelioration des persos");
 		for(Personnage p : this.persos) {
 			p.ameliorationPers(i);
 		}
