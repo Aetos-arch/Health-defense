@@ -25,6 +25,7 @@ import javafx.scene.control.TextField;
 import javafx.scene.image.Image;
 import javafx.scene.image.ImageView;
 import javafx.scene.input.*;
+import javafx.scene.layout.HBox;
 import javafx.scene.layout.Pane;
 import javafx.scene.layout.TilePane;
 import javafx.scene.layout.VBox;
@@ -79,6 +80,8 @@ public class Controleur implements Initializable {
     private Label textSaisirNom;
     @FXML
     private TextField saisirNom;
+    @FXML
+    private HBox blocTourelles;
 
     private Partie partie;
     private VueMap vM;
@@ -115,6 +118,7 @@ public class Controleur implements Initializable {
 				mp.play();
 				this.partie.ajouterScore();
 				this.gameOver.setVisible(true);
+				this.blocTourelles.setVisible(false);
 				this.boutonVagueSuivante.textProperty().setValue("Recommencer");
 				gameLoop.stop();
 			} else if (this.partie.niveauFini()) {
@@ -289,19 +293,24 @@ public class Controleur implements Initializable {
 	    		this.partie.nouvellePartie();
 	    		this.nbTour.setValue(0);
 	    		this.gameOver.setVisible(false);
-	    		this.boutonVagueSuivante.setText("Vague suivante");
+	    		this.boutonVagueSuivante.setText("Confirmer");
 	    	}
 	    	else if(this.boutonVagueSuivante.getText().equals("Vague suivante")){
-	    		if(this.saisirNom.getText().isEmpty()) throw new PasDeNomException();
-	    		if(this.saisirNom.getText().length() > 10) throw new NomTropLongException();
-	    		this.partie.setNomJoueur(this.saisirNom.getText());
-	    		this.textSaisirNom.setVisible(false);
-	    		this.saisirNom.setVisible(false);
 		        gameLoop.play();
 		        if(this.partie.getVague() == 0)
 		        	this.partie.lancerNiveau();
 		        if(this.partie.niveauFini())
 		        	this.partie.lancerNiveau();
+	    	}
+	    	else if(this.boutonVagueSuivante.getText().equals("Confirmer")) {
+	    		if(this.saisirNom.getText().isEmpty()) throw new PasDeNomException();
+	    		if(this.saisirNom.getText().length() > 10) throw new NomTropLongException();
+	    		this.partie.setNomJoueur(this.saisirNom.getText());
+	    		this.textSaisirNom.setVisible(false);
+	    		this.saisirNom.setVisible(false);
+	    		this.blocTourelles.setVisible(true);
+	    		this.tilePaneMap.setVisible(true);
+	    		this.boutonVagueSuivante.setText("Vague suivante");
 	    	}
     	} catch (PasDeNomException e) {
     		this.legendeNom.textProperty().setValue("Avertissement");
