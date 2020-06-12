@@ -7,9 +7,9 @@ import Tower_Defense.Modele.Tir.TirDirection;
 import Tower_Defense.Modele.Tir.TirVitamine;
 import Tower_Defense.Modele.Tourelle.TourelleVitamine;
 import Tower_Defense.Utilitaire.Position;
+import org.junit.After;
 import org.junit.Before;
 
-import static org.junit.Assert.assertNotNull;
 import static org.junit.Assert.assertTrue;
 
 
@@ -28,12 +28,15 @@ public class TirVitamineTest {
         this.personnage = new InfecteSansSymp(26, 15, env);
         this.env.ajouterPers(this.personnage);
         this.env.ajouterTour(tourelle);
+        this.positionCible = new Position(this.personnage.getX(), this.personnage.getY());
+        this.tir = new TirVitamine(this.positionCible, this.env, this.tourelle);
     }
 
-    @org.junit.Test
-    public void testCreationTir() {
-        this.tourelle.agit();
-        assertNotNull(this.env.getTirs());
+    @After
+    public void clear() {
+        this.env.getTours().clear();
+        this.env.getTirs().clear();
+        this.env.getPersos().clear();
     }
 
     @org.junit.Test
@@ -42,5 +45,11 @@ public class TirVitamineTest {
         if (this.env.getTirs().get(0) instanceof TirDirection) {
             assertTrue(((TirDirection) this.env.getTirs().get(0)).collision());
         }
+    }
+
+    @org.junit.Test
+    public void testRemove() {
+        this.env.unTour();
+        assertTrue(this.env.getTirs().isEmpty());
     }
 }

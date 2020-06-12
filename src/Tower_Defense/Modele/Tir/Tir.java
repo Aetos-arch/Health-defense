@@ -33,28 +33,28 @@ public abstract class Tir {
         return positionProperty.getX();
     }
 
-    public DoubleProperty xProperty() {
+    public DoubleProperty getXProperty() {
         return positionProperty.getXProperty();
-    }
-
-    public void setX(int x) {
-        this.positionProperty.setX(x);
     }
 
     public double getY() {
         return positionProperty.getY();
     }
 
-    public DoubleProperty yProperty() {
+    public DoubleProperty getYProperty() {
         return positionProperty.getYProperty();
-    }
-
-    public void setY(int y) {
-        this.positionProperty.setY(y);
     }
 
     public PositionProperty getPosition() {
         return positionProperty;
+    }
+
+    public void setX (double x) {
+        this.positionProperty.setX(x);
+    }
+
+    public void setY (double y) {
+        this.positionProperty.setY(y);
     }
 
 }

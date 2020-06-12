@@ -49,8 +49,8 @@ public abstract class TirDirection extends Tir {
             }
             // Si le tir a touché un ennemie, ça inflige les dégats, sinon met à jour la position du tir
             else if (!collision()) {
-                this.xProperty().setValue(this.getX() + direction.getX());
-                this.yProperty().setValue(this.getY() + direction.getY());
+                this.getXProperty().setValue(this.getX() + direction.getX());
+                this.getYProperty().setValue(this.getY() + direction.getY());
             } else {
                 env.getTirs().remove(this);
             }

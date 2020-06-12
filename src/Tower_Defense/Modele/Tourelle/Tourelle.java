@@ -61,4 +61,10 @@ public abstract class Tourelle {
     public int getPrix() {
     	return this.prix;
     }
+
+    // Pour JUnit
+    public void setPosition(int x, int y) {
+        this.position.setX(x);
+        this.position.setY(y);
+    }
 }
