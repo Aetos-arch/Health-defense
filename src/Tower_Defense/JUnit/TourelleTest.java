@@ -4,6 +4,8 @@ import Tower_Defense.Modele.Environnement;
 import Tower_Defense.Modele.Personnage.InfecteGrave;
 import Tower_Defense.Modele.Personnage.InfecteSansSymp;
 import Tower_Defense.Modele.Personnage.Personnage;
+import Tower_Defense.Modele.Tir.TirDirection;
+import Tower_Defense.Modele.Tourelle.TourelleFiole;
 import Tower_Defense.Modele.Tourelle.TourelleVitamine;
 import org.junit.After;
 import org.junit.Before;
@@ -12,16 +14,18 @@ import java.util.ArrayList;
 
 import static org.junit.Assert.*;
 
-public class TourelleDegatUniqueTest {
+public class TourelleTest {
 
     TourelleVitamine tourelle;
+    TourelleFiole tourelleFiole;
     Environnement env;
     ArrayList<Personnage> listeDesPersos;
 
     @Before
     public void setUp() throws Exception {
         this.env = new Environnement();
-        this.tourelle = new TourelleVitamine(10*16, 10*16, env);
+        this.tourelle = new TourelleVitamine(10 * 16, 10 * 16, env);
+        this.tourelleFiole = new TourelleFiole(10 * 16, 10 * 16, env);
         this.env.ajouterTour(tourelle);
 
         Personnage persoFiltrer1 = new InfecteSansSymp(10, 10, this.env);
@@ -88,14 +92,34 @@ public class TourelleDegatUniqueTest {
         this.tourelle.setPosition(8*16, 8*16);
         assertSame(true,this.tourelle.getPersoLePlusProche(listeDesPersos) == listeDesPersos.get(0));
 
-        this.tourelle.setPosition(19*16, 10*16);
-        assertSame(true,this.tourelle.getPersoLePlusProche(listeDesPersos) == listeDesPersos.get(2));
+        this.tourelle.setPosition(19 * 16, 10 * 16);
+        assertSame(true, this.tourelle.getPersoLePlusProche(listeDesPersos) == listeDesPersos.get(2));
     }
 
     @org.junit.Test
     public void testFocusInfecteGrave() {
         // focus indice 5 pour infecté grave, alors que l'indice 4 est à la même position que la tourelle
-        this.tourelle.setPosition(24*16, 10*16);
+        this.tourelle.setPosition(24 * 16, 10 * 16);
         assertSame(listeDesPersos.get(5), this.tourelle.viser());
+    }
+
+    @org.junit.Test
+    public void testCollision() {
+        this.tourelle.agit();
+        if (this.env.getTirs().get(0) instanceof TirDirection) {
+            assertTrue(((TirDirection) this.env.getTirs().get(0)).collision());
+        }
+    }
+
+    @org.junit.Test
+    public void testRemove() {
+        this.env.unTour();
+        assertTrue(this.env.getTirs().isEmpty());
+    }
+
+    @org.junit.Test
+    public void testTourelleFiole() {
+        assertSame(this.listeDesPersos.get(0), this.tourelleFiole.getPersoLePlusEntoure(this.listeDesPersos));
+        assertSame(this.listeDesPersos.get(5), this.tourelleFiole.viser());
     }
 }
