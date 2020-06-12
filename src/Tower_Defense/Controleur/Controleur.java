@@ -91,6 +91,7 @@ public class Controleur implements Initializable {
 
 			if (this.partie.estPerdu()) {
 				this.labelInfo.textProperty().setValue("game over");
+				this.partie.ajouterScore();
 				gameLoop.stop();
 			} else if (this.partie.niveauFini()) {
 				gameLoop.stop();
