@@ -16,7 +16,7 @@ public abstract class Tir {
     public Tir(Position p, int pointAttaque, int hitbox, Environnement env) {
         this.positionProperty = new PositionProperty(p.getX(), p.getY());
         this.pointAttaque = pointAttaque;
-        direction = new Vecteur();
+        this.direction = new Vecteur();
         this.env = env;
         this.hitbox = hitbox;
     }
@@ -48,13 +48,4 @@ public abstract class Tir {
     public PositionProperty getPosition() {
         return positionProperty;
     }
-
-    public void setX (double x) {
-        this.positionProperty.setX(x);
-    }
-
-    public void setY (double y) {
-        this.positionProperty.setY(y);
-    }
-
 }

@@ -6,8 +6,8 @@ import Tower_Defense.Modele.Tourelle.TourelleVaccin;
 import Tower_Defense.Utilitaire.Position;
 
 public class TirVaccin extends TirDirection {
-    public TirVaccin(Position cible, Environnement env, TourelleVaccin t) {
-        super(130, cible, 50, env, 20, t);
+    public TirVaccin(Position cible, Environnement env, TourelleVaccin tourelleVaccin) {
+        super(130, cible, 50, env, 20, tourelleVaccin);
     }
 
     // Parcours les personnages pour vérifier si collision, si collision inflige les dégats
@@ -15,7 +15,7 @@ public class TirVaccin extends TirDirection {
     public boolean collision() {
         for (Personnage p : this.env.getPersos()) {
             if (((p.getY() >= this.getY() - hitbox && p.getY() <= this.getY() + hitbox) &&
-                    (p.getX() >= this.getX() - hitbox && p.getX() <= this.getX() + hitbox))&& !p.estSain() && p.estProtege().getValue() ==0) {
+                    (p.getX() >= this.getX() - hitbox && p.getX() <= this.getX() + hitbox)) && !p.estSain() && p.estProtege().getValue() == 0) {
                 p.prendreUnHoT(this.pointAttaque);
                 return true;
             }

@@ -10,9 +10,9 @@ public abstract class TirDirection extends Tir {
     protected TourelleDegatUnique tourelle;
     protected int vitesse;
 
-    public TirDirection(int pointAttaque, Position cible, int v, Environnement env, int hitbox, TourelleDegatUnique t) {
-        super(t.getPosition(), pointAttaque, hitbox, env);
-        this.tourelle = t;
+    public TirDirection(int pointAttaque, Position cible, int v, Environnement env, int hitbox, TourelleDegatUnique tourelleDegatUnique) {
+        super(tourelleDegatUnique.getPosition(), pointAttaque, hitbox, env);
+        this.tourelle = tourelleDegatUnique;
         this.vitesse = v;
         this.calculerDirection(cible);
     }
@@ -26,7 +26,7 @@ public abstract class TirDirection extends Tir {
         this.direction.setY(v.getY());
     }
 
-    // Parcours les personnages pour vérifier si collision, si collision inflige les dégats
+    // Parcours les personnages pour vérifier si collision, si collision inflige les dégats et return true
 
     public boolean collision() {
         for (Personnage p : this.env.getPersos()) {
