@@ -87,4 +87,10 @@ public class Environnement {
 	public void ajouterTir(Tir t) {
 		this.tirs.add(t);
 	}
+
+	public void amelioPers() {
+		for(Personnage p : this.persos)
+			p.ameliorationPers();
+	}
+
 }
