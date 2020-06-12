@@ -152,6 +152,10 @@ public class Partie {
 	public int getScore() {
 		return this.scoreProperty.getValue();
 	}
+	
+	public String afficheScores() {
+		return this.score.affScores();
+	}
 
 	public void setScore(int n) {
 		this.scoreProperty.set(n);
