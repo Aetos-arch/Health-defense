@@ -14,13 +14,14 @@
         <Pane fx:id="paneEntite" maxHeight="480.0" maxWidth="800.0" minHeight="480.0" minWidth="800.0" onDragDropped="#onDragDropped" onDragOver="#onDragOver" prefHeight="480.0" prefWidth="800.0" styleClass="pane" BorderPane.alignment="CENTER">
             <children>
                 <TilePane fx:id="tilePaneMap" alignment="CENTER" maxHeight="480.0" maxWidth="800.0" minHeight="480.0" minWidth="800.0" prefHeight="480.0" prefWidth="800.0" BorderPane.alignment="CENTER" />
+            <Label fx:id="gameOver" alignment="CENTER" prefHeight="480.0" prefWidth="800.0" styleClass="gameOver" text="GAME OVER" visible="false" />
             </children>
         </Pane>
     </center>
    <bottom>
       <HBox alignment="CENTER" minHeight="160.0" prefHeight="120.0" prefWidth="1200.0" BorderPane.alignment="CENTER">
          <children>
-            <VBox alignment="CENTER" prefHeight="160.0" prefWidth="200.0">
+            <VBox fx:id="blocInfo" alignment="CENTER" prefHeight="160.0" prefWidth="200.0">
                <children>
                   <VBox maxHeight="140.0" maxWidth="180.0" minHeight="150.0" minWidth="180.0" styleClass="infoLegende">
                      <children>
@@ -50,7 +51,7 @@
                            </image>
                         </ImageView>
                         <Label alignment="CENTER" prefHeight="25.0" prefWidth="150.0" text="Tourelle vitamine" />
-                        <Label alignment="CENTER" prefHeight="25.0" prefWidth="150.0" text="Coût : 500" />
+                        <Label alignment="CENTER" prefHeight="25.0" prefWidth="150.0" text="Coût : 1000" />
                         <Button fx:id="infoVitamine" mnemonicParsing="false" onAction="#info" styleClass="boutonInfo" text="Info">
                            <VBox.margin>
                               <Insets />
@@ -68,7 +69,7 @@
                            </image>
                         </ImageView>
                         <Label alignment="CENTER" prefHeight="25.0" prefWidth="150.0" text="Tourelle seringue" />
-                        <Label alignment="CENTER" prefHeight="25.0" prefWidth="150.0" text="Coût : 3000" />
+                        <Label alignment="CENTER" prefHeight="25.0" prefWidth="150.0" text="Coût : 2500" />
                         <Button fx:id="infoSeringue" mnemonicParsing="false" onAction="#info" styleClass="boutonInfo" text="Info" />
                      </children>
                   </VBox>
@@ -102,7 +103,7 @@
             </HBox>
             <VBox alignment="CENTER" maxHeight="160.0" maxWidth="200.0" prefHeight="160.0" prefWidth="200.0">
                <children>
-                    <Button alignment="CENTER" contentDisplay="CENTER" mnemonicParsing="false" onAction="#vagueSuivante" prefHeight="120.0" prefWidth="170.0" styleClass="boutonVagueSuivante" text="Vague suivante" textAlignment="CENTER" textOverrun="CLIP" wrapText="true">
+                    <Button fx:id="boutonVagueSuivante" alignment="CENTER" contentDisplay="CENTER" mnemonicParsing="false" onAction="#vagueSuivante" prefHeight="120.0" prefWidth="170.0" styleClass="boutonVagueSuivante" text="Vague suivante" textAlignment="CENTER" textOverrun="CLIP" wrapText="true">
                      <cursor>
                         <Cursor fx:constant="DEFAULT" />
                      </cursor>
@@ -233,16 +234,4 @@
             </VBox>
          </children></VBox>
    </left>
-   <top>
-      <VBox alignment="TOP_CENTER" maxHeight="100.0" prefHeight="200.0" prefWidth="100.0" BorderPane.alignment="CENTER">
-         <children>
-            <Label alignment="CENTER" prefHeight="50.0" prefWidth="300.0" styleClass="gameName" text="INSERER NOM">
-               <VBox.margin>
-                  <Insets bottom="20.0" />
-               </VBox.margin>
-            </Label>
-            <Label fx:id="labelInfo" alignment="CENTER" minHeight="20.0" />
-         </children>
-      </VBox>
-   </top>
 </BorderPane>
