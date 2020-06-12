@@ -11,7 +11,7 @@ import java.util.Optional;
 public class TourelleVitamine extends TourelleDegatUnique {
 
     public TourelleVitamine(int x, int y, Environnement env) {
-        super(x, y, env, 100, 10, 500);
+        super(x, y, env, 100, 10, 1000);
     }
 
     @Override
