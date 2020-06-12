@@ -30,7 +30,7 @@
 
 .boutonVagueSuivante:hover {
 	-fx-text-fill : #ffffff;
-	-fx-background-color : red;
+	-fx-background-color : #943343;
 	-fx-border-style: solid;
 	-fx-border-color: black;
 	-fx-border-width: 2px;
@@ -83,7 +83,9 @@
 }
 
 .textSaisirNom {
-	-fx-font-size: 14px;
+	-fx-font-size: 24px;
+	-fx-text-fill: red;
+	-fx-font-weight: bold;
 }
 
 .gameOver {
