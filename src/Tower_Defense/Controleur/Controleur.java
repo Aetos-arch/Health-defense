@@ -97,6 +97,7 @@ public class Controleur implements Initializable {
 			if (this.partie.estPerdu()) {
 				this.gameOver.setVisible(true);
 				this.boutonVagueSuivante.textProperty().setValue("Recommencer");
+				System.out.println("Score : " + this.partie.getScore());
 				gameLoop.stop();
 			} else if (this.partie.niveauFini()) {
 				gameLoop.stop();
@@ -266,13 +267,16 @@ public class Controleur implements Initializable {
     	if(this.boutonVagueSuivante.getText().equals("Recommencer")) {
     		this.partie.nouvellePartie();
     		this.nbTour.setValue(0);
+    		this.gameOver.setVisible(false);
+    		this.boutonVagueSuivante.setText("Vague suivante");
     	}
-        gameLoop.play();
-        if(this.partie.getVague() == 0)
-        	this.partie.lancerNiveau();
-        if(this.partie.niveauFini())
-        	this.partie.lancerNiveau();
-        
+    	else {
+	        gameLoop.play();
+	        if(this.partie.getVague() == 0)
+	        	this.partie.lancerNiveau();
+	        if(this.partie.niveauFini())
+	        	this.partie.lancerNiveau();
+    	}
     }
     
     @FXML

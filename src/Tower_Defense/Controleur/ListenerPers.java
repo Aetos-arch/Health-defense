@@ -92,7 +92,7 @@ public class ListenerPers implements ListChangeListener<Personnage> {
 						}
 					}
 					else {
-						this.c.getPartie().perdrePV(1);
+						this.c.getPartie().perdrePV(10);
 					}
 					this.correspondance.get(p).enleverHoT(paneEntite);
 					p.nonProtege();
