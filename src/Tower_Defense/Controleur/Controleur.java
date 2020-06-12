@@ -95,6 +95,7 @@ public class Controleur implements Initializable {
 		KeyFrame kf = new KeyFrame(Duration.seconds(0.04), (ev -> {
 
 			if (this.partie.estPerdu()) {
+				this.partie.ajouterScore();
 				this.gameOver.setVisible(true);
 				this.boutonVagueSuivante.textProperty().setValue("Recommencer");
 				System.out.println("Score : " + this.partie.getScore());
