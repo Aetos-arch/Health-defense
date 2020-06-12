@@ -107,21 +107,25 @@ public class Controleur implements Initializable {
 
     private void initGame() {
 		gameLoop = new Timeline();
-		MediaPlayer mp = new MediaPlayer(new Media(new File("src/Sources/gameOverSound.mp3").toURI().toString()));
-        mp.setVolume(1);
+		MediaPlayer mpGameOver = new MediaPlayer(new Media(new File("src/Sources/gameOverSound.mp3").toURI().toString()));
+		MediaPlayer mpWaveCompleted = new MediaPlayer(new Media(new File("src/Sources/waveCompletedSound.mp3").toURI().toString()));
+        mpGameOver.setVolume(1);
+        mpWaveCompleted.setVolume(1);
 		gameLoop.setCycleCount(Timeline.INDEFINITE);
 
 		KeyFrame kf = new KeyFrame(Duration.seconds(0.04), (ev -> {
 
 			if (this.partie.estPerdu()) {
-				mp.seek(Duration.ZERO);
-				mp.play();
+				mpGameOver.seek(Duration.ZERO);
+				mpGameOver.play();
 				this.partie.ajouterScore();
 				this.gameOver.setVisible(true);
 				this.blocTourelles.setVisible(false);
 				this.boutonVagueSuivante.textProperty().setValue("Recommencer");
 				gameLoop.stop();
 			} else if (this.partie.niveauFini()) {
+				mpWaveCompleted.seek(Duration.ZERO);
+				mpWaveCompleted.play();
 				gameLoop.stop();
 			} else {
 				this.partie.unTour();
