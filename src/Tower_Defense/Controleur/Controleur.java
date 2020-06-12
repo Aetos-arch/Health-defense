@@ -278,7 +278,7 @@ public class Controleur implements Initializable {
 		case "infoFiole":
 			this.legendeNom.textProperty().setValue("Tourelle fiole");
 			this.legendeText.textProperty().setValue("Type de tir : Dégât de zone\n"
-					+ "Soin : moyen\n"
+					+ "Soin : très important\n"
 					+ "Cadence de tir : faible\n"
 					+ "Portée : très longue");
 			break;
