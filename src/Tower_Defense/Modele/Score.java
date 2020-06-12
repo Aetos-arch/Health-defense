@@ -1,28 +1,27 @@
 package Tower_Defense.Modele;
 
-import java.io.FileNotFoundException;
-import java.io.PrintWriter;
+import java.io.FileWriter;
+import java.io.IOException;
+
 
 public class Score {
 	
 	private String nomFichier;
-	private int numScore;
-	private PrintWriter writer;
+	private FileWriter writer;
 	
 	public Score() {
 		this.nomFichier = "src/Sources/Score.txt";
-		this.numScore = 0;
-		try {
-			writer = new PrintWriter(nomFichier);
-		} catch (FileNotFoundException e) {
-			System.out.println("Le fichier n'a pas été trouvé.");
-		}
 	}
 	
-	public void ajouterScore(int i) {
-		writer.println("Score nº" + this.numScore + " : ALLLLLLLOOOOO? " + i) ;
-		writer.append("\n");
-		writer.close();
-		numScore++;
+	public void ajouterScore(int i, String nom) {
+		System.out.println("On ajoute un score");
+		try {
+			writer = new FileWriter(nomFichier, true);
+			writer.write("Score " +nom+ " : " + i +"\n") ;
+			writer.close();
+		} catch (IOException e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
+		}
 	}
 }
