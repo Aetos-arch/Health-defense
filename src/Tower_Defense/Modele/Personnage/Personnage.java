@@ -180,6 +180,6 @@ public abstract class Personnage {
 	}
 	
 	public void ameliorationPers() {
-		this.nivCont += this.nivCont/3;
+		this.nivCont += this.nivCont;
 	}
 }
