@@ -22,6 +22,7 @@ public class Position implements Coordonnee {
         return x;
     }
 
+    @Override
     public void setX(double x) {
         this.x = x;
     }
@@ -31,6 +32,7 @@ public class Position implements Coordonnee {
         return y;
     }
 
+    @Override
     public void setY(double y) {
         this.y = y;
     }

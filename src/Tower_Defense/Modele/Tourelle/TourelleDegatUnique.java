@@ -29,7 +29,7 @@ public abstract class TourelleDegatUnique extends Tourelle {
     }
         
     public Personnage getPersoLePlusProche(ArrayList<Personnage> listePersos) {
-        Personnage persoPlusProche = getListePersosAPortee().get(0);
+        Personnage persoPlusProche = listePersos.get(0);
 
         for (Personnage p : listePersos) {
             Position positionPersoProche = new Position(persoPlusProche.getX(), persoPlusProche.getY());
