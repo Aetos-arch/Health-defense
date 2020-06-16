@@ -9,11 +9,13 @@ import Tower_Defense.Utilitaire.Vecteur;
 public abstract class TirDirection extends Tir {
     protected TourelleDegatUnique tourelle;
     protected int vitesse;
+    protected Vecteur direction;
 
     public TirDirection(int pointAttaque, Position cible, int v, Environnement env, int hitbox, TourelleDegatUnique tourelleDegatUnique) {
         super(tourelleDegatUnique.getPosition(), pointAttaque, hitbox, env);
         this.tourelle = tourelleDegatUnique;
         this.vitesse = v;
+        this.direction = new Vecteur();
         this.calculerDirection(cible);
     }
 
