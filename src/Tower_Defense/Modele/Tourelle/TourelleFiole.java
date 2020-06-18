@@ -63,6 +63,7 @@ public class TourelleFiole extends Tourelle {
                     nombreDePersosAPorteeMax = nombreDePersosAPortee;
                     persoLePlusEntoure = listePersosAPortee.get(i);
                 }
+                y = 0;
                 i++;
             }
             return persoLePlusEntoure;
