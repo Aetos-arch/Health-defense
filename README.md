@@ -1,7 +1,5 @@
 # Health defense
-Projet de POO et IHM de 1ère année de DUT Informatique.
-
-• Java - JavaFX, Architecture MVC
+Jeu vidéo Tower defense.
 
 Au sein d'un univers moderne et apocalyptique, des personnes infectés tentent d'aller dans un bunker de gens sains.
 Vous devez les soigner avant qu’ils n'arrivent au bunker, en achetant des tourelles misent à disposition sur le plateau de jeu avec de l'argent obtenu.
