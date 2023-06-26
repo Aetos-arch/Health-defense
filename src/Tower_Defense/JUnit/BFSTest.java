@@ -17,7 +17,7 @@ public class BFSTest {
 	
 	@Before
 	public void setUp() throws Exception {
-		this.map = new Map("src/Sources/map.csv");
+		this.map = new Map("src/Resources/map.csv");
 		this.bfs = new BFS(this.map.getMap());
 	}
 	

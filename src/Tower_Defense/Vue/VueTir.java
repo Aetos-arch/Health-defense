@@ -4,7 +4,7 @@ import javafx.scene.image.Image;
 import javafx.scene.image.ImageView;
 
 public class VueTir extends ImageView {
-    private final String[] URL = {"Sources/Tirs/TirVitamine.png", "Sources/Tirs/TirSeringue.png", "Sources/Tirs/TirVaccin.png", "Sources/Tirs/TirFiole.gif"};
+    private final String[] URL = {"Resources/Tirs/TirVitamine.png", "Resources/Tirs/TirSeringue.png", "Resources/Tirs/TirVaccin.png", "Resources/Tirs/TirFiole.gif"};
 
     public VueTir(int url) {
         super();

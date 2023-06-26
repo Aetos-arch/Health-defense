@@ -23,7 +23,7 @@ public class Environnement {
 	public Environnement() {
 		this.tours = FXCollections.observableArrayList();
 		this.persos = FXCollections.observableArrayList();
-		this.map = new Map("src/Sources/map.csv");
+		this.map = new Map("src/Resources/map.csv");
 		this.bfs = new BFS(this.getMap());
 		this.tirs = FXCollections.observableArrayList();
 	}

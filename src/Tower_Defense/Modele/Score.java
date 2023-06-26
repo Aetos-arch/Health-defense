@@ -12,7 +12,7 @@ public class Score {
 	private FileWriter writer;
 	
 	public Score() {
-		this.nomFichier = "src/Sources/Score.txt";
+		this.nomFichier = "src/Resources/Score.txt";
 	}
 	
 	public void ajouterScore(int i, String nom) {

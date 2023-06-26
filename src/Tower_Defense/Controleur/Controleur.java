@@ -107,8 +107,8 @@ public class Controleur implements Initializable {
 
     private void initGame() {
 		gameLoop = new Timeline();
-		MediaPlayer mpGameOver = new MediaPlayer(new Media(new File("src/Sources/gameOverSound.mp3").toURI().toString()));
-		MediaPlayer mpWaveCompleted = new MediaPlayer(new Media(new File("src/Sources/waveCompletedSound.mp3").toURI().toString()));
+		MediaPlayer mpGameOver = new MediaPlayer(new Media(new File("src/Resources/gameOverSound.mp3").toURI().toString()));
+		MediaPlayer mpWaveCompleted = new MediaPlayer(new Media(new File("src/Resources/waveCompletedSound.mp3").toURI().toString()));
         mpGameOver.setVolume(1);
         mpWaveCompleted.setVolume(1);
 		gameLoop.setCycleCount(Timeline.INDEFINITE);
@@ -140,7 +140,7 @@ public class Controleur implements Initializable {
     	ImageView imageview = (ImageView) event.getSource();
         Dragboard db = imageview.startDragAndDrop(TransferMode.ANY);
         ClipboardContent cb = new ClipboardContent();
-        Image image = new Image("Sources/Tourelles/" + imageview.getId() + "Dragged.png");
+        Image image = new Image("Resources/Tourelles/" + imageview.getId() + "Dragged.png");
         db.setDragView(image,8,8);
         cb.putString(imageview.getId());
         db.setContent(cb);

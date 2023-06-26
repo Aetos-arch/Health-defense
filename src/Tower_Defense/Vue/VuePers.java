@@ -9,8 +9,8 @@ import java.util.ArrayList;
 
 public class VuePers extends ImageView {
 
-	private final String[] Url = {"Sources/Personnages/infecteSansSymptomeMove.png", "Sources/Personnages/infecteJoggerMove.png",
-			"Sources/Personnages/infecteGraveMove.png", "Sources/Personnages/infecteQuiTousseMove.png", "Sources/Personnages/personnageSainMove.png"};
+	private final String[] Url = {"Resources/Personnages/infecteSansSymptomeMove.png", "Resources/Personnages/infecteJoggerMove.png",
+			"Resources/Personnages/infecteGraveMove.png", "Resources/Personnages/infecteQuiTousseMove.png", "Resources/Personnages/personnageSainMove.png"};
 
 	private ArrayList<VueHoT> listeHoT;
 	private VueProtect vueProt;

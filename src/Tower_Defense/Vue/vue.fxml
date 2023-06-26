@@ -6,7 +6,7 @@
 <?import javafx.scene.image.*?>
 <?import javafx.scene.layout.*?>
 <?import javafx.scene.text.*?>
-<BorderPane maxHeight="740.0" maxWidth="1200.0" prefHeight="740.0" prefWidth="1200.0" styleClass="background" stylesheets="@../../Sources/style.css" xmlns="http://javafx.com/javafx/8" xmlns:fx="http://javafx.com/fxml/1" fx:controller="Tower_Defense.Controleur.Controleur">
+<BorderPane maxHeight="740.0" maxWidth="1200.0" prefHeight="740.0" prefWidth="1200.0" styleClass="background" stylesheets="@../../Resources/style.css" xmlns="http://javafx.com/javafx/8" xmlns:fx="http://javafx.com/fxml/1" fx:controller="Tower_Defense.Controleur.Controleur">
     <center>
         <Pane fx:id="paneEntite" maxHeight="480.0" maxWidth="800.0" minHeight="480.0" minWidth="800.0" onDragDropped="#onDragDropped" onDragOver="#onDragOver" prefHeight="480.0" prefWidth="800.0" styleClass="pane" BorderPane.alignment="CENTER">
             <children>
@@ -50,7 +50,7 @@
                               <Insets />
                            </VBox.margin>
                            <image>
-                              <Image url="@../../Sources/Tourelles/tourelleVitamine.png" />
+                              <Image url="@../../Resources/Tourelles/tourelleVitamine.png" />
                            </image>
                         </ImageView>
                         <Label alignment="CENTER" prefHeight="25.0" prefWidth="150.0" text="Tourelle vitamine" />
@@ -68,7 +68,7 @@
                               <Insets />
                            </VBox.margin>
                            <image>
-                              <Image url="@../../Sources/Tourelles/tourelleSeringue.png" />
+                              <Image url="@../../Resources/Tourelles/tourelleSeringue.png" />
                            </image>
                         </ImageView>
                         <Label alignment="CENTER" prefHeight="25.0" prefWidth="150.0" text="Tourelle seringue" />
@@ -83,7 +83,7 @@
                               <Insets />
                            </VBox.margin>
                            <image>
-                              <Image url="@../../Sources/Tourelles/tourelleVaccin.png" />
+                              <Image url="@../../Resources/Tourelles/tourelleVaccin.png" />
                            </image>
                         </ImageView>
                         <Label alignment="CENTER" prefHeight="25.0" prefWidth="150.0" text="Tourelle vaccin" />
@@ -95,7 +95,7 @@
                      <children>
                         <ImageView fx:id="tourelleFiole" fitHeight="32.0" fitWidth="32.0" onDragDetected="#onDragDetected" pickOnBounds="true" preserveRatio="true">
                            <image>
-                              <Image url="@../../Sources/Tourelles/tourelleFiole.png" />
+                              <Image url="@../../Resources/Tourelles/tourelleFiole.png" />
                            </image></ImageView>
                         <Label alignment="CENTER" prefHeight="25.0" prefWidth="150.0" text="Tourelle fiole" />
                         <Label alignment="CENTER" prefHeight="25.0" prefWidth="150.0" text="Coût : 8000" />
@@ -183,17 +183,17 @@
                            <children>
                               <ImageView fx:id="infecteSansSymptome" fitHeight="32.0" fitWidth="32.0" onMouseClicked="#onMouseClicked" pickOnBounds="true" preserveRatio="true">
                                  <image>
-                                    <Image url="@../../Sources/Personnages/infecteSansSymptome.png" />
+                                    <Image url="@../../Resources/Personnages/infecteSansSymptome.png" />
                                  </image>
                               </ImageView>
                               <ImageView fx:id="infecteJogger" fitHeight="32.0" fitWidth="32.0" onMouseClicked="#onMouseClicked" pickOnBounds="true" preserveRatio="true">
                                  <image>
-                                    <Image url="@../../Sources/Personnages/infecteJogger.png" />
+                                    <Image url="@../../Resources/Personnages/infecteJogger.png" />
                                  </image>
                               </ImageView>
                               <ImageView fx:id="infecteGrave" fitHeight="32.0" fitWidth="32.0" onMouseClicked="#onMouseClicked" pickOnBounds="true" preserveRatio="true">
                                  <image>
-                                    <Image url="@../../Sources/Personnages/infecteGrave.png" />
+                                    <Image url="@../../Resources/Personnages/infecteGrave.png" />
                                  </image>
                               </ImageView>
                            </children>
@@ -206,12 +206,12 @@
                            <children>
                               <ImageView fx:id="infecteQuiTousse" fitHeight="32.0" fitWidth="32.0" onMouseClicked="#onMouseClicked" pickOnBounds="true" preserveRatio="true">
                                  <image>
-                                    <Image url="@../../Sources/Personnages/infecteQuiTousse.png" />
+                                    <Image url="@../../Resources/Personnages/infecteQuiTousse.png" />
                                  </image>
                               </ImageView>
                               <ImageView fx:id="personnageSain" fitHeight="32.0" fitWidth="32.0" onMouseClicked="#onMouseClicked" pickOnBounds="true" preserveRatio="true">
                                  <image>
-                                    <Image url="@../../Sources/Personnages/personnageSain.png" />
+                                    <Image url="@../../Resources/Personnages/personnageSain.png" />
                                  </image>
                               </ImageView>
                            </children>
@@ -231,12 +231,12 @@
                      <children>
                         <ImageView fx:id="infecteHot" fitHeight="32.0" fitWidth="32.0" onMouseClicked="#onMouseClicked" pickOnBounds="true" preserveRatio="true">
                            <image>
-                              <Image url="@../../Sources/Statuts/infecteHot.png" />
+                              <Image url="@../../Resources/Statuts/infecteHot.png" />
                            </image>
                         </ImageView>
                         <ImageView fx:id="infecteProtection" fitHeight="64.0" fitWidth="32.0" onMouseClicked="#onMouseClicked" pickOnBounds="true" preserveRatio="true">
                            <image>
-                              <Image url="@../../Sources/Statuts/infecteProtection.png" />
+                              <Image url="@../../Resources/Statuts/infecteProtection.png" />
                            </image>
                         </ImageView>
                      </children>

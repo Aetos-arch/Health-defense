@@ -6,6 +6,6 @@ import javafx.scene.image.ImageView;
 public class VueHoT extends ImageView {
 
 	public VueHoT() {
-		this.setImage(new Image("Sources/Statuts/hot.png"));
+		this.setImage(new Image("Resources/Statuts/hot.png"));
 	}
 }
