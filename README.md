@@ -1,10 +1,18 @@
 # Health defense
-Jeu vidéo Tower Defense.
+Tower Defense Video Game
 
-Au sein d'un univers moderne et apocalyptique, des personnages infectés tentent d'aller dans un bunker de gens sains.
-Vous devez les soigner avant qu’ils n'arrivent au bunker, en achetant des tourelles misent à disposition sur le plateau de jeu avec de l'argent obtenu.
+In a modern and apocalyptic universe, infected characters are relentlessly making their way to a bunker of healthy individuals. It's up to you to prevent their progress by strategically placing and managing turrets on the game board, using the money you earn.
 
-Pour acheter une tourelle, il faut cliquer sur la tourelle et la glisser sur la map.
-Pour avoir plus d'informations sur les tourelles, infectés et statuts : cliquez sur les boutons "Info" sous les tourelles et cliquez sur les différentes images des infectés et statuts.
+## Features:
+- Intense tower defense gameplay set in a post-apocalyptic world.
+- Protect the bunker by strategically placing and upgrading turrets.
+- Earn money for each defeated infected character to purchase new turrets.
+- Dive into the details of each turret, infected character, and status by clicking on the "Info" buttons.
+- Use your tactical skills and quick decision-making to fend off waves of infected characters.
 
-Bon jeu !
+
+## Instructions:
+- Click on a turret and drag it onto the map to place it at a strategic location.
+- Earn money by successfully defeating infected characters.
+- Use the money to purchase new turrets and upgrade existing ones.
+- Click on the "Info" buttons to access more information about the turrets, infected characters, and statuses.
